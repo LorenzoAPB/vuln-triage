@@ -21,12 +21,13 @@ RECORDINGS = HERE / "recordings"
 PRED_SEVERITIES = [*SEVERITIES, "None", "unknown"]
 
 
-def run_item(item: dict, model: str, offline: bool) -> dict:
+def run_item(item: dict, model: str, offline: bool) -> tuple[dict, bool]:
+    """One eval row, and whether it took a live API call (failures are never cached)."""
     row = {k: item.get(k) for k in ["id", "kind", "is_report", "severity", "cwe", "cwe_all", "vector"]}
     try:
         proposal, usage = call_model(item["text"], model, RECORDINGS, offline)
     except TriageError as e:
-        return {**row, "parse_failure": str(e)}
+        return {**row, "parse_failure": str(e)}, True
     result = finalize(proposal, item["text"])
     raw_vector = proposed_vector(proposal)
     return {
@@ -47,9 +48,13 @@ def run_item(item: dict, model: str, offline: bool) -> dict:
             "output_tokens": usage.output_tokens,
             "latency_s": usage.latency_s,
             "cost_usd": usage.cost_usd,
-            "cached": usage.cached,
         },
-    }
+    }, not usage.cached
+
+
+def rank(severity: str) -> int:
+    """Order severities for over/under comparisons; 'unknown' ranks below 'None'."""
+    return ["unknown", "None", "Low", "Medium", "High", "Critical"].index(severity)
 
 
 def compute(rows: list[dict], model: str) -> dict:
@@ -62,6 +67,7 @@ def compute(rows: list[dict], model: str) -> dict:
 
     gold_sev = [r["severity"] for r in nvd]
     published = [r for r in nvd if r["pred_vector"] != "unknown"]
+    withheld = [r for r in nvd if r["pred_vector"] == "unknown"]
     usages = [r["usage"] for r in ok]
     latencies = [u["latency_s"] for u in usages]
 
@@ -84,6 +90,11 @@ def compute(rows: list[dict], model: str) -> dict:
             else None,
             "raw_accuracy": sum(r["raw_severity"] == r["severity"] for r in nvd) / len(nvd),
             "raw_confusion": confusion(gold_sev, [r["raw_severity"] for r in nvd]),
+            "raw_over_scored": sum(rank(r["raw_severity"]) > rank(r["severity"]) for r in nvd),
+            "raw_under_scored": sum(rank(r["raw_severity"]) < rank(r["severity"]) for r in nvd),
+            "raw_accuracy_when_withheld": sum(r["raw_severity"] == r["severity"] for r in withheld) / len(withheld)
+            if withheld
+            else None,
         },
         "severity_accuracy_by_confidence": {
             c: {"n": len(group), "accuracy": sum(r["pred_severity"] == r["severity"] for r in group) / len(group)}
@@ -143,7 +154,9 @@ def to_markdown(m: dict, rows: list[dict]) -> str:
         f"A severity is only published when the CVSS vector passes the guardrails. "
         f"Published for {pct(sev['coverage'])} of items; accuracy when published: "
         f"{pct(sev['accuracy_when_published'])}. "
-        f"Accuracy of the model's raw vector with no guardrails: {pct(sev['raw_accuracy'])}.",
+        f"Accuracy of the model's raw vector with no guardrails: {pct(sev['raw_accuracy'])} "
+        f"({sev['raw_over_scored']} over-scored, {sev['raw_under_scored']} under-scored); "
+        f"on the withheld items alone: {pct(sev['raw_accuracy_when_withheld'])}.",
         "",
         "| severity | precision | recall | support | predicted |",
         "|---|---|---|---|---|",
@@ -218,16 +231,15 @@ def main() -> int:
     args = parser.parse_args()
 
     items = [json.loads(line) for line in (HERE / "dataset.jsonl").read_text().splitlines() if line]
-    rows = []
+    rows, live = [], 0
     for item in items:
-        rows.append(run_item(item, args.model, args.offline))
-        if (usage := rows[-1].get("usage")) and not usage["cached"]:
+        row, was_live = run_item(item, args.model, args.offline)
+        rows.append(row)
+        if was_live:
+            live += 1
             time.sleep(60 / args.rpm)  # stay under the account's requests-per-minute limit
     metrics = compute(rows, args.model)
-
-    live = sum(1 for r in rows if r.get("usage") and not r["usage"]["cached"])
-    live_cost = sum(r["usage"]["cost_usd"] for r in rows if r.get("usage") and not r["usage"]["cached"])
-    print(f"{len(rows)} items, {live} live API calls this run (${live_cost:.4f})", file=sys.stderr)
+    print(f"{len(rows)} items, {live} live API calls this run", file=sys.stderr)
 
     if args.check:
         committed = json.loads((HERE / "results.json").read_text())["metrics"]
@@ -239,7 +251,7 @@ def main() -> int:
 
     (HERE / "results.json").write_text(json.dumps({"metrics": metrics, "rows": rows}, indent=2) + "\n")
     (HERE / "results.md").write_text(to_markdown(metrics, rows))
-    print(json.dumps(metrics["severity"]["per_class"]), file=sys.stderr)
+    print(f"wrote {HERE / 'results.md'} and results.json", file=sys.stderr)
     return 0
 
 
