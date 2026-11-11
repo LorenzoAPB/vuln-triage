@@ -1,4 +1,5 @@
 {
+  "prompt": "v2",
   "metrics": {
     "model": "gpt-5-mini",
     "items": 48,

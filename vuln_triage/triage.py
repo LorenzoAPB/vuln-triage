@@ -20,6 +20,7 @@ CACHE_DIR = Path(os.environ.get("VULN_TRIAGE_CACHE", ".cache"))
 PRICES_PER_MTOK = {
     "gpt-5-mini": (0.25, 2.00),
     "gpt-5-nano": (0.05, 0.40),
+    "gpt-4o-mini": (0.15, 0.60),
     "gpt-5.4-nano": (0.20, 1.25),
     "gpt-5.4-mini": (0.75, 4.50),
     "gpt-4.1-mini": (0.40, 1.60),
@@ -29,10 +30,14 @@ PRICES_PER_MTOK = {
 REQUEST_OPTIONS: dict[str, dict] = {
     "gpt-5-mini": {"reasoning": {"effort": "minimal"}},
     "gpt-5-nano": {"reasoning": {"effort": "minimal"}},
+    "gpt-4o-mini": {"temperature": 0},
     "gpt-5.4-mini": {"temperature": 0},
     "gpt-5.4-nano": {"temperature": 0},
     "gpt-4.1-mini": {"temperature": 0},
 }
+
+REQUEST_TIMEOUT_S = 90  # fail a hung request instead of waiting the SDK default of 10 minutes
+PROMPT_VERSION = "v3"  # bump with any change to SYSTEM_PROMPT or the schema; results files record it
 
 SYSTEM_PROMPT = """You are a PSIRT analyst triaging a security vulnerability report.
 Rules:
@@ -109,7 +114,7 @@ def call_model(
 
     start = time.perf_counter()
     try:
-        response = OpenAI().responses.parse(
+        response = OpenAI(timeout=REQUEST_TIMEOUT_S, max_retries=1).responses.parse(
             model=model,
             input=[
                 {"role": "system", "content": SYSTEM_PROMPT},

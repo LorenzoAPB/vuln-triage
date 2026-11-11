@@ -1,6 +1,8 @@
 """Before/after table from two results files, recomputing both with the current metric code.
 
-python -m evals.compare evals/history/v2-test-gpt-5-mini.json evals/results.json
+python -m evals.compare evals/history/dev-v2-gpt-5-nano.json evals/history/dev-v3b-gpt-5-nano.json
+
+Columns are labeled with each file's model and prompt version. Only a same-model pair isolates the prompt change.
 """
 
 import json
@@ -10,13 +12,13 @@ from pathlib import Path
 from evals.run import compute, pct
 
 
-def rows_of(path: str) -> tuple[str, list[dict]]:
+def rows_of(path: str) -> tuple[str, list[dict], str]:
     data = json.loads(Path(path).read_text())
-    return data["metrics"]["model"], data["rows"]
+    return data["metrics"]["model"], data["rows"], data.get("prompt", "see file name")
 
 
 def table(before_path: str, after_path: str) -> str:
-    (model_a, rows_a), (model_b, rows_b) = rows_of(before_path), rows_of(after_path)
+    (model_a, rows_a, prompt_a), (model_b, rows_b, prompt_b) = rows_of(before_path), rows_of(after_path)
     a, b = compute(rows_a, model_a), compute(rows_b, model_b)
     lines = [
         f"| Metric | Before (`{before_path.split('/')[-1]}`) | After (`{after_path.split('/')[-1]}`) |",
@@ -27,6 +29,7 @@ def table(before_path: str, after_path: str) -> str:
         lines.append(f"| {name} | {fmt(get(a))} | {fmt(get(b))} |")
 
     add("Model", lambda m: m["model"], str)
+    lines.append(f"| Prompt/schema | {prompt_a} | {prompt_b} |")
     add("Items", lambda m: m["items"], str)
     add("Report recall", lambda m: m["report_detection"]["report"]["recall"])
     add("Noise recall", lambda m: m["report_detection"]["noise"]["recall"])

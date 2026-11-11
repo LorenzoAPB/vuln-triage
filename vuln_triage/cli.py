@@ -106,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     triage_cmd = commands.add_parser("triage", help="Draft a triage for one report and review it.")
     triage_cmd.add_argument("file", type=Path, help="Text file containing the vulnerability report.")
-    triage_cmd.add_argument("--model", default=MODEL)
+    triage_cmd.add_argument("--model", default=MODEL, help=f"OpenAI model (default: {MODEL}).")
     triage_cmd.add_argument("--out", type=Path, help="Write the approved result here as JSON.")
     args = parser.parse_args(argv)
 

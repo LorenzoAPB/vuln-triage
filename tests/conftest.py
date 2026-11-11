@@ -57,7 +57,7 @@ class FakeOpenAI:
         self.parsed = parsed
         self.responses = self
 
-    def __call__(self):
+    def __call__(self, **client_options):
         return self
 
     def parse(self, **kwargs):
