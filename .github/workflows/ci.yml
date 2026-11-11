@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pytest -q
+      - name: Eval (replays recorded responses; no API calls, no key needed)
+        run: python -m evals.run --offline --check
+
+  live-smoke:
+    # One real API call through the CLI. Runs only if the repo has an OPENAI_API_KEY secret.
+    needs: check
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.OPENAI_API_KEY != ''
+      - uses: actions/setup-python@v5
+        if: env.OPENAI_API_KEY != ''
+        with:
+          python-version: "3.13"
+          cache: pip
+      - if: env.OPENAI_API_KEY != ''
+        run: pip install -e .
+      - name: Triage one report live, then reject it
+        if: env.OPENAI_API_KEY != ''
+        run: printf 'r\nCI smoke test\n' | VULN_TRIAGE_CACHE="$(mktemp -d)" vuln-triage triage examples/cve-2021-44228.txt
