@@ -4,7 +4,8 @@
   asciinema rec --cols 110 --rows 34 -c "python docs/record_demo.py" docs/demo.cast
   agg docs/demo.cast docs/demo.gif
 
-It replays recorded eval responses (VULN_TRIAGE_CACHE=evals/recordings), so it makes no API calls.
+It replays recorded responses from the v3 held-out eval run on gpt-4o-mini
+(VULN_TRIAGE_CACHE=evals/recordings, --model gpt-4o-mini), so it makes no API calls.
 """
 
 import os
@@ -41,19 +42,16 @@ def run(command: str, answers: list[tuple[str, str]]) -> None:
 
 
 run(
-    "vuln-triage triage examples/CVE-2023-22771.txt",
+    "vuln-triage triage --model gpt-4o-mini examples/CVE-2023-22771.txt",
     [
         ("[r]eject > ", "e"),
         ("Field", "vector"),
         ("New value > ", "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:N/I:L/A:N"),
-        ("[r]eject > ", "e"),
-        ("Field", "cwe"),
-        ("New value > ", "CWE-613"),
         ("[r]eject > ", "a"),
     ],
 )
 run(
-    "vuln-triage triage examples/synthetic-thin-xss.txt",
+    "vuln-triage triage --model gpt-4o-mini examples/synthetic-thin-xss.txt",
     [("[r]eject > ", "r"), ("Reason > ", "asked reporter for repro steps")],
 )
 run("tail -n 2 logs/triage.jsonl | jq -c '{decision, reject_reason, changed: (.overrides | keys)}'", [])
