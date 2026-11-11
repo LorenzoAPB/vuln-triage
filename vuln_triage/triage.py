@@ -12,12 +12,14 @@ from pydantic import ValidationError
 
 from vuln_triage.schema import ModelTriage
 
-MODEL = "gpt-4.1-mini"
+MODEL = "gpt-5.4-nano"
 CACHE_DIR = Path(os.environ.get("VULN_TRIAGE_CACHE", ".cache"))
 
-# USD per 1M tokens (input, output). Source: https://platform.openai.com/docs/models/gpt-4.1-mini
+# USD per 1M tokens (input, output), from https://platform.openai.com/docs/models/<model>
 # Checked 2026-11-11. Cached-input discounts are ignored, so estimates err high.
 PRICES_PER_MTOK = {
+    "gpt-5.4-nano": (0.20, 1.25),
+    "gpt-5.4-mini": (0.75, 4.50),
     "gpt-4.1-mini": (0.40, 1.60),
 }
 
