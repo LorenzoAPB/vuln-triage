@@ -6,6 +6,8 @@ An LLM drafts the triage of a security vulnerability report, code checks every c
 
 ![Demo: the model over-scores an ArubaOS report as 8.8 High; the analyst corrects the vector to 2.4 Low and rejects a two-line XSS report](docs/demo.gif)
 
+<sub>Recorded with the v2 prompt (see [Results](#results)).</sub>
+
 ## The problem
 
 A PSIRT inbox mixes detailed advisories, one-line "found an XSS, please fix" emails, scanner output, and messages that are not vulnerability reports at all. For each one, an analyst has to work out what is affected, map the weakness to a CWE, read a CVSS v3.1 vector out of prose, and decide what happens next. That first pass is slow and repetitive, and its output feeds severity SLAs, so mistakes are expensive in both directions.
@@ -29,7 +31,7 @@ flowchart LR
 | [`vuln_triage/triage.py`](vuln_triage/triage.py) | One Responses API call with structured outputs, a disk cache, token usage, and cost. |
 | [`vuln_triage/guardrails.py`](vuln_triage/guardrails.py) | `finalize()`: turns the model's proposal into a draft, trusting nothing that code can check. |
 | [`vuln_triage/cli.py`](vuln_triage/cli.py) | The review loop and the JSONL log. |
-| [`evals/`](evals) | 48 labeled reports, the metric code, recorded responses, and [results](evals/results.md). |
+| [`evals/`](evals) | A 15-item dev split for iteration, a 48-item held-out test split, metric code, recorded responses, and [history](evals/history) of every run. |
 
 ## Design choices
 
@@ -37,11 +39,15 @@ flowchart LR
 
 **The CVSS score is computed in code.** The model proposes the eight base metrics; the [`cvss`](https://pypi.org/project/cvss/) library computes the score, and the severity band follows from it. A model can easily say "9.8" for a vector that scores 7.5. Arithmetic is not its job.
 
-**Per-metric evidence.** Each metric comes with the exact report text that supports it, or `''` when the model is inferring. Code checks every quote against the report (case- and whitespace-insensitive substring match). A metric without a verified quote counts as guessed. One guess caps confidence at medium. More than four guesses, or a report under 120 characters, and the vector is withheld: the analyst sees the model's guess, labeled as a guess, but no score is published.
+**Per-metric evidence.** Each metric comes with the exact report text that supports it, or `''` when the model is inferring. Code checks every quote against the report (case- and whitespace-insensitive substring match). A metric counts as guessed if its quote is missing, is not in the report, or is the same sentence cited for more than three metrics (one sentence cannot carry most of a vector; the v2 eval found the model doing exactly that). One guess caps confidence at medium. More than four guesses, or a report under 120 characters, and the vector is withheld: the analyst sees the model's guess, labeled as a guess, but no score is published.
+
+**Score what the report states, not the worst case.** The prompt spells out standard CVSS v3.1 practice: C/I/A are High only for total loss, a crash affects availability only, PR:N needs the report to say or clearly imply no account, S:C needs a crossed security boundary. This targets the over-scoring the v2 eval measured.
 
 **Every claim cites the report.** Evidence quotes that do not appear in the report are dropped and flagged (`dropped_N_unverified_quotes`). No verified evidence at all means low confidence.
 
-**`unknown` is a legal answer, except for CVSS metrics.** Strict schemas make every field required, so without an explicit `unknown` the model is pushed to invent a CWE or a product. CVSS metrics are the exception, for a reason found in the eval: when each metric could be `unknown`, the model left at least one unknown on every NVD item, so no severity was ever produced ([first run](docs/eval-v1-gpt-5.4-nano.md)). Now the model always proposes, and code decides from the evidence whether to publish.
+**CWE is classification, so the model may use its CWE knowledge.** Facts about the product come only from the report, but mapping "a missing buffer size check" to CWE-787 is classification, which is what an NVD analyst does. The model gives the most specific CWE plus a `cwe_quote` describing the weakness; if that quote is not in the report, code resets the CWE to `unknown` (`cwe_without_evidence`). In v2, forbidding outside knowledge made the model answer `unknown` for 75% of CWEs.
+
+**`unknown` is a legal answer, except for CVSS metrics.** Strict schemas make every field required, so without an explicit `unknown` the model is pushed to invent a CWE or a product. CVSS metrics are the exception, for a reason found in the eval: when each metric could be `unknown`, the model left at least one unknown on every NVD item, so no severity was ever produced ([first run](evals/history/v1-test-gpt-5.4-nano.md)). Now the model always proposes, and code decides from the evidence whether to publish.
 
 **Three confidence levels, not a percentage.** "0.87" invites false precision. Low, medium, and high are levels a reviewer can check, and code can lower them (never raise them) based on what it verified.
 
@@ -51,9 +57,22 @@ flowchart LR
 
 **Cheap model, cached calls.** `gpt-5-mini` at minimal reasoning effort costs about a tenth of a cent per report. Responses are cached on disk, keyed by model, prompt, schema, and report text, so re-runs are free and the eval replays exactly. Prices live in one constant (`PRICES_PER_MTOK`) with the source URL and the date they were checked.
 
+## Evaluation method
+
+Two splits, both built by the same fixed rule in [`build_dataset.py`](evals/build_dataset.py) (NVD records where NVD itself assigned the CVSS 3.1 vector and a specific CWE, 150-900 character descriptions, no SAP, first N per severity with distinct CWEs) from different publication windows:
+
+| Split | Items | Window | Used for |
+|---|---|---|---|
+| dev | 12 NVD (3 per severity) + 3 synthetic | June-July 2023 | All prompt and guardrail iteration |
+| test | 36 NVD (9 per severity) + 12 synthetic | March-April 2023 | Held out; run once per finished version |
+
+Labels are NVD's CVSS 3.1 vector and primary CWE. The lenient CWE metric counts a direct parent or child in MITRE's Research view (CWE-1000, from [`cwe_parents.json`](evals/cwe_parents.json), built by [`build_cwe_tree.py`](evals/build_cwe_tree.py)). Every number below is generated by `python -m evals.run` or `python -m evals.compare`; snapshots of each run are in [`evals/history`](evals/history).
+
 ## Results
 
-48 items: 36 NVD records (9 per severity, chosen by a fixed rule in [`build_dataset.py`](evals/build_dataset.py) and labeled with NVD's own CVSS 3.1 vector and CWE) and 12 hand-written synthetic items (4 thin reports, 2 vague reports, 6 non-reports). Model `gpt-5-mini`, 0 parse failures. Full tables and per-item output: [`evals/results.md`](evals/results.md).
+### Current held-out numbers: v2 prompt, `gpt-5-mini`
+
+Test split, 48 items, 0 parse failures. Full tables and per-item output: [`evals/history/v2-test-gpt-5-mini.md`](evals/history/v2-test-gpt-5-mini.md).
 
 | What | Result |
 |---|---|
@@ -62,7 +81,9 @@ flowchart LR
 | Severity published (vector passed the guardrails) | 67% of NVD items |
 | Severity accuracy when published | 42% |
 | Severity accuracy of the raw model vector, no guardrails | 44% (19 over-scored, 1 under-scored) |
+| Raw minus NVD base score | mean +1.31, mean absolute 1.49 |
 | CWE exact match with NVD primary CWE | 17% (75% answered `unknown`) |
+| CWE exact or direct parent/child (lenient) | 17% |
 | CVSS vector exact match, raw model vector | 22% |
 | Per-metric agreement AV / AC / PR / UI / S / C / I / A | 69% / 89% / 81% / 89% / 81% / 64% / 64% / 78% |
 | Thin and vague reports (6) | 6 low confidence, 5 with the vector withheld |
@@ -77,20 +98,36 @@ flowchart LR
 
 What the numbers say:
 
-- **The model over-scores.** Of the 36 raw vectors, 19 score higher than NVD's and 1 lower. It never predicted Low. It defaults to the worst case on impact (C and I agree with NVD only 64% of the time), which is the part of a vector that short descriptions leave implicit.
-- **The evidence rule does not find the bad vectors.** Withholding mostly-guessed vectors leaves accuracy flat (42% published vs 44% raw), and the raw vectors it withheld were right 50% of the time. A quote can exist in the report and still not support the metric it is attached to; the model often cites the same sentence for four metrics. Substring verification catches invented text, not weak reasoning.
+- **The model over-scores.** Of the 36 raw vectors, 19 score higher than NVD's and 1 lower; on average the raw base score is 1.31 points above NVD's. It never predicted Low. It defaults to the worst case on impact (C and I agree with NVD only 64% of the time), which is the part of a vector that short descriptions leave implicit.
+- **The evidence rule does not find the bad vectors.** Withholding mostly-guessed vectors leaves accuracy flat (42% published vs 44% raw), and the raw vectors it withheld were right 50% of the time. A quote can exist in the report and still not support the metric it is attached to; the model often cites the same sentence for four or more metrics. Substring verification catches invented text, not weak reasoning.
 - **Confidence carries some signal, on very few items.** Severity was right on 4 of 4 medium-confidence items and 19% of the 32 low-confidence ones.
-- **CWE mostly comes back `unknown`.** The prompt forbids outside knowledge and requires evidence for every claim, and the model reads that as "do not name a CWE unless the text names it". NVD analysts map CWEs from expertise, not quotes.
+- **CWE mostly comes back `unknown`.** The v2 prompt forbade outside knowledge and required evidence for every claim, and the model read that as "do not name a CWE unless the text names it". NVD analysts map CWEs from expertise, not quotes.
 - **Report detection works.** The one miss was a vague second-hand warning ("a friend in IT said your servers might be vulnerable") that is arguably not a report.
 
 The labels set a ceiling. NVD analysts score with knowledge the description does not contain (how the product is deployed, whether a login is needed), so "agreement with NVD" is not the same as "correct from the text". Thirty-six items also means each severity class has 9 examples; one item moves a class's recall by 11 points.
+
+### v3 (current code): dev-split findings, test run pending
+
+v3 is the CWE, CVSS-guidance, and quote-reuse changes described under [Design choices](#design-choices). It has not been run on the test split yet: the account allows 50 requests per model per day, and `gpt-5-mini`'s were used up by the v2 run. For the same reason the dev iteration ran on `gpt-5-nano` as a stand-in, which is a weak proxy. Dev split, 15 items, `python -m evals.compare evals/history/dev-v2-gpt-5-nano.json evals/history/dev-v3b-gpt-5-nano.json` (selected rows):
+
+| Metric | v2 prompt | v3 prompt |
+|---|---|---|
+| CWE unknown | 100% | 67% |
+| CWE exact | 0% | 17% |
+| C / I / A agreement | 25% / 17% / 42% | 58% / 50% / 67% |
+| Raw vectors over-scored / under-scored | 6 / 3 | 8 / 1 |
+| Raw minus NVD base score, mean | +0.77 | +2.12 |
+| Severity published (coverage) | 0% | 25% |
+| Severity accuracy when published | n/a | 0% |
+
+On `gpt-5-nano` at minimal reasoning, v3 named more CWEs and agreed more often on impact metrics, but over-scored more, not less. Reading the raw output explains part of it: nano wrote its own reasoning into the quote fields ("H – total loss (arbitrary code execution...") and scored a divide-by-zero as C:H/I:H/A:H despite the instructions. The guardrails caught this (most vectors withheld for unverified or overused quotes), but it means nano results say little about `gpt-5-mini`, which quoted the report correctly in v2. The before/after on the held-out split will be generated with `python -m evals.compare evals/history/v2-test-gpt-5-mini.json evals/results.json` once the test run is done.
 
 ## Limits
 
 - Severity accuracy is far too low to use without review. The tool drafts; the analyst decides.
 - Quote verification proves a quote exists, not that it supports the claim.
 - The thin-report threshold (120 characters) is a blunt rule, and it was lowered after looking at the first eval run, so the eval is not independent of it.
-- One model, one prompt, one run. The two eval runs differ in both schema and model (an account limit of 50 requests per model per day forced the switch), so they are not a model comparison.
+- Small splits and one run per version. The v1 and v2 test runs differ in both schema and model (an account limit of 50 requests per model per day forced the switch), so they are not a model comparison. The v3 dev iteration ran on a different model than the test run will.
 - NVD descriptions are cleaner than real inbound reports. The synthetic items are hand-written and few.
 - Prompt injection inside a report is not handled beyond the schema constraint and the human gate.
 
@@ -114,12 +151,13 @@ make eval          # replay the recorded eval responses; free and deterministic
 
 export OPENAI_API_KEY=...   # only needed for new reports
 vuln-triage triage examples/cve-2021-44228.txt --out triaged.json
-python -m evals.run         # live eval for items without a recording, rewrites evals/results.*
+python -m evals.run --split dev    # live, for items without a recording; iterate here
+python -m evals.run --split test   # live, held out: once per finished version
 ```
 
 `--model` selects another model; add its prices to `PRICES_PER_MTOK` first. Logs go to `logs/triage.jsonl`.
 
-CI runs ruff, the test suite, and `python -m evals.run --offline --check`, which replays the recorded responses and fails if the metrics differ from the committed results. A one-call live smoke test runs only if the repository has an `OPENAI_API_KEY` secret.
+CI runs ruff, the test suite, and `python -m evals.run --split dev --offline --check` (plus the same for the test split once it has results for the current version), which replays the recorded responses and fails if the metrics differ from the committed results. A one-call live smoke test runs only if the repository has an `OPENAI_API_KEY` secret.
 
 ## License
 
