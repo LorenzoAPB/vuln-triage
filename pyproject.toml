@@ -35,3 +35,4 @@ ignore = ["E741"]  # CVSS metric names like I and A are the domain vocabulary
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
