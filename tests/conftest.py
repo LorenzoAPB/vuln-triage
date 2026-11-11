@@ -21,6 +21,7 @@ def proposal(**overrides) -> ModelTriage:
         "summary": "Reflected XSS in the search page of ExampleCMS.",
         "affected_product": "ExampleCMS 4.2.0 through 4.2.3",
         "cwe": "CWE-79",
+        "cwe_quote": "does not neutralize the q parameter of /search",
         "cvss": {
             "AV": {"value": "N", "quote": NETWORK},
             "AC": {"value": "L", "quote": NETWORK},

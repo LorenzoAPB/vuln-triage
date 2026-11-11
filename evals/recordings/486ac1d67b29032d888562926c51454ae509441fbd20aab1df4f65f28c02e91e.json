@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Excessively large PDF page size can trigger a divide-by-zero in Xpdf text extraction code during fuzz testing. Related to CVE-2022-30524, but caused by page size magnitude rather than coordinate size.",
+    "affected_product": "Xpdf (text extraction code)",
+    "cwe": "CWE-119",
+    "cwe_quote": "Text from report describing weakness",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch Xpdf text extraction to guard against divide-by-zero when encountering extremely large page dimensions; add input validation for page sizes and fuzz-test coverage.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code.",
+        "quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      {
+        "claim": "This is related to CVE-2022-30524, but the problem here is caused by a very large page size, rather than by a very large character coordinate.",
+        "quote": "This is related to CVE-2022-30524, but the problem here is caused by a very large page size, rather than by a very large character coordinate."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1471,
+    "output_tokens": 434,
+    "latency_s": 3.591
+  }
+}

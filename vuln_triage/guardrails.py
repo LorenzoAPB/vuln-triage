@@ -1,6 +1,7 @@
 """Turn the model's proposal into a TriageResult, trusting nothing we can check in code."""
 
 import re
+from collections import Counter
 
 from cvss import CVSS3
 
@@ -9,6 +10,7 @@ from vuln_triage.schema import Confidence, ModelTriage, TriageResult
 THIN_REPORT_CHARS = 120  # 200 flagged a quarter of real NVD descriptions as thin in the first eval
 METRIC_ORDER = ["AV", "AC", "PR", "UI", "S", "C", "I", "A"]
 MAX_GUESSED_METRICS = 4  # more guesses than this and we withhold the vector entirely
+MAX_METRICS_PER_QUOTE = 3  # one sentence cannot be the evidence for most of a vector
 
 
 def _normalize(text: str) -> str:
@@ -73,8 +75,17 @@ def finalize(proposal: ModelTriage, report: str) -> TriageResult:
     cwe = proposal.cwe if re.fullmatch(r"CWE-\d+", proposal.cwe) else "unknown"
     if cwe != proposal.cwe and proposal.cwe != "unknown":
         flags.append("invalid_cwe_format")
+    if cwe != "unknown" and not quote_in_report(proposal.cwe_quote, report):
+        flags.append("cwe_without_evidence")
+        cwe = "unknown"
 
-    guessed = [n for n in METRIC_ORDER if not quote_in_report(getattr(proposal.cvss, n).quote, report)]
+    quotes = {n: _normalize(getattr(proposal.cvss, n).quote) for n in METRIC_ORDER}
+    uses = Counter(quotes.values())
+    if any(uses[q] > MAX_METRICS_PER_QUOTE for q in quotes.values() if q):
+        flags.append("cvss_quote_overused")
+    guessed = [
+        n for n in METRIC_ORDER if not quote_in_report(quotes[n], report) or uses[quotes[n]] > MAX_METRICS_PER_QUOTE
+    ]
     vector = proposed_vector(proposal)
     if len(guessed) > MAX_GUESSED_METRICS:
         flags.append("cvss_mostly_guessed")

@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in io_uring fixed buffer registration (io_sqe_buffer_register in io_uring/rsrc.c) permits out-of-bounds access to physical memory beyond the end of the buffer, enabling full local privilege escalation.",
+    "affected_product": "Linux kernel (io_uring fixed buffer registration)",
+    "cwe": "CWE-125",
+    "cwe_quote": "UNKNOWN",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "UNKNOWN"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "+ ALLOWING ATTACKER TO EXPLOIT WITHOUT SPECIAL CONDITIONS (kernel code path)"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "UNKNOWN"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "UNKNOWN"
+      },
+      "S": {
+        "value": "C",
+        "quote": "UNKNOWN"
+      },
+      "C": {
+        "value": "H",
+        "quote": "unknown"
+      },
+      "I": {
+        "value": "H",
+        "quote": "unknown"
+      },
+      "A": {
+        "value": "H",
+        "quote": "unknown"
+      }
+    },
+    "recommended_next_step": "Develop and deploy a patched kernel update addressing the out-of-bounds access in io_sqe_buffer_register; perform memory safety review of io_uring buffer registration paths and include regression tests to prevent buffer overflows.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "",
+        "quote": "A flaw was found in the fixed buffer registration code for io_uring (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel that allows out-of-bounds access to physical memory beyond the end of the buffer. This flaw enables full local privilege escalation."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 335,
+    "latency_s": 3.218
+  }
+}

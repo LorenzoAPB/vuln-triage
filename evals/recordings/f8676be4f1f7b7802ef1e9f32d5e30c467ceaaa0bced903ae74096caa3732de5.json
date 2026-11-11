@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Cross-site scripting vulnerability in CONPROSYS HMI System (CHS) versions prior to 3.5.3. An admin user who can access the product and configures specially crafted settings can cause arbitrary script execution in another admin-user\u2019s browser.",
+    "affected_product": "CONPROSYS HMI System (CHS) prior to version 3.5.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3. If a user who can access the affected product with an administrative privilege configures specially crafted settings, an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Attack vector is not explicitly stated in the report."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "AC: L (The report does not specify any attacker-controlled conditions beyond the normal operation.)"
+      },
+      "PR": {
+        "value": "H",
+        "quote": "PR: H (an administrator is required to exploit as it involves admin users configuring settings.)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "UI: N (No user interaction described beyond authenticating as admin.)"
+      },
+      "S": {
+        "value": "C",
+        "quote": "Scope: C (Crosses security boundary by affecting another admin user's session/browser.)"
+      },
+      "C": {
+        "value": "H",
+        "quote": "C: High impact (arbitrary script execution in another admin's browser)."
+      },
+      "I": {
+        "value": "H",
+        "quote": "I: High impact (arbitrary script execution in a browser implies data/script access within the user's context)."
+      },
+      "A": {
+        "value": "H",
+        "quote": "A: High impact (browser script execution can disrupt or take control of the session.)"
+      }
+    },
+    "recommended_next_step": "Investigate admin-configured settings path and implement input validation/escaping for admin-configured fields; apply fixes to ensure admin-only settings cannot trigger XSS in other admin sessions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3. If a user who can access the affected product with an administrative privilege configures specially crafted settings, an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 529,
+    "latency_s": 4.269
+  }
+}

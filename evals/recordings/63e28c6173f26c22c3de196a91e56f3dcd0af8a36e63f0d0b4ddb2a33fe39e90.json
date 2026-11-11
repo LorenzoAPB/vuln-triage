@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "This is a compliance/operational request regarding audit evidence (access review, vendor list) and scheduling for an auditor walkthrough. It does not describe a security vulnerability or weakness.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "unknown",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "This is a compliance/operational request regarding audit evidence (access review, vendor list) and scheduling for an auditor walkthrough.",
+        "quote": "This is a compliance/operational request regarding audit evidence (access review, vendor list) and scheduling for an auditor walkthrough."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1453,
+    "output_tokens": 237,
+    "latency_s": 3.38
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "OpenSC vulnerability: buffer overrun in pkcs15 cardos_have_verifyrc_package due to incorrect ASN.1 length calculation when scanning for two tags. Causes heap-based out-of-bounds read; may crash with ASAN; potential info leak or further impact.",
+    "affected_product": "OpenSC (version not specified)",
+    "cwe": "CWE-125",
+    "cwe_quote": "buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package. The attacker can supply a smart card package with malformed ASN1 context. The cardos_have_verifyrc_package function scans the ASN1 buffer for 2 tags, where remaining length is wrongly caculated due to moved starting pointer. This leads to possible heap-based buffer oob read.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "remaining length is wrongly caculated due to moved starting pointer."
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This leads to possible heap-based buffer oob read."
+      },
+      "I": {
+        "value": "H",
+        "quote": "information leak or more damage is possible."
+      },
+      "A": {
+        "value": "H",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      }
+    },
+    "recommended_next_step": "Provide a secure fix for ASN.1 length handling in cardos_have_verifyrc_package; add bounds checks to prevent heap-based OOB reads; reproduce with malformed ASN.1 to confirm; enable fuzzing and ASAN/UBSan in CI to catch similar issues.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package. The attacker can supply a smart card package with malformed ASN1 context.",
+        "quote": "A vulnerbility was found in OpenSC. This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package. The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      {
+        "claim": "remaining length is wrongly caculated due to moved starting pointer.",
+        "quote": "The cardos_have_verifyrc_package function scans the ASN1 buffer for 2 tags, where remaining length is wrongly caculated due to moved starting pointer."
+      },
+      {
+        "claim": "This leads to possible heap-based buffer oob read.",
+        "quote": "This leads to possible heap-based buffer oob read."
+      },
+      {
+        "claim": "In cases where ASAN is enabled while compiling this causes a crash.",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      },
+      {
+        "claim": "Further info leak or more damage is possible.",
+        "quote": "Further info leak or more damage is possible."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1512,
+    "output_tokens": 664,
+    "latency_s": 4.801
+  }
+}

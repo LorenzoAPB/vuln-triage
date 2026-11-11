@@ -1,0 +1,826 @@
+{
+  "metrics": {
+    "model": "gpt-5-nano",
+    "items": 15,
+    "parse_failures": 0,
+    "report_detection": {
+      "report": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 14,
+        "predicted": 14
+      },
+      "noise": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1,
+        "predicted": 1
+      },
+      "confusion": {
+        "report": {
+          "report": 14
+        },
+        "noise": {
+          "noise": 1
+        }
+      }
+    },
+    "severity": {
+      "n": 12,
+      "coverage": 0.4166666666666667,
+      "per_class": {
+        "Critical": {
+          "precision": 0.25,
+          "recall": 0.3333333333333333,
+          "support": 3,
+          "predicted": 4
+        },
+        "High": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 3,
+          "predicted": 1
+        },
+        "Medium": {
+          "precision": null,
+          "recall": 0.0,
+          "support": 3,
+          "predicted": 0
+        },
+        "Low": {
+          "precision": null,
+          "recall": 0.0,
+          "support": 3,
+          "predicted": 0
+        }
+      },
+      "confusion": {
+        "Critical": {
+          "unknown": 2,
+          "Critical": 1
+        },
+        "High": {
+          "Critical": 2,
+          "unknown": 1
+        },
+        "Medium": {
+          "unknown": 1,
+          "Critical": 1,
+          "High": 1
+        },
+        "Low": {
+          "unknown": 3
+        }
+      },
+      "accuracy_when_published": 0.2,
+      "raw_accuracy": 0.25,
+      "raw_confusion": {
+        "Critical": {
+          "Critical": 3
+        },
+        "High": {
+          "Critical": 3
+        },
+        "Medium": {
+          "High": 2,
+          "Critical": 1
+        },
+        "Low": {
+          "Critical": 2,
+          "None": 1
+        }
+      },
+      "raw_over_scored": 8,
+      "raw_under_scored": 1,
+      "raw_score_bias": 2.16,
+      "raw_score_mae": 2.78,
+      "raw_accuracy_when_withheld": 0.2857142857142857
+    },
+    "severity_accuracy_by_confidence": {
+      "low": {
+        "n": 12,
+        "accuracy": 0.08333333333333333
+      }
+    },
+    "cwe": {
+      "exact": 0.0,
+      "in_any_nvd_cwe": 0.0,
+      "parent_or_child": 0.0,
+      "unknown": 0.6666666666666666
+    },
+    "cvss_vector": {
+      "exact_published": 0.08333333333333333,
+      "exact_raw": 0.16666666666666666,
+      "per_metric_raw": {
+        "AV": 0.5833333333333334,
+        "AC": 0.9166666666666666,
+        "PR": 0.5833333333333334,
+        "UI": 0.8333333333333334,
+        "S": 0.8333333333333334,
+        "C": 0.5833333333333334,
+        "I": 0.5,
+        "A": 0.6666666666666666
+      }
+    },
+    "thin_and_vague": {
+      "n": 2,
+      "detected_as_report": 2,
+      "low_confidence": 2,
+      "vector_withheld": 2
+    },
+    "cost": {
+      "input_tokens": 20964,
+      "output_tokens": 6063,
+      "usd": 0.0035,
+      "latency_s_mean": 3.68,
+      "latency_s_p50": 3.5,
+      "latency_s_max": 6.47
+    }
+  },
+  "rows": [
+    {
+      "id": "CVE-2023-33778",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-798",
+      "cwe_all": [
+        "CWE-798"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-327",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "C",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "no_verified_evidence",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1434,
+        "output_tokens": 431,
+        "latency_s": 5.633,
+        "cost_usd": 0.00024410000000000002
+      }
+    },
+    {
+      "id": "CVE-2023-24584",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-120",
+      "cwe_all": [
+        "CWE-120"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-269",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [],
+      "guessed_metrics": [
+        "AV",
+        "UI"
+      ],
+      "usage": {
+        "input_tokens": 1415,
+        "output_tokens": 552,
+        "latency_s": 6.471,
+        "cost_usd": 0.00029155
+      }
+    },
+    {
+      "id": "CVE-2023-33963",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-502",
+      "cwe_all": [
+        "CWE-502"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1397,
+        "output_tokens": 285,
+        "latency_s": 2.465,
+        "cost_usd": 0.00018385000000000002
+      }
+    },
+    {
+      "id": "CVE-2023-2598",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-787",
+      "cwe_all": [
+        "CWE-787"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-125",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1389,
+        "output_tokens": 561,
+        "latency_s": 4.354,
+        "cost_usd": 0.00029385
+      }
+    },
+    {
+      "id": "CVE-2023-2977",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-125",
+      "cwe_all": [
+        "CWE-125"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1440,
+        "output_tokens": 524,
+        "latency_s": 4.156,
+        "cost_usd": 0.0002816
+      }
+    },
+    {
+      "id": "CVE-2023-28399",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-732",
+      "cwe_all": [
+        "CWE-732"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-264",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "C",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [],
+      "guessed_metrics": [
+        "AV",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1421,
+        "output_tokens": 445,
+        "latency_s": 4.31,
+        "cost_usd": 0.00024905
+      }
+    },
+    {
+      "id": "CVE-2023-2985",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-416",
+      "cwe_all": [
+        "CWE-416"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "L",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1372,
+        "output_tokens": 365,
+        "latency_s": 3.501,
+        "cost_usd": 0.0002146
+      }
+    },
+    {
+      "id": "CVE-2023-28651",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "H",
+        "UI": "N",
+        "S": "C",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence"
+      ],
+      "guessed_metrics": [
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1401,
+        "output_tokens": 542,
+        "latency_s": 3.857,
+        "cost_usd": 0.00028685
+      }
+    },
+    {
+      "id": "CVE-2023-28824",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "H",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused"
+      ],
+      "guessed_metrics": [
+        "PR",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1391,
+        "output_tokens": 325,
+        "latency_s": 2.859,
+        "cost_usd": 0.00019955
+      }
+    },
+    {
+      "id": "CVE-2023-3044",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Low",
+      "cwe": "CWE-369",
+      "cwe_all": [
+        "CWE-369"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1399,
+        "output_tokens": 465,
+        "latency_s": 3.423,
+        "cost_usd": 0.00025595
+      }
+    },
+    {
+      "id": "CVE-2023-2602",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Low",
+      "cwe": "CWE-401",
+      "cwe_all": [
+        "CWE-401"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1373,
+        "output_tokens": 532,
+        "latency_s": 5.298,
+        "cost_usd": 0.00028145000000000004
+      }
+    },
+    {
+      "id": "CVE-2023-33849",
+      "kind": "nvd",
+      "is_report": true,
+      "severity": "Low",
+      "cwe": "CWE-311",
+      "cwe_all": [
+        "CWE-311"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "None",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1408,
+        "output_tokens": 335,
+        "latency_s": 2.544,
+        "cost_usd": 0.0002044
+      }
+    },
+    {
+      "id": "dev-syn-thin-1",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_quote_overused",
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1353,
+        "output_tokens": 210,
+        "latency_s": 2.007,
+        "cost_usd": 0.00015165
+      }
+    },
+    {
+      "id": "dev-syn-vague-1",
+      "kind": "vague",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "None",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_mostly_guessed"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1390,
+        "output_tokens": 305,
+        "latency_s": 2.442,
+        "cost_usd": 0.0001915
+      }
+    },
+    {
+      "id": "dev-syn-noise-1",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1381,
+        "output_tokens": 186,
+        "latency_s": 1.863,
+        "cost_usd": 0.00014345
+      }
+    }
+  ]
+}

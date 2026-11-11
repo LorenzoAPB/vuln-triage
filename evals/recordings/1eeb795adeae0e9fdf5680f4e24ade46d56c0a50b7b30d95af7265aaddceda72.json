@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Path traversal in the NimbusDocs file download endpoint allows reading /etc/passwd. Details on request.",
+    "affected_product": "NimbusDocs (file download endpoint)",
+    "cwe": "CWE-22",
+    "cwe_quote": "Path traversal in the file download endpoint allows reading restricted files like /etc/passwd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "(no exact AV text present in the report)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "(no exact AC text present in the report)"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "(no exact PR text present in the report)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "(no exact UI text present in the report)"
+      },
+      "S": {
+        "value": "U",
+        "quote": "(no exact S text present in the report)"
+      },
+      "C": {
+        "value": "H",
+        "quote": "Path traversal leading to reading sensitive files such as /etc/passwd."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Path traversal exposing sensitive files (e.g., /etc/passwd)."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Potential for denial of service or resource exposure, but not explicitly described."
+      }
+    },
+    "recommended_next_step": "Develop and deploy input validation and path normalization for the download endpoint; add access controls and least privilege read scope; add thorough tests for directory traversal in file download.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The report describes a path traversal in the file download endpoint",
+        "quote": "Path traversal in the file download endpoint allows reading restricted files like /etc/passwd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 347,
+    "latency_s": 3.198
+  }
+}

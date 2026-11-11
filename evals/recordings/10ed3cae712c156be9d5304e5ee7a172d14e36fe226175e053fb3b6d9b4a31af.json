@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in pthread_create() within libcap could allow a malicious actor to cause __real_pthread_create() to return an error, potentially exhausting process memory.",
+    "affected_product": "libcap (pthread_create wrapper)",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "A malicious actor to use cause __real_pthread_create() to return an error"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "This issue may allow a malicious actor to use cause __real_pthread_create() to return an error"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "no account is needed to exploit"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "no user interaction described"
+      },
+      "S": {
+        "value": "U",
+        "quote": "not crossing security boundaries"
+      },
+      "C": {
+        "value": "H",
+        "quote": "exhaust the process memory"
+      },
+      "I": {
+        "value": "H",
+        "quote": "exhaust the process memory"
+      },
+      "A": {
+        "value": "H",
+        "quote": "exhaust the process memory"
+      }
+    },
+    "recommended_next_step": "Investigate the pthread_create() path in libcap, reproduce the error path, and implement input validation or a fail-safe to prevent memory exhaustion. Add memory usage safeguards and consider rate-limiting or masking error-induced resource consumption.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The issue may allow a malicious actor to use cause __real_pthread_create() to return an error, which can exhaust the process memory.",
+        "quote": "A vulnerability was found in the pthread_create() function in libcap. This issue may allow a malicious actor to use cause __real_pthread_create() to return an error, which can exhaust the process memory."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1445,
+    "output_tokens": 368,
+    "latency_s": 4.313
+  }
+}

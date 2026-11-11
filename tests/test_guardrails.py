@@ -1,4 +1,4 @@
-from conftest import REPORT, guess_all, proposal
+from conftest import NETWORK, REPORT, guess_all, proposal
 
 from vuln_triage.guardrails import finalize, quote_in_report, score_vector
 
@@ -78,3 +78,20 @@ def test_non_report_is_refused_with_nothing_filled_in():
     assert (result.cwe, result.cvss_v31_vector, result.cvss_score) == ("unknown", "unknown", None)
     assert result.evidence_quotes == []
     assert result.confidence == "low"
+
+
+def test_one_quote_cannot_justify_more_than_three_metrics():
+    p = proposal()
+    cvss = p.cvss.model_dump()
+    for name in ["AV", "AC", "PR", "UI"]:
+        cvss[name]["quote"] = NETWORK  # four metrics, one sentence
+    result = finalize(p.model_copy(update={"cvss": type(p.cvss).model_validate(cvss)}), REPORT)
+    assert "cvss_quote_overused" in result.flags
+    assert result.guessed_metrics == ["AV", "AC", "PR", "UI", "S"]
+    assert result.cvss_v31_vector == "unknown"
+
+
+def test_cwe_needs_a_quote_describing_the_weakness():
+    result = finalize(proposal(cwe_quote="stored XSS in the comments field"), REPORT)
+    assert result.cwe == "unknown"
+    assert "cwe_without_evidence" in result.flags

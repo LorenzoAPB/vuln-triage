@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "DrayTek devices (Vigor Routers, Access Points, Switches, and MyVigor) below specified firmware versions are reported to use hardcoded encryption keys, enabling attackers to bind affected devices to their own accounts and to create/synchronize WCF and DrayDDNS licenses from the website.",
+    "affected_product": "DrayTek Vigor Routers below 3.9.6/4.2.4; DrayTek Access Points below v1.4.0; DrayTek Switches below 2.6.7; DrayTek MyVigor below 2.3.2",
+    "cwe": "CWE-310",
+    "cwe_quote": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the hardcoded key handling and license binding flow; assess the impact to user accounts and licensing, and implement key management and remediation across affected firmware versions; release patches and detailed guidance for upgrade and credential/keys handling.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "DrayTek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, and Myvigor firmware versions below 2.3.2 were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account.",
+        "quote": "Draytek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, and Myvigor firmware versions below 2.3.2 were discovered to use hardcoded encryption keys"
+      },
+      {
+        "claim": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website.",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1506,
+    "output_tokens": 571,
+    "latency_s": 4.41
+  }
+}

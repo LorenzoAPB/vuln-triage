@@ -68,7 +68,8 @@ class ModelTriage(BaseModel):
     is_vulnerability_report: bool = Field(description="False if the text is not a security vulnerability report.")
     summary: str = Field(description="One or two sentences, only facts stated in the report.")
     affected_product: str = Field(description="Product and version range, or 'unknown'.")
-    cwe: str = Field(description="Best-fit CWE id like 'CWE-79', or 'unknown'.")
+    cwe: str = Field(description="Most specific CWE id for the weakness described, like 'CWE-79', or 'unknown'.")
+    cwe_quote: str = Field(description="Exact report text describing the weakness, or '' if cwe is 'unknown'.")
     cvss: CvssProposal
     recommended_next_step: str = Field(description="One concrete next action for a PSIRT analyst.")
     confidence: Confidence = Field(description="Low when the report is thin or vague.")

@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Controller 6000 firmware exposes a buffer overflow vulnerability via the diagnostic web interface upload feature, affecting multiple prior vCR8.x versions.",
+    "affected_product": "Controller 6000 (firmware versions prior to vCR8.80.230201a, vCR8.70.230201a, vCR8.60.230201b, vCR8.50.230201a, and all versions of vCR8.40 and prior)",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "''"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "''"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "''"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "''"
+      },
+      "S": {
+        "value": "U",
+        "quote": "''"
+      },
+      "C": {
+        "value": "H",
+        "quote": "\"buffer overflow via the Controller diagnostic web interface upload feature\""
+      },
+      "I": {
+        "value": "H",
+        "quote": "\"buffer overflow\""
+      },
+      "A": {
+        "value": "H",
+        "quote": "\"buffer overflow\""
+      }
+    },
+    "recommended_next_step": "n/a",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The Buffer overflow via the Controller diagnostic web interface upload feature",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "This issue affects Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a,\u00a0all versions of vCR8.40 and prior."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1487,
+    "output_tokens": 368,
+    "latency_s": 3.304
+  }
+}

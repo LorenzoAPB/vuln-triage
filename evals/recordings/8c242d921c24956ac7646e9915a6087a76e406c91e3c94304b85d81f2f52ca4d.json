@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The user reports that the desktop client sometimes sends requests to an unfamiliar address on startup. No details on data exposure or reproducibility are provided, limiting assessment.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Collect additional details: obtain replication steps, affected versions, network destination, payloads, and whether any data is transmitted. Request logs, network captures, and application configuration from the reporter for triage.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The user reports that the desktop client sometimes sends requests to an unfamiliar address on startup.",
+        "quote": "The user reports that the desktop client sometimes sends requests to an unfamiliar address on startup."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1462,
+    "output_tokens": 303,
+    "latency_s": 2.843
+  }
+}

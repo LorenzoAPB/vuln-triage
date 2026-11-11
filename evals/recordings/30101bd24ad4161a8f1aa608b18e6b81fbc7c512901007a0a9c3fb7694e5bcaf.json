@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Open source DataEase datasource deserialization vulnerability allows arbitrary code execution prior to version 1.18.7; fixed in v1.18.7. No known workarounds other than upgrading.",
+    "affected_product": "DataEase datasource (before v1.18.7); fixed in v1.18.7",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "''"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "''"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "''"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "''"
+      },
+      "S": {
+        "value": "U",
+        "quote": "''"
+      },
+      "C": {
+        "value": "H",
+        "quote": "''"
+      },
+      "I": {
+        "value": "H",
+        "quote": "''"
+      },
+      "A": {
+        "value": "H",
+        "quote": "''"
+      }
+    },
+    "recommended_next_step": "Upgrade to v1.18.7 or later to mitigate the vulnerability.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Deserialization vulnerability leading to arbitrary code execution in the DataEase datasource prior to v1.18.7",
+        "quote": "Prior to version 1.18.7, a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "Fixed in a specific version",
+        "quote": "The vulnerability has been fixed in v1.18.7."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1469,
+    "output_tokens": 307,
+    "latency_s": 2.925
+  }
+}
