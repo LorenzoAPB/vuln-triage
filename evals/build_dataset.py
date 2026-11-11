@@ -18,9 +18,12 @@ import urllib.request
 from pathlib import Path
 
 NVD_API = "https://services.nvd.nist.gov/rest/json/cves/2.0"
-SPLITS = {  # name: (publication window, items per severity)
-    "test": (("2023-03-01T00:00:00.000", "2023-04-30T23:59:59.999"), 9),
-    "dev": (("2023-06-01T00:00:00.000", "2023-07-31T23:59:59.999"), 3),
+SPLITS = {  # name: [(publication window, items per severity), ...]
+    "test": [(("2023-03-01T00:00:00.000", "2023-04-30T23:59:59.999"), 9)],
+    "dev": [
+        (("2023-06-01T00:00:00.000", "2023-07-31T23:59:59.999"), 3),
+        (("2023-09-01T00:00:00.000", "2023-10-31T23:59:59.999"), 6),  # added for v4: a larger dev split
+    ],
 }
 HERE = Path(__file__).parent
 
@@ -68,11 +71,9 @@ def fetch(severity: str, window: tuple[str, str]) -> list[dict]:
     raise AssertionError("unreachable")
 
 
-def main() -> None:
+def pick(window: tuple[str, str], per_severity: int) -> list[dict]:
     from cvss import CVSS3
 
-    split = sys.argv[1]
-    window, per_severity = SPLITS[split]
     items: list[dict] = []
     for severity in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
         picked: list[dict] = []
@@ -86,6 +87,14 @@ def main() -> None:
                 break
         items += picked
         time.sleep(7)  # NVD allows 5 requests per 30 s without an API key
+    return items
+
+
+def main() -> None:
+    split = sys.argv[1]
+    items: list[dict] = []
+    for window, per_severity in SPLITS[split]:
+        items += pick(window, per_severity)
 
     synthetic = [json.loads(line) for line in (HERE / f"{split}_synthetic.jsonl").read_text().splitlines() if line]
     with (HERE / f"{split}.jsonl").open("w") as f:
