@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab affecting all versions starting from 4.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1 where it was possible to create a URL that would redirect to a different project.",
+    "affected_product": "GitLab versions 4.1 to 16.1.5, 16.2 to 16.2.5, 16.3 to 16.3.1",
+    "cwe": "CWE-601",
+    "cwe_quote": "where it was possible to create a URL that would redirect to a different project.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "where it was possible to create a URL that would redirect to a different project."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the potential for exploitation of the URL redirection issue and apply necessary patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "where it was possible to create a URL that would redirect to a different project."
+      },
+      {
+        "claim": "Attack Vector",
+        "quote": "where it was possible to create a URL that would redirect to a different project."
+      },
+      {
+        "claim": "User Interaction required",
+        "quote": "where it was possible to create a URL that would redirect to a different project."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2173,
+    "output_tokens": 357,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authenticated user can trigger a denial of service in GitLab by importing or cloning malicious content, affecting multiple version ranges prior to patched releases.",
+    "affected_product": "GitLab: all versions starting from 15.11 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the DoS with an authenticated account and malicious import/clone payload to confirm the vulnerable code path, then identify and backport the fix to the listed affected versions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "affecting all versions starting from 15.11 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1476,
+    "output_tokens": 1260,
+    "latency_s": null,
+    "batch": true
+  }
+}

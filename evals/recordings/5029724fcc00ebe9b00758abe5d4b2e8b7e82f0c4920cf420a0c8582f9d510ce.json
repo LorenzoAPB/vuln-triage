@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in GitHub Enterprise Server allowed a fork to retain read access to an upstream repository after the upstream's visibility was changed to private. Affected versions were all versions prior to 3.10.0; fixed in 3.9.4, 3.8.9, 3.7.16 and 3.6.18.",
+    "affected_product": "GitHub Enterprise Server prior to 3.10.0",
+    "cwe": "CWE-284",
+    "cwe_quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or review a proof-of-concept and internal impact assessment showing what repository contents could be read and whether any additional privileges or preconditions are required for exploitation.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      {
+        "claim": "Affected versions and fixes",
+        "quote": "This vulnerability affected all versions of GitHub Enterprise Server prior to 3.10.0 and was fixed in versions 3.9.4, 3.8.9, 3.7.16 and 3.6.18."
+      },
+      {
+        "claim": "Reported via program",
+        "quote": "This vulnerability was reported via the GitHub Bug Bounty program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2342,
+    "output_tokens": 653,
+    "latency_s": null,
+    "batch": true
+  }
+}

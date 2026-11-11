@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd.",
+    "affected_product": "NimbusDocs",
+    "cwe": "CWE-22",
+    "cwe_quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "lets me read /etc/passwd."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the file download endpoint for proper input validation and implement necessary security measures.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-22",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      {
+        "claim": "AV",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      {
+        "claim": "C",
+        "quote": "lets me read /etc/passwd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1966,
+    "output_tokens": 271,
+    "latency_s": null,
+    "batch": true
+  }
+}

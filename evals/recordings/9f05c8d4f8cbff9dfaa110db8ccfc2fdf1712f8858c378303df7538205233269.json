@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The desktop client sends requests to an unrecognized address upon startup, raising concerns about potential data exposure.",
+    "affected_product": "unknown",
+    "cwe": "CWE-200",
+    "cwe_quote": "The application may unintentionally disclose sensitive information to unauthorized actors.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The desktop client sends requests to an unrecognized address."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the requests being sent by the desktop client to determine if any personal data is included.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The desktop client sends requests to an unrecognized address.",
+        "quote": "I noticed that your desktop client sometimes sends requests to an address I do not recognize when it starts up."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2223,
+    "output_tokens": 224,
+    "latency_s": null,
+    "batch": true
+  }
+}

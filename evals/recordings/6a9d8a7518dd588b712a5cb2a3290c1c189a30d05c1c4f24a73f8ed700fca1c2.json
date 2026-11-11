@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Adobe After Effects 22.0 (and earlier) and 18.4.2 (and earlier) have an out-of-bounds read vulnerability that could disclose sensitive memory and be used to bypass mitigations such as ASLR; exploitation requires a victim to open a malicious file.",
+    "affected_product": "Adobe After Effects versions 22.0 (and earlier) and 18.4.2 (and earlier)",
+    "cwe": "CWE-125",
+    "cwe_quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a victim must open a malicious file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "a victim must open a malicious file."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "a victim must open a malicious file."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "could lead to disclosure of sensitive memory."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the vendor's technical advisory or patch, verify fixed versions, and request a CVE identifier if none exists; test whether the vendor patch mitigates the out-of-bounds read and ASLR bypass.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and versions",
+        "quote": "Adobe After Effects versions 22.0 (and earlier) and 18.4.2 (and earlier) are affected"
+      },
+      {
+        "claim": "Weakness described",
+        "quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory."
+      },
+      {
+        "claim": "Can bypass mitigations such as ASLR",
+        "quote": "An attacker could leverage this vulnerability to bypass mitigations such as ASLR."
+      },
+      {
+        "claim": "Requires user interaction (open malicious file)",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1479,
+    "output_tokens": 1151,
+    "latency_s": null,
+    "batch": true
+  }
+}

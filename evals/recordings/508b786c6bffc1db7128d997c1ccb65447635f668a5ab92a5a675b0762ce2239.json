@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118 allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "affected_product": "NETGEAR R6400v2 before version 1.0.4.118",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "I": {
+        "value": "H",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Upgrade affected devices to firmware version 1.0.4.118 or later, or apply vendor-provided patch/mitigation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Exploitability and impact",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Affected product and version range",
+        "quote": "NETGEAR R6400v2 before version 1.0.4.118"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2006,
+    "output_tokens": 1451,
+    "latency_s": null,
+    "batch": true
+  }
+}

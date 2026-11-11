@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Stored cross-site scripting (XSS) in CONPROSYS HMI System (CHS) versions prior to 3.5.3 allows an administrative user who can configure settings to inject a script that will execute in the browser of another administrative user.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "C": {
+        "value": "L",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "I": {
+        "value": "L",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the stored XSS by having an administrative user configure crafted settings and observing execution in another admin's browser; if confirmed, identify affected input(s), implement proper output encoding/input validation, and prepare a patch for versions prior to 3.5.3. Notify users to update to 3.5.3 when patched.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerability summary and affected versions",
+        "quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "attacker privileges required to configure crafted settings",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings,"
+      },
+      {
+        "claim": "impact: script executes in another admin's browser",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1979,
+    "output_tokens": 1507,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A Linux kernel flaw in tls_is_tx_ready() improperly checks list emptiness, which can lead to accessing a type-confused list_head entry and leaking the last byte of a confused field that overlaps rec->tx_ready.",
+    "affected_product": "Linux Kernel",
+    "cwe": "CWE-704",
+    "cwe_quote": "tls_is_tx_ready() incorrectly checks for list emptiness, potentially accessing a type confused entry to the list_head, leaking the last byte of the confused field that overlaps with rec->tx_ready.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A flaw was found in the Linux Kernel."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "leaking the last byte of the confused field that overlaps with rec->tx_ready."
+      },
+      "C": {
+        "value": "L",
+        "quote": "leaking the last byte of the confused field that overlaps with rec->tx_ready."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the full vulnerability report or commit diff and reproduce to confirm the code path; backport and deploy the upstream kernel patch that fixes tls_is_tx_ready() list emptiness check; notify downstream kernel maintainers and include a test that prevents type-confused list_head access.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Flaw location and incorrect check",
+        "quote": "tls_is_tx_ready() incorrectly checks for list emptiness"
+      },
+      {
+        "claim": "Resulting unsafe access and type confusion",
+        "quote": "potentially accessing a type confused entry to the list_head"
+      },
+      {
+        "claim": "Information leak detail",
+        "quote": "leaking the last byte of the confused field that overlaps with rec->tx_ready."
+      },
+      {
+        "claim": "Product",
+        "quote": "A flaw was found in the Linux Kernel."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1452,
+    "output_tokens": 557,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code.",
+    "affected_product": "Xpdf",
+    "cwe": "CWE-369",
+    "cwe_quote": "divide-by-zero in Xpdf's text extraction code",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "can result in a divide-by-zero"
+      }
+    },
+    "recommended_next_step": "Investigate the handling of large PDF page sizes in Xpdf.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability is caused by a very large page size.",
+        "quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      {
+        "claim": "This is related to CVE-2022-30524.",
+        "quote": "This is related to CVE-2022-30524, but the problem here is caused by a very large page size, rather than by a very large character coordinate."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 280,
+    "latency_s": null,
+    "batch": true
+  }
+}

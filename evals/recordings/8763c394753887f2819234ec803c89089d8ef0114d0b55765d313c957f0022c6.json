@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A deserialization vulnerability exists in DataEase prior to version 1.18.7, which can be exploited to execute arbitrary code.",
+    "affected_product": "DataEase versions prior to 1.18.7",
+    "cwe": "CWE-502",
+    "cwe_quote": "a deserialization vulnerability exists in the DataEase datasource",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Upgrade to DataEase version 1.18.7 or later.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE identification",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource"
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "can be exploited to execute arbitrary code"
+      },
+      {
+        "claim": "Impact on availability",
+        "quote": "can be exploited to execute arbitrary code"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1471,
+    "output_tokens": 252,
+    "latency_s": null,
+    "batch": true
+  }
+}

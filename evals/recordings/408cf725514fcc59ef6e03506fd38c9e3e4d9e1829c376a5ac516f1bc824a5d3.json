@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL Injection in smanga <= 3.1.9 via mediaId, mangaId, and userId parameters in php/history/add.php that allows remote attackers to execute arbitrary code and gain sensitive information.",
+    "affected_product": "smanga version 3.1.9 and earlier",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      }
+    },
+    "recommended_next_step": "Confirm the vulnerable code paths in php/history/add.php, reproduce the injection with crafted mediaId/mangaId/userId values, and identify affected database queries; prepare and publish a patch that properly parameterizes queries or uses prepared statements.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected parameters",
+        "quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1878,
+    "output_tokens": 594,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Uzay Baskul Weighbridge Automation Software before 1.1 is affected by an SQL Injection vulnerability allowing injection into SQL commands.",
+    "affected_product": "Weighbridge Automation Software before 1.1",
+    "cwe": "CWE-89",
+    "cwe_quote": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows SQL Injection."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows SQL Injection."
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows SQL Injection."
+      },
+      "A": {
+        "value": "L",
+        "quote": "allows SQL Injection."
+      }
+    },
+    "recommended_next_step": "Request or obtain a detailed vulnerability report or proof-of-concept from the reporter specifying affected endpoints, the injection vector, conditions for exploitation, and observed impacts; reproduce the issue to determine exact scope and produce patches or mitigation guidance (parameterized queries, input validation, least privilege DB account).",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and name",
+        "quote": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability"
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "This issue affects Weighbridge Automation Software: before 1.1."
+      },
+      {
+        "claim": "Summary statement that SQL injection is allowed",
+        "quote": "allows SQL Injection."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1449,
+    "output_tokens": 474,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "MXsecurity versions prior to 1.0.1 contain an authentication bypass vulnerability due to insufficiently random values in the web service authenticator, enabling a remote attacker to access the system.",
+    "affected_product": "MXsecurity < 1.0.1",
+    "cwe": "CWE-330",
+    "cwe_quote": "if the web service authenticator has insufficient random values.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication."
+      },
+      "I": {
+        "value": "H",
+        "quote": "There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request technical details and proof-of-concept from the reporter: exact authenticator token name/location (cookie, header, parameter), how randomness is insufficient (predictable values or low entropy), and steps to reproduce; collect affected build identifiers and whether exploitation requires prior authentication.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability and effect",
+        "quote": "There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication."
+      },
+      {
+        "claim": "Attack scenario (remote attacker)",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1907,
+    "output_tokens": 523,
+    "latency_s": null,
+    "batch": true
+  }
+}

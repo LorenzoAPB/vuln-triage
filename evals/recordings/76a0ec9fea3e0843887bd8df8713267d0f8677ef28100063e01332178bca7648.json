@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In Dataiku DSS 11.2.1, an attacker can download files uploaded to another user's myfiles area by specifying the target username in a download request.",
+    "affected_product": "Dataiku DSS 11.2.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the issue on an affected instance, identify the vulnerable endpoint and request parameter handling, and implement access control checks to ensure users can only download files they are authorized to access.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      },
+      {
+        "claim": "Affected product and version",
+        "quote": "In Dataiku DSS 11.2.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 478,
+    "latency_s": null,
+    "batch": true
+  }
+}

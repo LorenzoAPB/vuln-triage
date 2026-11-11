@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Integer overflow in Exynos Mobile Processor 980 and 2100 can corrupt a buffer index and prevent execution of requested services when triggered by a crafted application.",
+    "affected_product": "Exynos Mobile Processor 980 and 2100",
+    "cwe": "CWE-190",
+    "cwe_quote": "An integer overflow at a buffer index",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "via a crafted application."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "via a crafted application."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "can prevent the execution of requested services"
+      }
+    },
+    "recommended_next_step": "Request affected firmware/software version details and a vendor-provided patch/mitigation; obtain reproduction steps and exploitability information to assign a CVE and determine impact scope.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected products",
+        "quote": "Exynos Mobile Processor 980 and 2100."
+      },
+      {
+        "claim": "Vulnerability type",
+        "quote": "An integer overflow at a buffer index"
+      },
+      {
+        "claim": "Impact and trigger",
+        "quote": "can prevent the execution of requested services via a crafted application."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1438,
+    "output_tokens": 1009,
+    "latency_s": null,
+    "batch": true
+  }
+}

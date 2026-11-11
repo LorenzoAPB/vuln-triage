@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file.",
+    "affected_product": "DWSurvey DWSurvey-OSS v.3.2.0 and before",
+    "cwe": "CWE-434",
+    "cwe_quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the file upload functionality in DWSurvey DWSurvey-OSS.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-434",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      {
+        "claim": "AV",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      {
+        "claim": "C",
+        "quote": ""
+      },
+      {
+        "claim": "I",
+        "quote": ""
+      },
+      {
+        "claim": "A",
+        "quote": ""
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1898,
+    "output_tokens": 435,
+    "latency_s": null,
+    "batch": true
+  }
+}

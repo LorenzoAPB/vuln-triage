@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Information disclosure in GitLab EE allowed Group Owners to read the Public Key for a Google Cloud Logging audit event streaming destination when configured. Fixed in 16.2.5 and 16.3.1 by changing Owners to only be able to write the key, not read it.",
+    "affected_product": "GitLab EE 16.2 before 16.2.5; 16.3 before 16.3.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm whether the exposed public key can be used to impersonate or modify logs and whether any keys were accessed; notify affected customers to upgrade to 16.2.5 or 16.3.1 and rotate keys if necessary.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the issue",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      {
+        "claim": "Affected versions and fixes",
+        "quote": "affecting all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1"
+      },
+      {
+        "claim": "Behavior after fix",
+        "quote": "Owners can now only write the key, not read it."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1475,
+    "output_tokens": 588,
+    "latency_s": null,
+    "batch": true
+  }
+}

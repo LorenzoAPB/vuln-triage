@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in io_uring fixed buffer registration (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel allows out-of-bounds access to physical memory beyond the end of the buffer and enables full local privilege escalation.",
+    "affected_product": "Linux kernel (io_uring), versions unknown",
+    "cwe": "CWE-125",
+    "cwe_quote": "A flaw was found in the fixed buffer registration code for io_uring (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel that allows out-of-bounds access to physical memory beyond the end of the buffer.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "full local privilege escalation."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "full local privilege escalation."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "full local privilege escalation."
+      },
+      "C": {
+        "value": "H",
+        "quote": "full local privilege escalation."
+      },
+      "I": {
+        "value": "H",
+        "quote": "full local privilege escalation."
+      },
+      "A": {
+        "value": "H",
+        "quote": "full local privilege escalation."
+      }
+    },
+    "recommended_next_step": "Identify affected kernel versions, reproduce the issue against io_sqe_buffer_register, backport and deploy a fix that validates buffer bounds, and prepare an advisory and updates for distributions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and where it is located",
+        "quote": "A flaw was found in the fixed buffer registration code for io_uring (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel that allows out-of-bounds access to physical memory beyond the end of the buffer."
+      },
+      {
+        "claim": "Impact (privilege escalation)",
+        "quote": "This flaw enables full local privilege escalation."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1936,
+    "output_tokens": 1446,
+    "latency_s": null,
+    "batch": true
+  }
+}

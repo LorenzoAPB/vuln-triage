@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Gradle's dependency verification accepts long (64-bit) PGP key IDs in trusted-key or pgp elements, allowing collision attacks on key IDs; Gradle now requires full fingerprints and fixes are in Gradle 8.0, 7.6.1, and 6.9.4.",
+    "affected_product": "Gradle (versions before 8.0, and before patched 7.6.1 and 6.9.4)",
+    "cwe": "CWE-346",
+    "cwe_quote": "This is a collision attack on long IDs (64bits) for PGP keys.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Users of dependency verification in Gradle are vulnerable if they use long IDs for PGP keys in a `trusted-key` or `pgp` element in their dependency verification metadata file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Users of dependency verification in Gradle are vulnerable if they use long IDs for PGP keys in a `trusted-key` or `pgp` element in their dependency verification metadata file."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "This is a collision attack on long IDs (64bits) for PGP keys."
+      },
+      "I": {
+        "value": "L",
+        "quote": "This is a collision attack on long IDs (64bits) for PGP keys."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify whether your project uses dependency verification with long (64-bit) PGP key IDs; if so, replace trusted-key or pgp entries with full fingerprint IDs and upgrade Gradle to a patched release (8.0, 7.6.1, or 6.9.4).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability",
+        "quote": "This is a collision attack on long IDs (64bits) for PGP keys."
+      },
+      {
+        "claim": "Where vulnerable",
+        "quote": "Users of dependency verification in Gradle are vulnerable if they use long IDs for PGP keys in a `trusted-key` or `pgp` element in their dependency verification metadata file."
+      },
+      {
+        "claim": "Fix versions",
+        "quote": "The problem is fixed in Gradle 8.0 and above. The problem is also patched in Gradle 6.9.4 and 7.6.1."
+      },
+      {
+        "claim": "Workaround",
+        "quote": "As a workaround, use only full fingerprint IDs for `trusted-key` or `pgp` element in the metadata is a protection against this issue."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1565,
+    "output_tokens": 710,
+    "latency_s": null,
+    "batch": true
+  }
+}

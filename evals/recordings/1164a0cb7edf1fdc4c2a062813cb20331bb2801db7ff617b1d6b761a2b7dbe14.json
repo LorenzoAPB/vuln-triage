@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow vulnerabilities in multiple underlying operating system processes allow unauthenticated remote code execution via specially crafted PAPI protocol packets, enabling arbitrary code execution as a privileged OS user.",
+    "affected_product": "unknown",
+    "cwe": "CWE-119",
+    "cwe_quote": "There are buffer overflow vulnerabilities in multiple underlying operating system processes",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "unauthenticated remote code execution"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "execute arbitrary code as a privileged user on the underlying operating system"
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute arbitrary code as a privileged user on the underlying operating system"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary code as a privileged user on the underlying operating system"
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary code as a privileged user on the underlying operating system"
+      }
+    },
+    "recommended_next_step": "Identify the affected product(s) and versions, obtain proof-of-concept details or packet examples, and perform controlled testing to reproduce and create a vendor-staged patch or mitigation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "type of vulnerability",
+        "quote": "There are buffer overflow vulnerabilities in multiple underlying operating system processes"
+      },
+      {
+        "claim": "attack vector and unauthenticated",
+        "quote": "unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol"
+      },
+      {
+        "claim": "impact (privileged code execution)",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1458,
+    "output_tokens": 517,
+    "latency_s": null,
+    "batch": true
+  }
+}

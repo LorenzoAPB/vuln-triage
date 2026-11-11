@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter observed the desktop client sometimes sends requests to an unrecognized address at startup and could not determine whether personal data is included.",
+    "affected_product": "desktop client (unknown version)",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sends requests to an address I do not recognize when it starts up."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request additional information and diagnostic data from the reporter (client version, exact timestamp, network capture or logs showing the request, destination address, request headers/payload) and attempt to reproduce in a controlled environment.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Client sends requests to an unrecognized address at startup",
+        "quote": "sends requests to an address I do not recognize when it starts up."
+      },
+      {
+        "claim": "Reporter uncertain whether personal data is included",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included, but it seemed unusual, so I wanted to report it to your security team for review."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1462,
+    "output_tokens": 879,
+    "latency_s": null,
+    "batch": true
+  }
+}

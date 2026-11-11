@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A privacy issue was addressed with improved private data redaction for log entries, allowing an app to potentially read sensitive location information.",
+    "affected_product": "macOS Ventura 13.5",
+    "cwe": "CWE-200",
+    "cwe_quote": "The application may be able to read sensitive location information.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "improved private data redaction for log entries"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review the log entry handling in applications to ensure sensitive data is properly redacted.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The application may be able to read sensitive location information.",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      {
+        "claim": "Improved private data redaction for log entries.",
+        "quote": "A privacy issue was addressed with improved private data redaction for log entries."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1444,
+    "output_tokens": 250,
+    "latency_s": null,
+    "batch": true
+  }
+}

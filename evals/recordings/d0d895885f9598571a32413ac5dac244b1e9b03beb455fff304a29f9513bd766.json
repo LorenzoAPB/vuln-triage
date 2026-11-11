@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in io_uring's fixed buffer registration (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel allows out-of-bounds access to physical memory beyond the end of the buffer, enabling full local privilege escalation.",
+    "affected_product": "Linux kernel (io_uring fixed buffer registration) - versions not specified",
+    "cwe": "CWE-125",
+    "cwe_quote": "allows out-of-bounds access to physical memory beyond the end of the buffer",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "local privilege escalation"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "local privilege escalation"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer"
+      },
+      "I": {
+        "value": "H",
+        "quote": "enabling full local privilege escalation"
+      },
+      "A": {
+        "value": "H",
+        "quote": "enabling full local privilege escalation"
+      }
+    },
+    "recommended_next_step": "Obtain kernel version and patch details; attempt to reproduce exploit locally on an up-to-date test system and confirm whether the provided patch fixes out-of-bounds physical memory access. Prepare advisories and coordinate disclosure with maintainers.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerable function and location",
+        "quote": "io_sqe_buffer_register in io_uring/rsrc.c"
+      },
+      {
+        "claim": "Out-of-bounds memory access description",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer"
+      },
+      {
+        "claim": "Impact (privilege escalation)",
+        "quote": "This flaw enables full local privilege escalation."
+      },
+      {
+        "claim": "Summary phrase linking flaw and component",
+        "quote": "A flaw was found in the fixed buffer registration code for io_uring (io_sqe_buffer_register in io_uring/rsrc.c) in the Linux kernel"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 567,
+    "latency_s": null,
+    "batch": true
+  }
+}

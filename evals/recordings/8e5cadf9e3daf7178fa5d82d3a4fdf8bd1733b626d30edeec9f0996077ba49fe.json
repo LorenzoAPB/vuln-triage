@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function.",
+    "affected_product": "RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab",
+    "cwe": "CWE-190",
+    "cwe_quote": "Integer Overflow or Wraparound",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "cause a denial of service"
+      },
+      "A": {
+        "value": "H",
+        "quote": "escalate privileges when calling realloc function in bn_grow function."
+      }
+    },
+    "recommended_next_step": "Review and apply the latest patch for RELIC to mitigate the vulnerability.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Integer Overflow or Wraparound"
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "allows attackers to execute arbitrary code"
+      },
+      {
+        "claim": "Impact on availability",
+        "quote": "cause a denial of service"
+      },
+      {
+        "claim": "Impact on integrity",
+        "quote": "escalate privileges when calling realloc function in bn_grow function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1460,
+    "output_tokens": 314,
+    "latency_s": null,
+    "batch": true
+  }
+}

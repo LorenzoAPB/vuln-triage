@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple DrayTek products use hardcoded encryption keys in affected firmware which allows attackers to bind devices to their own account, create WCF and DrayDDNS licenses, and synchronize them from the website.",
+    "affected_product": "Draytek Vigor Routers firmware < 3.9.6/4.2.4; Access Points firmware < v1.4.0; Switches firmware < 2.6.7; Myvigor firmware < 2.3.2",
+    "cwe": "CWE-321",
+    "cwe_quote": "were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "allows attackers to bind any affected device to their own account."
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      }
+    },
+    "recommended_next_step": "Coordinate with the vendor to publish firmware updates that remove/replace hardcoded encryption keys and rotate any affected keys; provide mitigation guidance and notify affected customers to upgrade.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "Draytek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, and Myvigor firmware versions below 2.3.2"
+      },
+      {
+        "claim": "Weakness description (hardcoded keys)",
+        "quote": "were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account."
+      },
+      {
+        "claim": "Attacker ability to create/synchronize licenses via website",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2161,
+    "output_tokens": 1241,
+    "latency_s": null,
+    "batch": true
+  }
+}

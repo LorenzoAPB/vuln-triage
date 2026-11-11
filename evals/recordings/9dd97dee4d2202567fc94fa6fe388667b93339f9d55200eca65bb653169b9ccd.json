@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Integer overflow at a buffer index in Exynos Mobile Processor 980 and 2100 can prevent execution of requested services when triggered by a crafted application.",
+    "affected_product": "Exynos Mobile Processor 980 and 2100",
+    "cwe": "CWE-190",
+    "cwe_quote": "An integer overflow at a buffer index",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "via a crafted application"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "via a crafted application"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "can prevent the execution of requested services"
+      }
+    },
+    "recommended_next_step": "Request full technical details from the reporter: exact component/binary, conditions to trigger the integer overflow, a proof-of-concept or trigger sequence, and whether unprivileged apps or only signed/privileged apps can exploit this.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "An integer overflow at a buffer index can prevent the execution of requested services via a crafted application."
+      },
+      {
+        "claim": "Affected products",
+        "quote": "Exynos Mobile Processor 980 and 2100."
+      },
+      {
+        "claim": "Exploit vector implies local/app",
+        "quote": "via a crafted application"
+      },
+      {
+        "claim": "Impact is denial of service",
+        "quote": "can prevent the execution of requested services"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1921,
+    "output_tokens": 478,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "GitLab versions from 4.1 up to 16.1.5, 16.2 up to 16.2.5, and 16.3 up to 16.3.1 contain an issue that allows creation of a URL which redirects to a different project.",
+    "affected_product": "GitLab: all versions starting from 4.1 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-601",
+    "cwe_quote": "it was possible to create a URL that would redirect to a different project.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "S": {
+        "value": "U",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm whether unauthenticated users can create such redirect URLs and reproduce the issue; if confirmed, develop and deploy a patch that validates/normalizes redirect targets to prevent cross-project redirects and backport the fix to all affected branches.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 4.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1"
+      },
+      {
+        "claim": "Description of the issue",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2171,
+    "output_tokens": 1206,
+    "latency_s": null,
+    "batch": true
+  }
+}

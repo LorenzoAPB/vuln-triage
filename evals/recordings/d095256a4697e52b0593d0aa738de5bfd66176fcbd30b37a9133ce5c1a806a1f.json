@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Quest KACE Systems Management Appliance (SMA) through 12.1 contains a cross-site scripting (XSS) vulnerability that may allow remote injection of arbitrary web script or HTML.",
+    "affected_product": "Quest KACE Systems Management Appliance (SMA) through 12.1",
+    "cwe": "CWE-79",
+    "cwe_quote": "An XSS vulnerability exists within Quest KACE Systems Management Appliance (SMA) through 12.1 that may allow remote injection of arbitrary web script or HTML.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      },
+      "I": {
+        "value": "L",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request full advisory or vendor report with reproduction details, affected component(s), and whether authentication is required; obtain proof-of-concept to confirm impact and produce a CVSS vector.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "An XSS vulnerability exists within Quest KACE Systems Management Appliance (SMA) through 12.1 that may allow remote injection of arbitrary web script or HTML."
+      },
+      {
+        "claim": "Remote exploitation",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1436,
+    "output_tokens": 481,
+    "latency_s": null,
+    "batch": true
+  }
+}

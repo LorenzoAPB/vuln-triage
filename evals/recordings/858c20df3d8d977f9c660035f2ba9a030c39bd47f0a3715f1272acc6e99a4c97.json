@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "armv8_dec_aes_gcm_full() in Arm AArch64cryptolib before 86065c6 fails to verify the AES-GCM authentication tag due to an improperly initialized variable, allowing a man-in-the-middle attack.",
+    "affected_product": "Arm AArch64cryptolib before 86065c6",
+    "cwe": "CWE-665",
+    "cwe_quote": "This occurs because of an improperly initialized variable.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "man-in-the-middle attack"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "fails to the verify the authentication tag of AES-GCM protected data"
+      },
+      "I": {
+        "value": "H",
+        "quote": "fails to the verify the authentication tag of AES-GCM protected data"
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm the failure mode and exploitability by reproducing decryption with tampered ciphertext/auth tag; identify precise commits and prepare a patch that properly initializes the variable; coordinate disclosure and update affected releases.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Failure to verify authentication tag",
+        "quote": "fails to the verify the authentication tag of AES-GCM protected data"
+      },
+      {
+        "claim": "Trigger and consequence",
+        "quote": "leading to a man-in-the-middle attack"
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This occurs because of an improperly initialized variable."
+      },
+      {
+        "claim": "Affected component and range",
+        "quote": "The armv8_dec_aes_gcm_full() API of Arm AArch64cryptolib before 86065c6"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 523,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A use-after-free flaw in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel could allow a local user to cause a denial of service.",
+    "affected_product": "Linux Kernel (fs/hfsplus/super.c) - versions unknown",
+    "cwe": "CWE-416",
+    "cwe_quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "could allow a local user to cause a denial of service problem."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "could allow a local user to cause a denial of service problem."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "could allow a local user to cause a denial of service problem."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "could allow a local user to cause a denial of service problem."
+      }
+    },
+    "recommended_next_step": "Request or obtain the commit/patch and any proof-of-concept or crash details; determine affected kernel versions and reproduce crash to confirm impact and exploitability.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel."
+      },
+      {
+        "claim": "Impact (denial of service) and attacker context (local user)",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1975,
+    "output_tokens": 494,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3, allowing arbitrary script execution on the web browser of other users with administrative privileges.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings, an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings..."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "S": {
+        "value": "C",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the vulnerability in affected versions of CONPROSYS HMI System (CHS).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-79",
+        "quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "AV",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings, an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      },
+      {
+        "claim": "PR",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings..."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1981,
+    "output_tokens": 455,
+    "latency_s": null,
+    "batch": true
+  }
+}

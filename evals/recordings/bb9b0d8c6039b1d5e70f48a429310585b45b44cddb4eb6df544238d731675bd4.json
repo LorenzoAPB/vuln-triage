@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in openstack-glance allows a remote, authenticated attacker to tamper with images, compromising the integrity of virtual machines created from those images.",
+    "affected_product": "openstack-glance",
+    "cwe": "CWE-833",
+    "cwe_quote": "A flaw was found in openstack-glance. This issue could allow a remote, authenticated attacker to tamper with images, compromising the integrity of virtual machines created using these modified images.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote, authenticated attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "tamper with images, compromising the integrity of virtual machines created using these modified images."
+      },
+      "I": {
+        "value": "H",
+        "quote": "tamper with images, compromising the integrity of virtual machines created using these modified images."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or locate the full vulnerability advisory or patch details to confirm attack prerequisites, exploitation steps, and whether integrity tampering also allows data disclosure or denial; obtain affected versions and mitigation/patches.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "A flaw was found in openstack-glance. This issue could allow a remote, authenticated attacker to tamper with images, compromising the integrity of virtual machines created using these modified images."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 454,
+    "latency_s": null,
+    "batch": true
+  }
+}

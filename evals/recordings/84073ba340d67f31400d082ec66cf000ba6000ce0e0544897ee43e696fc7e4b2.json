@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel. This flaw could allow a local user to cause a denial of service problem.",
+    "affected_product": "Linux kernel (fs/hfsplus), versions not specified",
+    "cwe": "CWE-416",
+    "cwe_quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue and obtain a crash trace; identify the commit(s) fixing the use-after-free in hfsplus_put_super; prepare and test a backported patch for affected stable kernels and coordinate disclosure/advisory.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and location",
+        "quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel."
+      },
+      {
+        "claim": "Impact and attacker position",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1975,
+    "output_tokens": 1187,
+    "latency_s": null,
+    "batch": true
+  }
+}

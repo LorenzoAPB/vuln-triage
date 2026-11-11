@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Certain Lexmark devices (such as CS310) before 2023-08-25 allow XML External Entity (XXE) attacks leading to information disclosure; fixed in firmware LW80.*.P246 (P246 or higher).",
+    "affected_product": "Lexmark devices (such as CS310) before 2023-08-25",
+    "cwe": "CWE-611",
+    "cwe_quote": "allow XXE attacks, leading to information disclosure.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allow XXE attacks"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allow XXE attacks, leading to information disclosure."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain and apply firmware LW80.*.P246 (or later) for affected models; if patching is not immediately possible, block or filter XML inputs to device services and review logs for exfiltration indicators.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "allow XXE attacks, leading to information disclosure."
+      },
+      {
+        "claim": "Affected product and date",
+        "quote": "Certain Lexmark devices (such as CS310) before 2023-08-25"
+      },
+      {
+        "claim": "Fixed firmware version",
+        "quote": "The fixed firmware version is LW80.*.P246, i.e., '*' indicates that the full version specification varies across product model family, but firmware level P246 (or higher) is required to remediate the vulnerability."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1884,
+    "output_tokens": 512,
+    "latency_s": null,
+    "batch": true
+  }
+}

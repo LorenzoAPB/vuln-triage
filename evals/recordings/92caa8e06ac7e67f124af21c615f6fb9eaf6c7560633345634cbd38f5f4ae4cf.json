@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter claims the application's login page is vulnerable to SQL injection and that they can dump the entire database.",
+    "affected_product": "unknown",
+    "cwe": "CWE-89",
+    "cwe_quote": "your login page is vulnerable to sql injection, i can dump the whole db.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "i can dump the whole db."
+      },
+      "I": {
+        "value": "H",
+        "quote": "i can dump the whole db."
+      },
+      "A": {
+        "value": "H",
+        "quote": "i can dump the whole db."
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce the SQL injection against the login endpoint in a controlled test environment; capture the request/response and database impact, and identify vulnerable parameter(s) and affected versions/configuration.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1424,
+    "output_tokens": 394,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Insecure direct object reference (IDOR) in GET /api/v2/orders/{id} allows viewing other customers' orders including addresses by changing the id.",
+    "affected_product": "unknown",
+    "cwe": "CWE-639",
+    "cwe_quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "changing the id shows other customers' orders including addresses."
+      },
+      "I": {
+        "value": "L",
+        "quote": "changing the id shows other customers' orders including addresses."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable endpoint and implement access control checks to ensure the authenticated requester is authorized to view the requested order; collect sample request/response pairs demonstrating the exposure.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the issue and affected endpoint",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1426,
+    "output_tokens": 448,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "MXsecurity versions prior to 1.0.1 contain an authentication bypass vulnerability due to insufficient randomness in the web service authenticator, allowing a remote attacker to access the system.",
+    "affected_product": "MXsecurity < 1.0.1",
+    "cwe": "CWE-330",
+    "cwe_quote": "if the web service authenticator has insufficient random values.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A remote attacker might access the system"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "can be exploited to bypass authentication"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "can be exploited to bypass authentication. A remote attacker might access the system"
+      },
+      "I": {
+        "value": "H",
+        "quote": "can be exploited to bypass authentication. A remote attacker might access the system"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request technical details: exact mechanism of authentication (session token/cookie/other), examples of predictable values, reproduction steps or PoC, and whether a patch or mitigation is available; attempt to reproduce and determine scope of access gained after bypass.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability and effect",
+        "quote": "There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication."
+      },
+      {
+        "claim": "Attacker characteristics / reachability",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      },
+      {
+        "claim": "Insufficient randomness (weak RNG) in authenticator",
+        "quote": "if the web service authenticator has insufficient random values."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1907,
+    "output_tokens": 1194,
+    "latency_s": null,
+    "batch": true
+  }
+}

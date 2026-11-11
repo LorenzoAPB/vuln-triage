@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab affecting multiple versions where the projects API pagination can be skipped, potentially leading to DoS on certain instances.",
+    "affected_product": "GitLab versions 15.2 to 16.1.5, 16.2 to 16.2.5, 16.3 to 16.3.1",
+    "cwe": "CWE-20",
+    "cwe_quote": "potentially leading to DoS on certain instances.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "potentially leading to DoS on certain instances."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "potentially leading to DoS on certain instances."
+      }
+    },
+    "recommended_next_step": "Investigate the impact of the DoS vulnerability and apply necessary patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "potentially leading to DoS on certain instances."
+      },
+      {
+        "claim": "AV classification",
+        "quote": "potentially leading to DoS on certain instances."
+      },
+      {
+        "claim": "A classification",
+        "quote": "potentially leading to DoS on certain instances."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2176,
+    "output_tokens": 289,
+    "latency_s": null,
+    "batch": true
+  }
+}

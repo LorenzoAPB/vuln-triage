@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A buffer overflow in NETGEAR R6400v2 firmware versions before 1.0.4.118 allows remote unauthenticated attackers to execute arbitrary code via a crafted URL to httpd.",
+    "affected_product": "NETGEAR R6400v2 before 1.0.4.118",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      }
+    },
+    "recommended_next_step": "Request or obtain the vendor advisory or patched firmware and reproduction details (crafted URL and affected httpd endpoint) to validate and confirm the issue and determine mitigations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Unauthenticated remote attacker",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Attack vector is via a crafted URL to httpd",
+        "quote": "crafted URL to httpd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2006,
+    "output_tokens": 591,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple command injection vulnerabilities in the PAPI UDP service (port 8211) allow unauthenticated remote attackers to send specially crafted packets that lead to remote code execution as a privileged user on the underlying OS.",
+    "affected_product": "unknown",
+    "cwe": "CWE-77",
+    "cwe_quote": "There are multiple command injection vulnerabilities that could lead to unauthenticated remote code execution by sending specially crafted packets destined to the PAPI (Aruba Networks access point management protocol) UDP port (8211).",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "by sending specially crafted packets destined to the PAPI (Aruba Networks access point management protocol) UDP port (8211)."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "unauthenticated"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Identify affected Aruba product(s) and versions that run the PAPI UDP service on port 8211; attempt to reproduce the issue against a test system to collect proof-of-concept details and full exploitability steps; notify vendor PSIRT if not already contacted.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vector for attack is PAPI UDP port 8211",
+        "quote": "by sending specially crafted packets destined to the PAPI (Aruba Networks access point management protocol) UDP port (8211)."
+      },
+      {
+        "claim": "Unauthenticated and remote",
+        "quote": "unauthenticated remote code execution"
+      },
+      {
+        "claim": "Leads to arbitrary code execution as privileged user",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      {
+        "claim": "Describes command injection",
+        "quote": "There are multiple command injection vulnerabilities"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1467,
+    "output_tokens": 635,
+    "latency_s": null,
+    "batch": true
+  }
+}

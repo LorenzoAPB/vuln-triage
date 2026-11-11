@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A relative path traversal vulnerability in the unknown function of admin-ajax.php in Drag and Drop Multiple File Upload Contact Form 7 5.0.6.1 allows remote attackers to manipulate the upload_name argument to perform path traversal. Public exploit disclosed.",
+    "affected_product": "Drag and Drop Multiple File Upload Contact Form 7 5.0.6.1",
+    "cwe": "CWE-22",
+    "cwe_quote": "The manipulation of the argument upload_name leads to relative path traversal.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "It is possible to launch the attack remotely."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "The manipulation of the argument upload_name leads to relative path traversal."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review the admin-ajax.php handler for upload_name, add input validation/normalization to prevent '..' or absolute paths, and apply server-side path canonicalization and allow-listing. If exploit is public, prioritize patching and notify users to update or disable the plugin until fixed.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerable product and version",
+        "quote": "Drag and Drop Multiple File Upload Contact Form 7 5.0.6.1"
+      },
+      {
+        "claim": "vulnerable location",
+        "quote": "Affected is an unknown function of the file admin-ajax.php."
+      },
+      {
+        "claim": "vulnerability type",
+        "quote": "The manipulation of the argument upload_name leads to relative path traversal."
+      },
+      {
+        "claim": "remote exploitability",
+        "quote": "It is possible to launch the attack remotely."
+      },
+      {
+        "claim": "exploit disclosed",
+        "quote": "The exploit has been disclosed to the public and may be used."
+      },
+      {
+        "claim": "identifier",
+        "quote": "VDB-222072"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1498,
+    "output_tokens": 591,
+    "latency_s": null,
+    "batch": true
+  }
+}

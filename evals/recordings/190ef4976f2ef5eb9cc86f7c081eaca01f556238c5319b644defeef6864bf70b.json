@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "GitLab projects API pagination can be skipped in specified versions, which may allow an attacker to cause denial of service on some instances.",
+    "affected_product": "GitLab all versions starting from 15.2 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "the projects API pagination can be skipped, potentially leading to DoS on certain instances.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "the projects API pagination can be skipped"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "the projects API pagination can be skipped"
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "potentially leading to DoS on certain instances."
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the pagination-skip behavior against a test instance, capture request patterns that skip pagination, assess required authentication/privileges, and implement rate-limiting or pagination validation fixes; prepare backport patches for affected versions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and impact",
+        "quote": "the projects API pagination can be skipped, potentially leading to DoS on certain instances."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 15.2 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2174,
+    "output_tokens": 897,
+    "latency_s": null,
+    "batch": true
+  }
+}

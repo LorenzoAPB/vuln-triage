@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab EE affecting all versions starting from 16.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1. If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group.",
+    "affected_product": "GitLab EE versions 16.1.0 to 16.1.4, 16.2.0 to 16.2.4, 16.3.0 to 16.3.0",
+    "cwe": "CWE-863",
+    "cwe_quote": "allowed a user to escalate their privileges on the instance by creating a service account in that group.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "If an external user is given an owner role on any group..."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "If an external user is given an owner role..."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "may be used to access internal projects."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the privilege escalation issue and apply necessary patches or mitigations.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "allowed a user to escalate their privileges on the instance by creating a service account in that group."
+      },
+      {
+        "claim": "Attack Vector",
+        "quote": "If an external user is given an owner role on any group..."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2233,
+    "output_tokens": 372,
+    "latency_s": null,
+    "batch": true
+  }
+}

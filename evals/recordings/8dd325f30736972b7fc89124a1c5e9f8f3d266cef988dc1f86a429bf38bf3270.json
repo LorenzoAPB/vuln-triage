@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code.",
+    "affected_product": "Xpdf",
+    "cwe": "CWE-787",
+    "cwe_quote": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "can result in a divide-by-zero in Xpdf's text extraction code."
+      }
+    },
+    "recommended_next_step": "Investigate and patch the text extraction code to handle large PDF page sizes safely.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-787",
+        "quote": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      {
+        "claim": "AV",
+        "quote": "An excessively large PDF page size can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      {
+        "claim": "A",
+        "quote": "can result in a divide-by-zero in Xpdf's text extraction code."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2030,
+    "output_tokens": 300,
+    "latency_s": null,
+    "batch": true
+  }
+}

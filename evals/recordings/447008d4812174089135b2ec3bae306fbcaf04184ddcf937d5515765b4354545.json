@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A path traversal vulnerability in NimbusDocs' file download endpoint allows reading arbitrary files, demonstrated by reading /etc/passwd.",
+    "affected_product": "NimbusDocs (file download endpoint) - versions unknown",
+    "cwe": "CWE-22",
+    "cwe_quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate the issue by reproducing the requested download with traversal sequences, identify vulnerable code path, and implement input validation / canonicalization and restrict file access to an allowed directory.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Describes vulnerability and impact",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      {
+        "claim": "Provides details on request",
+        "quote": "Details on request."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 466,
+    "latency_s": null,
+    "batch": true
+  }
+}

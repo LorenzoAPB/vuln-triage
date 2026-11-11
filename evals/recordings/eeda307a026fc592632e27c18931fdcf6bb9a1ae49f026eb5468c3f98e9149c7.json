@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Path traversal in the file download endpoint of NimbusDocs allows unauthorized access to sensitive files.",
+    "affected_product": "NimbusDocs",
+    "cwe": "CWE-22",
+    "cwe_quote": "Path Traversal: The application does not properly sanitize user input, allowing attackers to access files outside the intended directory.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "lets me read /etc/passwd."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the file download endpoint to prevent path traversal attacks.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Path Traversal: The application does not properly sanitize user input, allowing attackers to access files outside the intended directory."
+      },
+      {
+        "claim": "CVSS AV metric",
+        "quote": "Path traversal in the file download endpoint of NimbusDocs lets me read /etc/passwd."
+      },
+      {
+        "claim": "CVSS C metric",
+        "quote": "lets me read /etc/passwd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1427,
+    "output_tokens": 283,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authenticated attacker can access sensitive information on the ArubaOS command line interface, potentially accessing data beyond their authorized privilege level.",
+    "affected_product": "unknown",
+    "cwe": "CWE-269",
+    "cwe_quote": "A vulnerability exists which allows an authenticated attacker to access sensitive information on the ArubaOS command line interface.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An authenticated attacker can access sensitive information on the ArubaOS command line interface"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated attacker can access sensitive information on the ArubaOS command line interface"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the full vendor advisory or technical report: include affected ArubaOS versions, exact CLI commands or privilege boundaries bypassed, attacker privileges required, and proof-of-concept details to refine severity and produce mitigation guidance.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability allows authenticated attacker to access sensitive CLI information",
+        "quote": "A vulnerability exists which allows an authenticated attacker to access sensitive information on the ArubaOS command line interface."
+      },
+      {
+        "claim": "Impact can exceed authorized privilege level",
+        "quote": "Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1441,
+    "output_tokens": 484,
+    "latency_s": null,
+    "batch": true
+  }
+}

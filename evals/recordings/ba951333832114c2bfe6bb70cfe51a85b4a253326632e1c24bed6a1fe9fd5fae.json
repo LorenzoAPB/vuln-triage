@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Incorrect permission assignment on the installation folder in CONPROSYS HMI System (CHS) < 3.5.3 allows a local user of the PC to gain wide privileges, potentially destroying the system or executing a malicious program.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-732",
+    "cwe_quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute a malicious program"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute a malicious program"
+      },
+      "A": {
+        "value": "H",
+        "quote": "destroy the system"
+      }
+    },
+    "recommended_next_step": "Verify the issue on an instance of CONPROSYS CHS < 3.5.3 by inspecting ACLs on the product installation folder and attempting local misuse; contact the vendor to request a patch or guidance to set least-privilege ACLs on the installation directory.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and versions",
+        "quote": "Incorrect permission assignment for critical resource exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Description of the weakness (incorrect ACLs)",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      {
+        "claim": "Impact: destroy system",
+        "quote": "the user may be able to destroy the system"
+      },
+      {
+        "claim": "Impact: execute malicious program",
+        "quote": "and/or execute a malicious program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1493,
+    "output_tokens": 1325,
+    "latency_s": null,
+    "batch": true
+  }
+}

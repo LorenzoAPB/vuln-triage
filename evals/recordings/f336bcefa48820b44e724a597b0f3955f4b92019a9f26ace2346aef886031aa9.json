@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The message is a routine password reset request from an employee, not a security vulnerability report.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Assist the user via the standard account recovery process (verify identity, unlock account, reset password) and remind about secure password practices.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Message content shows a support request for password reset, not a vulnerability report.",
+        "quote": "Hi IT, I forgot my password again and now my account is locked after too many attempts. Can you reset it so I can get into the timesheet system before payroll closes today? My employee ID is in my signature. Thanks!"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1450,
+    "output_tokens": 256,
+    "latency_s": null,
+    "batch": true
+  }
+}

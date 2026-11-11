@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow in NETGEAR R6400v2 before 1.0.4.118 allows remote unauthenticated attackers to execute arbitrary code via a crafted URL to httpd.",
+    "affected_product": "NETGEAR R6400v2 before version 1.0.4.118",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Obtain vulnerable firmware and reproduce the issue to confirm affected component and exploitability; coordinate disclosure with NETGEAR and request patched firmware; gather proof-of-concept and full technical details for remediation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and summary",
+        "quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Unauthenticated remote attacker",
+        "quote": "allows remote unauthenticated attackers"
+      },
+      {
+        "claim": "Attack vector (crafted URL to httpd)",
+        "quote": "via crafted URL to httpd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1443,
+    "output_tokens": 535,
+    "latency_s": null,
+    "batch": true
+  }
+}

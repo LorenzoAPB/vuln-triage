@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow in hzeller timg v.1.5.1 and earlier allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "affected_product": "hzeller timg v.1.5.1 and earlier",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows a remote attacker to cause a denial of service"
+      }
+    },
+    "recommended_next_step": "Request a full technical report or crash details from the reporter (input vector, request/sample triggering 0x61200000045c, affected functions), and attempt to reproduce on hzeller timg <= 1.5.1 to confirm impact and develop a patch.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      {
+        "claim": "Indicates remote attacker and no privilege required",
+        "quote": "remote attacker"
+      },
+      {
+        "claim": "Specifies affected versions",
+        "quote": "hzeller timg v.1.5.1 and before"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 527,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab affecting all versions starting from 15.11 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1. An authenticated user could trigger a denial of service when importing or cloning malicious content.",
+    "affected_product": "GitLab versions 15.11 to 16.1.5, 16.2 to 16.2.5, 16.3 to 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    },
+    "recommended_next_step": "Investigate the denial of service vulnerability and apply necessary patches or mitigations.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Denial of service vulnerability",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2165,
+    "output_tokens": 324,
+    "latency_s": null,
+    "batch": true
+  }
+}

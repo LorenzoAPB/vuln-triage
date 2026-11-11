@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16 contains a memory leak that can be triggered remotely by a client sending many QoS 2 messages with duplicate message IDs and failing to respond to PUBREC; the root cause is mishandling of EAGAIN from the libc send function.",
+    "affected_product": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16",
+    "cwe": "CWE-401",
+    "cwe_quote": "has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands. This occurs because of mishandling of EAGAIN from the libc send function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands."
+      },
+      "I": {
+        "value": "N",
+        "quote": "has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands."
+      },
+      "A": {
+        "value": "L",
+        "quote": "has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue by connecting a client that sends many QoS 2 messages with duplicate message IDs and does not respond to PUBREC; monitor broker memory usage and capture logs to confirm leak and locate the mishandling of EAGAIN in send paths. If confirmed, backport or apply the vendor fix (upgrade to 2.0.16 or later).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "The broker in Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16"
+      },
+      {
+        "claim": "Description of issue and exploitation method",
+        "quote": "has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands."
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This occurs because of mishandling of EAGAIN from the libc send function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2027,
+    "output_tokens": 1413,
+    "latency_s": null,
+    "batch": true
+  }
+}

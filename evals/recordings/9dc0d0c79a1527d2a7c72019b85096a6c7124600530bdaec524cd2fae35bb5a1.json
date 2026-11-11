@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow in hzeller timg v.1.5.1 and earlier allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "affected_product": "hzeller timg v.1.5.1 and before",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      }
+    },
+    "recommended_next_step": "Request full technical details and crash samples from the reporter, reproduce the crash, identify the vulnerable code path, and coordinate a vendor fix and advisory (assign CVE if appropriate).",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "hzeller timg v.1.5.1 and before"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 1218,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "User reports that the desktop client sends requests to an unrecognized address during startup.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the reported behavior of the desktop client during startup.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Unrecognized address requests during startup.",
+        "quote": "the desktop client sometimes sends requests to an address I do not recognize when it starts up."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1464,
+    "output_tokens": 181,
+    "latency_s": null,
+    "batch": true
+  }
+}

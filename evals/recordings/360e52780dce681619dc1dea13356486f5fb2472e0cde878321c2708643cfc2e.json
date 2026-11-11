@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An information disclosure in GitLab EE allowed other Group Owners to read the Public Key for a Google Cloud Logging audit event streaming destination. Fixed in 16.2.5 and 16.3.1.",
+    "affected_product": "GitLab EE: all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1",
+    "cwe": "CWE-863",
+    "cwe_quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "other Group Owners"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm the fix in 16.2.5 and 16.3.1, verify public key read access is restricted to authorized roles only, and encourage users to upgrade to patched versions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "An information disclosure issue in GitLab EE affecting all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1"
+      },
+      {
+        "claim": "What was disclosed",
+        "quote": "see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      {
+        "claim": "Who could access it",
+        "quote": "other Group Owners"
+      },
+      {
+        "claim": "Fix/mitigation",
+        "quote": "Owners can now only write the key, not read it."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2125,
+    "output_tokens": 1081,
+    "latency_s": null,
+    "batch": true
+  }
+}

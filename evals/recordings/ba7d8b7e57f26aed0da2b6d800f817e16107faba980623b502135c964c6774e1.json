@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Installer for AMD Ryzen Master fails to validate privileges during installation, allowing a low-privileged user to modify files which may lead to privilege escalation and code execution.",
+    "affected_product": "AMD Ryzen Master (versions not specified)",
+    "cwe": "CWE-274",
+    "cwe_quote": "Failure to validate privileges during installation of AMD Ryzen\u2122 Master may allow an attacker with low\nprivileges to modify files potentially leading to privilege escalation and code execution by the lower\nprivileged user.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Failure to validate privileges during installation of AMD Ryzen\u2122 Master may allow an attacker with low\nprivileges to modify files potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Failure to validate privileges during installation of AMD Ryzen\u2122 Master may allow an attacker with low\nprivileges to modify files potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "...potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      "I": {
+        "value": "H",
+        "quote": "...potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      "A": {
+        "value": "H",
+        "quote": "...potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      }
+    },
+    "recommended_next_step": "Request from the reporter or vendor: exact affected versions, detailed installation steps demonstrating the privilege validation failure, and a proof-of-concept showing file modifications and whether code execution occurs; obtain installer behavior and required privileges.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Failure to validate privileges during installation",
+        "quote": "Failure to validate privileges during installation of AMD Ryzen\u2122 Master may allow an attacker with low\nprivileges to modify files potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      {
+        "claim": "Low-privileged attacker can modify files",
+        "quote": "Failure to validate privileges during installation of AMD Ryzen\u2122 Master may allow an attacker with low\nprivileges to modify files potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      },
+      {
+        "claim": "Potential for privilege escalation and code execution",
+        "quote": "...potentially leading to privilege escalation and code execution by the lower\nprivileged user."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 530,
+    "latency_s": null,
+    "batch": true
+  }
+}

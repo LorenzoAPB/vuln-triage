@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An integer overflow at a buffer index in Exynos Mobile Processor 980 and 2100 can prevent the execution of requested services when triggered by a crafted application.",
+    "affected_product": "Exynos Mobile Processor 980 and 2100",
+    "cwe": "CWE-190",
+    "cwe_quote": "An integer overflow at a buffer index",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "crafted application"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "crafted application"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "can prevent the execution of requested services"
+      }
+    },
+    "recommended_next_step": "Request from the vendor: (1) confirmation of affected firmware/SMR versions and devices, (2) a patched firmware or mitigations, (3) technical details/reproduction steps to assess exploitability (how a crafted application triggers the overflow and any required privileges), and (4) guidance for users/operators on mitigation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Product and affected models",
+        "quote": "Exynos Mobile Processor 980 and 2100"
+      },
+      {
+        "claim": "Root cause description",
+        "quote": "An integer overflow at a buffer index"
+      },
+      {
+        "claim": "Impact and trigger",
+        "quote": "can prevent the execution of requested services via a crafted application"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1921,
+    "output_tokens": 1054,
+    "latency_s": null,
+    "batch": true
+  }
+}

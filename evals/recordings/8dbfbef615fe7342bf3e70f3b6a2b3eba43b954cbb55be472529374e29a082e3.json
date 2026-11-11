@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Server-side request forgery in CONPROSYS HMI System (CHS) < 3.5.3 allows an administrative user to bypass database restrictions on the query setting page and connect to an unintended database.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-918",
+    "cwe_quote": "may bypass the database restriction set on the query setting page, and connect to a user unintended database.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "A user who can access the affected product with an administrative privilege"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      "I": {
+        "value": "L",
+        "quote": "may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      "A": {
+        "value": "L",
+        "quote": "may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      }
+    },
+    "recommended_next_step": "Request PoC or reproduction steps and confirm impact on data access; coordinate with vendor to obtain or verify a patch for CHS versions prior to 3.5.3.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Type of vulnerability and affected product",
+        "quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Attacker privileges required",
+        "quote": "A user who can access the affected product with an administrative privilege"
+      },
+      {
+        "claim": "Impact description (bypass DB restriction and connect to unintended DB)",
+        "quote": "may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      {
+        "claim": "Affected product versions",
+        "quote": "CONPROSYS HMI System (CHS) versions prior to 3.5.3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1463,
+    "output_tokens": 1519,
+    "latency_s": null,
+    "batch": true
+  }
+}

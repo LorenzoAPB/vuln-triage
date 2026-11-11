@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SAUTER Controls Nova 200\u2013220 Series (firmware \u2264 3.3-006) and BACnetstac \u2264 4.2.1 expose device management over FTP and Telnet which transmit sensitive information (e.g., credentials) in cleartext, allowing an attacker to obtain credentials and gain system access.",
+    "affected_product": "SAUTER Controls Nova 200\u2013220 Series firmware 3.3-006 and prior; BACnetstac version 4.2.1 and prior",
+    "cwe": "CWE-319",
+    "cwe_quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An attacker could obtain sensitive information such as user credentials to gain access to the system."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Recommend vendor provide firmware and BACnetstac updates that add encrypted management protocols (e.g., SFTP/FTPS, SSH) or disable cleartext services; in the meantime, advise network mitigations (segment devices, restrict access, use VPN/management network) and rotate credentials after remediation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Management protocols are FTP and Telnet only",
+        "quote": "SAUTER Controls Nova 200\u2013220 Series with firmware version 3.3-006 and prior and BACnetstac version 4.2.1 and prior have only FTP and Telnet available for device management."
+      },
+      {
+        "claim": "Sensitive information sent in cleartext",
+        "quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext."
+      },
+      {
+        "claim": "Attacker can obtain credentials and gain access",
+        "quote": "An attacker could obtain sensitive information such as user credentials to gain access to the system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1490,
+    "output_tokens": 625,
+    "latency_s": null,
+    "batch": true
+  }
+}

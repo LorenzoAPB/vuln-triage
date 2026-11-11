@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "If an external user is given an owner role on a group, they can create a service account in that group which is not classified as external and can be used to access internal projects, allowing privilege escalation on the instance.",
+    "affected_product": "GitLab EE all versions starting from 16.1 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-862",
+    "cwe_quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group. This service account is not classified as external and may be used to access internal projects.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "If an external user is given an owner role on any group"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "may be used to access internal projects."
+      },
+      "I": {
+        "value": "L",
+        "quote": "may be used to access internal projects."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm the fix and affected versions; if vulnerable, apply the vendor patch. Audit groups for service accounts created by external users, reclassify or revoke any inappropriate service accounts, and consider adding checks to prevent external users from creating non-external service accounts.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "affecting all versions starting from 16.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1."
+      },
+      {
+        "claim": "Privilege escalation via service account creation",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      {
+        "claim": "Service account not classified as external and can access internal projects",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2231,
+    "output_tokens": 1343,
+    "latency_s": null,
+    "batch": true
+  }
+}

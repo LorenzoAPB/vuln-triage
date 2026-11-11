@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A buffer overrun in OpenSC's pkcs15 cardos_have_verifyrc_package due to incorrect ASN.1 remaining-length calculation can lead to a heap-based out-of-bounds read and, in some builds, a crash. An attacker can supply a malformed smart card package to trigger the issue.",
+    "affected_product": "OpenSC (unspecified versions)",
+    "cwe": "CWE-125",
+    "cwe_quote": "This leads to possible heap-based buffer oob read.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "remaining length is wrongly caculated due to moved starting pointer."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "S": {
+        "value": "U",
+        "quote": "This leads to possible heap-based buffer oob read."
+      },
+      "C": {
+        "value": "L",
+        "quote": "Further info leak or more damage is possible."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      }
+    },
+    "recommended_next_step": "Obtain affected OpenSC version(s) and a minimal malformed smart-card package to reproduce. Add bounds checking/length validation in cardos_have_verifyrc_package (ASN.1 parsing) to prevent the out-of-bounds read and add tests; coordinate disclosure and release a patched OpenSC.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package."
+      },
+      {
+        "claim": "Attacker can supply malformed package",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      {
+        "claim": "Cause is incorrect remaining length calculation",
+        "quote": "remaining length is wrongly caculated due to moved starting pointer."
+      },
+      {
+        "claim": "Resulting memory corruption / read",
+        "quote": "This leads to possible heap-based buffer oob read."
+      },
+      {
+        "claim": "Crash observed with ASAN builds",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      },
+      {
+        "claim": "Potential further impact",
+        "quote": "Further info leak or more damage is possible."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1512,
+    "output_tokens": 1529,
+    "latency_s": null,
+    "batch": true
+  }
+}

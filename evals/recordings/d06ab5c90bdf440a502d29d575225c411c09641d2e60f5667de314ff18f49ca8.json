@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Command Injection in Liman Central Management System Liman MYS (HTTP/Controllers, CronMail, Jobs modules) affecting versions from 1.7.0 before 1.8.3-462.",
+    "affected_product": "Liman Central Management System Liman MYS: from 1.7.0 before 1.8.3-462",
+    "cwe": "CWE-77",
+    "cwe_quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Command Injection ... (HTTP/Controllers, CronMail, Jobs modules)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Command Injection"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Command Injection"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Command Injection"
+      }
+    },
+    "recommended_next_step": "Request or review a technical advisory or patch details showing the vulnerable code paths and whether user-controllable input reaches command execution; obtain exploitability details and reproducer to confirm impact and publish fixes.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Type of vulnerability",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability"
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "This issue affects Liman Central Management System: from 1.7.0 before 1.8.3-462."
+      },
+      {
+        "claim": "Modules affected",
+        "quote": "Liman MYS (HTTP/Controllers, CronMail, Jobs modules)"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1470,
+    "output_tokens": 505,
+    "latency_s": null,
+    "batch": true
+  }
+}

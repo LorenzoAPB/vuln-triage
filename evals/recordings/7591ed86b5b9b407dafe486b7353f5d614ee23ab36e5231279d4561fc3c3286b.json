@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Eclipse Mosquitto versions 1.3.2 through 2.x before 2.0.16 has a memory leak that can be exploited remotely through QoS 2 messages with duplicate message IDs.",
+    "affected_product": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16",
+    "cwe": "CWE-787",
+    "cwe_quote": "The broker in Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16 has a memory leak that can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "can cause a partial interruption to the availability of AMQ Broker via an Out of memory (OOM) condition."
+      }
+    },
+    "recommended_next_step": "Investigate and patch affected versions of Eclipse Mosquitto to prevent memory leak exploitation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Memory leak can be abused remotely",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      {
+        "claim": "Partial interruption to availability",
+        "quote": "can cause a partial interruption to the availability of AMQ Broker via an Out of memory (OOM) condition."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2029,
+    "output_tokens": 365,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A privacy issue in macOS was addressed with improved private data redaction for log entries; an app may be able to read sensitive location information. The issue is fixed in macOS Ventura 13.5.",
+    "affected_product": "macOS Ventura (fixed in 13.5; earlier versions affected)",
+    "cwe": "CWE-200",
+    "cwe_quote": "An app may be able to read sensitive location information.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction details and technical root-cause from the reporter/vendor (how an app reads location from logs), and confirm the exact affected macOS Ventura build range prior to 13.5 so users can be notified and mitigations provided.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Fix and affected version",
+        "quote": "This issue is fixed in macOS Ventura 13.5."
+      },
+      {
+        "claim": "Nature of the fix",
+        "quote": "A privacy issue was addressed with improved private data redaction for log entries."
+      },
+      {
+        "claim": "Data disclosure described",
+        "quote": "An app may be able to read sensitive location information."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1915,
+    "output_tokens": 1287,
+    "latency_s": null,
+    "batch": true
+  }
+}

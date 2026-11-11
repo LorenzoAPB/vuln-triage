@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer Overflow in hzeller timg v.1.5.1 and earlier allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "affected_product": "hzeller timg v.1.5.1 and before",
+    "cwe": "CWE-119",
+    "cwe_quote": "Buffer Overflow vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      }
+    },
+    "recommended_next_step": "Request vendor confirmation and a patch or mitigation; obtain PoC/crash details and affected code locations to reproduce and determine fixed versions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability summary",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      {
+        "claim": "Weakness described",
+        "quote": "Buffer Overflow vulnerability"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1910,
+    "output_tokens": 1328,
+    "latency_s": null,
+    "batch": true
+  }
+}

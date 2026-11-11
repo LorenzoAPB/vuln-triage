@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab affecting multiple versions where it was possible to create a URL that would redirect to a different project.",
+    "affected_product": "GitLab versions 4.1 to 16.1.5, 16.2 to 16.2.5, 16.3 to 16.3.1",
+    "cwe": "CWE-601",
+    "cwe_quote": "The weakness described allows for open redirection.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "It was possible to create a URL that would redirect to a different project."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the impact of the open redirection vulnerability and apply necessary patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE identification",
+        "quote": "The weakness described allows for open redirection."
+      },
+      {
+        "claim": "Vulnerability description",
+        "quote": "It was possible to create a URL that would redirect to a different project."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1477,
+    "output_tokens": 270,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A buffer overrun in OpenSC's pkcs15 cardos_have_verifyrc_package can occur when the function scans a malformed ASN.1 buffer with a moved starting pointer, leading to a heap-based out-of-bounds read and possible crash or information leak.",
+    "affected_product": "OpenSC (versions not specified)",
+    "cwe": "CWE-125",
+    "cwe_quote": "This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Further info leak or more damage is possible."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      }
+    },
+    "recommended_next_step": "Obtain a vulnerable OpenSC build and a crafted malformed ASN.1 smart-card package to reproduce and capture crash/heap-read behavior; request vendor-provided patch or commit that fixes the ASN.1 length calculation and bounds checks; advise users to upgrade when a fix is available.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability location and type",
+        "quote": "This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package."
+      },
+      {
+        "claim": "Trigger and attacker-controlled input",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      {
+        "claim": "Cause of out-of-bounds read",
+        "quote": "The cardos_have_verifyrc_package function scans the ASN1 buffer for 2 tags, where remaining length is wrongly caculated due to moved starting pointer."
+      },
+      {
+        "claim": "Effect is heap-based out-of-bounds read",
+        "quote": "This leads to possible heap-based buffer oob read."
+      },
+      {
+        "claim": "Crash observed when compiled with ASAN",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      },
+      {
+        "claim": "Potential for information leak or further damage",
+        "quote": "Further info leak or more damage is possible."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2067,
+    "output_tokens": 1496,
+    "latency_s": null,
+    "batch": true
+  }
+}

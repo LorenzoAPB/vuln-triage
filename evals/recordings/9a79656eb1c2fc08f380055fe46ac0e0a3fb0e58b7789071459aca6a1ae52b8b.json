@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "ClamAV DMG parser enables XML entity substitution leading to XML External Entity (XXE) injection; a crafted DMG submitted for scanning can cause leakage of bytes from files readable by the ClamAV scanning process.",
+    "affected_product": "ClamAV: versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier",
+    "cwe": "CWE-611",
+    "cwe_quote": "This vulnerability is due to enabling XML entity substitution that may result in XML external entity injection.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted DMG file to be scanned by ClamAV on an affected device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "A successful exploit could allow the attacker to leak bytes from any file that may be read by the ClamAV scanning process."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm vulnerable ClamAV versions in your environment and block or sandbox scanning of untrusted DMG files; apply vendor patches or update to a non-vulnerable ClamAV release.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions and product",
+        "quote": "A vulnerability in the DMG file parser of ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier could allow an unauthenticated, remote attacker to access sensitive information on an affected device."
+      },
+      {
+        "claim": "Root cause (XXE)",
+        "quote": "This vulnerability is due to enabling XML entity substitution that may result in XML external entity injection."
+      },
+      {
+        "claim": "Attack vector: submitting crafted DMG to scanner",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted DMG file to be scanned by ClamAV on an affected device."
+      },
+      {
+        "claim": "Impact: data leakage",
+        "quote": "A successful exploit could allow the attacker to leak bytes from any file that may be read by the ClamAV scanning process."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1557,
+    "output_tokens": 636,
+    "latency_s": null,
+    "batch": true
+  }
+}

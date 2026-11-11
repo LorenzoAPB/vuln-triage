@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An issue has been discovered in GitLab affecting multiple versions that allows an authenticated user to trigger a denial of service when importing or cloning malicious content.",
+    "affected_product": "GitLab versions 15.11 to 16.1.5, 16.2 to 16.2.5, 16.3 to 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    },
+    "recommended_next_step": "Investigate the denial of service vulnerability and apply necessary patches or mitigations.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      {
+        "claim": "Denial of Service impact",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1478,
+    "output_tokens": 320,
+    "latency_s": null,
+    "batch": true
+  }
+}

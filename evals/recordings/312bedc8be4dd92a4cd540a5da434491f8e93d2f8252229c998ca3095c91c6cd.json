@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "redis-py before 4.5.3 can leave an async connection open after canceling a command and may send response data from one request to an unrelated client in an off-by-one manner.",
+    "affected_product": "redis-py before 4.5.3",
+    "cwe": "CWE-200",
+    "cwe_quote": "can send response data to the client of an unrelated request in an off-by-one manner.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      "C": {
+        "value": "L",
+        "quote": "can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      "I": {
+        "value": "L",
+        "quote": "can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      "A": {
+        "value": "N",
+        "quote": "leaves a connection open after canceling an async Redis command at an inopportune time"
+      }
+    },
+    "recommended_next_step": "Review and apply redis-py updates to 4.5.3 or later; if unable to update, audit async connection handling and avoid canceling commands in production until mitigations are in place. Reproduce the issue to determine scope of data leakage and affected deployments.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Behavior description",
+        "quote": "leaves a connection open after canceling an async Redis command at an inopportune time, and can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      {
+        "claim": "Affected versions and fix",
+        "quote": "redis-py before 4.5.3"
+      },
+      {
+        "claim": "Related CVE note",
+        "quote": "please see CVE-2023-28859 about addressing data leakage across AsyncIO connections in general."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1523,
+    "output_tokens": 587,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,350 @@
+[
+  {
+    "label": "Nearest-neighbour vote (k=5), no LLM",
+    "model": "-",
+    "prompt": "-",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4444444444444444,
+    "accuracy_all": 0.4444444444444444,
+    "over_under": [
+      15,
+      5
+    ],
+    "bias": 0.86,
+    "mae": 1.56,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.8333333333333334,
+      "AC": 0.9444444444444444,
+      "PR": 0.5555555555555556,
+      "UI": 0.8611111111111112,
+      "S": 0.9166666666666666,
+      "C": 0.6388888888888888,
+      "I": 0.6111111111111112,
+      "A": 0.7777777777777778
+    },
+    "cwe_exact": 0.3888888888888889,
+    "cwe_lenient": 0.4444444444444444,
+    "cwe_unknown": 0.0,
+    "usd": 0.0
+  },
+  {
+    "label": "v3: withhold mostly-inferred vectors",
+    "model": "gpt-4o-mini",
+    "prompt": "v3",
+    "coverage": 0.027777777777777776,
+    "accuracy_when_published": 1.0,
+    "accuracy_all": 0.027777777777777776,
+    "over_under": [
+      10,
+      9
+    ],
+    "bias": -0.07,
+    "mae": 1.68,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.75,
+      "AC": 0.9444444444444444,
+      "PR": 0.8333333333333334,
+      "UI": 0.8333333333333334,
+      "S": 0.8611111111111112,
+      "C": 0.6944444444444444,
+      "I": 0.5,
+      "A": 0.75
+    },
+    "cwe_exact": 0.4722222222222222,
+    "cwe_lenient": 0.5,
+    "cwe_unknown": 0.3333333333333333,
+    "usd": 0.0073
+  },
+  {
+    "label": "v4: v3 prompt, publish as provisional",
+    "model": "gpt-4o-mini",
+    "prompt": "v4",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4722222222222222,
+    "accuracy_all": 0.4722222222222222,
+    "over_under": [
+      10,
+      9
+    ],
+    "bias": -0.07,
+    "mae": 1.68,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.75,
+      "AC": 0.9444444444444444,
+      "PR": 0.8333333333333334,
+      "UI": 0.8333333333333334,
+      "S": 0.8611111111111112,
+      "C": 0.6944444444444444,
+      "I": 0.5,
+      "A": 0.75
+    },
+    "cwe_exact": 0.4722222222222222,
+    "cwe_lenient": 0.5,
+    "cwe_unknown": 0.3333333333333333,
+    "usd": 0.0073
+  },
+  {
+    "label": "exp-knn: + 5 similar NVD CVEs in the prompt, withhold rule",
+    "model": "gpt-4o-mini",
+    "prompt": "exp-knn",
+    "coverage": 0.05555555555555555,
+    "accuracy_when_published": 1.0,
+    "accuracy_all": 0.05555555555555555,
+    "over_under": [
+      10,
+      11
+    ],
+    "bias": -0.04,
+    "mae": 1.54,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.8055555555555556,
+      "AC": 0.9722222222222222,
+      "PR": 0.8611111111111112,
+      "UI": 0.8333333333333334,
+      "S": 0.9166666666666666,
+      "C": 0.75,
+      "I": 0.5555555555555556,
+      "A": 0.7222222222222222
+    },
+    "cwe_exact": 0.5277777777777778,
+    "cwe_lenient": 0.5833333333333334,
+    "cwe_unknown": 0.1111111111111111,
+    "usd": 0.0095
+  },
+  {
+    "label": "exp-knn: + 5 similar NVD CVEs in the prompt",
+    "model": "gpt-4o-mini",
+    "prompt": "exp-knn",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4166666666666667,
+    "accuracy_all": 0.4166666666666667,
+    "over_under": [
+      10,
+      11
+    ],
+    "bias": -0.04,
+    "mae": 1.54,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.8055555555555556,
+      "AC": 0.9722222222222222,
+      "PR": 0.8611111111111112,
+      "UI": 0.8333333333333334,
+      "S": 0.9166666666666666,
+      "C": 0.75,
+      "I": 0.5555555555555556,
+      "A": 0.7222222222222222
+    },
+    "cwe_exact": 0.5277777777777778,
+    "cwe_lenient": 0.5833333333333334,
+    "cwe_unknown": 0.1111111111111111,
+    "usd": 0.0095
+  },
+  {
+    "label": "exp-knn, inferred metrics taken from the neighbour vote",
+    "model": "gpt-4o-mini",
+    "prompt": "exp-knn",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4166666666666667,
+    "accuracy_all": 0.4166666666666667,
+    "over_under": [
+      17,
+      4
+    ],
+    "bias": 1.2,
+    "mae": 1.64,
+    "vector_exact": 0.25,
+    "per_metric": {
+      "AV": 0.8055555555555556,
+      "AC": 0.9444444444444444,
+      "PR": 0.5833333333333334,
+      "UI": 0.8333333333333334,
+      "S": 0.9166666666666666,
+      "C": 0.6666666666666666,
+      "I": 0.6111111111111112,
+      "A": 0.7777777777777778
+    },
+    "cwe_exact": 0.5277777777777778,
+    "cwe_lenient": 0.5833333333333334,
+    "cwe_unknown": 0.1111111111111111,
+    "usd": 0.0095
+  },
+  {
+    "label": "v3: withhold mostly-inferred vectors",
+    "model": "gpt-5-mini",
+    "prompt": "v3",
+    "coverage": 0.3888888888888889,
+    "accuracy_when_published": 0.7142857142857143,
+    "accuracy_all": 0.2777777777777778,
+    "over_under": [
+      8,
+      8
+    ],
+    "bias": 0.17,
+    "mae": 1.15,
+    "vector_exact": 0.3055555555555556,
+    "per_metric": {
+      "AV": 0.75,
+      "AC": 0.9444444444444444,
+      "PR": 0.8055555555555556,
+      "UI": 0.8333333333333334,
+      "S": 0.8611111111111112,
+      "C": 0.7777777777777778,
+      "I": 0.7777777777777778,
+      "A": 0.7222222222222222
+    },
+    "cwe_exact": 0.6388888888888888,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.027
+  },
+  {
+    "label": "v4: v3 prompt, publish as provisional",
+    "model": "gpt-5-mini",
+    "prompt": "v4",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.5555555555555556,
+    "accuracy_all": 0.5555555555555556,
+    "over_under": [
+      8,
+      8
+    ],
+    "bias": 0.17,
+    "mae": 1.15,
+    "vector_exact": 0.3055555555555556,
+    "per_metric": {
+      "AV": 0.75,
+      "AC": 0.9444444444444444,
+      "PR": 0.8055555555555556,
+      "UI": 0.8333333333333334,
+      "S": 0.8611111111111112,
+      "C": 0.7777777777777778,
+      "I": 0.7777777777777778,
+      "A": 0.7222222222222222
+    },
+    "cwe_exact": 0.6388888888888888,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.027
+  },
+  {
+    "label": "exp-knn: + 5 similar NVD CVEs in the prompt, withhold rule",
+    "model": "gpt-5-mini",
+    "prompt": "exp-knn",
+    "coverage": 0.2777777777777778,
+    "accuracy_when_published": 0.4,
+    "accuracy_all": 0.1111111111111111,
+    "over_under": [
+      9,
+      9
+    ],
+    "bias": -0.0,
+    "mae": 1.31,
+    "vector_exact": 0.3055555555555556,
+    "per_metric": {
+      "AV": 0.8611111111111112,
+      "AC": 0.9444444444444444,
+      "PR": 0.7777777777777778,
+      "UI": 0.8611111111111112,
+      "S": 0.8888888888888888,
+      "C": 0.7777777777777778,
+      "I": 0.7777777777777778,
+      "A": 0.6944444444444444
+    },
+    "cwe_exact": 0.6111111111111112,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.0295
+  },
+  {
+    "label": "exp-knn: + 5 similar NVD CVEs in the prompt",
+    "model": "gpt-5-mini",
+    "prompt": "exp-knn",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.5,
+    "accuracy_all": 0.5,
+    "over_under": [
+      9,
+      9
+    ],
+    "bias": -0.0,
+    "mae": 1.31,
+    "vector_exact": 0.3055555555555556,
+    "per_metric": {
+      "AV": 0.8611111111111112,
+      "AC": 0.9444444444444444,
+      "PR": 0.7777777777777778,
+      "UI": 0.8611111111111112,
+      "S": 0.8888888888888888,
+      "C": 0.7777777777777778,
+      "I": 0.7777777777777778,
+      "A": 0.6944444444444444
+    },
+    "cwe_exact": 0.6111111111111112,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.0295
+  },
+  {
+    "label": "exp-low: v4 at low reasoning effort",
+    "model": "gpt-5-mini",
+    "prompt": "exp-low",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4722222222222222,
+    "accuracy_all": 0.4722222222222222,
+    "over_under": [
+      10,
+      9
+    ],
+    "bias": -0.22,
+    "mae": 1.36,
+    "vector_exact": 0.3055555555555556,
+    "per_metric": {
+      "AV": 0.9722222222222222,
+      "AC": 0.9444444444444444,
+      "PR": 0.7777777777777778,
+      "UI": 0.8611111111111112,
+      "S": 0.8611111111111112,
+      "C": 0.6111111111111112,
+      "I": 0.7222222222222222,
+      "A": 0.6944444444444444
+    },
+    "cwe_exact": 0.6666666666666666,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.05
+  },
+  {
+    "label": "exp-knn-low: exp-knn at low reasoning effort",
+    "model": "gpt-5-mini",
+    "prompt": "exp-knn-low",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4166666666666667,
+    "accuracy_all": 0.4166666666666667,
+    "over_under": [
+      10,
+      11
+    ],
+    "bias": -0.32,
+    "mae": 1.51,
+    "vector_exact": 0.2777777777777778,
+    "per_metric": {
+      "AV": 0.9444444444444444,
+      "AC": 0.9444444444444444,
+      "PR": 0.75,
+      "UI": 0.8611111111111112,
+      "S": 0.9166666666666666,
+      "C": 0.7222222222222222,
+      "I": 0.7777777777777778,
+      "A": 0.75
+    },
+    "cwe_exact": 0.6666666666666666,
+    "cwe_lenient": 0.75,
+    "cwe_unknown": 0.0,
+    "usd": 0.0534
+  }
+]

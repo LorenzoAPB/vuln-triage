@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "An operational email from Compliance requesting audit artifacts and scheduling an auditor walkthrough; not a security vulnerability report.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Mark this report as not a security vulnerability (operational request). Route to the Compliance or Admin team for fulfillment of the audit request.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Shows this is an operational audit request email",
+        "quote": "Hi, our annual SOC 2 audit starts on the 14th. Please upload last quarter's access review evidence and the updated vendor list to the shared audit folder by Friday, and block an hour next week for the auditor walkthrough. Thanks, Compliance"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2014,
+    "output_tokens": 765,
+    "latency_s": null,
+    "batch": true
+  }
+}

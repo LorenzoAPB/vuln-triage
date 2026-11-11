@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers to connect to Frugal Testing using attacker-specified credentials and to retrieve test IDs and names from Frugal Testing if a valid credential corresponds to the attacker-specified username.",
+    "affected_product": "Jenkins Frugal Testing Plugin 1.1 and earlier",
+    "cwe": "CWE-352",
+    "cwe_quote": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers to connect to Frugal Testing using attacker-specified credentials, and to retrieve test IDs and names from Frugal Testing, if a valid credential corresponds to the attacker-specified username.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to connect to Frugal Testing using attacker-specified credentials"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "cross-site request forgery (CSRF) vulnerability"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "retrieve test IDs and names from Frugal Testing"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a patched plugin from the vendor (or disable/uninstall the plugin) and reproduce the CSRF behavior against a test instance to confirm impact and required conditions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers to connect to Frugal Testing using attacker-specified credentials, and to retrieve test IDs and names from Frugal Testing, if a valid credential corresponds to the attacker-specified username."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1464,
+    "output_tokens": 1280,
+    "latency_s": null,
+    "batch": true
+  }
+}

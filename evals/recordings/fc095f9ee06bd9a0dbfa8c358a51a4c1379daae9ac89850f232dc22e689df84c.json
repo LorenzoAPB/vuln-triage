@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A buffer overrun vulnerability was found in OpenSC's pkcs15 cardos_have_verifyrc_package function, allowing an attacker to supply a malformed ASN1 context.",
+    "affected_product": "OpenSC",
+    "cwe": "CWE-787",
+    "cwe_quote": "This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      }
+    },
+    "recommended_next_step": "Investigate the buffer overrun vulnerability and apply necessary patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-787 - Buffer Overrun",
+        "quote": "This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package."
+      },
+      {
+        "claim": "Attack vector",
+        "quote": "The attacker can supply a smart card package with malformed ASN1 context."
+      },
+      {
+        "claim": "Impact on availability",
+        "quote": "In cases where ASAN is enabled while compiling this causes a crash."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2069,
+    "output_tokens": 297,
+    "latency_s": null,
+    "batch": true
+  }
+}

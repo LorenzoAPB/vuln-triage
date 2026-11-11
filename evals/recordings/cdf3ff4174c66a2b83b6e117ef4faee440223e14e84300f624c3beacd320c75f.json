@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "GitLab versions before 16.1.5, 16.2.5, and 16.3.1 contained an issue that allowed creation of a URL which would redirect to a different project.",
+    "affected_product": "GitLab all versions starting from 4.1 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-601",
+    "cwe_quote": "it was possible to create a URL that would redirect to a different project.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request details from the reporter or vendor: exact attack scenario, whether the redirect can be exploited for credential disclosure, CSRF, or open-redirect phishing, and whether authentication is required to create the URL. Obtain a proof-of-concept or reproduction steps.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions and presence of issue",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 4.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1 where it was possible to create a URL that would redirect to a different project."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2171,
+    "output_tokens": 527,
+    "latency_s": null,
+    "batch": true
+  }
+}

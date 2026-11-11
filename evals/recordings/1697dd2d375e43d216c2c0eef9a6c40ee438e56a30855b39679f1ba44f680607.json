@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Prior to version 1.18.7, DataEase contains a deserialization vulnerability in the datasource that can be exploited to execute arbitrary code. The issue is fixed in v1.18.7; no workarounds are known other than upgrading.",
+    "affected_product": "DataEase prior to 1.18.7",
+    "cwe": "CWE-502",
+    "cwe_quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      "I": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      "A": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      }
+    },
+    "recommended_next_step": "Advise users to upgrade DataEase to v1.18.7; if immediate upgrade is not possible, identify and restrict access to the affected datasource component until patched.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "Fixed version",
+        "quote": "The vulnerability has been fixed in v1.18.7."
+      },
+      {
+        "claim": "Workarounds",
+        "quote": "There are no known workarounds aside from upgrading."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1469,
+    "output_tokens": 1041,
+    "latency_s": null,
+    "batch": true
+  }
+}

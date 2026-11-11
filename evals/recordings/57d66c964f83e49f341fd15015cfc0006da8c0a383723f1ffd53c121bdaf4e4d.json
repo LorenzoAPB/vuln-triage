@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An Android application com.full.dialer.top.secure.encrypted (<= 1.0.1) allows any installed app with no permissions to place phone calls without user interaction by sending a crafted intent to com.full.dialer.top.secure.encrypted.activities.DialerActivity.",
+    "affected_product": "com.full.dialer.top.secure.encrypted through 1.0.1 for Android",
+    "cwe": "CWE-602",
+    "cwe_quote": "enables any installed application (with no permissions) to place phone calls without user interaction by sending a crafted intent via the com.full.dialer.top.secure.encrypted.activities.DialerActivity component.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "enables any installed application (with no permissions) to place phone calls without user interaction by sending a crafted intent via the com.full.dialer.top.secure.encrypted.activities.DialerActivity component."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "enables any installed application (with no permissions) to place phone calls without user interaction"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "without user interaction"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "place phone calls"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "place phone calls without user interaction"
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable component behaviour by testing whether an unprivileged app can invoke DialerActivity with an intent that triggers an outgoing call; if confirmed, ensure the activity requires appropriate permissions or intent filtering and prepare a patch and coordinated disclosure.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "enables any installed application (with no permissions) to place phone calls without user interaction by sending a crafted intent via the com.full.dialer.top.secure.encrypted.activities.DialerActivity component."
+      },
+      {
+        "claim": "Affected product and version",
+        "quote": "The com.full.dialer.top.secure.encrypted application through 1.0.1 for Android"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1464,
+    "output_tokens": 586,
+    "latency_s": null,
+    "batch": true
+  }
+}

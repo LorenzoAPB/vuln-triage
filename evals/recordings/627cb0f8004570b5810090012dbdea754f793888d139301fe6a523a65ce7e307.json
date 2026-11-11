@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "DataEase prior to version 1.18.7 has a deserialization vulnerability that can be exploited to execute arbitrary code.",
+    "affected_product": "DataEase versions prior to 1.18.7",
+    "cwe": "CWE-502",
+    "cwe_quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be exploited to execute arbitrary code."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code."
+      }
+    },
+    "recommended_next_step": "Upgrade to version 1.18.7 or later.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "CVSS AV",
+        "quote": "can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "CVSS C",
+        "quote": "can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "CVSS A",
+        "quote": "can be exploited to execute arbitrary code."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2023,
+    "output_tokens": 293,
+    "latency_s": null,
+    "batch": true
+  }
+}

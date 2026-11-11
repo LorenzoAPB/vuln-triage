@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An insufficient session expiration vulnerability in the ArubaOS CLI allows an attacker to keep a session running on an affected device after the removal of the impacted account.",
+    "affected_product": "ArubaOS (unspecified versions)",
+    "cwe": "CWE-306",
+    "cwe_quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate affected ArubaOS versions, reproduce by creating a CLI session, deleting the account, and confirming session persistence; collect exact conditions (remote/local, required privileges) and prepare coordinated disclosure and patch.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "High-level description of the vulnerability",
+        "quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface."
+      },
+      {
+        "claim": "Impact description",
+        "quote": "Successful exploitation of this vulnerability allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1441,
+    "output_tokens": 468,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report states a buffer overflow in timg (hzeller) v1.5.1 and earlier that allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "affected_product": "timg (hzeller) v1.5.1 and before",
+    "cwe": "CWE-787",
+    "cwe_quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows a remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "cause a denial of service"
+      }
+    },
+    "recommended_next_step": "Request a proof-of-concept or crash trigger and details about the vulnerable code path (input vector, parsing function) and whether exploitation can lead to code execution; if confirmed, prepare coordinated disclosure and patches.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "Buffer Overflow vulnerability in hzeller timg v.1.5.1 and before allows a remote attacker to cause a denial of service via the 0x61200000045c address."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "v.1.5.1 and before"
+      },
+      {
+        "claim": "Remote attacker",
+        "quote": "allows a remote attacker"
+      },
+      {
+        "claim": "Denial of service impact",
+        "quote": "cause a denial of service"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1910,
+    "output_tokens": 535,
+    "latency_s": null,
+    "batch": true
+  }
+}

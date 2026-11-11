@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Incorrect permission assignment in CONPROSYS HMI System (CHS) versions prior to 3.5.3 allows a local user of the PC where the product is installed to gain wide privileges, potentially destroy the system or execute a malicious program.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-732",
+    "cwe_quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program"
+      },
+      "A": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program"
+      }
+    },
+    "recommended_next_step": "Instruct customers to update to CHS 3.5.3; audit and correct the ACLs on the installation directory to restrict write/execute permissions to administrators only; provide a patch or installer that enforces secure permissions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of incorrect ACL configuration",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed"
+      },
+      {
+        "claim": "Who has the privileges (local user)",
+        "quote": "a user of the PC where the affected product is installed"
+      },
+      {
+        "claim": "Potential impact (destroy system / execute malicious program)",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "Incorrect permission assignment for critical resource exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1956,
+    "output_tokens": 1309,
+    "latency_s": null,
+    "batch": true
+  }
+}

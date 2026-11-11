@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-918",
+    "cwe_quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "connect to a user unintended database."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch affected versions to mitigate the SSRF vulnerability.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Administrative privilege requirement",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page."
+      },
+      {
+        "claim": "Impact description",
+        "quote": "connect to a user unintended database."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1465,
+    "output_tokens": 350,
+    "latency_s": null,
+    "batch": true
+  }
+}

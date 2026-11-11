@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "User reports that after logging out of the mobile app they can still see their account when navigating back, possibly a session handling or caching issue.",
+    "affected_product": "unknown",
+    "cwe": "CWE-613",
+    "cwe_quote": "Sometimes after logging out I can still see my account if I go back.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "I was testing your mobile app over the weekend and I think something is off with how it handles sessions."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the reporter provide the app version and steps to reproduce, then attempt to reproduce locally (including logout + back navigation) and inspect session/token invalidation and any client-side caching behavior.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Reporter experienced account visible after logout",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      {
+        "claim": "Reporter tested a mobile app and is unsure of version",
+        "quote": "I was testing your mobile app over the weekend and I think something is off with how it handles sessions."
+      },
+      {
+        "claim": "Reporter does not remember version",
+        "quote": "I do not remember which version I had installed."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1475,
+    "output_tokens": 491,
+    "latency_s": null,
+    "batch": true
+  }
+}

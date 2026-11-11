@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Apiman missing permissions check allows an authenticated Manager user to access API keys for organisations/clients they lack permission for by guessing/brute-forcing resource-specific URLs. Fixed in Apiman 3.1.0.Final; workaround is to restrict account access.",
+    "affected_product": "Apiman (versions prior to 3.1.0.Final)",
+    "cwe": "CWE-285",
+    "cwe_quote": "Due to a missing permissions check, an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission (depending on the specifics of configuration, such as whether an API key is the only form of security)"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission (depending on the specifics of configuration, such as whether an API key is the only form of security)"
+      }
+    },
+    "recommended_next_step": "Verify the fix in Apiman 3.1.0.Final and identify all endpoints that return API keys to ensure proper authorization checks; backport the fix to affected maintained releases and notify customers to upgrade or restrict manager account access until patched.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Root cause / missing check",
+        "quote": "Due to a missing permissions check, an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for"
+      },
+      {
+        "claim": "How resource is identified / exploited",
+        "quote": "if they correctly guess the URL, which includes Organisation ID, Client ID, and Client Version of the targeted non-permitted resource"
+      },
+      {
+        "claim": "Exploitation difficulty",
+        "quote": "While not trivial to exploit, it could be achieved by brute-forcing or guessing common names."
+      },
+      {
+        "claim": "Impact of access",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission (depending on the specifics of configuration, such as whether an API key is the only form of security)."
+      },
+      {
+        "claim": "Fixed version",
+        "quote": "Apiman 3.1.0.Final resolved this issue."
+      },
+      {
+        "claim": "Workaround",
+        "quote": "The only known workaround is to restrict account access."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1560,
+    "output_tokens": 773,
+    "latency_s": null,
+    "batch": true
+  }
+}

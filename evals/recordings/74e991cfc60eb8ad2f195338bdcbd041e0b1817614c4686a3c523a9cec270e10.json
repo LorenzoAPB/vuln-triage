@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter states a remote code execution (RCE) in the web interface of the ExampleNet R200 router running firmware 2.1; a proof-of-concept will be shared later.",
+    "affected_product": "ExampleNet R200, firmware 2.1",
+    "cwe": "CWE-78",
+    "cwe_quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "I": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "A": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      }
+    },
+    "recommended_next_step": "Request the proof-of-concept, detailed exploitation steps, exact affected firmware build(s), authentication requirements, and any exploit prerequisites; attempt to reproduce in a controlled lab image of ExampleNet R200 firmware 2.1.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      {
+        "claim": "Proof-of-concept timing",
+        "quote": "Will share PoC later."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1432,
+    "output_tokens": 546,
+    "latency_s": null,
+    "batch": true
+  }
+}

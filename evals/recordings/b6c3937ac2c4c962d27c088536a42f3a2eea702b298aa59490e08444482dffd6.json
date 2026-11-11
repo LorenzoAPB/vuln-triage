@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A file upload vulnerability in DWSurvey DWSurvey-OSS v3.2.0 and earlier allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in action/UploadAction.java.",
+    "affected_product": "DWSurvey DWSurvey-OSS v3.2.0 and before",
+    "cwe": "CWE-434",
+    "cwe_quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Request or obtain the vulnerable source files (action/UploadAction.java) and a proof-of-concept to confirm exploitation path; if confirmed, assign a security fix to validate and restrict upload handling and deploy a patch.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "DWSurvey-OSS v.3.2.0 and before"
+      },
+      {
+        "claim": "Location in code",
+        "quote": "saveimage method and savveFile in the action/UploadAction.java file"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1896,
+    "output_tokens": 564,
+    "latency_s": null,
+    "batch": true
+  }
+}

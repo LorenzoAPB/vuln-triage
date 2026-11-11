@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "unknown",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No triage action: this is marketing content, not a vulnerability report. Discard or archive the message and, if desired, block the sender to reduce noise.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "This text is marketing, not a vulnerability report",
+        "quote": "Is your PSIRT drowning in reports? ShieldCo's 2026 Vulnerability Trends webinar covers why critical CVEs grew 30% this year and how our platform cuts triage time in half. Register today and get a free copy of our exploitation report. Unsubscribe at any time."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 362,
+    "latency_s": null,
+    "batch": true
+  }
+}

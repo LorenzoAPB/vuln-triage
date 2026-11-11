@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A cross-site scripting (XSS) vulnerability in CONPROSYS HMI System (CHS) versions prior to 3.5.3 allows an administrative user who configures specially crafted settings to cause arbitrary script execution in the browser of another administrative user.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "a user who can access the affected product with an administrative privilege"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege"
+      },
+      "I": {
+        "value": "L",
+        "quote": "an arbitrary script may be executed on the web browser of the other user who is accessing the affected product with an administrative privilege"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction details and a proof-of-concept (HTTP request, affected fields, and exact product configuration) and confirm whether the vulnerable input is stored/reflected and whether non-admin users can be impacted.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and product",
+        "quote": "Cross-site scripting vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Attack requires admin to configure crafted settings",
+        "quote": "If a user who can access the affected product with an administrative privilege configures specially crafted settings, an arbitrary script may be executed"
+      },
+      {
+        "claim": "Victim is an administrative user",
+        "quote": "on the web browser of the other user who is accessing the affected product with an administrative privilege."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 602,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in io_uring's fixed buffer registration (io_sqe_buffer_register in io_uring/rsrc.c) allows out-of-bounds access to physical memory beyond the end of the buffer, enabling full local privilege escalation.",
+    "affected_product": "Linux kernel (io_uring, io_sqe_buffer_register in io_uring/rsrc.c)",
+    "cwe": "CWE-125",
+    "cwe_quote": "allows out-of-bounds access to physical memory beyond the end of the buffer.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "full local privilege escalation."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "full local privilege escalation."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "full local privilege escalation."
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer."
+      }
+    },
+    "recommended_next_step": "Obtain and review the kernel patch that fixes io_sqe_buffer_register, request CVE assignment if none, and coordinate upstream and distribution patches/hotfixes to mitigate local privilege escalation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the bug",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer."
+      },
+      {
+        "claim": "Impact (privilege escalation, locality)",
+        "quote": "full local privilege escalation."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 1522,
+    "latency_s": null,
+    "batch": true
+  }
+}

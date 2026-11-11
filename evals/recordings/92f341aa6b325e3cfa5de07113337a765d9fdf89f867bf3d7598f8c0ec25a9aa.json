@@ -1,0 +1,52 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The text is a request from Compliance to upload audit evidence, update vendor list, and schedule an auditor walkthrough; not a security vulnerability report.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Not applicable: the input is not a vulnerability report.",
+    "confidence": "low",
+    "evidence_quotes": []
+  },
+  "usage": {
+    "input_tokens": 1453,
+    "output_tokens": 376,
+    "latency_s": null,
+    "batch": true
+  }
+}

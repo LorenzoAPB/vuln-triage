@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "FortiAnalyzer versions 7.2.0\u20137.2.1, 7.0.0\u20137.0.4, and 6.4.0\u20136.4.10 expose a client machine password in plaintext in a heartbeat response when a log-fetch request is made, allowing a remote authenticated attacker to read it.",
+    "affected_product": "FortiAnalyzer 7.2.0 through 7.2.1, 7.0.0 through 7.0.4, 6.4.0 through 6.4.10",
+    "cwe": "CWE-200",
+    "cwe_quote": "may allow a remote authenticated  attacker to read the client machine password in plain text in a heartbeat response when a log-fetch request is made from the FortiAnalyzer",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "may allow a remote authenticated  attacker to read the client machine password in plain text in a heartbeat response when a log-fetch request is made from the FortiAnalyzer"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "may allow a remote authenticated  attacker to read the client machine password in plain text in a heartbeat response"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "may allow a remote authenticated  attacker to read the client machine password in plain text"
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the issue on the stated FortiAnalyzer versions, identify the API/heartbeat response field leaking the password, and prepare a patch or configuration mitigation to prevent plaintext password disclosure; notify affected customers and advise authentication credential rotation.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "FortiAnalyzer versions 7.2.0 through 7.2.1, 7.0.0 through 7.0.4 and 6.4.0 through 6.4.10"
+      },
+      {
+        "claim": "Ability and condition",
+        "quote": "may allow a remote authenticated  attacker to read the client machine password in plain text in a heartbeat response when a log-fetch request is made from the FortiAnalyzer"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1497,
+    "output_tokens": 626,
+    "latency_s": null,
+    "batch": true
+  }
+}

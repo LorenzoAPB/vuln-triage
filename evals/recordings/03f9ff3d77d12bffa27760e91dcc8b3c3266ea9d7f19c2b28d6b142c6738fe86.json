@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter.",
+    "affected_product": "General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "I": {
+        "value": "H",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the XSS by supplying crafted payloads to the 'fieldname' parameter to determine whether the issue is reflected or stored, whether authentication is required, and which pages/endpoints are affected; then apply proper input validation and output encoding or context-aware sanitization.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1448,
+    "output_tokens": 1487,
+    "latency_s": null,
+    "batch": true
+  }
+}

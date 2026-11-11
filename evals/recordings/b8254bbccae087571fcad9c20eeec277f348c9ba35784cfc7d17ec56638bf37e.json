@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Adobe After Effects 22.0 (and earlier) and 18.4.2 (and earlier) contain an out-of-bounds read vulnerability that could disclose sensitive memory and be leveraged to bypass mitigations such as ASLR; exploitation requires a victim to open a malicious file.",
+    "affected_product": "Adobe After Effects 22.0 (and earlier); 18.4.2 (and earlier)",
+    "cwe": "CWE-125",
+    "cwe_quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain a malicious sample that triggers the issue, reproduce the out-of-bounds read, identify vulnerable code paths and root cause, and develop/verify a patch or mitigation. Determine exploitability details and assign tracking (CVE) as appropriate.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "affected product and versions",
+        "quote": "Adobe After Effects versions 22.0 (and earlier) and 18.4.2 (and earlier) are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory."
+      },
+      {
+        "claim": "description of weakness and impact",
+        "quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory."
+      },
+      {
+        "claim": "user interaction required / how exploited",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      {
+        "claim": "ASLR bypass leverage",
+        "quote": "An attacker could leverage this vulnerability to bypass mitigations such as ASLR."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2153,
+    "output_tokens": 1337,
+    "latency_s": null,
+    "batch": true
+  }
+}

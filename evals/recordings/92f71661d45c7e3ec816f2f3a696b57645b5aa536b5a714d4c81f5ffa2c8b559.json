@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in the fixed buffer registration code for io_uring in the Linux kernel allows out-of-bounds access to physical memory, enabling full local privilege escalation.",
+    "affected_product": "Linux kernel",
+    "cwe": "CWE-787",
+    "cwe_quote": "out-of-bounds access to physical memory beyond the end of the buffer",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "full local privilege escalation"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "enables full local privilege escalation"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "full local privilege escalation"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and apply the latest patches for the Linux kernel.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE",
+        "quote": "out-of-bounds access to physical memory beyond the end of the buffer"
+      },
+      {
+        "claim": "CVSS AV",
+        "quote": "full local privilege escalation"
+      },
+      {
+        "claim": "CVSS PR",
+        "quote": "enables full local privilege escalation"
+      },
+      {
+        "claim": "CVSS C",
+        "quote": "full local privilege escalation"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1463,
+    "output_tokens": 263,
+    "latency_s": null,
+    "batch": true
+  }
+}

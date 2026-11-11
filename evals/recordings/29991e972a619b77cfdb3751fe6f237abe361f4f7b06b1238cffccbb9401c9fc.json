@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A bug in NVIDIA CUDA Toolkit's cuobjdump allows a local user to cause a null-pointer dereference by running the tool against an ill-formed binary, potentially causing a limited denial of service.",
+    "affected_product": "NVIDIA CUDA Toolkit SDK (cuobjdump) \u2014 versions not specified",
+    "cwe": "CWE-476",
+    "cwe_quote": "a local user running the tool against an ill-formed binary may cause a null- pointer dereference",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a local user running the tool against an ill-formed binary"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a local user running the tool against an ill-formed binary"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "may result in a limited denial of service"
+      }
+    },
+    "recommended_next_step": "Request or confirm vendor advisory or patch details, reproduce crash locally with a crafted ill-formed binary to collect crash artifacts and determine affected versions and exact impact, and obtain a fixed cuobjdump binary or patch from NVIDIA.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Null-pointer dereference caused by running tool on ill-formed binary",
+        "quote": "a local user running the tool against an ill-formed binary may cause a null- pointer dereference"
+      },
+      {
+        "claim": "Potential denial of service impact",
+        "quote": "which may result in a limited denial of service"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1448,
+    "output_tokens": 480,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report states an SQL Injection in smanga (<= 3.1.9) via mediaId, mangaId, and userId in php/history/add.php that allows remote attackers to execute arbitrary code and gain sensitive information.",
+    "affected_product": "smanga 3.1.9 and earlier",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote attackers"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote attackers"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "gain sensitive information"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Request the vendor to provide a fixed release and advisory that corrects the SQL injection in php/history/add.php (use parameterized queries and input validation for mediaId, mangaId, userId). Ask for affected-versions, a patch, and mitigation guidance; if available, obtain reproduction steps and exploitability details.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability, affected parameters and path",
+        "quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      {
+        "claim": "Remote attacker capability (supports AV and PR)",
+        "quote": "allows remote attackers"
+      },
+      {
+        "claim": "Impact: arbitrary code execution (supports I and A)",
+        "quote": "execute arbitrary code"
+      },
+      {
+        "claim": "Impact: disclosure of data (supports C)",
+        "quote": "gain sensitive information"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1447,
+    "output_tokens": 1069,
+    "latency_s": null,
+    "batch": true
+  }
+}

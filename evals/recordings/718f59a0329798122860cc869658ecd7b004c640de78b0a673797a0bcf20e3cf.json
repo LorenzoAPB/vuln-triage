@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "File upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and earlier allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in action/UploadAction.java.",
+    "affected_product": "DWSurvey DWSurvey-OSS v.3.2.0 and before",
+    "cwe": "CWE-434",
+    "cwe_quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue against DWSurvey-OSS 3.2.0 in a controlled environment by exercising the saveimage and savveFile code paths in action/UploadAction.java to confirm remote code execution and capture a proof-of-concept.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and affected versions",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      {
+        "claim": "Indicates remote attacker",
+        "quote": "remote attacker"
+      },
+      {
+        "claim": "Indicates ability to execute arbitrary code",
+        "quote": "execute arbitrary code"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1450,
+    "output_tokens": 1340,
+    "latency_s": null,
+    "batch": true
+  }
+}

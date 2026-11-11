@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an SQL injection in DataEase v.1.18.9 that allows a remote attacker to obtain sensitive information by supplying a crafted string that bypasses a blacklist function.",
+    "affected_product": "DataEase v.1.18.9",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a full technical report or PoC showing the vulnerable endpoint(s), exact injection vector, and impact details; if confirmed, prepare an advisory with a patch or mitigation (remove unsafe query concatenation, use parameterized queries) and notify users to update from v1.18.9.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      {
+        "claim": "Remote attacker capability",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      {
+        "claim": "Bypass mechanism",
+        "quote": "via a crafted string outside of the blacklist function"
+      },
+      {
+        "claim": "Affected product and version",
+        "quote": "DataEase v.1.18.9"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 562,
+    "latency_s": null,
+    "batch": true
+  }
+}

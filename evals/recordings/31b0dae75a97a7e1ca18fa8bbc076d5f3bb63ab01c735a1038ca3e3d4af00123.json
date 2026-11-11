@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reflected or stored cross-site scripting in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 via the fieldname parameter allowing execution of arbitrary web scripts or HTML.",
+    "affected_product": "General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request proof-of-concept details (e.g., whether the payload is reflected or stored, exact request/response, and required user interaction), determine affected endpoints, and advise vendor to apply proper output encoding or input sanitization on the fieldname parameter.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1448,
+    "output_tokens": 517,
+    "latency_s": null,
+    "batch": true
+  }
+}

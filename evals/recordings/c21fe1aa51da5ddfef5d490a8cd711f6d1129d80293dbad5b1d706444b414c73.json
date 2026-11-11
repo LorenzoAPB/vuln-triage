@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Server-side request forgery (SSRF) in CONPROSYS HMI System (CHS) versions prior to 3.5.3 allows a user with administrative privilege to bypass database restriction on the query setting page and connect to an unintended database.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-918",
+    "cwe_quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      "I": {
+        "value": "L",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SSRF against affected versions (pre-3.5.3), capture a proof-of-concept request showing access to unintended databases, and request a vendor patch or mitigation. Collect logs and impacted database identifiers to assess data exposure.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected product",
+        "quote": "Server-side request forgery vulnerability exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Required privilege and impact description",
+        "quote": "A user who can access the affected product with an administrative privilege may bypass the database restriction set on the query setting page, and connect to a user unintended database."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1950,
+    "output_tokens": 1249,
+    "latency_s": null,
+    "batch": true
+  }
+}

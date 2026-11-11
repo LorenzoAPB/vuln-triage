@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Draytek Vigor Routers and other devices use hardcoded encryption keys, allowing attackers to bind devices to their own accounts and create licenses.",
+    "affected_product": "Draytek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, Myvigor firmware versions below 2.3.2",
+    "cwe": "CWE-321",
+    "cwe_quote": "The use of hard-coded cryptographic keys.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attackers to bind any affected device to their own account."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to bind any affected device to their own account."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the use of hardcoded encryption keys and implement a patch to remove them.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "The use of hard-coded cryptographic keys."
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      },
+      {
+        "claim": "Ability to bind devices",
+        "quote": "allows attackers to bind any affected device to their own account."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1508,
+    "output_tokens": 353,
+    "latency_s": null,
+    "batch": true
+  }
+}

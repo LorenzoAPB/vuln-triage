@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL injection in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "affected_product": "DataEase v.1.18.9",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "obtain sensitive information"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SQL injection with a crafted input to identify the vulnerable parameter(s), then remediate by using parameterized queries/prepared statements and proper input validation/escaping for the blacklist function.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Full report line describing the vulnerability",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      {
+        "claim": "Attack source",
+        "quote": "remote attacker"
+      },
+      {
+        "claim": "Impact described",
+        "quote": "obtain sensitive information"
+      },
+      {
+        "claim": "Attack method detail",
+        "quote": "crafted string outside of the blacklist function"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1940,
+    "output_tokens": 1164,
+    "latency_s": null,
+    "batch": true
+  }
+}

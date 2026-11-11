@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple DrayTek products use hardcoded encryption keys in certain firmware/app versions, allowing attackers to bind affected devices to attacker-controlled accounts and create/synchronize WCF and DrayDDNS licenses from the website.",
+    "affected_product": "Draytek Vigor Routers (firmware < 3.9.6/4.2.4), Access Points (firmware < v1.4.0), Switches (firmware < 2.6.7), Myvigor (firmware < 2.3.2)",
+    "cwe": "CWE-321",
+    "cwe_quote": "were discovered to use hardcoded encryption keys",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "which allows attackers to bind any affected device to their own account."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction details and proof-of-concept from reporter (how keys are used, required network access, and exact impact), and confirm whether account binding and license creation/actions are possible remotely without authentication.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Hardcoded keys",
+        "quote": "were discovered to use hardcoded encryption keys"
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Draytek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, and Myvigor firmware versions below 2.3.2"
+      },
+      {
+        "claim": "Allows binding device to attacker account",
+        "quote": "which allows attackers to bind any affected device to their own account."
+      },
+      {
+        "claim": "Create and synchronize licenses",
+        "quote": "Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2161,
+    "output_tokens": 658,
+    "latency_s": null,
+    "batch": true
+  }
+}

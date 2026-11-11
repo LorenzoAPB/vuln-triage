@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in GitHub Enterprise Server allowed a fork to retain read access to an upstream repository after the upstream's visibility was changed to private. Affected versions are all versions prior to 3.10.0; fixes released in 3.9.4, 3.8.9, 3.7.16 and 3.6.18.",
+    "affected_product": "GitHub Enterprise Server prior to 3.10.0",
+    "cwe": "CWE-200",
+    "cwe_quote": "allowed a fork to retain read access to an upstream repository after its visibility was changed to private.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify whether any forks currently retain access to repositories that were made private; notify affected repository owners and rotate or revoke any credentials or tokens that may have been exposed. Reproduce the fix on a test instance to confirm the behavior is corrected in the fixed versions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and effect",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "This vulnerability affected all versions of GitHub Enterprise Server prior to 3.10.0"
+      },
+      {
+        "claim": "Fixed versions",
+        "quote": "and was fixed in versions 3.9.4, 3.8.9, 3.7.16 and 3.6.18."
+      },
+      {
+        "claim": "Reported via bug bounty",
+        "quote": "This vulnerability was reported via the GitHub Bug Bounty program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1501,
+    "output_tokens": 632,
+    "latency_s": null,
+    "batch": true
+  }
+}

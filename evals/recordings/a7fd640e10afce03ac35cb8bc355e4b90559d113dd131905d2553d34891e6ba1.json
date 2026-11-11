@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL injection in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information by supplying a crafted string that bypasses a blacklist function.",
+    "affected_product": "DataEase v.1.18.9",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "via a crafted string outside of the blacklist function."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows a remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "obtain sensitive information"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reproduce the issue against DataEase v1.18.9, identify the vulnerable SQL query and input vector that bypasses the blacklist, and prepare a patch that uses parameterized queries or proper input validation/whitelisting. If confirmed, coordinate disclosure and provide users with upgrade and mitigation guidance.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "High-level description of the vulnerability",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      {
+        "claim": "Indicates remote attacker (no local/physical access required)",
+        "quote": "allows a remote attacker"
+      },
+      {
+        "claim": "Indicates data disclosure impact",
+        "quote": "obtain sensitive information"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 958,
+    "latency_s": null,
+    "batch": true
+  }
+}

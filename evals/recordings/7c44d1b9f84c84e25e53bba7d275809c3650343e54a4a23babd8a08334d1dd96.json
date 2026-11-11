@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Senayan Library Management Systems SLIMS 9 Bulian v9.6.1 is reported vulnerable to Server Side Request Forgery (SSRF) via admin/modules/bibliography/pop_p2p.php.",
+    "affected_product": "SLIMS 9 Bulian v9.6.1",
+    "cwe": "CWE-918",
+    "cwe_quote": "is vulnerable to Server Side Request Forgery (SSRF) via admin/modules/bibliography/pop_p2p.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "is vulnerable to Server Side Request Forgery (SSRF) via admin/modules/bibliography/pop_p2p.php."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "is vulnerable to Server Side Request Forgery (SSRF) via admin/modules/bibliography/pop_p2p.php."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SSRF against admin/modules/bibliography/pop_p2p.php, determine whether authentication is required and what internal or external resources can be requested, and capture response content to assess confidentiality/ integrity impact.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and location",
+        "quote": "is vulnerable to Server Side Request Forgery (SSRF) via admin/modules/bibliography/pop_p2p.php."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1915,
+    "output_tokens": 1059,
+    "latency_s": null,
+    "batch": true
+  }
+}

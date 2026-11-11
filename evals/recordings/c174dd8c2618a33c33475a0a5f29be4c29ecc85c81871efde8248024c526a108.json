@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter.",
+    "affected_product": "General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML"
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML"
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows attackers to execute arbitrary web scripts or HTML"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue against CASE 3 Taskmanagement v3.3, capturing the exact request and payload to the fieldname parameter. Determine whether authentication is required and whether the payload is reflected or stored. If confirmed, recommend validating/escaping input on the server side and applying output encoding on affected pages; prepare a patch and coordinated disclosure timeline.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "A cross-site scripting (XSS) vulnerability in General Solutions Steiner GmbH CASE 3 Taskmanagement V 3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the fieldname parameter."
+      },
+      {
+        "claim": "Vulnerable parameter",
+        "quote": "fieldname parameter"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1949,
+    "output_tokens": 1283,
+    "latency_s": null,
+    "batch": true
+  }
+}

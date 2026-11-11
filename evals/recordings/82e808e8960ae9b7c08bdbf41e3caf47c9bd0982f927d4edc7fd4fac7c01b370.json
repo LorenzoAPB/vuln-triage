@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "affected_product": "DataEase v.1.18.9",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "to obtain sensitive information"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the SQL injection vulnerability in DataEase v.1.18.9.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "SQL injection vulnerability",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1942,
+    "output_tokens": 289,
+    "latency_s": null,
+    "batch": true
+  }
+}

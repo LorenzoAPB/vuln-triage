@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated users could trigger a denial of service in GitLab when importing or cloning malicious content in affected versions (15.11\u2013<16.1.5, 16.2\u2013<16.2.5, 16.3\u2013<16.3.1).",
+    "affected_product": "GitLab; versions starting from 15.11 before 16.1.5, starting from 16.2 before 16.2.5, starting from 16.3 before 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    },
+    "recommended_next_step": "Request or review a proof-of-concept and resource usage measurements (CPU/memory) during an import/clone of the malicious content to confirm impact and reproduction steps; determine whether authentication is required and which user roles are affected.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 15.11 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1."
+      },
+      {
+        "claim": "Nature of the issue (DoS)",
+        "quote": "An authenticated user could trigger a denial of service when importing or cloning malicious content."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2163,
+    "output_tokens": 570,
+    "latency_s": null,
+    "batch": true
+  }
+}

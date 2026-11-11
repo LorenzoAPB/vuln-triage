@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Incorrect permission assignment for critical resource exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3 due to improperly set ACLs, allowing excessive privileges to users.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-732",
+    "cwe_quote": "Incorrect permission assignment for critical resource exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review and correct the ACL settings for the affected product installation folder.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Incorrect permission assignment for critical resource",
+        "quote": "Incorrect permission assignment for critical resource exists in CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "ACL not appropriately set",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed."
+      },
+      {
+        "claim": "User may destroy system or execute malicious program",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1495,
+    "output_tokens": 382,
+    "latency_s": null,
+    "batch": true
+  }
+}

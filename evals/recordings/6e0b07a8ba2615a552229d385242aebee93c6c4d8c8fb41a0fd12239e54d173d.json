@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Integer overflow in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab in bn_grow's call to realloc allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges.",
+    "affected_product": "RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab",
+    "cwe": "CWE-190",
+    "cwe_quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      }
+    },
+    "recommended_next_step": "Upgrade RELIC to the fixed commit (at or after 34580d840469361ba9b5f001361cad659687b9ab) or apply the vendor-provided patch; if exploitability is suspected, review uses of bn_grow/realloc in deployed software and apply mitigations (input validation, memory sanitizer) while patching.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1979,
+    "output_tokens": 1341,
+    "latency_s": null,
+    "batch": true
+  }
+}

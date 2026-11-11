@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A use-after-free flaw in hfsplus_put_super in fs/hfsplus/super.c in the Linux kernel could allow a local user to cause a denial of service.",
+    "affected_product": "Linux kernel (hfsplus filesystem) - versions not specified",
+    "cwe": "CWE-416",
+    "cwe_quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "could allow a local user to cause a denial of service problem."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "could allow a local user to cause a denial of service problem."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "could allow a local user to cause a denial of service problem."
+      }
+    },
+    "recommended_next_step": "Request the specific affected kernel versions, reproduction steps or crash trace, and any available patch or commit ID; verify exploitability and whether non-local attack surfaces exist.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and location",
+        "quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel."
+      },
+      {
+        "claim": "Impact described",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1444,
+    "output_tokens": 470,
+    "latency_s": null,
+    "batch": true
+  }
+}

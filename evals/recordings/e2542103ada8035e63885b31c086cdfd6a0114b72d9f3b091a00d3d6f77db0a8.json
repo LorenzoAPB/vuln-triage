@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The reporter states there is an XSS (cross-site scripting) vulnerability in the search box of AcmeShop.",
+    "affected_product": "AcmeShop (version unspecified)",
+    "cwe": "CWE-79",
+    "cwe_quote": "Found an XSS in the search box of AcmeShop. Please fix.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Found an XSS in the search box of AcmeShop. Please fix."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a reproducible PoC and detailed technical information: exact AcmeShop version, the search input URL, example payload(s) and observed output, and whether the input is reflected or stored; if confirmed, prioritize fixing by output encoding/escaping or proper input sanitization in the search results rendering.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Statement of vulnerability and location",
+        "quote": "Found an XSS in the search box of AcmeShop. Please fix."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 404,
+    "latency_s": null,
+    "batch": true
+  }
+}

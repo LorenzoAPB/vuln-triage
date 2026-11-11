@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Prior to DataEase v1.18.7, a deserialization vulnerability in the DataEase datasource allows arbitrary code execution; fixed in v1.18.7.",
+    "affected_product": "DataEase < 1.18.7",
+    "cwe": "CWE-502",
+    "cwe_quote": "a deserialization vulnerability exists in the DataEase datasource",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be exploited to execute arbitrary code"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "can be exploited to execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Verify the report by reproducing on a test instance using pre-1.18.7 datasource configurations, capture exploitation details, and prepare coordinated disclosure and advisory including a CVE if not assigned.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Deserialization vulnerability exists",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource"
+      },
+      {
+        "claim": "Can be exploited to execute arbitrary code",
+        "quote": "which can be exploited to execute arbitrary code"
+      },
+      {
+        "claim": "Fixed in v1.18.7",
+        "quote": "The vulnerability has been fixed in v1.18.7."
+      },
+      {
+        "claim": "No known workarounds aside from upgrading",
+        "quote": "There are no known workarounds aside from upgrading."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1469,
+    "output_tokens": 503,
+    "latency_s": null,
+    "batch": true
+  }
+}

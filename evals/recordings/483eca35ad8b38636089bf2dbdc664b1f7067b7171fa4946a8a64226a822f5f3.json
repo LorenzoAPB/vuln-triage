@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An information disclosure in GitLab EE allowed other Group Owners to read the Public Key for a Google Cloud Logging audit event streaming destination; fixed so Owners can only write the key, not read it. Affected versions: 16.2 before 16.2.5 and 16.3 before 16.3.1.",
+    "affected_product": "GitLab EE 16.2 < 16.2.5, 16.3 < 16.3.1",
+    "cwe": "CWE-863",
+    "cwe_quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify which groups had the Google Cloud Logging audit event streaming destination configured, rotate any exposed public keys if required, and backport the fix to affected instances; update access-control tests to prevent owner-read where only write is permitted.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the information disclosure",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      {
+        "claim": "Fix changed behavior so Owners can only write the key, not read it",
+        "quote": "Owners can now only write the key, not read it."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "affecting all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2125,
+    "output_tokens": 606,
+    "latency_s": null,
+    "batch": true
+  }
+}

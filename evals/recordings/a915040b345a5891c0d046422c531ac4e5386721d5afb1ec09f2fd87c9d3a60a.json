@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Controller 6000 has a buffer overflow in the Controller diagnostic web interface upload feature affecting multiple firmware versions (before vCR8.80.230201a, vCR8.70.230201a, vCR8.60.230201b, vCR8.50.230201a, and all vCR8.40 and prior).",
+    "affected_product": "Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior",
+    "cwe": "CWE-120",
+    "cwe_quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "via the Controller diagnostic web interface upload feature."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      }
+    },
+    "recommended_next_step": "Request or obtain a proof-of-concept or vendor advisory detailing exploitation and required privileges; if confirmed, coordinate disclosure and provide firmware update/mitigation guidance to customers.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "This issue affects Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1487,
+    "output_tokens": 614,
+    "latency_s": null,
+    "batch": true
+  }
+}

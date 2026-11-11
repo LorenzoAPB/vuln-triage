@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter observed the desktop client making requests to an unfamiliar address at startup and could not determine whether personal data was included; they reported it for security review.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "your desktop client sometimes sends requests to an address I do not recognize when it starts up"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "your desktop client sometimes sends requests to an address I do not recognize when it starts up"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "I": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the client startup network activity: capture and analyze outbound requests (endpoints, headers, payloads) and determine whether sensitive data is transmitted; if confirmed, identify cause and remediate or disclose.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Client makes requests to unfamiliar address at startup",
+        "quote": "your desktop client sometimes sends requests to an address I do not recognize when it starts up"
+      },
+      {
+        "claim": "Reporter could not determine whether personal data is included",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      {
+        "claim": "Reporter reported to security team for review",
+        "quote": "so I wanted to report it to your security team for review."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2221,
+    "output_tokens": 506,
+    "latency_s": null,
+    "batch": true
+  }
+}

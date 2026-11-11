@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A privacy issue in macOS Ventura before 13.5 allowed an app to read sensitive location information; fixed in macOS Ventura 13.5 by improved private data redaction for log entries.",
+    "affected_product": "macOS Ventura before 13.5",
+    "cwe": "CWE-200",
+    "cwe_quote": "An app may be able to read sensitive location information.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or review technical details from the reporter/vendor describing how logs leaked location (which component produced logs, whether exploit requires user action or specific privileges) and any reproduction steps so impact (C/I/A) and attack vector can be validated.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Fix and affected release",
+        "quote": "This issue is fixed in macOS Ventura 13.5."
+      },
+      {
+        "claim": "Nature of issue",
+        "quote": "A privacy issue was addressed with improved private data redaction for log entries."
+      },
+      {
+        "claim": "Impact",
+        "quote": "An app may be able to read sensitive location information."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1915,
+    "output_tokens": 478,
+    "latency_s": null,
+    "batch": true
+  }
+}

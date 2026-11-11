@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated users with at least operator privileges can upload a specially crafted SNMP configuration file via the Web UI or administrative CLI on Cisco ESA and SMA, which may lead to command execution as root and full system compromise.",
+    "affected_product": "Cisco Secure Email Gateway (ESA) and Cisco Secure Email and Web Manager (SMA); versions not specified",
+    "cwe": "CWE-77",
+    "cwe_quote": "The vulnerability is due to the processing of a specially crafted SNMP configuration file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by authenticating to the targeted device and uploading a specially crafted SNMP configuration file"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The attacker has to have a valid user credential with at least a [[privilege of operator - validate actual name]]."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by authenticating to the targeted device and uploading a specially crafted SNMP configuration file"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "An exploit could allow the attacker to gain root access on the device."
+      },
+      "I": {
+        "value": "H",
+        "quote": "An exploit could allow the attacker to gain root access on the device."
+      },
+      "A": {
+        "value": "H",
+        "quote": "An exploit could allow the attacker to gain root access on the device."
+      }
+    },
+    "recommended_next_step": "Request from the reporter or vendor: affected software versions, exact privilege role name required, proof-of-concept details or reproduction steps, and any available vendor fixes or mitigations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Privilege required",
+        "quote": "The attacker has to have a valid user credential with at least a [[privilege of operator - validate actual name]]."
+      },
+      {
+        "claim": "Trigger and vector",
+        "quote": "The vulnerability is due to the processing of a specially crafted SNMP configuration file."
+      },
+      {
+        "claim": "Exploit action",
+        "quote": "An attacker could exploit this vulnerability by authenticating to the targeted device and uploading a specially crafted SNMP configuration file that when uploaded could allow for the execution of commands as root."
+      },
+      {
+        "claim": "Impact",
+        "quote": "An exploit could allow the attacker to gain root access on the device."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1543,
+    "output_tokens": 631,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Adobe After Effects versions 22.0 (and earlier) and 18.4.2 (and earlier) are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory.",
+    "affected_product": "Adobe After Effects versions 22.0 (and earlier) and 18.4.2 (and earlier)",
+    "cwe": "CWE-125",
+    "cwe_quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could leverage this vulnerability to bypass mitigations such as ASLR."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "could lead to disclosure of sensitive memory."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the vulnerability and apply necessary patches or mitigations.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "out-of-bounds read vulnerability that could lead to disclosure of sensitive memory."
+      },
+      {
+        "claim": "User interaction required for exploitation",
+        "quote": "Exploitation of this issue requires user interaction in that a victim must open a malicious file."
+      },
+      {
+        "claim": "Impact on sensitive memory disclosure",
+        "quote": "could lead to disclosure of sensitive memory."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1481,
+    "output_tokens": 327,
+    "latency_s": null,
+    "batch": true
+  }
+}

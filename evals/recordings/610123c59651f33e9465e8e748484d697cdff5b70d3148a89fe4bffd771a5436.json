@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL Injection in smanga (<= 3.1.9) allows remote attackers to execute arbitrary code and obtain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php.",
+    "affected_product": "smanga 3.1.9 and earlier",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote attackers"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote attackers"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information"
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information"
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows remote attackers to execute arbitrary code and gain sensitive information"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce by sending crafted SQL payloads to mediaId, mangaId, and userId parameters at php/history/add.php; if confirmed, prepare/patch input validation or convert DB access to parameterized queries and coordinate disclosure with the vendor.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and affected parameters",
+        "quote": "SQL Injection vulnerability in smanga version 3.1.9 and earlier, allows remote attackers to execute arbitrary code and gain sensitive information via mediaId, mangaId, and userId parameters in php/history/add.php."
+      },
+      {
+        "claim": "Attack source",
+        "quote": "allows remote attackers"
+      },
+      {
+        "claim": "Impact (code execution and data disclosure)",
+        "quote": "execute arbitrary code and gain sensitive information"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1878,
+    "output_tokens": 1095,
+    "latency_s": null,
+    "batch": true
+  }
+}

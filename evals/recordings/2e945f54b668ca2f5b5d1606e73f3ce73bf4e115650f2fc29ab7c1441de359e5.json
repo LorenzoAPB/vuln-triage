@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in Cisco Nexus Dashboard Software DNS processing allows an unauthenticated remote attacker to send continuous DNS requests that can stop the coredns service or cause the device to reload, resulting in denial of service.",
+    "affected_product": "Cisco Nexus Dashboard Software; versions not specified",
+    "cwe": "CWE-400",
+    "cwe_quote": "This vulnerability is due to the improper processing of DNS requests.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A vulnerability in the DNS functionality of Cisco Nexus Dashboard Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "A vulnerability in the DNS functionality of Cisco Nexus Dashboard Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory or patch information and test the fix; reproduce the DoS by sending crafted/continuous DNS requests in a controlled lab to confirm impact and required trigger conditions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated remote attacker",
+        "quote": "A vulnerability in the DNS functionality of Cisco Nexus Dashboard Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition."
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This vulnerability is due to the improper processing of DNS requests."
+      },
+      {
+        "claim": "Attack method",
+        "quote": "An attacker could exploit this vulnerability by sending a continuous stream of DNS requests to an affected device."
+      },
+      {
+        "claim": "Impact",
+        "quote": "A successful exploit could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1498,
+    "output_tokens": 604,
+    "latency_s": null,
+    "batch": true
+  }
+}

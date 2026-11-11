@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Certain Lexmark devices (such as CS310) before 2023-08-25 allow XXE attacks, leading to information disclosure.",
+    "affected_product": "Lexmark devices (such as CS310) before 2023-08-25",
+    "cwe": "CWE-611",
+    "cwe_quote": "XXE attacks, leading to information disclosure.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allow XXE attacks"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "leading to information disclosure."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Upgrade to firmware version LW80.*.P246 or higher.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "XXE attacks, leading to information disclosure."
+      },
+      {
+        "claim": "CVSS AV",
+        "quote": "allow XXE attacks"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1478,
+    "output_tokens": 231,
+    "latency_s": null,
+    "batch": true
+  }
+}

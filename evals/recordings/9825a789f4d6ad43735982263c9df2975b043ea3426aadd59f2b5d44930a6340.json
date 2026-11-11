@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL injection in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "affected_product": "DataEase v.1.18.9",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a proof-of-concept, exact vulnerable request parameter(s), and affected endpoints; confirm reproduction and prepare mitigation guidance (parameterized queries or input validation).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "SQL injection vulnerability in DataEase v.1.18.9 allows a remote attacker to obtain sensitive information via a crafted string outside of the blacklist function."
+      },
+      {
+        "claim": "Remote attacker",
+        "quote": "allows a remote attacker to obtain sensitive information"
+      },
+      {
+        "claim": "Exfiltrate sensitive information",
+        "quote": "obtain sensitive information"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1940,
+    "output_tokens": 469,
+    "latency_s": null,
+    "batch": true
+  }
+}

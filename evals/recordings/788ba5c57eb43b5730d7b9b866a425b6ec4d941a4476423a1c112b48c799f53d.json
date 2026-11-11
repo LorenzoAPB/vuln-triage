@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Devolutions Server versions 2022.3.12 and earlier have improper access controls that could allow an authenticated user to access sensitive data without proper authorization.",
+    "affected_product": "Devolutions Server 2022.3.12 and earlier",
+    "cwe": "CWE-285",
+    "cwe_quote": "could allow an authenticated user to access sensitive data without proper authorization.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "I": {
+        "value": "L",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain full vendor advisory or proof-of-concept to confirm the exact objects and scope of data exposed, reproduction steps, and required attacker privileges so a precise CVSS score and mitigation can be issued.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and impact",
+        "quote": "Improper access controls on entries in Devolutions Server \n2022.3.12 and earlier could allow an authenticated user to access \nsensitive data without proper authorization."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1438,
+    "output_tokens": 453,
+    "latency_s": null,
+    "batch": true
+  }
+}

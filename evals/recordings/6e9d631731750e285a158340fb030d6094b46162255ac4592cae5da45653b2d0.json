@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A specially crafted PDF with an excessively large page size can trigger a divide-by-zero in Xpdf's text extraction code, found via fuzz testing.",
+    "affected_product": "Xpdf (unspecified versions)",
+    "cwe": "CWE-369",
+    "cwe_quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code."
+      }
+    },
+    "recommended_next_step": "Request from the reporter a) the affected Xpdf version(s) and b) a proof-of-concept file or reproduction steps; if reproducible, assign to the Xpdf engineering team to fix the divide-by-zero and add bounds checks for page size.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Cause and impact",
+        "quote": "An excessively large PDF page size (found in fuzz testing, unlikely in normal PDF files) can result in a divide-by-zero in Xpdf's text extraction code."
+      },
+      {
+        "claim": "Distinguishing detail from related CVE",
+        "quote": "This is related to CVE-2022-30524, but the problem here is caused by a very large page size, rather than by a very large character coordinate."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2028,
+    "output_tokens": 541,
+    "latency_s": null,
+    "batch": true
+  }
+}

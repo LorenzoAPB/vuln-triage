@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The message is a routine internal request from Compliance asking colleagues to upload audit evidence, update vendor list, and schedule an auditor walkthrough.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No security triage needed; file or close as non-security business communication. If this message was submitted by mistake as a vulnerability report, ask the reporter for technical details demonstrating a security flaw.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "This is a routine compliance request, not a vulnerability report",
+        "quote": "Hi, our annual SOC 2 audit starts on the 14th. Please upload last quarter's access review evidence and the updated vendor list to the shared audit folder by Friday, and block an hour next week for the auditor walkthrough. Thanks, Compliance"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2014,
+    "output_tokens": 386,
+    "latency_s": null,
+    "batch": true
+  }
+}

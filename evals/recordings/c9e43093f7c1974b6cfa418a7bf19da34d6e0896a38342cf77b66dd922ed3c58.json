@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The TIOCLINUX ioctl request allows a malicious snap to inject contents into the input of the controlling terminal, potentially executing arbitrary commands outside of the snap sandbox.",
+    "affected_product": "Snap packages on virtual consoles",
+    "cwe": "CWE-20",
+    "cwe_quote": "Improper Input Validation",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "This can only be exploited when snaps are run on a virtual console."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "a malicious snap could inject contents into the input of the controlling terminal."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the use of TIOCLINUX ioctl requests in snap packages and implement input validation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Improper Input Validation"
+      },
+      {
+        "claim": "Attack vector",
+        "quote": "This can only be exploited when snaps are run on a virtual console."
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1480,
+    "output_tokens": 293,
+    "latency_s": null,
+    "batch": true
+  }
+}

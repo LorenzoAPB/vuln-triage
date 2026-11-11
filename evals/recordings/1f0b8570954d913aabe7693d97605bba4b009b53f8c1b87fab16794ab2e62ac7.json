@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication.",
+    "affected_product": "MXsecurity versions prior to 1.0.1",
+    "cwe": "CWE-330",
+    "cwe_quote": "insufficient random values",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the random value generation mechanism in the web service authenticator.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-330",
+        "quote": "insufficient random values"
+      },
+      {
+        "claim": "AV:N",
+        "quote": "A remote attacker might access the system if the web service authenticator has insufficient random values."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1909,
+    "output_tokens": 236,
+    "latency_s": null,
+    "batch": true
+  }
+}

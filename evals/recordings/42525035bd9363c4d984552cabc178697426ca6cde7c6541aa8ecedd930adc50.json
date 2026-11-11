@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The reporter observed that a desktop client sometimes sends requests to an unknown address at startup and could not determine whether personal data was included.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sends requests to an address I do not recognize when it starts up."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "sends requests to an address I do not recognize when it starts up."
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the reporter provide the desktop client name/version and capture (or allow you to capture) a network trace of the startup activity. Analyze the destination hostname/IP, TLS certificate (if any), request URLs and payloads to determine whether personal data is transmitted or if the behavior is expected; reproduce locally and, if confirmed problematic, identify the code path and prepare a remediation or explanation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Observed unexpected network requests at startup",
+        "quote": "I noticed that your desktop client sometimes sends requests to an address I do not recognize when it starts up."
+      },
+      {
+        "claim": "Reporter unsure about presence of personal data",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included, but it seemed unusual, so I wanted to report it to your security team for review."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2221,
+    "output_tokens": 1022,
+    "latency_s": null,
+    "batch": true
+  }
+}

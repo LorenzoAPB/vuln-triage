@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Using the TIOCLINUX ioctl request, a malicious snap can inject contents into the input of the controlling virtual console, allowing arbitrary commands to be executed outside the snap sandbox after the snap exits.",
+    "affected_product": "snaps run on a virtual console",
+    "cwe": "CWE-78",
+    "cwe_quote": "a malicious snap could inject contents into the input of the controlling terminal which could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "this can only be exploited when snaps are run on a virtual console."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a malicious snap"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "outside of the snap sandbox"
+      },
+      "C": {
+        "value": "H",
+        "quote": "arbitrary commands to be executed outside of the snap sandbox"
+      },
+      "I": {
+        "value": "H",
+        "quote": "arbitrary commands to be executed outside of the snap sandbox"
+      },
+      "A": {
+        "value": "H",
+        "quote": "arbitrary commands to be executed outside of the snap sandbox"
+      }
+    },
+    "recommended_next_step": "Prevent untrusted snaps from using the TIOCLINUX ioctl on virtual consoles and validate/sanitize any input written to the controlling terminal; if possible, backport a patch or add a confinement policy to block this ioctl for snaps until fixed.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Attack vector limited to virtual consoles",
+        "quote": "this can only be exploited when snaps are run on a virtual console."
+      },
+      {
+        "claim": "Mechanism of attack (inject input into controlling terminal)",
+        "quote": "could inject contents into the input of the controlling terminal"
+      },
+      {
+        "claim": "Resulting impact (commands executed outside sandbox)",
+        "quote": "allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      {
+        "claim": "Attacker is a malicious snap",
+        "quote": "a malicious snap"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2066,
+    "output_tokens": 1248,
+    "latency_s": null,
+    "batch": true
+  }
+}

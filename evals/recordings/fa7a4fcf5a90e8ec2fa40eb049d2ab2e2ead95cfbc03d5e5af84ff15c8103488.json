@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A heap buffer overflow in ClamAV's HFS+ partition file parser in affected versions may allow a remote, unauthenticated attacker to execute arbitrary code or crash the scanning process by submitting a crafted HFS+ partition file.",
+    "affected_product": "ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier",
+    "cwe": "CWE-120",
+    "cwe_quote": "This vulnerability is due to a missing buffer size check that may result in a heap buffer overflow write.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "or else crash the process, resulting in a denial of service (DoS) condition."
+      }
+    },
+    "recommended_next_step": "Obtain and analyze the referenced ClamAV advisory/blog post, reproduce the issue against specified versions, and determine patched versions or mitigations; coordinate disclosure and prepare updates for affected packages.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "A vulnerability in the HFS+ partition file parser of ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier could allow an unauthenticated, remote attacker to execute arbitrary code."
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This vulnerability is due to a missing buffer size check that may result in a heap buffer overflow write."
+      },
+      {
+        "claim": "Attack vector example",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      {
+        "claim": "Impact - arbitrary code execution",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process"
+      },
+      {
+        "claim": "Impact - denial of service",
+        "quote": "or else crash the process, resulting in a denial of service (DoS) condition."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1598,
+    "output_tokens": 710,
+    "latency_s": null,
+    "batch": true
+  }
+}

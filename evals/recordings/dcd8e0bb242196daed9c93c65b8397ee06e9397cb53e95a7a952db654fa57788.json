@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An app may be able to read sensitive location information due to insufficient private data redaction in log entries; fixed in macOS Ventura 13.5.",
+    "affected_product": "macOS Ventura 13.5 (issue fixed in this release)",
+    "cwe": "CWE-200",
+    "cwe_quote": "An app may be able to read sensitive location information.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the vendor advisory or full security bulletin for details: how logs expose location (which log files/APIs), attacker privileges required, and reproduction steps so impact and scope can be confirmed.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Fix and affected release",
+        "quote": "This issue is fixed in macOS Ventura 13.5."
+      },
+      {
+        "claim": "Description of issue / impact",
+        "quote": "An app may be able to read sensitive location information."
+      },
+      {
+        "claim": "Private data redaction improvement",
+        "quote": "A privacy issue was addressed with improved private data redaction for log entries."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 470,
+    "latency_s": null,
+    "batch": true
+  }
+}

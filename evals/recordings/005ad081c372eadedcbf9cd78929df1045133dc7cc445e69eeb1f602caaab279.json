@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated path traversal in ArubaOS web management interface allows deletion of arbitrary files on the underlying OS.",
+    "affected_product": "unknown",
+    "cwe": "CWE-22",
+    "cwe_quote": "path traversal vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "web-based management interface"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Authenticated"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "ability to delete arbitrary files in the underlying operating system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "ability to delete arbitrary files in the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Obtain the ArubaOS versions affected and any available vendor fixes or mitigations; reproduce the issue to produce a patch or workaround to prevent traversal and unauthorized file deletions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and context",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      },
+      {
+        "claim": "Impact",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      {
+        "claim": "Authentication required",
+        "quote": "Authenticated"
+      },
+      {
+        "claim": "Interface",
+        "quote": "web-based management interface"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1437,
+    "output_tokens": 302,
+    "latency_s": null,
+    "batch": true
+  }
+}

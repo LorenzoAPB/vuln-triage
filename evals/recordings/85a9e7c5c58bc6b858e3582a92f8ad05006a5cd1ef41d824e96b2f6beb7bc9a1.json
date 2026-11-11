@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CONPROSYS HMI System (CHS) before 3.5.3 sets overly permissive ACLs on its installation folder, allowing local users on the PC to obtain wide privileges and potentially destroy the system or execute malicious programs.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-276",
+    "cwe_quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      },
+      "I": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      },
+      "A": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      }
+    },
+    "recommended_next_step": "Request vendor confirmation of affected versions and detailed attack prerequisites; obtain proof-of-concept or reproduction steps showing required local access and the exact privileges granted by the misconfigured ACL.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "ACL misconfigured allowing wide privileges to local user",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      {
+        "claim": "Versions affected",
+        "quote": "CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Potential impact: destroy system or execute malicious program",
+        "quote": "As a result, the user may be able to destroy the system and/or execute a malicious program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1956,
+    "output_tokens": 617,
+    "latency_s": null,
+    "batch": true
+  }
+}

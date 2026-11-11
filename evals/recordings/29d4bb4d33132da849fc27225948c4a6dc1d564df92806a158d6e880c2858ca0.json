@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "affected_product": "NETGEAR R6400v2 before version 1.0.4.118",
+    "cwe": "CWE-787",
+    "cwe_quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Investigate and patch affected versions of NETGEAR R6400v2.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Attack vector allows remote unauthenticated access.",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      {
+        "claim": "Impact includes arbitrary code execution.",
+        "quote": "execute arbitrary code"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2008,
+    "output_tokens": 308,
+    "latency_s": null,
+    "batch": true
+  }
+}

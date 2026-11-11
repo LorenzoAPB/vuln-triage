@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Fullworks Quick Event Manager WordPress plugin (<= 9.7.4) contains a Cross-Site Request Forgery (CSRF) vulnerability that affects all registration actions including delete, delete all, edit, and update.",
+    "affected_product": "Fullworks Quick Event Manager plugin <= 9.7.4",
+    "cwe": "CWE-352",
+    "cwe_quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4 affecting all registration actions (delete, delete all, edit, update).",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4 affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "I": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "A": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      }
+    },
+    "recommended_next_step": "Request exploitability details and required privileges: ask whether the actions can be triggered by an unauthenticated attacker, which user roles can perform the affected registration actions, and request PoC or request/response examples for the vulnerable endpoints.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected plugin versions",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4"
+      },
+      {
+        "claim": "Actions affected",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 595,
+    "latency_s": null,
+    "batch": true
+  }
+}

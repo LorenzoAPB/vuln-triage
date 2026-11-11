@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In PHP versions 8.0.x <8.0.28, 8.1.x <8.1.16, and 8.2.x <8.2.3, password_verify() may accept certain invalid Blowfish hashes as valid, potentially allowing any password to authenticate for such stored entries.",
+    "affected_product": "PHP 8.0.x before 8.0.28; PHP 8.1.x before 8.1.16; PHP 8.2.x before 8.2.3",
+    "cwe": "CWE-307",
+    "cwe_quote": "password_verify() function may accept some invalid Blowfish hashes as valid.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "If such invalid hash ever ends up in the password database, it may lead to an application allowing any password for this entry as valid."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "it may lead to an application allowing any password for this entry as valid."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify whether any password database entries contain invalid Blowfish hashes (e.g., malformed $2y$... entries). If present, rotate affected passwords and require resets; upgrade PHP to a fixed version (8.0.28, 8.1.16, or 8.2.3 or later).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "password_verify() function may accept some invalid Blowfish hashes as valid."
+      },
+      {
+        "claim": "Impact if invalid hash stored",
+        "quote": "If such invalid hash ever ends up in the password database, it may lead to an application allowing any password for this entry as valid."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "In PHP 8.0.X before 8.0.28, 8.1.X before 8.1.16 and 8.2.X before 8.2.3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1485,
+    "output_tokens": 609,
+    "latency_s": null,
+    "batch": true
+  }
+}

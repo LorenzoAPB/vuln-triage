@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The text is a product release note listing UI and feature updates (dark mode, CSV timezone, faster search, optional onboarding tour).",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No security triage required; monitor release notes for any future reports describing vulnerabilities.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "This text is release notes not a vulnerability report",
+        "quote": "Release notes, version 4.2: added dark mode to the dashboard, the CSV export now includes time zones, search results load about twice as fast, and the onboarding tour can be skipped."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1454,
+    "output_tokens": 243,
+    "latency_s": null,
+    "batch": true
+  }
+}

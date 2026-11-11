@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "GitLab projects API pagination can be skipped in multiple versions, potentially allowing a denial of service on some instances.",
+    "affected_product": "GitLab: all versions starting from 15.2 before 16.1.5; all versions starting from 16.2 before 16.2.5; all versions starting from 16.3 before 16.3.1",
+    "cwe": "CWE-400",
+    "cwe_quote": "the projects API pagination can be skipped, potentially leading to DoS on certain instances.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "the projects API pagination can be skipped, potentially leading to DoS on certain instances."
+      }
+    },
+    "recommended_next_step": "Advise updating affected GitLab instances to the fixed versions listed (>=16.1.5 for 15.2+, >=16.2.5 for 16.2+, >=16.3.1 for 16.3+) or apply the vendor patch; notify administrators to apply the update and monitor API usage for abnormal request patterns.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 15.2 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1"
+      },
+      {
+        "claim": "Vulnerability description and impact",
+        "quote": "the projects API pagination can be skipped, potentially leading to DoS on certain instances."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1478,
+    "output_tokens": 1043,
+    "latency_s": null,
+    "batch": true
+  }
+}

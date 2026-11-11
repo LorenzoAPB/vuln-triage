@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper Authentication vulnerability in ABB Symphony Plus S+ Operations affecting listed versions.",
+    "affected_product": "Symphony Plus S+ Operations: from 2.X through 2.1 SP2, 2.2, from 3.X through 3.3 SP1, 3.3 SP2",
+    "cwe": "CWE-287",
+    "cwe_quote": "Improper Authentication vulnerability in ABB Symphony Plus S+ Operations.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Improper Authentication vulnerability in ABB Symphony Plus S+ Operations."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request technical details from the reporter or vendor: authentication bypass conditions, attack vector (network/local), required attacker privileges, and impact on confidentiality, integrity, and availability; obtain proof-of-concept or reproduction steps and affected component configuration.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability",
+        "quote": "Improper Authentication vulnerability in ABB Symphony Plus S+ Operations."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "This issue affects Symphony Plus S+ Operations: from 2.X through 2.1 SP2, 2.2, from 3.X through 3.3 SP1, 3.3 SP2."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1459,
+    "output_tokens": 467,
+    "latency_s": null,
+    "batch": true
+  }
+}

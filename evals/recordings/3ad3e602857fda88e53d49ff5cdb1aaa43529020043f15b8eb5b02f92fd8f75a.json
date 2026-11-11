@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Prior to version 1.18.7, DataEase contains a deserialization vulnerability in the datasource component that can be exploited to execute arbitrary code; fixed in v1.18.7. No workarounds besides upgrading are available.",
+    "affected_product": "DataEase prior to 1.18.7",
+    "cwe": "CWE-502",
+    "cwe_quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      "I": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      "A": {
+        "value": "H",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      }
+    },
+    "recommended_next_step": "Request or review a minimal public proof-of-concept and exact vulnerable code path (file and function) to confirm the attack vector and whether authentication is required; if confirmed, publish advisory with CVE and mitigation (upgrade to v1.18.7).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Deserialization vulnerability allowing code execution",
+        "quote": "a deserialization vulnerability exists in the DataEase datasource, which can be exploited to execute arbitrary code."
+      },
+      {
+        "claim": "Fixed version",
+        "quote": "The vulnerability has been fixed in v1.18.7."
+      },
+      {
+        "claim": "No workaround",
+        "quote": "There are no known workarounds aside from upgrading."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2021,
+    "output_tokens": 556,
+    "latency_s": null,
+    "batch": true
+  }
+}

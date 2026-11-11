@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16 contains a memory leak in the broker that can be triggered remotely when a client sends many QoS 2 messages with duplicate message IDs and fails to respond to PUBREC, due to mishandling of EAGAIN from the libc send function.",
+    "affected_product": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16",
+    "cwe": "CWE-401",
+    "cwe_quote": "has a memory leak",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be abused remotely"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "can be abused remotely"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "has a memory leak"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce against the stated versions by sending many QoS 2 messages with duplicate message IDs and not responding to PUBREC to observe memory growth; if confirmed, identify and patch the code path that mishandles EAGAIN from send(2). Coordinate disclosure and recommend updating to 2.0.16 or later once fixed.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerable product and versions",
+        "quote": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16"
+      },
+      {
+        "claim": "type of flaw",
+        "quote": "has a memory leak"
+      },
+      {
+        "claim": "trigger conditions",
+        "quote": "when a client sends many QoS 2 messages with duplicate message IDs, and fails to respond to PUBREC commands"
+      },
+      {
+        "claim": "remote exploitability",
+        "quote": "can be abused remotely"
+      },
+      {
+        "claim": "root cause",
+        "quote": "mishandling of EAGAIN from the libc send function"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1477,
+    "output_tokens": 1256,
+    "latency_s": null,
+    "batch": true
+  }
+}

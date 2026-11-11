@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private.",
+    "affected_product": "GitHub Enterprise Server versions prior to 3.10.0",
+    "cwe": "CWE-276",
+    "cwe_quote": "The vulnerability allowed a fork to retain read access to an upstream repository after its visibility was changed to private.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The vulnerability allowed a fork to retain read access to an upstream repository."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "The vulnerability allowed a fork to retain read access to an upstream repository."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review and apply the latest patches for GitHub Enterprise Server.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability allowed a fork to retain read access to an upstream repository after its visibility was changed to private.",
+        "quote": "An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after its visibility was changed to private."
+      },
+      {
+        "claim": "This vulnerability affected all versions of GitHub Enterprise Server prior to 3.10.0.",
+        "quote": "This vulnerability affected all versions of GitHub Enterprise Server prior to 3.10.0 and was fixed in versions 3.9.4, 3.8.9, 3.7.16 and 3.6.18."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1503,
+    "output_tokens": 366,
+    "latency_s": null,
+    "batch": true
+  }
+}

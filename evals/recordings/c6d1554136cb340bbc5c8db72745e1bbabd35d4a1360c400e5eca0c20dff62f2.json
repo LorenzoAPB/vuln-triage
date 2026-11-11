@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An improper privilege management vulnerability in PhoneStatusBarPolicy in System UI prior to SMR Mar-2023 Release 1 allows an attacker to turn off Do Not Disturb via an unprotected intent.",
+    "affected_product": "System UI (PhoneStatusBarPolicy), versions prior to SMR Mar-2023 Release 1",
+    "cwe": "CWE-284",
+    "cwe_quote": "allows attacker to turn off Do not disturb via unprotected intent.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      }
+    },
+    "recommended_next_step": "Obtain the full vendor advisory or patch notes, reproduce with an unprivileged app sending the intent to PhoneStatusBarPolicy, and verify intent protection and required permission checks are enforced. If confirmed, assign CWE-284 and prepare coordinated patch guidance to require proper permission enforcement.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Improper privilege management vulnerability in PhoneStatusBarPolicy in System UI prior to SMR Mar-2023 Release 1 allows attacker to turn off Do not disturb via unprotected intent."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 482,
+    "latency_s": null,
+    "batch": true
+  }
+}

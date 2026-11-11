@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In GitLab EE versions 16.1 before 16.1.5, 16.2 before 16.2.5, and 16.3 before 16.3.1, an external user granted Owner role on a group can create a service account in that group which is not classified as external and can access internal projects, allowing privilege escalation.",
+    "affected_product": "GitLab EE 16.1 < 16.1.5, 16.2 < 16.2.5, 16.3 < 16.3.1",
+    "cwe": "CWE-269",
+    "cwe_quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "C": {
+        "value": "L",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "I": {
+        "value": "L",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm repro steps and scope: reproduce creating a service account by an external Owner, enumerate accessible internal projects, and collect exact permissions. Prepare patch or configuration mitigation to ensure service accounts inherit 'external' classification or restrict Owner role assignment to external users.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions and ranges",
+        "quote": "An issue has been discovered in GitLab EE affecting all versions starting from 16.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1."
+      },
+      {
+        "claim": "External user with Owner role can escalate by creating service account",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      {
+        "claim": "Service account is not classified as external and can access internal projects",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1510,
+    "output_tokens": 735,
+    "latency_s": null,
+    "batch": true
+  }
+}

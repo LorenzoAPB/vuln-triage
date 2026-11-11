@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An information disclosure issue in GitLab EE affecting all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1 allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination.",
+    "affected_product": "GitLab EE versions 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "Information Exposure",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allowed other Group Owners to see the Public Key"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Owners can now only write the key, not read it."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review and apply the latest GitLab EE updates to mitigate the issue.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Information Exposure",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      {
+        "claim": "Privileges Required",
+        "quote": "Owners can now only write the key, not read it."
+      },
+      {
+        "claim": "Attack Vector",
+        "quote": "allowed other Group Owners to see the Public Key"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1477,
+    "output_tokens": 325,
+    "latency_s": null,
+    "batch": true
+  }
+}

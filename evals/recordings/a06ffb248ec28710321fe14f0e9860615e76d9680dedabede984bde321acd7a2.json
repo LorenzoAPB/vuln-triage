@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An improper certificate validation vulnerability (CWE-295) in FortiManager, FortiAnalyzer, FortiOS, and FortiSandbox may allow a network-adjacent, unauthenticated attacker to man-in-the-middle communications between the listed products and some external peers.",
+    "affected_product": "FortiManager 7.0.1 and below, 6.4.6 and below; FortiAnalyzer 7.0.2 and below, 6.4.7 and below; FortiOS 6.2.x and 6.0.x; FortiSandbox 4.0.x, 3.2.x and 3.1.x",
+    "cwe": "CWE-295",
+    "cwe_quote": "An improper certificate validation vulnerability [CWE-295]",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "network adjacent and unauthenticated attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "network adjacent and unauthenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "may allow a network adjacent and unauthenticated attacker to man-in-the-middle the communication between the listed products and some external peers."
+      },
+      "I": {
+        "value": "H",
+        "quote": "may allow a network adjacent and unauthenticated attacker to man-in-the-middle the communication between the listed products and some external peers."
+      },
+      "A": {
+        "value": "L",
+        "quote": "may allow a network adjacent and unauthenticated attacker to man-in-the-middle the communication between the listed products and some external peers."
+      }
+    },
+    "recommended_next_step": "Confirm the vendor advisory, identify patched versions, and apply updates or mitigations to affected systems; if patching is not immediately possible, block or restrict the affected outbound connections to the external peers until validation is enforced.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the weakness and CWE",
+        "quote": "An improper certificate validation vulnerability [CWE-295]"
+      },
+      {
+        "claim": "Affected products and versions",
+        "quote": "FortiManager 7.0.1 and below, 6.4.6 and below; FortiAnalyzer 7.0.2 and below, 6.4.7 and below; FortiOS 6.2.x and 6.0.x; FortiSandbox 4.0.x, 3.2.x and 3.1.x"
+      },
+      {
+        "claim": "Attacker location and authentication",
+        "quote": "network adjacent and unauthenticated attacker"
+      },
+      {
+        "claim": "Impact (man-in-the-middle)",
+        "quote": "may allow a network adjacent and unauthenticated attacker to man-in-the-middle the communication between the listed products and some external peers."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1520,
+    "output_tokens": 1747,
+    "latency_s": null,
+    "batch": true
+  }
+}

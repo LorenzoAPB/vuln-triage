@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "IBM Financial Transaction Manager 3.2.0 through 3.2.7 allows a remote attacker to use directory traversal via specially-crafted URL requests containing '/../' to view arbitrary files on the system.",
+    "affected_product": "IBM Financial Transaction Manager 3.2.0 through 3.2.7",
+    "cwe": "CWE-22",
+    "cwe_quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory or IBM X-Force record for 192953 to confirm affected components, reproduction steps, and vendor mitigation or patch; if confirmed, block or filter traversal sequences at webserver/proxy and apply vendor patches.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Directory traversal allows viewing arbitrary files",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      {
+        "claim": "Remote attacker and affected versions",
+        "quote": "IBM Financial Transaction Manager 3.2.0 through 3.2.7 could allow a remote attacker to traverse directories on the system."
+      },
+      {
+        "claim": "IBM X-Force identifier",
+        "quote": "IBM X-Force ID: 192953."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1468,
+    "output_tokens": 556,
+    "latency_s": null,
+    "batch": true
+  }
+}

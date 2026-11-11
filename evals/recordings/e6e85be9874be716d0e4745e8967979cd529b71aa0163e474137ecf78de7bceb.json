@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature.",
+    "affected_product": "Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior.",
+    "cwe": "CWE-121",
+    "cwe_quote": "Buffer Overflow",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "via the Controller diagnostic web interface upload feature."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "vulnerable to a buffer overflow"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch affected versions of Controller 6000.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Buffer Overflow"
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "vulnerable to a buffer overflow"
+      },
+      {
+        "claim": "Affected product versions",
+        "quote": "Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1489,
+    "output_tokens": 329,
+    "latency_s": null,
+    "batch": true
+  }
+}

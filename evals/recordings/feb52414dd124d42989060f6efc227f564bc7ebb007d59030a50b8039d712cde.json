@@ -1,0 +1,52 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The message is a request for compliance-related tasks ahead of an audit.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Upload last quarter's access review evidence and the updated vendor list to the shared audit folder by Friday.",
+    "confidence": "low",
+    "evidence_quotes": []
+  },
+  "usage": {
+    "input_tokens": 1455,
+    "output_tokens": 156,
+    "latency_s": null,
+    "batch": true
+  }
+}

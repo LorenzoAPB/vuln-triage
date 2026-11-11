@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Eclipse Mosquitto versions 1.3.2 through 2.x before 2.0.16 have a memory leak that can be exploited remotely due to mishandling of EAGAIN from the libc send function when clients send many QoS 2 messages with duplicate message IDs.",
+    "affected_product": "Eclipse Mosquitto 1.3.2 through 2.x before 2.0.16",
+    "cwe": "CWE-401",
+    "cwe_quote": "Memory Leak",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "has a memory leak"
+      }
+    },
+    "recommended_next_step": "Investigate and patch the memory leak in affected versions of Eclipse Mosquitto.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Memory Leak"
+      },
+      {
+        "claim": "Remote exploitation",
+        "quote": "can be abused remotely when a client sends many QoS 2 messages with duplicate message IDs"
+      },
+      {
+        "claim": "Impact on availability",
+        "quote": "has a memory leak"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1479,
+    "output_tokens": 297,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The submission is an unverified tip with no technical details or testing\u2014claims that 'servers might be vulnerable' based on secondhand hearsay.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request technical details (vulnerable product, versions, PoC or indicators) from the reporter; if none are available, perform an internal review: inventory exposed servers, ensure patching/up-to-date, check logs/IDS for related alerts, and monitor threat intelligence for the named \"new attacks\".",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Report contains no technical details or testing",
+        "quote": "I do not have technical details and I have not tested anything myself, but I wanted to let you know in case it is important so you can check your systems before something happens."
+      },
+      {
+        "claim": "Report is secondhand hearsay",
+        "quote": "a friend who works in IT told me that your company's servers might be vulnerable to the new attacks that are in the news this month."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1472,
+    "output_tokens": 441,
+    "latency_s": null,
+    "batch": true
+  }
+}

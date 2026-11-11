@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter observed the desktop client occasionally sending network requests to an unfamiliar address at startup and could not determine whether personal data was included.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sends requests to an address I do not recognize when it starts up"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "I": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request from the reporter: (1) the desktop client name and exact version, (2) the unfamiliar destination address (hostname/IP) and any observed request details (URL, headers, timing), and (3) a packet capture or logs showing the request; then analyze the traffic to determine whether any personal data is transmitted and whether the behavior is expected.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Client makes network requests to an unfamiliar address at startup",
+        "quote": "sends requests to an address I do not recognize when it starts up"
+      },
+      {
+        "claim": "Reporter could not determine if personal data was included",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1462,
+    "output_tokens": 474,
+    "latency_s": null,
+    "batch": true
+  }
+}

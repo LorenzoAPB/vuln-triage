@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "IBM TXSeries for Multiplatforms and CICS TX products could transmit sensitive information in query parameters that could be intercepted via man-in-the-middle techniques.",
+    "affected_product": "IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "could transmit sensitive information in query parameters that could be intercepted using man in the middle techniques.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "could transmit sensitive information in query parameters that could be intercepted using man in the middle techniques."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "could transmit sensitive information in query parameters that could be intercepted using man in the middle techniques."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction details and network traces from reporter; ask vendor to confirm whether sensitive data is placed in URL query parameters and whether TLS is enforced for the affected components; coordinate disclosure and request a patch or configuration guidance to avoid transmitting sensitive data in URLs and ensure TLS with proper certificate validation.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "could transmit sensitive information in query parameters that could be intercepted using man in the middle techniques."
+      },
+      {
+        "claim": "Affected products and versions",
+        "quote": "IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1"
+      },
+      {
+        "claim": "External tracking ID",
+        "quote": "IBM X-Force ID:  257105."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1480,
+    "output_tokens": 1102,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability was found in the pthread_create() function in libcap that may allow a malicious actor to exhaust the process memory.",
+    "affected_product": "libcap",
+    "cwe": "CWE-400",
+    "cwe_quote": "The issue may allow a malicious actor to use cause __real_pthread_create() to return an error, which can exhaust the process memory.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "which can exhaust the process memory."
+      }
+    },
+    "recommended_next_step": "Investigate the memory management in pthread_create() to mitigate exhaustion risks.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE identification",
+        "quote": "A vulnerability was found in the pthread_create() function in libcap."
+      },
+      {
+        "claim": "Impact description",
+        "quote": "which can exhaust the process memory."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1447,
+    "output_tokens": 238,
+    "latency_s": null,
+    "batch": true
+  }
+}

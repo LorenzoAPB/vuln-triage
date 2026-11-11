@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Integer Overflow vulnerability in RELIC allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function.",
+    "affected_product": "RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab",
+    "cwe": "CWE-190",
+    "cwe_quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to execute arbitrary code"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "cause a denial of service"
+      }
+    },
+    "recommended_next_step": "Investigate the vulnerability and apply the necessary patches or updates to the affected product.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Integer Overflow vulnerability in RELIC before commit 34580d840469361ba9b5f001361cad659687b9ab, allows attackers to execute arbitrary code, cause a denial of service, and escalate privileges when calling realloc function in bn_grow function."
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "allows attackers to execute arbitrary code"
+      },
+      {
+        "claim": "Impact on availability",
+        "quote": "cause a denial of service"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1981,
+    "output_tokens": 380,
+    "latency_s": null,
+    "batch": true
+  }
+}
