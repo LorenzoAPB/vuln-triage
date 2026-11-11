@@ -2,6 +2,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from vuln_triage.retrieval import Index
 from vuln_triage.schema import ModelTriage
 
 REPORT = (
@@ -74,3 +75,25 @@ def fake_openai(monkeypatch):
     fake = FakeOpenAI(proposal())
     monkeypatch.setattr("vuln_triage.triage.OpenAI", fake)
     return fake
+
+
+POOL = [
+    {
+        "id": "CVE-0000-0001",
+        "text": "Reflected cross-site scripting in the search page.",
+        "cwe": "CWE-79",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+    },
+    {
+        "id": "CVE-0000-0002",
+        "text": "Buffer overflow in the TIFF parser causes a crash.",
+        "cwe": "CWE-787",
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+    },
+]
+
+
+@pytest.fixture(autouse=True)
+def tiny_pool(monkeypatch):
+    """Tests never load the real retrieval pool."""
+    monkeypatch.setattr("vuln_triage.retrieval.pool_index", lambda: Index(POOL))

@@ -39,7 +39,10 @@ def _cap(conf: Confidence, cap: Confidence) -> Confidence:
     return order[min(order.index(conf), order.index(cap))]
 
 
-def finalize(proposal: ModelTriage, report: str) -> TriageResult:
+def finalize(proposal: ModelTriage, report: str, publish_inferred: bool = True) -> TriageResult:
+    """publish_inferred=False is the v3 rule: withhold a vector with more than MAX_GUESSED_METRICS
+    inferred metrics. True (v4) publishes it as provisional, with the inferred metrics listed,
+    because an analyst reviews every draft anyway. Thin reports are withheld either way."""
     if not proposal.is_vulnerability_report:
         return TriageResult(
             is_vulnerability_report=False,
@@ -88,10 +91,11 @@ def finalize(proposal: ModelTriage, report: str) -> TriageResult:
     ]
     vector = proposed_vector(proposal)
     if len(guessed) > MAX_GUESSED_METRICS:
-        flags.append("cvss_mostly_guessed")
+        flags.append("cvss_provisional" if publish_inferred else "cvss_mostly_guessed")
         confidence = "low"
-        vector = "unknown"
-    elif thin:  # a two-line report cannot support eight metrics, whatever the quotes say
+        if not publish_inferred:
+            vector = "unknown"
+    if thin:  # a two-line report cannot support eight metrics, whatever the quotes say
         vector = "unknown"
     elif guessed:
         confidence = _cap(confidence, "medium")

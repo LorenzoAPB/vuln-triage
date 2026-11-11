@@ -12,7 +12,7 @@ from cvss.exceptions import CVSS3MalformedError
 
 from vuln_triage.guardrails import finalize, proposed_vector, score_vector
 from vuln_triage.schema import ModelTriage, TriageResult
-from vuln_triage.triage import MODEL, TriageError, call_model
+from vuln_triage.triage import MODEL, PROMPT_VERSION, PROMPTS, TriageError, call_model
 
 LOG_PATH = Path("logs/triage.jsonl")
 SEVERITIES = ["Critical", "High", "Medium", "Low", "None"]
@@ -20,7 +20,9 @@ EDITABLE = {"cwe": "cwe", "vector": "cvss_v31_vector", "severity": "severity", "
 
 
 def render(result: TriageResult, proposal: ModelTriage) -> str:
-    if result.cvss_score is not None:
+    if result.cvss_score is not None and "cvss_provisional" in result.flags:
+        cvss = f"{result.cvss_v31_vector}  ->  {result.cvss_score} {result.severity} (provisional: mostly inferred)"
+    elif result.cvss_score is not None:
         cvss = f"{result.cvss_v31_vector}  ->  {result.cvss_score} {result.severity}"
     elif result.is_vulnerability_report:
         cvss = f"withheld, not enough evidence (model guess: {proposed_vector(proposal)})"
@@ -32,7 +34,7 @@ def render(result: TriageResult, proposal: ModelTriage) -> str:
         f"Product     {result.affected_product}",
         f"CWE         {result.cwe}",
         f"CVSS 3.1    {cvss}",
-        f"No evidence {', '.join(result.guessed_metrics) or '-'}",
+        f"Inferred    {', '.join(result.guessed_metrics) or '-'}",
         f"Confidence  {result.confidence}",
         f"Flags       {', '.join(result.flags) or '-'}",
         f"Next step   {result.recommended_next_step}",
@@ -107,6 +109,9 @@ def main(argv: list[str] | None = None) -> int:
     triage_cmd = commands.add_parser("triage", help="Draft a triage for one report and review it.")
     triage_cmd.add_argument("file", type=Path, help="Text file containing the vulnerability report.")
     triage_cmd.add_argument("--model", default=MODEL, help=f"OpenAI model (default: {MODEL}).")
+    triage_cmd.add_argument(
+        "--prompt", choices=PROMPTS, default=PROMPT_VERSION, help=f"Prompt version (default: {PROMPT_VERSION})."
+    )
     triage_cmd.add_argument("--out", type=Path, help="Write the approved result here as JSON.")
     args = parser.parse_args(argv)
 
@@ -116,15 +121,17 @@ def main(argv: list[str] | None = None) -> int:
         "file": str(args.file),
         "report_sha256": hashlib.sha256(report.encode()).hexdigest(),
         "model": args.model,
+        "prompt": args.prompt,
     }
     try:
-        proposal, usage = call_model(report, args.model)
+        proposal, usage = call_model(report, args.model, prompt=PROMPTS[args.prompt])
     except TriageError as e:
         log_event({**base, "event": "parse_failure", "error": str(e)})
         print(f"error: model output rejected: {e}", file=sys.stderr)
         return 2
 
-    draft = finalize(proposal, report)
+    draft = finalize(proposal, report, PROMPTS[args.prompt].publish_inferred)
+    print(f"Model       {args.model}, prompt {args.prompt}" + (" (cached response)" if usage.cached else ""))
     print(render(draft, proposal))
     try:
         decision, final, reason = review(draft, proposal)

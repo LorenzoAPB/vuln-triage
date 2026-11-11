@@ -35,6 +35,7 @@ def table(before_path: str, after_path: str) -> str:
     add("Noise recall", lambda m: m["report_detection"]["noise"]["recall"])
     add("Severity published (coverage)", lambda m: m["severity"]["coverage"])
     add("Severity accuracy when published", lambda m: m["severity"]["accuracy_when_published"])
+    add("Severity correct, all NVD items (withheld = miss)", lambda m: m["severity"]["accuracy_all"])
     add("Severity accuracy, raw vector", lambda m: m["severity"]["raw_accuracy"])
     add(
         "Raw vectors over-scored / under-scored",

@@ -16,7 +16,7 @@ from pathlib import Path
 
 from evals.metrics import SEVERITIES, confusion, cwe_related, metric_agreement, precision_recall
 from vuln_triage.guardrails import METRIC_ORDER, finalize, proposed_vector, score_vector
-from vuln_triage.triage import MODEL, PROMPT_VERSION, TriageError, call_model
+from vuln_triage.triage import MODEL, PROMPT_VERSION, PROMPTS, Prompt, TriageError, call_model
 
 HERE = Path(__file__).parent
 RECORDINGS = HERE / "recordings"
@@ -25,14 +25,14 @@ RESULTS = {"test": "results", "dev": "dev_results"}  # file stem per split
 CWE_PARENTS = json.loads((HERE / "cwe_parents.json").read_text())["parents"]
 
 
-def run_item(item: dict, model: str, offline: bool) -> tuple[dict, bool]:
+def run_item(item: dict, model: str, offline: bool, prompt: Prompt) -> tuple[dict, bool]:
     """One eval row, and whether it took a live API call (failures are never cached)."""
     row = {k: item.get(k) for k in ["id", "kind", "is_report", "severity", "cwe", "cwe_all", "vector"]}
     try:
-        proposal, usage = call_model(item["text"], model, RECORDINGS, offline)
+        proposal, usage = call_model(item["text"], model, RECORDINGS, offline, prompt)
     except TriageError as e:
         return {**row, "parse_failure": str(e)}, True
-    result = finalize(proposal, item["text"])
+    result = finalize(proposal, item["text"], prompt.publish_inferred)
     raw_vector = proposed_vector(proposal)
     return {
         **row,
@@ -75,7 +75,7 @@ def compute(rows: list[dict], model: str) -> dict:
     scored = [r for r in nvd if r["raw_severity"] != "unknown"]
     score_diffs = [score_vector(r["raw_vector"])[0] - score_vector(r["vector"])[0] for r in scored]
     usages = [r["usage"] for r in ok]
-    latencies = [u["latency_s"] for u in usages]
+    latencies = [u["latency_s"] for u in usages if u["latency_s"] is not None]  # None: Batch API
 
     return {
         "model": model,
@@ -94,6 +94,7 @@ def compute(rows: list[dict], model: str) -> dict:
             "accuracy_when_published": sum(r["pred_severity"] == r["severity"] for r in published) / len(published)
             if published
             else None,
+            "accuracy_all": sum(r["pred_severity"] == r["severity"] for r in nvd) / len(nvd),  # withheld = miss
             "raw_accuracy": sum(r["raw_severity"] == r["severity"] for r in nvd) / len(nvd),
             "raw_confusion": confusion(gold_sev, [r["raw_severity"] for r in nvd]),
             "raw_over_scored": sum(rank(r["raw_severity"]) > rank(r["severity"]) for r in nvd),
@@ -130,9 +131,9 @@ def compute(rows: list[dict], model: str) -> dict:
             "input_tokens": sum(u["input_tokens"] for u in usages),
             "output_tokens": sum(u["output_tokens"] for u in usages),
             "usd": round(sum(u["cost_usd"] for u in usages), 4),
-            "latency_s_mean": round(statistics.mean(latencies), 2),
-            "latency_s_p50": round(statistics.median(latencies), 2),
-            "latency_s_max": round(max(latencies), 2),
+            "latency_s_mean": round(statistics.mean(latencies), 2) if latencies else None,
+            "latency_s_p50": round(statistics.median(latencies), 2) if latencies else None,
+            "latency_s_max": round(max(latencies), 2) if latencies else None,
         },
     }
 
@@ -160,9 +161,10 @@ def to_markdown(m: dict, rows: list[dict], split: str, prompt: str) -> str:
         "",
         f"## Severity ({sev['n']} NVD items)",
         "",
-        f"A severity is only published when the CVSS vector passes the guardrails. "
+        f"A severity is published unless the guardrails withhold the vector. "
         f"Published for {pct(sev['coverage'])} of items; accuracy when published: "
-        f"{pct(sev['accuracy_when_published'])}. "
+        f"{pct(sev['accuracy_when_published'])}; correct over all NVD items (withheld counts as a miss): "
+        f"{pct(sev['accuracy_all'])}. "
         f"Accuracy of the model's raw vector with no guardrails: {pct(sev['raw_accuracy'])} "
         f"({sev['raw_over_scored']} over-scored, {sev['raw_under_scored']} under-scored); "
         f"on the withheld items alone: {pct(sev['raw_accuracy_when_withheld'])}. "
@@ -214,11 +216,16 @@ def to_markdown(m: dict, rows: list[dict], split: str, prompt: str) -> str:
         f"{m['thin_and_vague']['low_confidence']} low confidence, "
         f"{m['thin_and_vague']['vector_withheld']} with the CVSS vector withheld.",
         "",
-        "## Cost and latency (recorded from the live run)",
+        "## Cost and latency (recorded when the responses were generated)",
         "",
         f"{m['cost']['input_tokens']:,} input + {m['cost']['output_tokens']:,} output tokens, "
-        f"about ${m['cost']['usd']:.4f}. Latency per call: mean {m['cost']['latency_s_mean']} s, "
-        f"median {m['cost']['latency_s_p50']} s, max {m['cost']['latency_s_max']} s.",
+        f"about ${m['cost']['usd']:.4f}. "
+        + (
+            f"Latency per call: mean {m['cost']['latency_s_mean']} s, median {m['cost']['latency_s_p50']} s, "
+            f"max {m['cost']['latency_s_max']} s."
+            if m["cost"]["latency_s_mean"] is not None
+            else "Run through the Batch API (half price, no per-call latency)."
+        ),
         "",
         "## Per item",
         "",
@@ -241,36 +248,36 @@ def main() -> int:
     parser.add_argument("--offline", action="store_true", help="Never call the API; fail on unrecorded items.")
     parser.add_argument("--check", action="store_true", help="Fail if metrics differ from the committed results.")
     parser.add_argument("--model", default=MODEL, help="Ignored with --check, which uses the committed results' model.")
+    parser.add_argument("--prompt", choices=PROMPTS, default=PROMPT_VERSION, help="Ignored with --check.")
     parser.add_argument("--rpm", type=float, default=10, help="Max live API calls per minute (default 10).")
     args = parser.parse_args()
 
     results_json, results_md = HERE / f"{RESULTS[args.split]}.json", HERE / f"{RESULTS[args.split]}.md"
-    committed = json.loads(results_json.read_text())["metrics"] if args.check else None
+    committed_file = json.loads(results_json.read_text()) if args.check else None
+    committed = committed_file["metrics"] if committed_file else None
     model = committed["model"] if committed else args.model
+    prompt = PROMPTS[committed_file["prompt"]] if committed_file else PROMPTS[args.prompt]
 
     items = [json.loads(line) for line in (HERE / f"{args.split}.jsonl").read_text().splitlines() if line]
     rows, live = [], 0
     for item in items:
-        row, was_live = run_item(item, model, args.offline)
+        row, was_live = run_item(item, model, args.offline, prompt)
         rows.append(row)
         if was_live:
             live += 1
             time.sleep(60 / args.rpm)  # stay under the account's requests-per-minute limit
     metrics = compute(rows, model)
-    print(f"{args.split}: {len(rows)} items on {model}, {live} live API calls this run", file=sys.stderr)
+    print(f"{args.split}: {len(rows)} items on {model}, prompt {prompt.version}, {live} live calls", file=sys.stderr)
 
     if committed:
-        if json.loads(results_json.read_text()).get("prompt") != PROMPT_VERSION:
-            print(f"{results_json} is labeled with a different prompt version than {PROMPT_VERSION}", file=sys.stderr)
-            return 1
         if committed != json.loads(json.dumps(metrics)):
             print(f"metrics differ from {results_json}", file=sys.stderr)
             return 1
         print(f"metrics match {results_json}", file=sys.stderr)
         return 0
 
-    results_json.write_text(json.dumps({"prompt": PROMPT_VERSION, "metrics": metrics, "rows": rows}, indent=2) + "\n")
-    results_md.write_text(to_markdown(metrics, rows, args.split, PROMPT_VERSION))
+    results_json.write_text(json.dumps({"prompt": prompt.version, "metrics": metrics, "rows": rows}, indent=2) + "\n")
+    results_md.write_text(to_markdown(metrics, rows, args.split, prompt.version))
     print(f"wrote {results_md} and {results_json.name}", file=sys.stderr)
     return 0
 

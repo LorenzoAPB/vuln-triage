@@ -23,13 +23,10 @@ jobs:
       - run: pytest -q
       - name: Eval, dev split (replays recorded responses; no API calls, no key needed)
         run: python -m evals.run --split dev --offline --check
-      - name: Eval, held-out test split (replay; skipped until the current version has been run on it)
-        run: |
-          if [ -f evals/results.json ]; then
-            python -m evals.run --split test --offline --check
-          else
-            echo "No test results for the current version yet."
-          fi
+      - name: Eval, held-out test split (replay)
+        run: python -m evals.run --split test --offline --check
+      - name: Dev-split ablation table (replay)
+        run: python -m evals.ablation --check
 
   live-smoke:
     # One real API call through the CLI. Runs only if the repo has an OPENAI_API_KEY secret.

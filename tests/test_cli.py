@@ -29,7 +29,7 @@ def run(monkeypatch, tmp_path: Path, answers: list[str], extra_args: list[str] =
 @pytest.fixture
 def stub_model(monkeypatch):
     usage = Usage(model="gpt-5-mini", input_tokens=1200, output_tokens=800, latency_s=2.5, cached=False)
-    monkeypatch.setattr(cli, "call_model", lambda report, model: (proposal(), usage))
+    monkeypatch.setattr(cli, "call_model", lambda report, model, prompt: (proposal(), usage))
 
 
 def test_approve_unchanged(monkeypatch, tmp_path, stub_model):
@@ -77,7 +77,7 @@ def test_no_decision_is_logged_as_abandoned(monkeypatch, tmp_path, stub_model):
 
 
 def test_parse_failure_is_logged(monkeypatch, tmp_path):
-    def failing(report, model):
+    def failing(report, model, prompt):
         raise TriageError("no parsed output (status=incomplete)")
 
     monkeypatch.setattr(cli, "call_model", failing)

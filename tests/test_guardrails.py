@@ -41,11 +41,19 @@ def test_no_verified_evidence_means_low_confidence():
     assert result.confidence == "low"
 
 
-def test_mostly_guessed_vector_is_withheld():
-    result = finalize(guess_all(proposal(), keep={"AV", "C", "I"}), REPORT)
+def test_v3_withholds_a_mostly_guessed_vector():
+    result = finalize(guess_all(proposal(), keep={"AV", "C", "I"}), REPORT, publish_inferred=False)
     assert result.guessed_metrics == ["AC", "PR", "UI", "S", "A"]
     assert (result.cvss_v31_vector, result.cvss_score, result.severity) == ("unknown", None, "unknown")
     assert "cvss_mostly_guessed" in result.flags
+    assert result.confidence == "low"
+
+
+def test_v4_publishes_a_mostly_inferred_vector_as_provisional():
+    result = finalize(guess_all(proposal(), keep={"AV", "C", "I"}), REPORT, publish_inferred=True)
+    assert result.guessed_metrics == ["AC", "PR", "UI", "S", "A"]
+    assert result.cvss_score == 6.5
+    assert "cvss_provisional" in result.flags
     assert result.confidence == "low"
 
 
@@ -88,7 +96,7 @@ def test_one_quote_cannot_justify_more_than_three_metrics():
     result = finalize(p.model_copy(update={"cvss": type(p.cvss).model_validate(cvss)}), REPORT)
     assert "cvss_quote_overused" in result.flags
     assert result.guessed_metrics == ["AV", "AC", "PR", "UI", "S"]
-    assert result.cvss_v31_vector == "unknown"
+    assert "cvss_provisional" in result.flags
 
 
 def test_cwe_needs_a_quote_describing_the_weakness():

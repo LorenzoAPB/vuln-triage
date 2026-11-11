@@ -1,4 +1,4 @@
-.PHONY: install lint test eval eval-dev eval-test dataset
+.PHONY: install lint test eval eval-dev eval-test dataset pool
 
 install:
 	pip install -e ".[dev]"
@@ -12,13 +12,19 @@ test:
 
 eval:  ## replay recorded responses for both splits; free and deterministic
 	python -m evals.run --split dev --offline --check
-	test ! -f evals/results.json || python -m evals.run --split test --offline --check
+	python -m evals.run --split test --offline --check
+	python -m evals.ablation --check
 
-eval-dev:  ## live: prompt and guardrail iteration happens here
-	python -m evals.run --split dev
+eval-dev:  ## Batch API (half price, separate quota), then score: iteration happens here
+	python -m evals.batch --split dev
+	python -m evals.run --split dev --offline
 
-eval-test:  ## live: held-out split, run once on a finished version
-	python -m evals.run --split test
+eval-test:  ## held-out split, run once on a finished version
+	python -m evals.batch --split test
+	python -m evals.run --split test --offline
 
 dataset:  ## re-fetch NVD records for the dev split (the test split is a committed snapshot)
 	python -m evals.build_dataset dev
+
+pool:  ## re-fetch the 2022 NVD retrieval pool
+	python -m evals.build_pool
