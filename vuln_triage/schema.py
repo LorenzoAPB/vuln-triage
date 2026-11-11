@@ -1,23 +1,88 @@
-"""What the model is allowed to return, and what we add in code."""
+"""What the model may return (ModelTriage), and the result we build from it in code (TriageResult)."""
 
 from typing import Literal
 
 from pydantic import BaseModel, Field
 
+Confidence = Literal["low", "medium", "high"]
+
 
 class EvidenceQuote(BaseModel):
-    claim: str = Field(description="The specific claim this quote supports, e.g. 'attack vector is network'.")
+    claim: str = Field(description="The specific claim this quote supports.")
     quote: str = Field(description="Exact text copied from the report. Never paraphrase.")
 
 
+QUOTE = Field(description="Exact report text supporting this value, or '' if none.")
+
+
+class AttackVector(BaseModel):
+    value: Literal["N", "A", "L", "P", "unknown"]
+    quote: str = QUOTE
+
+
+class AttackComplexity(BaseModel):
+    value: Literal["L", "H", "unknown"]
+    quote: str = QUOTE
+
+
+class PrivilegesRequired(BaseModel):
+    value: Literal["N", "L", "H", "unknown"]
+    quote: str = QUOTE
+
+
+class UserInteraction(BaseModel):
+    value: Literal["N", "R", "unknown"]
+    quote: str = QUOTE
+
+
+class Scope(BaseModel):
+    value: Literal["U", "C", "unknown"]
+    quote: str = QUOTE
+
+
+class Impact(BaseModel):
+    value: Literal["H", "L", "N", "unknown"]
+    quote: str = QUOTE
+
+
+class CvssProposal(BaseModel):
+    """One field per CVSS v3.1 base metric, so each value carries its own evidence."""
+
+    AV: AttackVector
+    AC: AttackComplexity
+    PR: PrivilegesRequired
+    UI: UserInteraction
+    S: Scope
+    C: Impact
+    I: Impact  # noqa: E741  (CVSS metric name)
+    A: Impact
+
+
 class ModelTriage(BaseModel):
-    """Fields the model fills in. Everything else is computed in code."""
+    """Fields the model fills in. Score, severity and flags are computed in code."""
 
     is_vulnerability_report: bool = Field(description="False if the text is not a security vulnerability report.")
     summary: str = Field(description="One or two sentences, only facts stated in the report.")
     affected_product: str = Field(description="Product and version range, or 'unknown'.")
     cwe: str = Field(description="Best-fit CWE id like 'CWE-79', or 'unknown'.")
-    cvss_v31_vector: str = Field(description="Full CVSS:3.1 base vector, or 'unknown' if the report lacks enough detail.")
+    cvss: CvssProposal
     recommended_next_step: str = Field(description="One concrete next action for a PSIRT analyst.")
-    confidence: Literal["low", "medium", "high"] = Field(description="Low when the report is thin or vague.")
+    confidence: Confidence = Field(description="Low when the report is thin or vague.")
     evidence_quotes: list[EvidenceQuote]
+
+
+class TriageResult(BaseModel):
+    """The draft a human reviews. Nothing here is final until a human approves it."""
+
+    is_vulnerability_report: bool
+    summary: str
+    affected_product: str
+    cwe: str
+    cvss_v31_vector: str
+    cvss_score: float | None
+    severity: str
+    recommended_next_step: str
+    confidence: Confidence
+    evidence_quotes: list[EvidenceQuote]
+    guessed_metrics: list[str]
+    flags: list[str]

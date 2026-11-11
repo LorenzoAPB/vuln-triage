@@ -1,0 +1,1 @@
+Found an XSS in the search box of AcmeShop. Please fix.
