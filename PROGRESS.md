@@ -15,7 +15,7 @@
 - 2026-11-11: Milestones 2-6.
   - Per-metric CVSS evidence wired into guardrails. Thin XSS report first came back 9.8 Critical from guesses, so thin reports (and vectors with more than 4 unverified metrics) now withhold the vector.
   - Model history: gpt-4.1-mini is deprecated; the account is limited to 50 requests per model per day and 10 per minute. The first full eval ran on gpt-5.4-nano (v1 schema) and abstained on every CVSS vector (snapshot in docs/eval-v1-gpt-5.4-nano.md). Schema v2 removed 'unknown' from CVSS metrics; second full eval on gpt-5-mini (minimal reasoning). 19 partial gpt-5.4-mini responses are in .cache/ (not committed).
-  - Live spend this session: about $0.10 in total (eval v2 $0.0623, eval v1 $0.0328, plus a few single calls).
+  - Live spend this session: about $0.17 estimated from recorded token counts (eval v2 $0.0623, eval v1 $0.0328, 19 partial gpt-5.4-mini calls $0.0525, about 13 partial gpt-4.1-mini eval calls and a handful of single test calls, roughly $0.02).
   - Results (gpt-5-mini): report detection 100% precision / 98% recall; severity accuracy 42% when published (67% coverage), raw 44% with 19 over-scored vs 1 under; CWE exact 17% (75% unknown).
 
 ## Open questions / next steps
