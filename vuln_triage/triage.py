@@ -12,24 +12,33 @@ from pydantic import ValidationError
 
 from vuln_triage.schema import ModelTriage
 
-MODEL = "gpt-5.4-nano"
+MODEL = "gpt-5-mini"
 CACHE_DIR = Path(os.environ.get("VULN_TRIAGE_CACHE", ".cache"))
 
 # USD per 1M tokens (input, output), from https://platform.openai.com/docs/models/<model>
 # Checked 2026-11-11. Cached-input discounts are ignored, so estimates err high.
 PRICES_PER_MTOK = {
+    "gpt-5-mini": (0.25, 2.00),
     "gpt-5.4-nano": (0.20, 1.25),
     "gpt-5.4-mini": (0.75, 4.50),
     "gpt-4.1-mini": (0.40, 1.60),
+}
+
+# Reasoning models reject `temperature`; gpt-5-mini's lowest reasoning effort is "minimal".
+REQUEST_OPTIONS: dict[str, dict] = {
+    "gpt-5-mini": {"reasoning": {"effort": "minimal"}},
+    "gpt-5.4-mini": {"temperature": 0},
+    "gpt-5.4-nano": {"temperature": 0},
+    "gpt-4.1-mini": {"temperature": 0},
 }
 
 SYSTEM_PROMPT = """You are a PSIRT analyst triaging a security vulnerability report.
 Rules:
 - Use only facts stated in the report. Do not use outside knowledge about the product or CVE.
 - If the report does not support a field, answer 'unknown'.
-- CVSS: propose a value for every base metric. Give an exact supporting quote when the report
-  supports the value; use '' as the quote when you are inferring. Use 'unknown' only when you
-  cannot make a reasonable estimate.
+- CVSS: propose a value for every base metric, even when you have to infer it. Quote the exact
+  report text that supports the value, or use '' as the quote when you are inferring.
+  Inferred values are fine; invented quotes are not.
 - Every claim you make needs an evidence quote copied exactly from the report.
 - Set confidence to 'low' when the report is short, vague, or missing key details.
 - If the text is not a vulnerability report, set is_vulnerability_report to false."""
@@ -87,7 +96,7 @@ def call_model(
                 {"role": "user", "content": report},
             ],
             text_format=ModelTriage,
-            temperature=0,
+            **REQUEST_OPTIONS.get(model, {}),
         )
     except (ValidationError, LengthFinishReasonError, ContentFilterFinishReasonError) as e:
         raise TriageError(f"{type(e).__name__}: {e}") from e

@@ -12,41 +12,45 @@ class EvidenceQuote(BaseModel):
     quote: str = Field(description="Exact text copied from the report. Never paraphrase.")
 
 
-QUOTE = Field(description="Exact report text supporting this value, or '' if none.")
+QUOTE = Field(description="Exact report text supporting this value, or '' if the value is inferred.")
 
 
 class AttackVector(BaseModel):
-    value: Literal["N", "A", "L", "P", "unknown"]
+    value: Literal["N", "A", "L", "P"]
     quote: str = QUOTE
 
 
 class AttackComplexity(BaseModel):
-    value: Literal["L", "H", "unknown"]
+    value: Literal["L", "H"]
     quote: str = QUOTE
 
 
 class PrivilegesRequired(BaseModel):
-    value: Literal["N", "L", "H", "unknown"]
+    value: Literal["N", "L", "H"]
     quote: str = QUOTE
 
 
 class UserInteraction(BaseModel):
-    value: Literal["N", "R", "unknown"]
+    value: Literal["N", "R"]
     quote: str = QUOTE
 
 
 class Scope(BaseModel):
-    value: Literal["U", "C", "unknown"]
+    value: Literal["U", "C"]
     quote: str = QUOTE
 
 
 class Impact(BaseModel):
-    value: Literal["H", "L", "N", "unknown"]
+    value: Literal["H", "L", "N"]
     quote: str = QUOTE
 
 
 class CvssProposal(BaseModel):
-    """One field per CVSS v3.1 base metric, so each value carries its own evidence."""
+    """One field per CVSS v3.1 base metric, so each value carries its own evidence.
+
+    There is no 'unknown' value: the model always proposes, and code decides from the evidence
+    whether the vector is published (see guardrails.finalize).
+    """
 
     AV: AttackVector
     AC: AttackComplexity

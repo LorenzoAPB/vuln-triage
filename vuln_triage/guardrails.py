@@ -6,7 +6,7 @@ from cvss import CVSS3
 
 from vuln_triage.schema import Confidence, ModelTriage, TriageResult
 
-THIN_REPORT_CHARS = 200
+THIN_REPORT_CHARS = 120  # 200 flagged a quarter of real NVD descriptions as thin in the first eval
 METRIC_ORDER = ["AV", "AC", "PR", "UI", "S", "C", "I", "A"]
 MAX_GUESSED_METRICS = 4  # more guesses than this and we withhold the vector entirely
 
@@ -28,11 +28,8 @@ def score_vector(vector: str) -> tuple[float, str]:
 
 
 def proposed_vector(proposal: ModelTriage) -> str:
-    """The model's full vector, or 'unknown' if it left any metric unknown."""
-    values = {name: getattr(proposal.cvss, name).value for name in METRIC_ORDER}
-    if "unknown" in values.values():
-        return "unknown"
-    return "CVSS:3.1/" + "/".join(f"{name}:{value}" for name, value in values.items())
+    """The model's full CVSS v3.1 vector, before any evidence check."""
+    return "CVSS:3.1/" + "/".join(f"{name}:{getattr(proposal.cvss, name).value}" for name in METRIC_ORDER)
 
 
 def _cap(conf: Confidence, cap: Confidence) -> Confidence:
@@ -79,17 +76,14 @@ def finalize(proposal: ModelTriage, report: str) -> TriageResult:
 
     guessed = [n for n in METRIC_ORDER if not quote_in_report(getattr(proposal.cvss, n).quote, report)]
     vector = proposed_vector(proposal)
-    if vector == "unknown":
-        flags.append("cvss_incomplete")
-    elif len(guessed) > MAX_GUESSED_METRICS:
+    if len(guessed) > MAX_GUESSED_METRICS:
         flags.append("cvss_mostly_guessed")
+        confidence = "low"
         vector = "unknown"
     elif thin:  # a two-line report cannot support eight metrics, whatever the quotes say
         vector = "unknown"
-    if guessed:
+    elif guessed:
         confidence = _cap(confidence, "medium")
-    if len(guessed) > MAX_GUESSED_METRICS:
-        confidence = "low"
 
     score, severity = score_vector(vector) if vector != "unknown" else (None, "unknown")
 

@@ -5,7 +5,6 @@ import hashlib
 import json
 import re
 import sys
-from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -23,8 +22,8 @@ EDITABLE = {"cwe": "cwe", "vector": "cvss_v31_vector", "severity": "severity", "
 def render(result: TriageResult, proposal: ModelTriage) -> str:
     if result.cvss_score is not None:
         cvss = f"{result.cvss_v31_vector}  ->  {result.cvss_score} {result.severity}"
-    elif (guess := proposed_vector(proposal)) != "unknown" and result.is_vulnerability_report:
-        cvss = f"withheld (model guess: {guess})"
+    elif result.is_vulnerability_report:
+        cvss = f"withheld, not enough evidence (model guess: {proposed_vector(proposal)})"
     else:
         cvss = "unknown"
     lines = [
@@ -77,30 +76,28 @@ def overrides(draft: TriageResult, final: TriageResult) -> dict[str, dict]:
     return {k: {"model": before[k], "human": after[k]} for k in before if before[k] != after[k]}
 
 
-def review(
-    draft: TriageResult, proposal: ModelTriage, ask: Callable[[str], str] = input
-) -> tuple[str, TriageResult, str | None]:
+def review(draft: TriageResult, proposal: ModelTriage) -> tuple[str, TriageResult, str | None]:
     """Ask the human to approve, edit, or reject. Returns (decision, final result, reject reason)."""
     result = draft
     while True:
-        choice = ask("\n[a]pprove  [e]dit  [r]eject > ").strip().lower()
+        choice = input("\n[a]pprove  [e]dit  [r]eject > ").strip().lower()
         if choice == "a":
             return "approved", result, None
         if choice == "r":
-            return "rejected", result, ask("Reason > ").strip() or None
+            return "rejected", result, input("Reason > ").strip() or None
         if choice == "e":
-            field = ask(f"Field ({', '.join(EDITABLE)}) > ").strip().lower()
+            field = input(f"Field ({', '.join(EDITABLE)}) > ").strip().lower()
             try:
-                result = edit(result, field, ask("New value > "))
+                result = edit(result, field, input("New value > "))
             except ValueError as e:
                 print(f"  not changed: {e}")
                 continue
             print("\n" + render(result, proposal))
 
 
-def log_event(record: dict, path: Path = LOG_PATH) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a") as f:
+def log_event(record: dict) -> None:
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with LOG_PATH.open("a") as f:
         f.write(json.dumps(record) + "\n")
 
 

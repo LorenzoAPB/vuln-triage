@@ -28,7 +28,7 @@ def run_item(item: dict, model: str, offline: bool) -> dict:
     except TriageError as e:
         return {**row, "parse_failure": str(e)}
     result = finalize(proposal, item["text"])
-    raw_vector = proposed_vector(proposal) if result.is_vulnerability_report else "unknown"
+    raw_vector = proposed_vector(proposal)
     return {
         **row,
         "parse_failure": None,
@@ -37,7 +37,7 @@ def run_item(item: dict, model: str, offline: bool) -> dict:
         "pred_cwe": result.cwe,
         "pred_vector": result.cvss_v31_vector,
         "raw_vector": raw_vector,
-        "raw_severity": score_vector(raw_vector)[1] if raw_vector != "unknown" else "unknown",
+        "raw_severity": score_vector(raw_vector)[1] if result.is_vulnerability_report else "unknown",
         "raw_metrics": {m: getattr(proposal.cvss, m).value for m in METRIC_ORDER},
         "confidence": result.confidence,
         "flags": result.flags,

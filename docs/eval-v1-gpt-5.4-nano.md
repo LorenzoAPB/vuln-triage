@@ -4,7 +4,8 @@ Snapshot of `evals/results.md` from the first full run on 2026-11-11, kept becau
 In the v1 schema every CVSS metric could be `unknown`. With the prompt's "no outside knowledge" rule the model
 left at least one metric unknown on all 36 NVD items, so no severity was ever published. The v2 schema removes
 `unknown` from the metric values: the model always proposes a full vector, and code decides from the evidence
-whether to publish it. This run is not replayable against the current code (the schema is part of the cache key).
+whether to publish it. It also showed the 200-character `thin_report` threshold flagging 9 of 36 real NVD descriptions, so the
+threshold dropped to 120. This run is not replayable against the current code (the schema is part of the cache key).
 
 ---
 
