@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper Authentication vulnerability in ABB Symphony Plus S+ Operations affects versions from 2.X through 2.1 SP2, 2.2, and from 3.X through 3.3 SP1, 3.3 SP2.",
+    "affected_product": "ABB Symphony Plus S+ Operations: from 2.X through 2.1 SP2, 2.2, from 3.X through 3.3 SP1, 3.3 SP2.",
+    "cwe": "CWE-287",
+    "cwe_quote": "Improper Authentication",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This issue allows unauthorized access to the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the authentication mechanisms in the affected versions and apply necessary patches or updates.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Improper Authentication"
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "This issue allows unauthorized access to the system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1461,
+    "output_tokens": 275,
+    "latency_s": 3.809
+  }
+}

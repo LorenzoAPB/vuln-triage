@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SAUTER Controls Nova 200\u2013220 Series with firmware version 3.3-006 and prior and BACnetstac version 4.2.1 and prior have only FTP and Telnet available for device management, leading to sensitive information being sent in cleartext.",
+    "affected_product": "SAUTER Controls Nova 200\u2013220 Series with firmware version 3.3-006 and prior and BACnetstac version 4.2.1 and prior",
+    "cwe": "CWE-319",
+    "cwe_quote": "The product transmits sensitive information in cleartext, which can be intercepted by an attacker.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could obtain sensitive information such as user credentials to gain access to the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Evaluate the use of secure protocols for device management to protect sensitive information.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Sensitive information is sent in cleartext.",
+        "quote": "Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext."
+      },
+      {
+        "claim": "An attacker could obtain sensitive information.",
+        "quote": "An attacker could obtain sensitive information such as user credentials to gain access to the system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1492,
+    "output_tokens": 341,
+    "latency_s": 5.967
+  }
+}

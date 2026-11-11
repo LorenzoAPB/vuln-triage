@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Gradle is vulnerable to a collision attack on long IDs (64bits) for PGP keys used in dependency verification.",
+    "affected_product": "Gradle 6.9.4, 7.6.1 and below",
+    "cwe": "CWE-347",
+    "cwe_quote": "This is a collision attack on long IDs (64bits) for PGP keys.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Users of dependency verification in Gradle are vulnerable if they use long IDs for PGP keys."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Users of dependency verification in Gradle are vulnerable if they use long IDs for PGP keys."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "The fix is to fail dependency verification if anything but a fingerprint is used in a trust element in dependency verification metadata."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Advise users to upgrade to Gradle 8.0 or apply the patch in Gradle 6.9.4 or 7.6.1.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "This is a collision attack on long IDs (64bits) for PGP keys."
+      },
+      {
+        "claim": "Vulnerability impact",
+        "quote": "The fix is to fail dependency verification if anything but a fingerprint is used in a trust element in dependency verification metadata."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "The problem is fixed in Gradle 8.0 and above."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1567,
+    "output_tokens": 354,
+    "latency_s": 6.08
+  }
+}

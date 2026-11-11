@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface, allowing deletion of arbitrary files.",
+    "affected_product": "ArubaOS",
+    "cwe": "CWE-22",
+    "cwe_quote": "path traversal or file inclusion vulnerabilities allow an attacker to access files and directories that are stored outside the web document root.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the vulnerability in the ArubaOS web-based management interface.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability allows deletion of arbitrary files.",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      {
+        "claim": "Describes the weakness as a path traversal vulnerability.",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1439,
+    "output_tokens": 299,
+    "latency_s": 4.986
+  }
+}

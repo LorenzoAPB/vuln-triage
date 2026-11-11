@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Due to a missing permissions check, an attacker with an authenticated Apiman Manager account may gain access to API keys they do not have permission for by guessing the URL.",
+    "affected_product": "Apiman 3.1.0.Final",
+    "cwe": "CWE-284",
+    "cwe_quote": "Missing Access Control",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker with an authenticated Apiman Manager account may be able to gain access to API keys"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "While not trivial to exploit, it could be achieved by brute-forcing or guessing common names."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an attacker with an authenticated Apiman Manager account"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Advise users to upgrade to Apiman 3.1.0.Final to resolve the issue.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Missing permissions check allows access to API keys",
+        "quote": "Due to a missing permissions check, an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for if they correctly guess the URL."
+      },
+      {
+        "claim": "Exploitation method",
+        "quote": "While not trivial to exploit, it could be achieved by brute-forcing or guessing common names."
+      },
+      {
+        "claim": "Impact of accessing API keys",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1562,
+    "output_tokens": 366,
+    "latency_s": 5.157
+  }
+}

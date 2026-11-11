@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability was found in Drag and Drop Multiple File Upload Contact Form 7 5.0.6.1 on WordPress, leading to relative path traversal.",
+    "affected_product": "Drag and Drop Multiple File Upload Contact Form 7 5.0.6.1",
+    "cwe": "CWE-22",
+    "cwe_quote": "The manipulation of the argument upload_name leads to relative path traversal.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "It is possible to launch the attack remotely."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "classified as critical."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the vulnerability in the affected version.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability is classified as critical.",
+        "quote": "It has been classified as critical."
+      },
+      {
+        "claim": "The vulnerability leads to relative path traversal.",
+        "quote": "The manipulation of the argument upload_name leads to relative path traversal."
+      },
+      {
+        "claim": "The attack can be launched remotely.",
+        "quote": "It is possible to launch the attack remotely."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 277,
+    "latency_s": 4.429
+  }
+}

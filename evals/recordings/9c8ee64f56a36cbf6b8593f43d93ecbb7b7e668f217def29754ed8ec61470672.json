@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Uzay Baskul Weighbridge Automation Software allows SQL Injection.",
+    "affected_product": "Weighbridge Automation Software: before 1.1",
+    "cwe": "CWE-89",
+    "cwe_quote": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "SQL Injection vulnerability allows SQL Injection."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows SQL Injection."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Assess the impact of the SQL Injection vulnerability and apply necessary patches or mitigations.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "SQL Injection vulnerability allows SQL Injection.",
+        "quote": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Uzay Baskul Weighbridge Automation Software allows SQL Injection."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1451,
+    "output_tokens": 252,
+    "latency_s": 6.088
+  }
+}

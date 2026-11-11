@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "NVIDIA CUDA Toolkit SDK contains a bug in cuobjdump that may cause a null-pointer dereference, resulting in a limited denial of service.",
+    "affected_product": "NVIDIA CUDA Toolkit SDK",
+    "cwe": "CWE-476",
+    "cwe_quote": "The application does not properly handle unexpected or invalid input, leading to a null-pointer dereference.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "A local user running the tool against an ill-formed binary may cause a null-pointer dereference."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "may result in a limited denial of service."
+      }
+    },
+    "recommended_next_step": "Investigate the handling of input in cuobjdump to prevent null-pointer dereferences.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "The application does not properly handle unexpected or invalid input, leading to a null-pointer dereference."
+      },
+      {
+        "claim": "Denial of service impact",
+        "quote": "may result in a limited denial of service."
+      },
+      {
+        "claim": "Local user access",
+        "quote": "A local user running the tool against an ill-formed binary may cause a null-pointer dereference."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1450,
+    "output_tokens": 299,
+    "latency_s": 5.358
+  }
+}

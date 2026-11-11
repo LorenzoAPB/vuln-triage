@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in the DMG file parser of ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier could allow an unauthenticated, remote attacker to access sensitive information on an affected device.",
+    "affected_product": "ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier",
+    "cwe": "CWE-611",
+    "cwe_quote": "This vulnerability is due to enabling XML entity substitution that may result in XML external entity injection.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an unauthenticated, remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "could allow the attacker to leak bytes from any file that may be read by the ClamAV scanning process."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the vulnerability and apply patches for affected ClamAV versions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability allows an unauthenticated, remote attacker to access sensitive information.",
+        "quote": "A vulnerability in the DMG file parser of ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier could allow an unauthenticated, remote attacker to access sensitive information on an affected device."
+      },
+      {
+        "claim": "The vulnerability is due to enabling XML entity substitution.",
+        "quote": "This vulnerability is due to enabling XML entity substitution that may result in XML external entity injection."
+      },
+      {
+        "claim": "A successful exploit could allow the attacker to leak bytes from any file.",
+        "quote": "A successful exploit could allow the attacker to leak bytes from any file that may be read by the ClamAV scanning process."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1559,
+    "output_tokens": 429,
+    "latency_s": 8.214
+  }
+}

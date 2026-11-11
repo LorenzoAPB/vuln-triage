@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface.",
+    "affected_product": "ArubaOS",
+    "cwe": "CWE-613",
+    "cwe_quote": "Insufficient Session Expiration",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Successful exploitation of this vulnerability allows an attacker to keep a session running on an affected device after the removal of the impacted account."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of this vulnerability allows an attacker to keep a session running on an affected device after the removal of the impacted account."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate session management practices and implement proper session expiration mechanisms.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Insufficient session expiration vulnerability exists in the ArubaOS command line interface.",
+        "quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface."
+      },
+      {
+        "claim": "Successful exploitation allows an attacker to keep a session running.",
+        "quote": "Successful exploitation of this vulnerability allows an attacker to keep a session running on an affected device after the removal of the impacted account."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1443,
+    "output_tokens": 282,
+    "latency_s": 4.379
+  }
+}

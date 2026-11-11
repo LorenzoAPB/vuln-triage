@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The login page is vulnerable to SQL injection, allowing for database dumping.",
+    "affected_product": "unknown",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL Injection",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The login page is vulnerable to SQL injection."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "no account is needed."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "I can dump the whole db."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the SQL injection vulnerability and patch the login page.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "SQL injection vulnerability",
+        "quote": "your login page is vulnerable to sql injection"
+      },
+      {
+        "claim": "database dumping",
+        "quote": "i can dump the whole db."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1426,
+    "output_tokens": 205,
+    "latency_s": 3.821
+  }
+}

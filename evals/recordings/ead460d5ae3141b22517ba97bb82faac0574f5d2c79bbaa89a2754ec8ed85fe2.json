@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in the DNS functionality of Cisco Nexus Dashboard Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.",
+    "affected_product": "Cisco Nexus Dashboard Software",
+    "cwe": "CWE-20",
+    "cwe_quote": "This vulnerability is due to the improper processing of DNS requests.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by sending a continuous stream of DNS requests to an affected device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An unauthenticated, remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      }
+    },
+    "recommended_next_step": "Investigate the DNS request handling in the affected software version.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Improper processing of DNS requests",
+        "quote": "This vulnerability is due to the improper processing of DNS requests."
+      },
+      {
+        "claim": "Denial of service condition",
+        "quote": "A successful exploit could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      },
+      {
+        "claim": "Unauthenticated remote attacker",
+        "quote": "An unauthenticated, remote attacker to cause a denial of service (DoS) condition."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 336,
+    "latency_s": 4.991
+  }
+}

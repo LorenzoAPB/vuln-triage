@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "Inquiry about enterprise plan pricing and features.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Provide pricing details and confirm SSO inclusion.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Inquiry about pricing and features.",
+        "quote": "Hello, we are a 40-person company evaluating your enterprise plan. Could you send pricing for annual billing, confirm whether SSO is included, and let us know if you offer a discount for nonprofits?"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1458,
+    "output_tokens": 192,
+    "latency_s": 3.778
+  }
+}

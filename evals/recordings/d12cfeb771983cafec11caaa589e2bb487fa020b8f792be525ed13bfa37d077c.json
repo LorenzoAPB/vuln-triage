@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An XSS vulnerability was found in the search box of AcmeShop.",
+    "affected_product": "AcmeShop",
+    "cwe": "CWE-79",
+    "cwe_quote": "XSS in the search box of AcmeShop.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "XSS in the search box of AcmeShop."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "XSS in the search box of AcmeShop."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "total loss of control over the application."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Implement input validation and output encoding in the search box.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "XSS vulnerability in the search box",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1421,
+    "output_tokens": 218,
+    "latency_s": 3.874
+  }
+}

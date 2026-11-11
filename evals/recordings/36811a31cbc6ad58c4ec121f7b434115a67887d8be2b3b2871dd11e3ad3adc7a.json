@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The armv8_dec_aes_gcm_full() API of Arm AArch64cryptolib before 86065c6 fails to verify the authentication tag of AES-GCM protected data, leading to a man-in-the-middle attack due to an improperly initialized variable.",
+    "affected_product": "Arm AArch64cryptolib before 86065c6",
+    "cwe": "CWE-20",
+    "cwe_quote": "This occurs because of an improperly initialized variable.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "leading to a man-in-the-middle attack."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the armv8_dec_aes_gcm_full() API to ensure proper initialization of variables.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability is due to an improperly initialized variable.",
+        "quote": "This occurs because of an improperly initialized variable."
+      },
+      {
+        "claim": "The vulnerability leads to a man-in-the-middle attack.",
+        "quote": "leading to a man-in-the-middle attack."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1463,
+    "output_tokens": 281,
+    "latency_s": 3.435
+  }
+}

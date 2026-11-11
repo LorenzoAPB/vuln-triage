@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability in Liman Central Management System allows Command Injection.",
+    "affected_product": "Liman Central Management System: from 1.7.0 before 1.8.3-462",
+    "cwe": "CWE-77",
+    "cwe_quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability in Liman Central Management System allows Command Injection.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Command Injection."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the affected versions of Liman Central Management System.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability in Liman Central Management System allows Command Injection."
+      },
+      {
+        "claim": "Affected product versions",
+        "quote": "This issue affects Liman Central Management System: from 1.7.0 before 1.8.3-462."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1472,
+    "output_tokens": 285,
+    "latency_s": 46.705
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "There is a remote code execution (RCE) vulnerability in the web interface of the ExampleNet R200 router, firmware 2.1.",
+    "affected_product": "ExampleNet R200 router, firmware 2.1",
+    "cwe": "CWE-94",
+    "cwe_quote": "Code Injection",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "RCE in the web interface"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "RCE in the web interface"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "RCE in the web interface"
+      }
+    },
+    "recommended_next_step": "Investigate the reported RCE vulnerability and prepare a patch.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "RCE vulnerability",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 229,
+    "latency_s": 3.591
+  }
+}

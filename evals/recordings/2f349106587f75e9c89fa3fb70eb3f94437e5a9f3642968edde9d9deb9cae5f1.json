@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "There are buffer overflow vulnerabilities in multiple underlying operating system processes that could lead to unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol.",
+    "affected_product": "unknown",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Copy without Checking Size of Input ('Buffer Overflow')",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "unauthenticated remote code execution"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Investigate the reported buffer overflow vulnerabilities and assess the impact on affected systems.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Buffer overflow vulnerabilities leading to remote code execution",
+        "quote": "There are buffer overflow vulnerabilities in multiple underlying operating system processes that could lead to unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol."
+      },
+      {
+        "claim": "Ability to execute arbitrary code as a privileged user",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1460,
+    "output_tokens": 335,
+    "latency_s": 5.641
+  }
+}

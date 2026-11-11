@@ -1,0 +1,51 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "Release notes for version 4.2 include new features and performance improvements.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "unknown",
+    "confidence": "low",
+    "evidence_quotes": []
+  },
+  "usage": {
+    "input_tokens": 1456,
+    "output_tokens": 139,
+    "latency_s": 3.562
+  }
+}

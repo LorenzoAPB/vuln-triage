@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw was found in the Linux Kernel related to incorrect checks for list emptiness in tls_is_tx_ready(), potentially leading to a type confusion and data leakage.",
+    "affected_product": "Linux Kernel",
+    "cwe": "CWE- type confusion",
+    "cwe_quote": "A flaw was found in the Linux Kernel. The tls_is_tx_ready() incorrectly checks for list emptiness, potentially accessing a type confused entry to the list_head, leaking the last byte of the confused field that overlaps with rec->tx_ready.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "leaking the last byte of the confused field"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the impact of the type confusion and assess the need for a patch.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "A flaw was found in the Linux Kernel. The tls_is_tx_ready() incorrectly checks for list emptiness, potentially accessing a type confused entry to the list_head, leaking the last byte of the confused field that overlaps with rec->tx_ready."
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "leaking the last byte of the confused field"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1454,
+    "output_tokens": 310,
+    "latency_s": 6.708
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Insufficient input sanitization in the documentation feature of Devolutions Server 2022.3.12 and earlier allows an authenticated attacker to perform an SQL Injection, potentially resulting in unauthorized access to system resources.",
+    "affected_product": "Devolutions Server 2022.3.12 and earlier",
+    "cwe": "CWE-89",
+    "cwe_quote": "Insufficient input sanitization in the documentation feature of Devolutions Server 2022.3.12 and earlier allows an authenticated attacker to perform an SQL Injection, potentially resulting in unauthorized access to system resources.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an authenticated attacker to perform an SQL Injection"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the input sanitization in the documentation feature.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "SQL Injection vulnerability",
+        "quote": "Insufficient input sanitization in the documentation feature of Devolutions Server 2022.3.12 and earlier allows an authenticated attacker to perform an SQL Injection, potentially resulting in unauthorized access to system resources."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1447,
+    "output_tokens": 306,
+    "latency_s": 5.774
+  }
+}

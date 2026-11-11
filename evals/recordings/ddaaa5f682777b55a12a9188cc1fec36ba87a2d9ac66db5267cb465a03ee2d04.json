@@ -1,0 +1,51 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The text is a promotional message for a webinar and does not describe a security vulnerability.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "unknown",
+    "confidence": "low",
+    "evidence_quotes": []
+  },
+  "usage": {
+    "input_tokens": 1463,
+    "output_tokens": 141,
+    "latency_s": 3.283
+  }
+}

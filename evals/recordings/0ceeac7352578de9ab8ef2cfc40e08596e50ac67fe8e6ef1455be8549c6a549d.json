@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In Dataiku DSS 11.2.1, an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request.",
+    "affected_product": "Dataiku DSS 11.2.1",
+    "cwe": "CWE-22",
+    "cwe_quote": "Improper Limitation of a Pathname to a Restricted Directory (Path Traversal)",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the file download functionality to implement proper access controls.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "The vulnerability allows file downloads by specifying the target username.",
+        "quote": "an attacker can download other Dataiku files that were uploaded to the myfiles section by specifying the target username in a download request."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 293,
+    "latency_s": 5.635
+  }
+}

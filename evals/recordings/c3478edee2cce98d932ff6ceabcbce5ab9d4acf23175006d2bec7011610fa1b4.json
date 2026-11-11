@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper privilege management vulnerability in PhoneStatusBarPolicy in System UI prior to SMR Mar-2023 Release 1 allows attacker to turn off Do not disturb via unprotected intent.",
+    "affected_product": "System UI prior to SMR Mar-2023 Release 1",
+    "cwe": "CWE-284",
+    "cwe_quote": "Improper privilege management vulnerability in PhoneStatusBarPolicy in System UI prior to SMR Mar-2023 Release 1 allows attacker to turn off Do not disturb via unprotected intent.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "turn off Do not disturb."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and apply the SMR Mar-2023 Release 1 update.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Improper privilege management vulnerability in PhoneStatusBarPolicy in System UI prior to SMR Mar-2023 Release 1 allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      {
+        "claim": "Attack vector",
+        "quote": "allows attacker to turn off Do not disturb via unprotected intent."
+      },
+      {
+        "claim": "Impact on confidentiality",
+        "quote": "turn off Do not disturb."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 327,
+    "latency_s": 4.899
+  }
+}

@@ -1,7 +1,7 @@
 # Second eval run (v2 schema, gpt-5-mini)
 
-Snapshot of `evals/results.md` from the second full test-set run on 2026-11-11 (the "before" in the README's
-before/after table). Prompt v2: CVSS metrics always proposed with per-metric quotes; no CWE knowledge allowed.
+Snapshot of `evals/results.md` from the second full test-set run on 2026-11-11 (the v2 numbers in the
+README). Prompt v2: CVSS metrics always proposed with per-metric quotes; no CWE knowledge allowed.
 The raw rows are in `v2-test-gpt-5-mini.json`.
 
 ---

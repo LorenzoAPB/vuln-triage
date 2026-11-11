@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "IDOR vulnerability allows unauthorized access to other customers' orders by changing the order ID in the API request.",
+    "affected_product": "unknown",
+    "cwe": "CWE-639",
+    "cwe_quote": "Access to a resource is improperly controlled.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The vulnerability can be exploited over the network."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The attacker can exploit the vulnerability without any special conditions."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "No authentication is required to access the orders."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "The impact does not cross a security boundary."
+      },
+      "C": {
+        "value": "H",
+        "quote": "Changing the ID shows other customers' orders including addresses."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Implement proper access controls to restrict order visibility based on user authentication.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Access to other customers' orders is possible by changing the ID.",
+        "quote": "changing the id shows other customers' orders including addresses."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1428,
+    "output_tokens": 241,
+    "latency_s": 4.102
+  }
+}

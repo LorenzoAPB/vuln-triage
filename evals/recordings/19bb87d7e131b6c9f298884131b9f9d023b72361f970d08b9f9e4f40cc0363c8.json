@@ -1,0 +1,68 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper access controls on entries in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization.",
+    "affected_product": "Devolutions Server 2022.3.12 and earlier",
+    "cwe": "CWE-284",
+    "cwe_quote": "Improper access controls on entries in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Improper access controls on entries in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an authenticated user"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "access sensitive data without proper authorization."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and remediate access control configurations in affected versions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE classification",
+        "quote": "Improper access controls on entries in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      {
+        "claim": "CVSS AV",
+        "quote": "Improper access controls on entries in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      {
+        "claim": "CVSS PR",
+        "quote": "an authenticated user"
+      },
+      {
+        "claim": "CVSS C",
+        "quote": "access sensitive data without proper authorization."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 369,
+    "latency_s": 5.203
+  }
+}

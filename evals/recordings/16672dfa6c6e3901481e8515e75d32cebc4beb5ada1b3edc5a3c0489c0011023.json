@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An exposure of sensitive information to an unauthorized actor vulnerability in FortiAnalyzer versions 7.2.0 through 7.2.1, 7.0.0 through 7.0.4 and 6.4.0 through 6.4.10 may allow a remote authenticated attacker to read the client machine password in plain text in a heartbeat response when a log-fetch request is made from the FortiAnalyzer.",
+    "affected_product": "FortiAnalyzer versions 7.2.0 through 7.2.1, 7.0.0 through 7.0.4 and 6.4.0 through 6.4.10",
+    "cwe": "CWE-200",
+    "cwe_quote": "An exposure of sensitive information to an unauthorized actor",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "may allow a remote authenticated attacker to read the client machine password in plain text"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "remote authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "to read the client machine password in plain text"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch affected FortiAnalyzer versions to mitigate the vulnerability.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-200 vulnerability",
+        "quote": "An exposure of sensitive information to an unauthorized actor [CWE-200] vulnerability in FortiAnalyzer versions 7.2.0 through 7.2.1, 7.0.0 through 7.0.4 and 6.4.0 through 6.4.10"
+      },
+      {
+        "claim": "remote authenticated attacker",
+        "quote": "may allow a remote authenticated attacker to read the client machine password in plain text in a heartbeat response when a log-fetch request is made from the FortiAnalyzer"
+      },
+      {
+        "claim": "to read the client machine password in plain text",
+        "quote": "to read the client machine password in plain text in a heartbeat response"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1499,
+    "output_tokens": 450,
+    "latency_s": 6.788
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The report indicates a potential vulnerability based on hearsay without technical details or evidence.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate potential vulnerabilities based on recent news.",
+    "confidence": "low",
+    "evidence_quotes": []
+  },
+  "usage": {
+    "input_tokens": 1474,
+    "output_tokens": 147,
+    "latency_s": 2.775
+  }
+}

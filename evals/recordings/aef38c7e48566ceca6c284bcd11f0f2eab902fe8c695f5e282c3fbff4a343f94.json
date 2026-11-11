@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability exists which allows an authenticated attacker to access sensitive information on the ArubaOS command line interface.",
+    "affected_product": "ArubaOS",
+    "cwe": "CWE-275",
+    "cwe_quote": "Improper Permission Assignment for Critical Resources",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "access to data beyond what is authorized by the users existing privilege level."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the access control mechanisms in ArubaOS.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Access to sensitive information",
+        "quote": "A vulnerability exists which allows an authenticated attacker to access sensitive information on the ArubaOS command line interface."
+      },
+      {
+        "claim": "Access beyond authorized privilege level",
+        "quote": "Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1443,
+    "output_tokens": 258,
+    "latency_s": 4.641
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An XSS vulnerability exists within Quest KACE Systems Management Appliance (SMA) through 12.1 that may allow remote injection of arbitrary web script or HTML.",
+    "affected_product": "Quest KACE Systems Management Appliance (SMA) through 12.1",
+    "cwe": "CWE-79",
+    "cwe_quote": "An XSS vulnerability exists within Quest KACE Systems Management Appliance (SMA) through 12.1 that may allow remote injection of arbitrary web script or HTML.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate and patch the XSS vulnerability in Quest KACE SMA.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "XSS vulnerability exists",
+        "quote": "An XSS vulnerability exists within Quest KACE Systems Management Appliance (SMA) through 12.1 that may allow remote injection of arbitrary web script or HTML."
+      },
+      {
+        "claim": "remote injection of arbitrary web script or HTML",
+        "quote": "may allow remote injection of arbitrary web script or HTML."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1438,
+    "output_tokens": 308,
+    "latency_s": 5.909
+  }
+}

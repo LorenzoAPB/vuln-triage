@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "User requests a password reset due to account lockout after multiple failed attempts.",
+    "affected_product": "Timesheet system",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reset the user's password to regain access to the timesheet system.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "User account is locked due to too many failed password attempts.",
+        "quote": "I forgot my password again and now my account is locked after too many attempts."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1452,
+    "output_tokens": 186,
+    "latency_s": 3.444
+  }
+}

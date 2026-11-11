@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In PHP versions 8.0.X before 8.0.28, 8.1.X before 8.1.16, and 8.2.X before 8.2.3, the password_verify() function may accept invalid Blowfish hashes as valid, potentially allowing any password for that entry.",
+    "affected_product": "PHP 8.0.X before 8.0.28, 8.1.X before 8.1.16, 8.2.X before 8.2.3",
+    "cwe": "CWE-20",
+    "cwe_quote": "The software does not properly validate input.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The password_verify() function may accept some invalid Blowfish hashes as valid."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "may lead to an application allowing any password for this entry as valid."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "may lead to an application allowing any password for this entry as valid."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Upgrade to PHP 8.0.28, 8.1.16, or 8.2.3 or later.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Invalid Blowfish hashes accepted as valid",
+        "quote": "password_verify() function may accept some invalid Blowfish hashes as valid."
+      },
+      {
+        "claim": "Potential impact of allowing any password",
+        "quote": "may lead to an application allowing any password for this entry as valid."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1487,
+    "output_tokens": 357,
+    "latency_s": 5.146
+  }
+}

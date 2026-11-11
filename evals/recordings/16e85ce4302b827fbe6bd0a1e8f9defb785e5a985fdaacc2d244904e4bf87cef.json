@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw was found in openstack-glance that could allow a remote, authenticated attacker to tamper with images.",
+    "affected_product": "openstack-glance",
+    "cwe": "CWE-20",
+    "cwe_quote": "This issue could allow a remote, authenticated attacker to tamper with images, compromising the integrity of virtual machines created using these modified images.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This issue could allow a remote, authenticated attacker to tamper with images."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "remote, authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "compromising the integrity of virtual machines created using these modified images."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the reported flaw and assess the impact on existing deployments.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Attack allows tampering with images",
+        "quote": "This issue could allow a remote, authenticated attacker to tamper with images."
+      },
+      {
+        "claim": "Integrity impact on virtual machines",
+        "quote": "compromising the integrity of virtual machines created using these modified images."
+      },
+      {
+        "claim": "Authenticated access required",
+        "quote": "remote, authenticated attacker"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 288,
+    "latency_s": 8.528
+  }
+}

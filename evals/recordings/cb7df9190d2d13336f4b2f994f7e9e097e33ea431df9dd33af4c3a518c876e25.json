@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "IBM Financial Transaction Manager 3.2.0 through 3.2.7 could allow a remote attacker to traverse directories on the system.",
+    "affected_product": "IBM Financial Transaction Manager 3.2.0 through 3.2.7",
+    "cwe": "CWE-22",
+    "cwe_quote": "could allow a remote attacker to traverse directories on the system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "to view arbitrary files on the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the vulnerability and apply necessary patches or mitigations.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "CWE-22",
+        "quote": "could allow a remote attacker to traverse directories on the system."
+      },
+      {
+        "claim": "Attack Vector",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      {
+        "claim": "Impact on Confidentiality",
+        "quote": "to view arbitrary files on the system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1470,
+    "output_tokens": 301,
+    "latency_s": 5.543
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Vulnerability in the CLI of Cisco Secure Email Gateway could allow an authenticated, remote attacker to execute arbitrary commands.",
+    "affected_product": "Cisco Secure Email Gateway",
+    "cwe": "CWE-20",
+    "cwe_quote": "This vulnerability is due to improper input validation in the CLI.",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "An attacker could exploit this vulnerability by injecting operating system commands into a legitimate command."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "To successfully exploit this vulnerability, an attacker would need valid Administrator credentials."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to escape the restricted command prompt and execute arbitrary commands on the underlying operating system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the input validation mechanisms in the CLI and apply necessary patches or updates.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Improper input validation in the CLI.",
+        "quote": "This vulnerability is due to improper input validation in the CLI."
+      },
+      {
+        "claim": "An attacker could exploit this vulnerability by injecting operating system commands.",
+        "quote": "An attacker could exploit this vulnerability by injecting operating system commands into a legitimate command."
+      },
+      {
+        "claim": "An attacker would need valid Administrator credentials.",
+        "quote": "To successfully exploit this vulnerability, an attacker would need valid Administrator credentials."
+      },
+      {
+        "claim": "Escape the restricted command prompt and execute arbitrary commands.",
+        "quote": "A successful exploit could allow the attacker to escape the restricted command prompt and execute arbitrary commands on the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1493,
+    "output_tokens": 352,
+    "latency_s": 4.932
+  }
+}

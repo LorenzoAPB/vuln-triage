@@ -1,0 +1,56 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The mobile app may have session management issues that allow users to see their account after logging out.",
+    "affected_product": "unknown",
+    "cwe": "CWE-613",
+    "cwe_quote": "Improper Handling of Session State",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate session management and caching mechanisms in the mobile app.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Session management issue",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1477,
+    "output_tokens": 202,
+    "latency_s": 3.686
+  }
+}

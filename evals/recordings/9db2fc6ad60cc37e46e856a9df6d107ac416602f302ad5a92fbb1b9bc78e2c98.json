@@ -1,0 +1,64 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple command injection vulnerabilities could lead to unauthenticated remote code execution via specially crafted packets to the PAPI UDP port (8211).",
+    "affected_product": "Aruba Networks access points",
+    "cwe": "CWE-77",
+    "cwe_quote": "Command Injection",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "by sending specially crafted packets destined to the PAPI (Aruba Networks access point management protocol) UDP port (8211)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "unauthenticated remote code execution"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "result in the ability to execute arbitrary code as a privileged user on the underlying operating system"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "result in the ability to execute arbitrary code as a privileged user on the underlying operating system"
+      }
+    },
+    "recommended_next_step": "Investigate and patch the command injection vulnerabilities in the PAPI protocol.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Command Injection vulnerability",
+        "quote": "multiple command injection vulnerabilities"
+      },
+      {
+        "claim": "Remote Code Execution",
+        "quote": "could lead to unauthenticated remote code execution"
+      },
+      {
+        "claim": "Arbitrary Code Execution",
+        "quote": "result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1469,
+    "output_tokens": 298,
+    "latency_s": 5.944
+  }
+}

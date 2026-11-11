@@ -1,0 +1,60 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "redis-py before 4.5.3 leaves a connection open after canceling an async Redis command, potentially sending response data to the client of an unrelated request.",
+    "affected_product": "redis-py < 4.5.3",
+    "cwe": "CWE-20",
+    "cwe_quote": "leaves a connection open after canceling an async Redis command at an inopportune time, and can send response data to the client of an unrelated request in an off-by-one manner.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "leaves a connection open after canceling an async Redis command at an inopportune time"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "can send response data to the client of an unrelated request in an off-by-one manner."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Investigate the impact of the vulnerability on your deployment and consider upgrading to redis-py version 4.5.3 or later.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "The product version affected by the vulnerability.",
+        "quote": "redis-py before 4.5.3"
+      },
+      {
+        "claim": "Description of the vulnerability.",
+        "quote": "leaves a connection open after canceling an async Redis command at an inopportune time, and can send response data to the client of an unrelated request in an off-by-one manner."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1525,
+    "output_tokens": 343,
+    "latency_s": 5.651
+  }
+}
