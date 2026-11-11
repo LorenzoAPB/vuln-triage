@@ -1,0 +1,59 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow vulnerabilities in multiple underlying OS processes allow unauthenticated remote code execution via specially crafted PAPI protocol packets, enabling execution of arbitrary code as a privileged user.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "could lead to unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "could lead to unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "could lead to unauthenticated remote code execution"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Request vendor/product identification, affected versions, reproducible PoC or crash details, and any available mitigations or patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "There are buffer overflow vulnerabilities in multiple underlying operating system processes that could lead to unauthenticated remote code execution by sending specially crafted packets via the PAPI protocol."
+      },
+      {
+        "claim": "Privilege level of resulting code execution",
+        "quote": "Successful exploitation of these vulnerabilities result in the ability to execute arbitrary code as a privileged user on the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1083,
+    "output_tokens": 533,
+    "latency_s": 9.579
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The reporter claims the application's login page is vulnerable to SQL injection and that they can dump the entire database.",
+    "affected_product": "unknown",
+    "cwe": "CWE-89",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "your login page is vulnerable to sql injection"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "your login page is vulnerable to sql injection"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "i can dump the whole db"
+      },
+      "I": {
+        "value": "H",
+        "quote": "i can dump the whole db"
+      },
+      "A": {
+        "value": "H",
+        "quote": "i can dump the whole db"
+      }
+    },
+    "recommended_next_step": "Request the reporter to provide target URL, affected product/version, proof-of-concept (payload and output), and reproduction steps; if possible, collect logs and block the reported input before verification.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Login page vulnerable to SQL injection",
+        "quote": "your login page is vulnerable to sql injection"
+      },
+      {
+        "claim": "Reporter can dump the whole database",
+        "quote": "i can dump the whole db"
+      },
+      {
+        "claim": "Asks about bounty",
+        "quote": "what is your bounty?"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1049,
+    "output_tokens": 421,
+    "latency_s": 7.327
+  }
+}

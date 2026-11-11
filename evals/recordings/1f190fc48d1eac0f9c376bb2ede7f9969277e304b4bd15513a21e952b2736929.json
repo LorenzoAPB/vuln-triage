@@ -1,0 +1,71 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper input validation in the CLI of Cisco Secure Email Gateway allows an authenticated remote attacker with Administrator credentials to inject OS commands into a legitimate command, escape the restricted command prompt, and execute arbitrary commands on the underlying OS.",
+    "affected_product": "Cisco Secure Email Gateway",
+    "cwe": "CWE-20",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an authenticated, remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "An attacker could exploit this vulnerability by injecting operating system commands into a legitimate command."
+      },
+      "PR": {
+        "value": "H",
+        "quote": "To successfully exploit this vulnerability, an attacker would need valid Administrator credentials."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by injecting operating system commands into a legitimate command."
+      },
+      "S": {
+        "value": "C",
+        "quote": "A successful exploit could allow the attacker to escape the restricted command prompt and execute arbitrary commands on the underlying operating system."
+      },
+      "C": {
+        "value": "H",
+        "quote": "execute arbitrary commands on the underlying operating system."
+      },
+      "I": {
+        "value": "H",
+        "quote": "execute arbitrary commands on the underlying operating system."
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute arbitrary commands on the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Request technical details and proof-of-concept from the reporter: exact CLI commands that are vulnerable, affected software version(s), and steps to reproduce the command-injection so PSIRT can validate and develop mitigations.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability affects product CLI and allows command execution",
+        "quote": "Vulnerability in the CLI of Cisco Secure Email Gateway could allow an authenticated, remote attacker to execute arbitrary commands."
+      },
+      {
+        "claim": "Cause is improper input validation in the CLI",
+        "quote": "These vulnerability is due to improper input validation in the CLI."
+      },
+      {
+        "claim": "Attack technique: injecting OS commands into a legitimate command",
+        "quote": "An attacker could exploit this vulnerability by injecting operating system commands into a legitimate command."
+      },
+      {
+        "claim": "Impact: escape restricted prompt and execute arbitrary commands on the OS",
+        "quote": "A successful exploit could allow the attacker to escape the restricted command prompt and execute arbitrary commands on the underlying operating system."
+      },
+      {
+        "claim": "Attacker needs Administrator credentials",
+        "quote": "To successfully exploit this vulnerability, an attacker would need valid Administrator credentials."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1116,
+    "output_tokens": 638,
+    "latency_s": 12.153
+  }
+}

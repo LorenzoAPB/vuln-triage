@@ -1,0 +1,55 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An IDOR exists on /api/v2/orders/{id} that allows changing the id to view other customers' orders including addresses.",
+    "affected_product": "unknown",
+    "cwe": "CWE-639",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "S": {
+        "value": "U",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "C": {
+        "value": "H",
+        "quote": "changing the id shows other customers' orders including addresses."
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm affected product/version and reproduce the issue to capture request/response demonstrating unauthorized access to another customer's order and address; then determine scope and notify engineering to implement proper authorization checks.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and endpoint",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1051,
+    "output_tokens": 472,
+    "latency_s": 12.262
+  }
+}

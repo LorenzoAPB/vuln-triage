@@ -1,0 +1,59 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper access controls in Devolutions Server 2022.3.12 and earlier could allow an authenticated user to access sensitive data without proper authorization.",
+    "affected_product": "Devolutions Server 2022.3.12 and earlier",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request full technical details: exploitability steps, affected components/endpoints, specific data exposed, and a proof-of-concept or reproduction steps to confirm scope and impact.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Improper access controls on entries in Devolutions Server \n2022.3.12 and earlier could allow an authenticated user to access \nsensitive data without proper authorization."
+      },
+      {
+        "claim": "Authenticated attacker",
+        "quote": "could allow an authenticated user to access sensitive data without proper authorization."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1063,
+    "output_tokens": 437,
+    "latency_s": 9.71
+  }
+}

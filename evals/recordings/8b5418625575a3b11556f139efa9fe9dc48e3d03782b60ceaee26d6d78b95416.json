@@ -1,0 +1,63 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report states an improper neutralization of special elements used in a command (command injection) vulnerability exists in Liman Central Management System Liman MYS affecting HTTP/Controllers, CronMail, Jobs modules.",
+    "affected_product": "Liman Central Management System Liman MYS: from 1.7.0 before 1.8.3-462",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "unknown"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "unknown"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "unknown"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "unknown"
+      },
+      "S": {
+        "value": "U",
+        "quote": "unknown"
+      },
+      "C": {
+        "value": "H",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability"
+      }
+    },
+    "recommended_next_step": "Request vendor or reporter to provide a detailed advisory or proof-of-concept describing the injection vector, affected endpoints, and exploitation steps so impact and exploitability can be accurately determined.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Type of vulnerability",
+        "quote": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability"
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "This issue affects Liman Central Management System: from 1.7.0 before 1.8.3-462."
+      },
+      {
+        "claim": "Affected modules",
+        "quote": "Liman Central Management System Liman MYS (HTTP/Controllers, CronMail, Jobs modules) allows Command Injection."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1095,
+    "output_tokens": 521,
+    "latency_s": 8.952
+  }
+}

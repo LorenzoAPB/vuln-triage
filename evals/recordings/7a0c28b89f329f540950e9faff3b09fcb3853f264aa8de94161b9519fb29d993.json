@@ -1,0 +1,59 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authenticated path traversal in the ArubaOS web-based management interface can be exploited to delete arbitrary files on the underlying operating system.",
+    "affected_product": "ArubaOS (web-based management interface)",
+    "cwe": "CWE-22",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      }
+    },
+    "recommended_next_step": "Request a full technical report from the reporter including: affected ArubaOS versions, exact vulnerable endpoint and request parameters, authentication requirements, proof-of-concept details showing the path traversal and file deletion, and any available mitigations or patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface."
+      },
+      {
+        "claim": "Impact \u2014 ability to delete arbitrary files",
+        "quote": "Successful exploitation of this vulnerability results in the ability to delete arbitrary files in the underlying operating system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1062,
+    "output_tokens": 482,
+    "latency_s": 9.663
+  }
+}

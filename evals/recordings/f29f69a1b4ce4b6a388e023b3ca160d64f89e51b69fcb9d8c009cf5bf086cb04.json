@@ -1,0 +1,55 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "unknown",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No action required; the report is not a security vulnerability. If this was submitted in error, communicate with the reporter to redirect to the appropriate team.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Not a vulnerability report (meeting/ops announcement)",
+        "quote": "Reminder that the Q4 offsite is next Thursday at the Riverside venue. Please submit dietary restrictions to Dana by Friday and book travel through the usual portal. Lunch is provided; dinner is on your own."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1075,
+    "output_tokens": 335,
+    "latency_s": 6.863
+  }
+}

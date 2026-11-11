@@ -1,0 +1,67 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in DNS functionality of Cisco Nexus Dashboard Software allows an unauthenticated remote attacker to cause a denial of service by sending a continuous stream of DNS requests that can stop the coredns service or cause the device to reload.",
+    "affected_product": "Cisco Nexus Dashboard Software",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "could allow an unauthenticated, remote attacker"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "An attacker could exploit this vulnerability by sending a continuous stream of DNS requests to an affected device."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "could allow an unauthenticated, remote attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      }
+    },
+    "recommended_next_step": "Collect vendor advisory or affected-version details and obtain exploit/reproduction steps and logs from an affected instance to confirm impact and scope.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and impact",
+        "quote": "A vulnerability in the DNS functionality of Cisco Nexus Dashboard Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition."
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This vulnerability is due to the improper processing of DNS requests."
+      },
+      {
+        "claim": "Exploitation method",
+        "quote": "An attacker could exploit this vulnerability by sending a continuous stream of DNS requests to an affected device."
+      },
+      {
+        "claim": "Possible results of exploit",
+        "quote": "A successful exploit could allow the attacker to cause the coredns service to stop working or cause the device to reload, resulting in a DoS condition."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1123,
+    "output_tokens": 575,
+    "latency_s": 9.273
+  }
+}

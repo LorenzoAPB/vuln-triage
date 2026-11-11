@@ -1,0 +1,67 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "Layout bug: on the checkout page in Firefox 128, the 'Apply coupon' button overlaps the order total when window width is under 600px.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Document as a UI/UX bug and forward to the frontend/layout team for a fix; include repro steps and browser/version (Firefox 128) and a screenshot if available.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Describes the bug and affected browser/version",
+        "quote": "on the checkout page in Firefox 128, the 'Apply coupon' button overlaps the order total when the window is narrower than 600px."
+      },
+      {
+        "claim": "Reproduction steps",
+        "quote": "Steps: open cart, resize window, look at the right column."
+      },
+      {
+        "claim": "Expected behavior",
+        "quote": "Expected: button wraps below the total."
+      },
+      {
+        "claim": "Assessment that this is not a security issue",
+        "quote": "Not a security issue, just layout."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1089,
+    "output_tokens": 444,
+    "latency_s": 14.252
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Insufficient input sanitization in the documentation feature of Devolutions Server 2022.3.12 and earlier allows an authenticated attacker to perform an SQL Injection, potentially resulting in unauthorized access to system resources.",
+    "affected_product": "Devolutions Server 2022.3.12 and earlier",
+    "cwe": "CWE-89",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "allows an authenticated attacker to perform an SQL Injection"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "allows an authenticated attacker to perform an SQL Injection"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allows an authenticated attacker to perform an SQL Injection"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "allows an authenticated attacker to perform an SQL Injection"
+      },
+      "S": {
+        "value": "C",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      },
+      "C": {
+        "value": "H",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      },
+      "I": {
+        "value": "H",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      },
+      "A": {
+        "value": "H",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      }
+    },
+    "recommended_next_step": "Request and review a full technical report or PoC demonstrating the SQL injection vector, affected endpoints, required attacker privileges, and exploit impact.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and cause",
+        "quote": "Insufficient input sanitization in the documentation feature"
+      },
+      {
+        "claim": "Affected component and versions",
+        "quote": "Devolutions Server 2022.3.12 and earlier"
+      },
+      {
+        "claim": "Attack capability",
+        "quote": "allows an authenticated attacker to perform an SQL Injection"
+      },
+      {
+        "claim": "Potential impact",
+        "quote": "potentially resulting in unauthorized access to system resources"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1070,
+    "output_tokens": 519,
+    "latency_s": 10.424
+  }
+}

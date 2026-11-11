@@ -1,0 +1,63 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "cuobjdump in the NVIDIA CUDA Toolkit SDK has a bug where running the tool against an ill-formed binary may cause a null-pointer dereference, potentially causing a limited denial of service.",
+    "affected_product": "NVIDIA CUDA Toolkit SDK (cuobjdump)",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a local user running the tool"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a local user running the tool"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "may result in a limited denial of service"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "may result in a limited denial of service"
+      }
+    },
+    "recommended_next_step": "Obtain the exact cuobjdump version and reproduce the null-pointer dereference with an ill-formed binary, capture crash details (stack trace, logs), and report to the vendor with reproduction steps and sample file.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Tool and component with bug",
+        "quote": "NVIDIA CUDA Toolkit SDK contains a bug in cuobjdump"
+      },
+      {
+        "claim": "Triggering action and attacker context",
+        "quote": "a local user running the tool against an ill-formed binary"
+      },
+      {
+        "claim": "Impact description",
+        "quote": "may cause a null- pointer dereference, which may result in a limited denial of service."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1073,
+    "output_tokens": 462,
+    "latency_s": 9.961
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Apiman Manager has a missing permissions check allowing an authenticated manager account to access API keys for organizations/clients/versions they lack permission for if they can guess the resource URL; Apiman 3.1.0.Final fixes the issue and users are advised to upgrade.",
+    "affected_product": "Apiman (unspecified versions prior to 3.1.0.Final)",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "A",
+        "quote": "an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for if they correctly guess the URL, which includes Organisation ID, Client ID, and Client Version of the targeted non-permitted resource."
+      },
+      "AC": {
+        "value": "H",
+        "quote": "While not trivial to exploit, it could be achieved by brute-forcing or guessing common names."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission"
+      },
+      "I": {
+        "value": "L",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission (depending on the specifics of configuration, such as whether an API key is the only form of security)."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Upgrade Apiman to version 3.1.0.Final or later; if upgrade is not immediately possible, restrict account access as a workaround.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Missing permission check allows access when URL guessed",
+        "quote": "Due to a missing permissions check, an attacker with an authenticated Apiman Manager account may be able to gain access to API keys they do not have permission for if they correctly guess the URL, which includes Organisation ID, Client ID, and Client Version of the targeted non-permitted resource."
+      },
+      {
+        "claim": "Exploitation difficulty",
+        "quote": "While not trivial to exploit, it could be achieved by brute-forcing or guessing common names."
+      },
+      {
+        "claim": "Impact of access to API keys",
+        "quote": "Access to the non-permitted API Keys could allow use of other users' resources without their permission (depending on the specifics of configuration, such as whether an API key is the only form of security)."
+      },
+      {
+        "claim": "Fixed version",
+        "quote": "Apiman 3.1.0.Final resolved this issue."
+      },
+      {
+        "claim": "Workaround",
+        "quote": "The only known workaround is to restrict account access."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1185,
+    "output_tokens": 726,
+    "latency_s": 12.093
+  }
+}

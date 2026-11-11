@@ -1,0 +1,55 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A use-after-free vulnerability in WebCore::RenderLayer::repaintBlockSelectionGaps in WebKitGTK before 2.36.8 allows attackers to execute code remotely.",
+    "affected_product": "WebKitGTK before 2.36.8",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attackers to execute code remotely"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to execute code remotely"
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows attackers to execute code remotely"
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows attackers to execute code remotely"
+      }
+    },
+    "recommended_next_step": "Request the full vulnerability report or advisory that includes trigger conditions, attack vector details, exploitability steps, and a patch or mitigation for WebKitGTK to validate and confirm impact.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and effect",
+        "quote": "A use-after-free vulnerability in WebCore::RenderLayer::repaintBlockSelectionGaps in WebKitGTK before 2.36.8 allows attackers to execute code remotely."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1064,
+    "output_tokens": 402,
+    "latency_s": 7.924
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An insufficient session expiration vulnerability in the ArubaOS command line interface allows an attacker to keep a session running on an affected device after the removal of the impacted account.",
+    "affected_product": "ArubaOS command line interface",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      }
+    },
+    "recommended_next_step": "Obtain full technical details: vendor advisory or proof-of-concept demonstrating session persistence after account removal, and affected ArubaOS versions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "An insufficient session expiration vulnerability exists in the ArubaOS command line interface."
+      },
+      {
+        "claim": "Impact \u2014 attacker can keep session after account removal",
+        "quote": "Successful exploitation of this vulnerability allows an attacker to keep a session running on an affected device after the removal of the impacted account"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1066,
+    "output_tokens": 456,
+    "latency_s": 8.234
+  }
+}

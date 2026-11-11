@@ -1,0 +1,71 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in openstack-glance could allow a remote, authenticated attacker to tamper with images, compromising integrity of VMs created from those images.",
+    "affected_product": "openstack-glance",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "\"remote\""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "\"authenticated attacker\""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "\"compromising the integrity of virtual machines\""
+      },
+      "I": {
+        "value": "H",
+        "quote": "\"tamper with images\""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a detailed report from the reporter including exact vulnerable versions, attack steps, and proof-of-concept or reproduce steps.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Remote attacker",
+        "quote": "remote"
+      },
+      {
+        "claim": "Authenticated attacker",
+        "quote": "authenticated attacker"
+      },
+      {
+        "claim": "Can tamper with images",
+        "quote": "tamper with images"
+      },
+      {
+        "claim": "Compromises integrity of virtual machines",
+        "quote": "compromising the integrity of virtual machines created using these modified images"
+      },
+      {
+        "claim": "Vulnerable product",
+        "quote": "openstack-glance"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1065,
+    "output_tokens": 295,
+    "latency_s": 6.352
+  }
+}

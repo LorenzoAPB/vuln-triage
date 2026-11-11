@@ -1,0 +1,63 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "IBM Financial Transaction Manager 3.2.0 through 3.2.7 allows a remote attacker to use specially-crafted URL requests containing \"/../\" to view arbitrary files on the system.",
+    "affected_product": "IBM Financial Transaction Manager 3.2.0 through 3.2.7",
+    "cwe": "CWE-22",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "S": {
+        "value": "U",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      "C": {
+        "value": "H",
+        "quote": "to view arbitrary files on the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction details and proof-of-concept URL(s) showing the \"/../\" traversal and list of files accessible, and ask whether any authentication is required.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and versions",
+        "quote": "IBM Financial Transaction Manager 3.2.0 through 3.2.7"
+      },
+      {
+        "claim": "Directory traversal via specially-crafted URL containing /../",
+        "quote": "An attacker could send a specially-crafted URL request containing \"dot dot\" sequences (/../) to view arbitrary files on the system."
+      },
+      {
+        "claim": "Source identifier",
+        "quote": "IBM X-Force ID: 192953."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1093,
+    "output_tokens": 581,
+    "latency_s": 11.947
+  }
+}

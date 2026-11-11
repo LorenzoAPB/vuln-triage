@@ -1,0 +1,71 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Gitpod versions prior to release-2022.11.2.16 have a Cross-Site WebSocket Hijacking (CSWSH) vulnerability: the Origin header is not restricted, allowing attackers to make WebSocket connections to the Gitpod JSONRPC server using a victim's credentials, which can lead to data extraction or full workspace takeover.",
+    "affected_product": "Gitpod versions prior to release-2022.11.2.16",
+    "cwe": "CWE-942",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attackers to make WebSocket connections to the Gitpod JSONRPC server using a victim\u2019s credentials"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "the Origin header is not restricted"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to make WebSocket connections to the Gitpod JSONRPC server using a victim\u2019s credentials"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "allows attackers to make WebSocket connections to the Gitpod JSONRPC server using a victim\u2019s credentials"
+      },
+      "S": {
+        "value": "C",
+        "quote": "This can lead to the extraction of data from workspaces, to a full takeover of the workspace."
+      },
+      "C": {
+        "value": "H",
+        "quote": "This can lead to the extraction of data from workspaces, to a full takeover of the workspace."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This can lead to the extraction of data from workspaces, to a full takeover of the workspace."
+      },
+      "A": {
+        "value": "H",
+        "quote": "This can lead to the extraction of data from workspaces, to a full takeover of the workspace."
+      }
+    },
+    "recommended_next_step": "Verify the affected Gitpod deployment and reproduce by attempting cross-origin WebSocket connections to the JSONRPC server; confirm Origin header handling and determine whether authentication is bound to origin. If confirmed, apply update to release-2022.11.2.16 or implement Origin validation and revoke compromised sessions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerable versions",
+        "quote": "An issue was discovered in Gitpod versions prior to release-2022.11.2.16."
+      },
+      {
+        "claim": "vulnerability type",
+        "quote": "There is a Cross-Site WebSocket Hijacking (CSWSH) vulnerability"
+      },
+      {
+        "claim": "technical cause",
+        "quote": "the Origin header is not restricted."
+      },
+      {
+        "claim": "attacker ability",
+        "quote": "allows attackers to make WebSocket connections to the Gitpod JSONRPC server using a victim\u2019s credentials"
+      },
+      {
+        "claim": "impact",
+        "quote": "This can lead to the extraction of data from workspaces, to a full takeover of the workspace."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1114,
+    "output_tokens": 703,
+    "latency_s": 15.113
+  }
+}

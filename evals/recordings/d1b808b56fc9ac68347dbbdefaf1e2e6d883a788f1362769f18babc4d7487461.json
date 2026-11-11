@@ -1,0 +1,59 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Cross-Site Request Forgery (CSRF) in Fullworks Quick Event Manager plugin <= 9.7.4 affecting all registration actions (delete, delete all, edit, update).",
+    "affected_product": "Fullworks Quick Event Manager plugin <= 9.7.4",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4 affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4 affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "I": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      },
+      "A": {
+        "value": "L",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      }
+    },
+    "recommended_next_step": "Request full report or PoC demonstrating CSRF exploitability and affected contexts (authentication requirements, attacker prerequisites) and confirm impacted versions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected plugin/versions",
+        "quote": "Cross-Site Request Forgery (CSRF) vulnerability in Fullworks Quick Event Manager plugin <=\u00a09.7.4 affecting all registration actions (delete, delete all, edit, update)."
+      },
+      {
+        "claim": "Actions affected",
+        "quote": "affecting all registration actions (delete, delete all, edit, update)."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1067,
+    "output_tokens": 543,
+    "latency_s": 15.217
+  }
+}

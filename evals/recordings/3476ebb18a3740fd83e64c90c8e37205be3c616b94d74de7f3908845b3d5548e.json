@@ -1,0 +1,71 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A heap buffer overflow in the HFS+ partition file parser of ClamAV (certain versions) due to missing buffer size check may allow unauthenticated remote attackers to execute arbitrary code or crash the scanning process.",
+    "affected_product": "ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier",
+    "cwe": "unknown",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "This vulnerability is due to a missing buffer size check that may result in a heap buffer overflow write."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      "S": {
+        "value": "U",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process, or else crash the process, resulting in a denial of service (DoS) condition."
+      },
+      "C": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process, or else crash the process, resulting in a denial of service (DoS) condition."
+      },
+      "I": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process, or else crash the process, resulting in a denial of service (DoS) condition."
+      },
+      "A": {
+        "value": "H",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process, or else crash the process, resulting in a denial of service (DoS) condition."
+      }
+    },
+    "recommended_next_step": "Obtain the ClamAV advisory or vendor patch information linked in the report and determine fixed versions and available mitigations; coordinate disclosure and prepare updates for affected deployments.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability location and versions",
+        "quote": "A vulnerability in the HFS+ partition file parser of ClamAV versions 1.0.0 and earlier, 0.105.1 and earlier, and 0.103.7 and earlier could allow an unauthenticated, remote attacker to execute arbitrary code."
+      },
+      {
+        "claim": "Root cause",
+        "quote": "This vulnerability is due to a missing buffer size check that may result in a heap buffer overflow write."
+      },
+      {
+        "claim": "Attack vector",
+        "quote": "An attacker could exploit this vulnerability by submitting a crafted HFS+ partition file to be scanned by ClamAV on an affected device."
+      },
+      {
+        "claim": "Impact",
+        "quote": "A successful exploit could allow the attacker to execute arbitrary code with the privileges of the ClamAV scanning process, or else crash the process, resulting in a denial of service (DoS) condition."
+      },
+      {
+        "claim": "Reference",
+        "quote": "For a description of this vulnerability, see the ClamAV blog [\"https://blog.clamav.net/\"]."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1223,
+    "output_tokens": 860,
+    "latency_s": 15.631
+  }
+}
