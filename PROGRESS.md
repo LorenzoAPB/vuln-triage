@@ -8,7 +8,8 @@
 - [x] 4. Eval set (48 items: 36 NVD, 12 synthetic) + metrics, one command (`python -m evals.run`)
 - [x] 5. pytest (28 tests, API mocked) + GitHub Actions (ruff, pytest, offline eval replay with --check, optional live smoke)
 - [x] 6. README with architecture, design choices, results, limits, ethics; demo GIF; MIT license
-- [x] 7. Iteration 3: fix CWE abstention and CVSS over-scoring with a dev/test split; v3 held-out test run once on gpt-4o-mini (fair same-model comparison on gpt-5-mini still pending)
+- [x] 7. Iteration 3: fix CWE abstention and CVSS over-scoring with a dev/test split; v3 held-out test run once on gpt-4o-mini
+- [x] 8. Iteration 4: Batch API, larger dev split, dev ablation (retrieval, provisional publishing, reasoning effort, no-LLM baseline), v4 held-out run, same-model v2/v3/v4 comparison on gpt-5-mini
 
 ## Session log
 - 2026-11-11: Milestone 0 done. Deps: openai 3.49.0, pydantic 2.14.3, cvss 3.6 (RedHat lib), pytest, ruff.
@@ -34,13 +35,22 @@
   - Labeling: PROMPT_VERSION = "v3" in triage.py; results JSON files carry `prompt`, md headers say "Model X, prompt/schema vN"; `--check` fails if the label does not match the code. Old history JSONs got a `prompt` key (metadata only). CLI `--model` help shows the default (gpt-5-mini). Demo re-recorded with `--model gpt-4o-mini` replaying the v3 recordings.
   - Round 3 spend: about $0.02 (test run $0.0189 from recorded usage, plus quota probes and the one hung request, whose tokens are not recorded).
 
+- 2026-11-11 (iteration 4, Lorenzo: improve today, full autonomy, $2 cap):
+  - Quota unlock: the Batch API (/v1/responses, strict json_schema) works on this account even with gpt-4o-mini and gpt-5-mini at their daily limit. One model per batch; 39-48 requests finished in about 5-25 minutes. Half price. evals/batch.py writes the same cache records as live calls (latency None, batch True), so evals.run replays them.
+  - Research (cited in README): AutoCVSS (EMNLP 2025 Industry) -> retrieval of similar CVEs as few-shot examples; Marchiori et al. arXiv 2504.10713 -> embedding/kNN methods beat LLMs on C/I/A, combine them; knowledge-driven rules paper (ACM 2025) -> explicit scoring rules, which v3 already has.
+  - Data: retrieval pool of 16,832 NVD-scored 2022 CVEs (evals/pool.jsonl.gz, build_pool.py, no SAP). Dev split enlarged by the same fixed rule with September-October 2023 (6 per severity): 36 NVD + 3 synthetic; the original 12 items unchanged; no overlap with test.
+  - Dev ablation (evals/ablation.md): provisional publishing raised coverage to 100% (gpt-5-mini severity correct over all items 28% -> 56%); retrieved examples helped gpt-4o-mini CWE (47% -> 53%) but not severity and hurt gpt-5-mini slightly (56% -> 50%); low reasoning effort did not help (47%); a no-LLM 5-NN vote got 44% severity, 39% CWE; filling inferred metrics from the vote over-scored. Chosen: v4 = v3 prompt + provisional publishing, gpt-5-mini, minimal effort.
+  - Held-out test (Batch API, once): v3 on gpt-5-mini (the pending fair baseline) and v4, which sends identical requests, so v4 numbers are the same responses re-scored. v2 -> v4 on gpt-5-mini: CWE exact 17% -> 47%, lenient 17% -> 67%, unknown 75% -> 3%; score bias +1.31 -> +0.07 but MAE 1.49 -> 1.87; coverage 67% -> 100%; severity correct over all NVD items 28% -> 39%; raw severity accuracy 44% -> 39% (not improved). gpt-4o-mini v3 -> v4: coverage 8% -> 100%, correct over all 6% -> 42%.
+  - Caveats: v4 got 56% on dev vs 39% on test; v3 gpt-5-mini test numbers were seen before v4 was chosen (choice made on dev; v4 changes only publishing).
+  - Code: Prompt dataclass + PROMPTS registry (v3, v4, exp-knn, exp-low, exp-knn-low), finalize(publish_inferred), retrieval.py, evals/batch.py, evals/ablation.py, accuracy_all metric, CLI --prompt and a "Model ..., prompt ..." line on every draft. CI replays dev, test, and the ablation.
+  - Spend this iteration: about $0.21 (dev batches $0.0073 + $0.0095 + $0.0270 + $0.0295 + $0.0500 + $0.0534, test batch $0.0335, three one-request batch probes). Batch costs are recorded at half price.
+
 ## Pending
-1. Fair comparison: v3 on gpt-5-mini over the same 48 test items, against v2 on gpt-5-mini. Needs 48 gpt-5-mini requests (about 10:45 AM MST Nov 12 at the refill rate of one per 28.8 minutes). Do not change the prompt before it. Run `python -m evals.run --split test --model gpt-5-mini` after moving the gpt-4o-mini results (already snapshotted in evals/history), then `python -m evals.compare evals/history/v2-test-gpt-5-mini.json evals/results.json`, snapshot as evals/history/v3-test-gpt-5-mini.*, update README and decide which run CI replays.
-2. Optional: a dev pass on gpt-5-mini (15 requests) for prompt work on the real model; it does not replace step 1.
+- Nothing blocking. Ideas: retrieval keyed on the weakness rather than product names (strip vendor tokens, or retrieve by the model's CWE); self-consistency voting through the Batch API; a larger test split for tighter intervals.
 
 ## Open questions / next steps
 - Evidence relevance beyond the reuse limit: a second model call that judges whether each quote supports its metric.
-- Rerun the eval on gpt-5.4-mini once the daily limit allows (needs 48 requests), for a real model comparison.
+- A model comparison (gpt-5.4-mini, gpt-5) through the Batch API, now that the daily limit is not a blocker.
 
 ## Interview prep topics
 - Why structured outputs, and what strict mode guarantees (and does not: values can still be wrong).

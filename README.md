@@ -4,9 +4,9 @@
 
 An LLM drafts the triage of a security vulnerability report, code checks every claim it can, and a human approves, edits, or rejects the draft. Nothing is final until a person decides.
 
-![Demo: the guardrails withhold the model's 7.5 High guess for an ArubaOS report; the analyst sets the vector to 2.4 Low, then rejects a two-line XSS report](docs/demo.gif)
+![Demo: the model drafts a provisional 4.3 Medium for an ArubaOS report; the analyst corrects the vector to 2.4 Low and the CWE to CWE-613, then rejects a two-line XSS report](docs/demo.gif)
 
-<sub>Replays recorded `gpt-4o-mini` responses from the v3 held-out run (`vuln-triage triage --model gpt-4o-mini`, cache `evals/recordings`), so it makes no API calls. The CLI default model is `gpt-5-mini`; see [Results](#results).</sub>
+<sub>Runs with the defaults (`gpt-5-mini`, prompt v4) and replays recorded `gpt-5-mini` responses from the held-out test run (cache `evals/recordings`), so it makes no API calls. The first line of each draft names the model and prompt version.</sub>
 
 ## The problem
 
@@ -28,10 +28,11 @@ flowchart LR
 | File | What it does |
 |---|---|
 | [`vuln_triage/schema.py`](vuln_triage/schema.py) | `ModelTriage`: what the model may return. `TriageResult`: the draft a human reviews. |
-| [`vuln_triage/triage.py`](vuln_triage/triage.py) | One Responses API call with structured outputs, a disk cache, token usage, and cost. |
+| [`vuln_triage/triage.py`](vuln_triage/triage.py) | Prompt versions, one Responses API call with structured outputs, a disk cache, token usage, and cost. |
+| [`vuln_triage/retrieval.py`](vuln_triage/retrieval.py) | TF-IDF nearest neighbours over 16,832 NVD-scored CVEs from 2022 (used by the `exp-knn` experiment and the no-LLM baseline). |
 | [`vuln_triage/guardrails.py`](vuln_triage/guardrails.py) | `finalize()`: turns the model's proposal into a draft, trusting nothing that code can check. |
 | [`vuln_triage/cli.py`](vuln_triage/cli.py) | The review loop and the JSONL log. |
-| [`evals/`](evals) | A 15-item dev split for iteration, a 48-item held-out test split, metric code, recorded responses, and [history](evals/history) of every run. |
+| [`evals/`](evals) | A 39-item dev split for iteration, a 48-item held-out test split, metric code, a Batch API runner, recorded responses, the [dev ablation](evals/ablation.md), and [history](evals/history) of every run. |
 
 ## Design choices
 
@@ -39,7 +40,9 @@ flowchart LR
 
 **The CVSS score is computed in code.** The model proposes the eight base metrics; the [`cvss`](https://pypi.org/project/cvss/) library computes the score, and the severity band follows from it. A model can easily say "9.8" for a vector that scores 7.5. Arithmetic is not its job.
 
-**Per-metric evidence.** Each metric comes with the exact report text that supports it, or `''` when the model is inferring. Code checks every quote against the report (case- and whitespace-insensitive substring match). A metric counts as guessed if its quote is missing, is not in the report, or is the same sentence cited for more than three metrics (one sentence cannot carry most of a vector; the v2 test run on `gpt-5-mini` found the model doing exactly that). One guess caps confidence at medium. More than four guesses, or a report under 120 characters, and the vector is withheld: the analyst sees the model's guess, labeled as a guess, but no score is published.
+**Per-metric evidence.** Each metric comes with the exact report text that supports it, or `''` when the model is inferring. Code checks every quote against the report (case- and whitespace-insensitive substring match). A metric counts as guessed if its quote is missing, is not in the report, or is the same sentence cited for more than three metrics (one sentence cannot carry most of a vector; the v2 test run on `gpt-5-mini` found the model doing exactly that). One guess caps confidence at medium. Reports under 120 characters get no score.
+
+**Inferred metrics are labeled, not hidden (v4).** Until v3, more than four metrics without a verified quote meant the vector was withheld. On the held-out run with `gpt-4o-mini` that withheld 92% of vectors, mostly because the model correctly left quotes empty for metrics a description never states (NVD analysts infer those too). v4 publishes such a vector flagged `cvss_provisional`, with the inferred metrics listed next to it and confidence set to low. Every draft is reviewed by an analyst, so an honestly labeled draft is more useful than no draft. Thin reports are still withheld.
 
 **Score what the report states, not the worst case.** The prompt spells out standard CVSS v3.1 practice: C/I/A are High only for total loss, a crash affects availability only, PR:N needs the report to say or clearly imply no account, S:C needs a crossed security boundary. This targets the over-scoring measured in the v2 test run on `gpt-5-mini`.
 
@@ -55,7 +58,14 @@ flowchart LR
 
 **Human in the loop, with a record.** The analyst can edit the CWE, the vector (the score and severity are recomputed), the severity, and the product, or reject with a reason. Each run logs model, latency, tokens, estimated cost, guardrail flags, the decision, and every field the human changed with the model's value next to theirs. Those overrides are the data you would use to improve the prompt.
 
-**Cheap model, cached calls.** The CLI defaults to `gpt-5-mini` at minimal reasoning effort (`MODEL` in [`triage.py`](vuln_triage/triage.py)); the v2 test run on it cost $0.0623 for 48 reports. The current held-out results were produced by a different model, `gpt-4o-mini` (see [Results](#results)). Responses are cached on disk, keyed by model, prompt, schema, and report text, so re-runs are free and the eval replays exactly. Prices live in one constant (`PRICES_PER_MTOK`) with the source URL and the date they were checked.
+**Cheap model, cached calls.** The CLI defaults to `gpt-5-mini` at minimal reasoning effort (`MODEL` in [`triage.py`](vuln_triage/triage.py)); the v2 test run on it cost $0.0623 for 48 reports. The current held-out results were also produced by `gpt-5-mini`, with prompt v4. Evals go through the [Batch API](evals/batch.py): half price, and limits separate from the account's 50 requests per model per day, which had forced earlier runs onto different models. Responses are cached on disk, keyed by model, prompt, schema, and report text, so re-runs are free and the eval replays exactly. Prices live in one constant (`PRICES_PER_MTOK`) with the source URL and the date they were checked.
+
+**What prior work suggested, and what was tested here.** Three studies shaped the v4 experiments:
+- [AutoCVSS (EMNLP 2025, Industry Track)](https://aclanthology.org/2025.emnlp-industry.38.pdf) found retrieval of similar CVEs as few-shot examples to be the best LLM prompting strategy for CVSS prediction. That became the `exp-knn` experiment, with local TF-IDF retrieval over 2022 NVD records instead of an embedding service.
+- [Marchiori, Donadel, and Conti, "Can LLMs Classify CVEs?" (arXiv 2504.10713)](https://arxiv.org/abs/2504.10713) found embedding-based classifiers beat LLMs on the subjective C/I/A metrics and suggested combining the two. That became the no-LLM nearest-neighbour baseline and the "fill inferred metrics from neighbours" variant.
+- ["Knowledge-Driven Large Language Models for Automating CVSS Score Prediction" (ACM, 2025)](https://doi.org/10.1145/3733817.3762699) reported large gains from explicit expert scoring rules in the prompt, which is the approach the v3 CVSS guidance already takes.
+
+On this data, retrieval helped CWE on `gpt-4o-mini` but not severity, and the neighbour vote was a strong free baseline (see the [ablation](#dev-split-ablation-what-each-idea-did)).
 
 ## Evaluation method
 
@@ -63,97 +73,107 @@ Two splits, both built by the same fixed rule in [`build_dataset.py`](evals/buil
 
 | Split | Items | Window | Used for |
 |---|---|---|---|
-| dev | 12 NVD (3 per severity) + 3 synthetic | June-July 2023 | All prompt and guardrail iteration |
+| dev | 36 NVD (3 per severity from June-July 2023, 6 per severity from September-October 2023) + 3 synthetic | June-July and September-October 2023 | All prompt and guardrail iteration |
 | test | 36 NVD (9 per severity) + 12 synthetic | March-April 2023 | Held out; run once per finished version |
+| retrieval pool | 16,832 NVD-scored CVEs ([`build_pool.py`](evals/build_pool.py)) | 2022 | Nearest-neighbour experiments only; never scored |
 
 Labels are NVD's CVSS 3.1 vector and primary CWE. The lenient CWE metric counts a direct parent or child in MITRE's Research view (CWE-1000, from [`cwe_parents.json`](evals/cwe_parents.json), built by [`build_cwe_tree.py`](evals/build_cwe_tree.py)). Every number below is generated by `python -m evals.run` or `python -m evals.compare`; snapshots of each run are in [`evals/history`](evals/history).
 
 ## Results
 
-Every table below names the model and the prompt/schema version that produced it. The two held-out runs used different models, so they are **not a controlled comparison**: a difference between them could come from the prompt or from the model.
+Every number below names the model and the prompt version that produced it, and is copied from a generated file under [`evals/`](evals).
 
-### Current held-out numbers: v3 prompt, `gpt-4o-mini`, held-out test, run once 2026-11-11
+### Current held-out numbers: v4, `gpt-5-mini`, held-out test
 
-Test split, 48 items, 0 parse failures, copied from [`evals/results.md`](evals/results.md) (snapshot: [`evals/history/v3-test-gpt-4o-mini.md`](evals/history/v3-test-gpt-4o-mini.md)). This run used `gpt-4o-mini`, not the CLI default `gpt-5-mini`, because `gpt-5-mini`'s 50-requests-per-day quota was used up; `gpt-4o-mini` was the cheapest model with structured outputs and enough quota left. It has no earlier run, so there is no same-model before/after.
-
-| What | Result |
-|---|---|
-| Report vs noise: report precision / recall | 100% / 98% (42 reports) |
-| Report vs noise: noise precision / recall | 86% / 100% (6 non-reports) |
-| Severity published (vector passed the guardrails) | 8% of NVD items |
-| Severity accuracy when published | 67% |
-| Severity accuracy of the raw model vector, no guardrails | 42% (13 over-scored, 8 under-scored) |
-| Raw minus NVD base score | mean +0.21, mean absolute 1.56 |
-| CWE exact match with NVD primary CWE | 36% (36% answered `unknown`) |
-| CWE exact or direct parent/child (lenient) | 39% |
-| CVSS vector exact match, published / raw model vector | 0% / 14% |
-| Per-metric agreement AV / AC / PR / UI / S / C / I / A | 81% / 89% / 78% / 86% / 94% / 69% / 33% / 64% |
-| Thin and vague reports (6) | 6 low confidence, 6 with the vector withheld |
-| Cost and latency | 70,763 input + 13,814 output tokens, about $0.0189; median 5.07 s per call |
-
-| Severity (published) | Precision | Recall | Predicted |
-|---|---|---|---|
-| Critical | 100% | 22% | 2 |
-| High | n/a | 0% | 0 |
-| Medium | 0% | 0% | 1 |
-| Low | n/a | 0% | 0 |
-
-What the numbers say (about v3 on `gpt-4o-mini` only):
-
-- **The guardrails withheld almost every vector.** `gpt-4o-mini` left most per-metric quotes empty, which the schema defines as "inferring", so 33 of 36 NVD items were flagged `cvss_mostly_guessed`. Only 3 severities were published; 67% accuracy on 3 items says almost nothing.
-- **The raw vector is more balanced but no more accurate.** 42% raw severity accuracy with 13 over- and 8 under-scored, mean bias +0.21. Integrity is the weak metric (33% agreement).
-- **CWE is answered more often.** 36% exact, 39% lenient, 36% `unknown`. Several remaining `unknown`s come from `cwe_without_evidence`: the CWE quote was not in the report.
-- **Report detection:** the one miss was again the vague second-hand warning ("a friend in IT said your servers might be vulnerable").
-
-### Earlier held-out run: v2 prompt, `gpt-5-mini` (not a controlled comparison)
-
-Test split, 48 items, 0 parse failures, from [`evals/history/v2-test-gpt-5-mini.md`](evals/history/v2-test-gpt-5-mini.md). Different prompt **and** different model from the run above, so do not read the differences as the effect of v3.
+Test split, 48 items, 0 parse failures, from [`evals/results.md`](evals/results.md). The responses were recorded once, through the Batch API, on 2026-11-11. v4 sends exactly the same requests as v3 and changes only the publishing rule, so the v3 and v4 numbers below come from the same recorded responses.
 
 | What | Result |
 |---|---|
 | Report vs noise: report precision / recall | 100% / 98% (42 reports) |
 | Report vs noise: noise precision / recall | 86% / 100% (6 non-reports) |
-| Severity published (vector passed the guardrails) | 67% of NVD items |
-| Severity accuracy when published | 42% |
-| Severity accuracy of the raw model vector, no guardrails | 44% (19 over-scored, 1 under-scored) |
-| Raw minus NVD base score | mean +1.31, mean absolute 1.49 |
-| CWE exact match with NVD primary CWE | 17% (75% answered `unknown`) |
-| CWE exact or direct parent/child (lenient) | 17% |
-| CVSS vector exact match, raw model vector | 22% |
-| Per-metric agreement AV / AC / PR / UI / S / C / I / A | 69% / 89% / 81% / 89% / 81% / 64% / 64% / 78% |
+| Severity published | 100% of NVD items |
+| Severity accuracy (published = all) | 39% (13 over-scored, 9 under-scored) |
+| Raw minus NVD base score | mean +0.07, mean absolute 1.87 |
+| CWE exact match with NVD primary CWE | 47% (3% answered `unknown`) |
+| CWE exact or direct parent/child (lenient) | 67% |
+| CVSS vector exact match | 17% |
+| Per-metric agreement AV / AC / PR / UI / S / C / I / A | 81% / 89% / 78% / 86% / 94% / 50% / 56% / 72% |
 | Thin and vague reports (6) | 6 low confidence, 5 with the vector withheld |
-| Cost and latency | 52,667 input + 24,572 output tokens, about $0.0623; median 9.5 s per call |
+| Cost | 70,667 input + 24,635 output tokens, about $0.0335 (Batch API, half price) |
 
-What v2 on `gpt-5-mini` showed, and what v3 was built to fix: it over-scored (raw score 1.31 points above NVD's on average, never predicted Low), cited the same sentence for four or more metrics, and answered `unknown` for 75% of CWEs because the v2 prompt forbade outside knowledge.
+| Severity | Precision | Recall | Predicted |
+|---|---|---|---|
+| Critical | 57% | 44% | 7 |
+| High | 27% | 33% | 11 |
+| Medium | 38% | 67% | 16 |
+| Low | 100% | 11% | 1 |
 
-The labels set a ceiling for both runs. NVD analysts score with knowledge the description does not contain (how the product is deployed, whether a login is needed), so "agreement with NVD" is not the same as "correct from the text". Thirty-six NVD items means 9 per severity class; one item moves a class's recall by 11 points.
+### Same-model before/after on the held-out test (`gpt-5-mini`)
 
-### Pending: the fair comparison
+The v2, v3, and v4 runs below all used `gpt-5-mini` at minimal reasoning effort on the same 48 items, so they are a controlled comparison. Generated by `python -m evals.compare` ([v2 vs v3](evals/history/compare-v2-test-gpt-5-mini-vs-v3-test-gpt-5-mini.md), [v3 vs v4](evals/history/compare-v3-test-gpt-5-mini-vs-v4-test-gpt-5-mini.md), [v2 vs v4](evals/history/compare-v2-test-gpt-5-mini-vs-v4-test-gpt-5-mini.md)); selected rows:
 
-The controlled comparison is v3 on `gpt-5-mini` over the same 48 test items, against the v2 `gpt-5-mini` run, once the daily quota allows: `python -m evals.run --split test --model gpt-5-mini`, then `python -m evals.compare evals/history/v2-test-gpt-5-mini.json evals/results.json`. The prompt will not change before that run.
+| Metric | v2, `gpt-5-mini` | v3, `gpt-5-mini` | v4, `gpt-5-mini` |
+|---|---|---|---|
+| CWE exact | 17% | 47% | 47% |
+| CWE parent/child (lenient) | 17% | 67% | 67% |
+| CWE unknown | 75% | 3% | 3% |
+| Raw vectors over-scored / under-scored | 19 / 1 | 13 / 9 | 13 / 9 |
+| Raw minus NVD base score, mean | +1.31 | +0.07 | +0.07 |
+| Raw minus NVD base score, mean absolute | 1.49 | 1.87 | 1.87 |
+| Severity published (coverage) | 67% | 28% | 100% |
+| Severity accuracy when published | 42% | 40% | 39% |
+| Severity correct, all NVD items (withheld = miss) | 28% | 11% | 39% |
+| Severity accuracy, raw vector | 44% | 39% | 39% |
+| Vector exact, raw | 22% | 17% | 17% |
+| Cost (USD) | $0.0623 | $0.0335 | $0.0335 |
 
-### v3 dev-split findings (`gpt-5-nano` as a stand-in)
+What changed, honestly:
 
-The v3 changes were developed on the dev split only, on `gpt-5-nano` (quota again), which is a weak proxy. Dev split, 15 items, `python -m evals.compare evals/history/dev-v2-gpt-5-nano.json evals/history/dev-v3b-gpt-5-nano.json` (selected rows; both columns `gpt-5-nano`):
+- **CWE improved a lot.** Letting the model classify the weakness (v3) took exact CWE matches from 17% to 47% and parent/child matches from 17% to 67%, while `unknown` answers fell from 75% to 3%.
+- **The systematic over-scoring is gone, but the scores are not closer.** The mean score bias fell from +1.31 to +0.07 and over-scoring from 19 items to 13, but under-scoring rose from 1 to 9 and the mean absolute error went up (1.49 to 1.87). Raw severity accuracy did not improve (44% to 39%; one item is about 3 points).
+- **Coverage went from 67% to 100%.** v4 gives every non-thin report a labeled severity. Correct severities across all 36 NVD items went from 28% (v2) to 39% (v4) because nothing is withheld, not because the vectors got better.
 
-| Metric | v2 prompt, `gpt-5-nano` | v3 prompt, `gpt-5-nano` |
-|---|---|---|
-| CWE unknown | 100% | 67% |
-| CWE exact | 0% | 17% |
-| C / I / A agreement | 25% / 17% / 42% | 58% / 50% / 67% |
-| Raw vectors over-scored / under-scored | 6 / 3 | 8 / 1 |
-| Raw minus NVD base score, mean | +0.77 | +2.12 |
-| Severity published (coverage) | 0% | 25% |
-| Severity accuracy when published | n/a | 0% |
+The same publishing change on `gpt-4o-mini` ([v3 vs v4](evals/history/compare-v3-test-gpt-4o-mini-vs-v4-test-gpt-4o-mini.md), same recorded responses): coverage 8% to 100%, accuracy when published 67% to 42%, correct across all NVD items 6% to 42%.
 
-On `gpt-5-nano` at minimal reasoning, v3 named more CWEs and agreed more often on impact metrics, but over-scored more, not less. Nano wrote its own reasoning into the quote fields ("H – total loss (arbitrary code execution...") and scored a divide-by-zero as C:H/I:H/A:H despite the instructions; the guardrails withheld most of those vectors.
+### Dev-split ablation: what each idea did
+
+All iteration ran on the dev split (36 NVD items). Full table: [`evals/ablation.md`](evals/ablation.md), generated by `python -m evals.ablation` and replayed in CI. Selected rows:
+
+| Configuration | Model | Published | Severity correct (all) | Score MAE | CWE exact |
+|---|---|---|---|---|---|
+| Nearest-neighbour vote (k=5), no LLM | none | 100% | 44% | 1.56 | 39% |
+| v3: withhold mostly-inferred vectors | gpt-4o-mini | 3% | 3% | 1.68 | 47% |
+| v4: v3 prompt, publish as provisional | gpt-4o-mini | 100% | 47% | 1.68 | 47% |
+| exp-knn: + 5 similar NVD CVEs in the prompt | gpt-4o-mini | 100% | 42% | 1.54 | 53% |
+| exp-knn, inferred metrics from the neighbour vote | gpt-4o-mini | 100% | 42% | 1.64 | 53% |
+| v3: withhold mostly-inferred vectors | gpt-5-mini | 39% | 28% | 1.15 | 64% |
+| v4: v3 prompt, publish as provisional | gpt-5-mini | 100% | 56% | 1.15 | 64% |
+| exp-knn: + 5 similar NVD CVEs in the prompt | gpt-5-mini | 100% | 50% | 1.31 | 61% |
+| exp-low: v4 at low reasoning effort | gpt-5-mini | 100% | 47% | 1.36 | 67% |
+| exp-knn-low: exp-knn at low reasoning effort | gpt-5-mini | 100% | 42% | 1.51 | 67% |
+
+- **Provisional publishing** was the one change that clearly helped: same responses, coverage from 39% to 100% on `gpt-5-mini`. It became v4.
+- **Retrieved examples** (the 5 most similar 2022 NVD CVEs with their NVD vectors, as in AutoCVSS) helped the weaker model's CWE (47% to 53% exact, `unknown` 33% to 11%) and its score MAE, but not severity, and on `gpt-5-mini` they made severity and MAE slightly worse. The retriever often matches on product names (for example, DrayTek) as much as on the weakness, which may be why.
+- **Low reasoning effort** cost about twice as much and did not help severity on dev.
+- **The no-LLM nearest-neighbour vote** was competitive on severity (44%) and free. That matches prior work: embedding-based methods do well on the subjective impact metrics. Filling the model's inferred metrics from the vote made over-scoring worse (17 over, 4 under), so it was dropped.
+- **Dev did not predict test.** v4 on `gpt-5-mini` got 56% severity accuracy on dev and 39% on the held-out test. With 36 items per split, one item is about 3 points, and the dev numbers were used to choose, so expect them to be optimistic.
+
+### Earlier runs on other models
+
+- [v3 on `gpt-4o-mini`](evals/history/v3-test-gpt-4o-mini.md) (held-out test, 48 items): run when `gpt-5-mini`'s daily quota was used up. 8% of severities published; CWE exact 36%.
+- [v1 on `gpt-5.4-nano`](evals/history/v1-test-gpt-5.4-nano.md): abstained on every vector.
+- v3 dev iteration on `gpt-5-nano` (old 15-item dev split): [`evals/history`](evals/history).
+
+The labels set a ceiling. NVD analysts score with knowledge the description does not contain (how the product is deployed, whether a login is needed), so "agreement with NVD" is not the same as "correct from the text".
 
 ## Limits
 
 - Severity accuracy is far too low to use without review. The tool drafts; the analyst decides.
 - Quote verification proves a quote exists, not that it supports the claim.
 - The thin-report threshold (120 characters) is a blunt rule, and it was lowered after looking at the first eval run, so the eval is not independent of it.
-- Small splits and one run per version. The v1 (`gpt-5.4-nano`), v2 (`gpt-5-mini`), and v3 (`gpt-4o-mini`) test runs each used a different model (an account limit of 50 requests per model per day forced the switches), so no two of them are a controlled comparison. The v3 dev iteration ran on `gpt-5-nano`.
+- Small splits: 36 NVD items each in dev and test, so one item is about 3 points, and one run per version. Only the `gpt-5-mini` v2/v3/v4 runs (and the `gpt-4o-mini` v3/v4 pair) are controlled comparisons; v1 ran on `gpt-5.4-nano`.
+- The v3 `gpt-5-mini` test numbers were seen before v4 was picked. v4 was chosen on the dev ablation and changes only the publishing rule, but it is not a perfectly blind choice.
+- Severity accuracy did not improve from v2 to v4 on the same model; the gains are CWE, bias, and coverage.
 - NVD descriptions are cleaner than real inbound reports. The synthetic items are hand-written and few.
 - Prompt injection inside a report is not handled beyond the schema constraint and the human gate.
 
@@ -177,13 +197,14 @@ make eval          # replay the recorded eval responses; free and deterministic
 
 export OPENAI_API_KEY=...   # only needed for new reports
 vuln-triage triage examples/cve-2021-44228.txt --out triaged.json
-python -m evals.run --split dev    # live, for items without a recording; iterate here
-python -m evals.run --split test   # live, held out: once per finished version
+python -m evals.batch --split dev && python -m evals.run --split dev --offline    # iterate here (Batch API)
+python -m evals.batch --split test && python -m evals.run --split test --offline  # held out: once per finished version
+python -m evals.ablation           # dev ablation table from recorded responses
 ```
 
-The default model is `gpt-5-mini` (`vuln-triage triage --help` shows it); `--model` selects another, for example `--model gpt-4o-mini` to replay the v3 eval recordings. Add a new model's prices to `PRICES_PER_MTOK` first. Logs go to `logs/triage.jsonl`.
+The defaults are model `gpt-5-mini` and prompt `v4` (`vuln-triage triage --help` shows both), the same configuration as the current held-out results. `--model` and `--prompt` select others; every version with recorded results stays in `PROMPTS` so it can be replayed. Add a new model's prices to `PRICES_PER_MTOK` first. Logs go to `logs/triage.jsonl`.
 
-CI runs ruff, the test suite, and `python -m evals.run --split dev --offline --check` (and the same for the test split), which replays the recorded responses and fails if the metrics differ from the committed results. A one-call live smoke test runs only if the repository has an `OPENAI_API_KEY` secret.
+CI runs ruff, the test suite, `python -m evals.run --split dev --offline --check`, the same for the test split, and `python -m evals.ablation --check`, which replay the recorded responses and fail if the metrics differ from the committed results. A one-call live smoke test runs only if the repository has an `OPENAI_API_KEY` secret.
 
 ## License
 
