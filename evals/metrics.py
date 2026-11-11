@@ -38,3 +38,8 @@ def metric_agreement(gold_vectors: list[str], pred_metrics: list[dict[str, str]]
     """Share of items where each predicted base metric equals the gold one ('unknown' counts as wrong)."""
     gold = [parse_vector(v) for v in gold_vectors]
     return {m: sum(g[m] == p.get(m) for g, p in zip(gold, pred_metrics, strict=True)) / len(gold) for m in METRICS}
+
+
+def cwe_related(pred: str, gold: str, parents: dict[str, list[str]]) -> bool:
+    """Exact match, or one is a direct parent (ChildOf) of the other in MITRE's Research view."""
+    return pred == gold or gold in parents.get(pred, []) or pred in parents.get(gold, [])

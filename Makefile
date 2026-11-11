@@ -1,4 +1,4 @@
-.PHONY: install lint test eval eval-live dataset
+.PHONY: install lint test eval eval-dev eval-test dataset
 
 install:
 	pip install -e ".[dev]"
@@ -10,11 +10,15 @@ lint:
 test:
 	pytest -q
 
-eval:  ## replay recorded responses; free and deterministic
-	python -m evals.run --offline --check
+eval:  ## replay recorded responses for both splits; free and deterministic
+	python -m evals.run --split dev --offline --check
+	test ! -f evals/results.json || python -m evals.run --split test --offline --check
 
-eval-live:  ## call the API for any item without a recording, then rewrite evals/results.*
-	python -m evals.run
+eval-dev:  ## live: prompt and guardrail iteration happens here
+	python -m evals.run --split dev
 
-dataset:  ## re-fetch NVD records and rebuild evals/dataset.jsonl
-	python -m evals.build_dataset
+eval-test:  ## live: held-out split, run once on a finished version
+	python -m evals.run --split test
+
+dataset:  ## re-fetch NVD records for the dev split (the test split is a committed snapshot)
+	python -m evals.build_dataset dev

@@ -1,6 +1,6 @@
 import pytest
 
-from evals.metrics import confusion, metric_agreement, parse_vector, precision_recall
+from evals.metrics import confusion, cwe_related, metric_agreement, parse_vector, precision_recall
 
 GOLD = ["High", "High", "Low", "Medium"]
 PRED = ["High", "unknown", "High", "Medium"]
@@ -33,3 +33,11 @@ def test_metric_agreement():
     assert agreement["AV"] == pytest.approx(0.5)
     assert agreement["C"] == pytest.approx(0.5)
     assert agreement["PR"] == 1.0
+
+
+def test_cwe_related_uses_direct_parent_or_child_only():
+    parents = {"CWE-917": ["CWE-77"], "CWE-77": ["CWE-74"]}
+    assert cwe_related("CWE-77", "CWE-917", parents)  # predicted the parent
+    assert cwe_related("CWE-917", "CWE-77", parents)  # predicted the child
+    assert not cwe_related("CWE-74", "CWE-917", parents)  # grandparent is too far
+    assert not cwe_related("unknown", "CWE-917", parents)

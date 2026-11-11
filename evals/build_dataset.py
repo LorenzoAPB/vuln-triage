@@ -1,21 +1,27 @@
-"""Build evals/dataset.jsonl from public NVD records plus the hand-written synthetic items.
+"""Build an eval split from public NVD records plus hand-written synthetic items.
 
 Selection rule (no hand-picking): for each CVSS v3.1 severity, query NVD API 2.0 for CVEs
-published 2023-03-01..2023-04-30, keep records where NVD itself (nvd@nist.gov) assigned the
+published in the split's window, keep records where NVD itself (nvd@nist.gov) assigned the
 primary CVSS 3.1 vector and only specific CWE ids, the English description is 150-900
-characters and does not mention SAP, then take the first PER_SEVERITY with distinct CWEs
-in NVD's result order. Run: python -m evals.build_dataset
+characters and does not mention SAP, then take the first `per_severity` with distinct CWEs
+in NVD's result order.
+
+  python -m evals.build_dataset dev    # prompt iteration happens on this split only
+  python -m evals.build_dataset test   # held out; overwrites the committed snapshot
 """
 
 import json
+import sys
 import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 NVD_API = "https://services.nvd.nist.gov/rest/json/cves/2.0"
-WINDOW = ("2023-03-01T00:00:00.000", "2023-04-30T23:59:59.999")
-PER_SEVERITY = 9
+SPLITS = {  # name: (publication window, items per severity)
+    "test": (("2023-03-01T00:00:00.000", "2023-04-30T23:59:59.999"), 9),
+    "dev": (("2023-06-01T00:00:00.000", "2023-07-31T23:59:59.999"), 3),
+}
 HERE = Path(__file__).parent
 
 
@@ -47,8 +53,8 @@ def nvd_item(vuln: dict) -> dict | None:
     }
 
 
-def fetch(severity: str) -> list[dict]:
-    url = f"{NVD_API}?cvssV3Severity={severity}&pubStartDate={WINDOW[0]}&pubEndDate={WINDOW[1]}&resultsPerPage=400"
+def fetch(severity: str, window: tuple[str, str]) -> list[dict]:
+    url = f"{NVD_API}?cvssV3Severity={severity}&pubStartDate={window[0]}&pubEndDate={window[1]}&resultsPerPage=400"
     request = urllib.request.Request(url, headers={"User-Agent": "vuln-triage-eval-builder"})
     for attempt in range(5):
         try:
@@ -65,25 +71,27 @@ def fetch(severity: str) -> list[dict]:
 def main() -> None:
     from cvss import CVSS3
 
+    split = sys.argv[1]
+    window, per_severity = SPLITS[split]
     items: list[dict] = []
     for severity in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
         picked: list[dict] = []
-        for vuln in fetch(severity):
+        for vuln in fetch(severity, window):
             item = nvd_item(vuln)
             if item and item["cwe"] not in {p["cwe"] for p in picked}:
                 item["severity"] = CVSS3(item["vector"]).severities()[0]
                 if item["severity"].upper() == severity:
                     picked.append(item)
-            if len(picked) == PER_SEVERITY:
+            if len(picked) == per_severity:
                 break
         items += picked
         time.sleep(7)  # NVD allows 5 requests per 30 s without an API key
 
-    synthetic = [json.loads(line) for line in (HERE / "synthetic.jsonl").read_text().splitlines() if line]
-    with (HERE / "dataset.jsonl").open("w") as f:
+    synthetic = [json.loads(line) for line in (HERE / f"{split}_synthetic.jsonl").read_text().splitlines() if line]
+    with (HERE / f"{split}.jsonl").open("w") as f:
         for item in items + synthetic:
             f.write(json.dumps(item) + "\n")
-    print(f"wrote {len(items)} NVD + {len(synthetic)} synthetic items to {HERE / 'dataset.jsonl'}")
+    print(f"wrote {len(items)} NVD + {len(synthetic)} synthetic items to {HERE / f'{split}.jsonl'}")
 
 
 if __name__ == "__main__":
