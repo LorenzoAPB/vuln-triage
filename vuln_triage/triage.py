@@ -13,6 +13,7 @@ from pydantic import ValidationError
 from vuln_triage.schema import ModelTriage
 
 MODEL = "gpt-4.1-mini"
+CACHE_DIR = Path(os.environ.get("VULN_TRIAGE_CACHE", ".cache"))
 
 # USD per 1M tokens (input, output). Source: https://platform.openai.com/docs/models/gpt-4.1-mini
 # Checked 2026-11-11. Cached-input discounts are ignored, so estimates err high.
@@ -65,7 +66,7 @@ def cache_key(report: str, model: str) -> str:
 def call_model(
     report: str,
     model: str = MODEL,
-    cache_dir: Path = Path(os.environ.get("VULN_TRIAGE_CACHE", ".cache")),
+    cache_dir: Path = CACHE_DIR,
     offline: bool = False,
 ) -> tuple[ModelTriage, Usage]:
     path = cache_dir / f"{cache_key(report, model)}.json"

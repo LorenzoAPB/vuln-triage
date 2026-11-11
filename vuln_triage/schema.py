@@ -54,7 +54,7 @@ class CvssProposal(BaseModel):
     UI: UserInteraction
     S: Scope
     C: Impact
-    I: Impact  # noqa: E741  (CVSS metric name)
+    I: Impact
     A: Impact
 
 
