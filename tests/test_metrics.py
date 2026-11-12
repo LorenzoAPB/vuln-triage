@@ -1,6 +1,14 @@
 import pytest
 
-from evals.metrics import confusion, cwe_related, metric_agreement, parse_vector, precision_recall
+from evals.metrics import (
+    confusion,
+    cwe_related,
+    metric_agreement,
+    parse_vector,
+    precision_recall,
+    within_one_band,
+    within_points,
+)
 
 GOLD = ["High", "High", "Low", "Medium"]
 PRED = ["High", "unknown", "High", "Medium"]
@@ -41,3 +49,13 @@ def test_cwe_related_uses_direct_parent_or_child_only():
     assert cwe_related("CWE-917", "CWE-77", parents)  # predicted the child
     assert not cwe_related("CWE-74", "CWE-917", parents)  # grandparent is too far
     assert not cwe_related("unknown", "CWE-917", parents)
+
+
+def test_within_one_band_counts_adjacent_bands_and_misses_unknown():
+    gold = ["Critical", "Critical", "Low", "Medium", "High"]
+    pred = ["High", "Medium", "None", "unknown", "High"]
+    assert within_one_band(gold, pred) == pytest.approx(3 / 5)
+
+
+def test_within_points_is_inclusive_and_misses_none():
+    assert within_points([9.8, 5.0, 7.5, 4.3], [8.8, 6.1, None, 4.3]) == pytest.approx(2 / 4)

@@ -37,6 +37,8 @@ def table(before_path: str, after_path: str) -> str:
     add("Severity accuracy when published", lambda m: m["severity"]["accuracy_when_published"])
     add("Severity correct, all NVD items (withheld = miss)", lambda m: m["severity"]["accuracy_all"])
     add("Severity accuracy, raw vector", lambda m: m["severity"]["raw_accuracy"])
+    add("Raw severity within one band of NVD", lambda m: m["severity"]["raw_within_one_band"])
+    add("Raw base score within 1.0 of NVD", lambda m: m["severity"]["raw_score_within_1"])
     add(
         "Raw vectors over-scored / under-scored",
         lambda m: (m["severity"]["raw_over_scored"], m["severity"]["raw_under_scored"]),

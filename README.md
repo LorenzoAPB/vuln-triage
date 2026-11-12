@@ -39,13 +39,15 @@ flowchart LR
 | Severity published / accuracy | 100% of NVD items / 39% (13 over-scored, 9 under-scored) |
 | Severity precision / recall: Critical, High, Medium, Low | 57% / 44%, 27% / 33%, 38% / 67%, 100% / 11% |
 | Raw minus NVD base score | mean +0.07, mean absolute 1.87 |
+| Severity within one band of NVD (None < Low < Medium < High < Critical) | 83% (30 of 36 NVD items) |
+| Base score within 1.0 point of NVD | 36% (13 of 36 NVD items) |
 | CWE exact / exact or direct parent-child / `unknown` | 47% / 67% / 3% |
 | CVSS vector exact match | 17% |
 | Per-metric agreement AV / AC / PR / UI / S / C / I / A | 81% / 89% / 78% / 86% / 94% / 50% / 56% / 72% |
 | Thin and vague reports (6) | 6 low confidence, 5 with the vector withheld |
 | Cost | about $0.0335 for 48 reports (Batch API) |
 
-Against v2 on the same model and items, exact CWE matches went from 17% to 47% and the mean score bias from +1.31 to +0.07, but severity accuracy did not improve (44% raw in v2). Older runs and before/after tables: [`evals/history/`](evals/history). Dev-split ablation of every idea tried (retrieved examples, reasoning effort, a no-LLM nearest-neighbour baseline): [`evals/ablation.md`](evals/ablation.md).
+Against v2 on the same model and items, exact CWE matches went from 17% to 47% and the mean score bias from +1.31 to +0.07, but severity accuracy did not improve (44% raw in v2), within-one-band stayed at 83%, and within-1.0-point fell from 53% to 36%. Older runs and before/after tables: [`evals/history/`](evals/history). Dev-split ablation of every idea tried (retrieved examples, reasoning effort, a no-LLM nearest-neighbour baseline): [`evals/ablation.md`](evals/ablation.md).
 
 ## Limits and ethics
 

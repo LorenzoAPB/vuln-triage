@@ -4,6 +4,7 @@ from collections import Counter
 
 SEVERITIES = ["Critical", "High", "Medium", "Low"]
 METRICS = ["AV", "AC", "PR", "UI", "S", "C", "I", "A"]
+BANDS = ["None", "Low", "Medium", "High", "Critical"]  # CVSS v3.1 severity bands, in order
 
 
 def confusion(gold: list[str], pred: list[str]) -> dict[str, dict[str, int]]:
@@ -43,3 +44,18 @@ def metric_agreement(gold_vectors: list[str], pred_metrics: list[dict[str, str]]
 def cwe_related(pred: str, gold: str, parents: dict[str, list[str]]) -> bool:
     """Exact match, or one is a direct parent (ChildOf) of the other in MITRE's Research view."""
     return pred == gold or gold in parents.get(pred, []) or pred in parents.get(gold, [])
+
+
+def within_one_band(gold: list[str], pred: list[str]) -> float:
+    """Share of items whose predicted severity is the gold band or an adjacent one.
+
+    A prediction outside BANDS (such as 'unknown' for a withheld vector) counts as a miss.
+    """
+    hits = sum(p in BANDS and abs(BANDS.index(p) - BANDS.index(g)) <= 1 for g, p in zip(gold, pred, strict=True))
+    return hits / len(gold)
+
+
+def within_points(gold_scores: list[float], pred_scores: list[float | None], points: float = 1.0) -> float:
+    """Share of items whose predicted base score is within `points` of the gold score; None is a miss."""
+    hits = sum(p is not None and abs(p - g) <= points for g, p in zip(gold_scores, pred_scores, strict=True))
+    return hits / len(gold_scores)

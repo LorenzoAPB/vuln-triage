@@ -102,6 +102,8 @@
       "raw_under_scored": 8,
       "raw_score_bias": 0.17,
       "raw_score_mae": 1.15,
+      "raw_within_one_band": 0.8888888888888888,
+      "raw_score_within_1": 0.6666666666666666,
       "raw_accuracy_when_withheld": null
     },
     "severity_accuracy_by_confidence": {

@@ -14,7 +14,15 @@ import sys
 import time
 from pathlib import Path
 
-from evals.metrics import SEVERITIES, confusion, cwe_related, metric_agreement, precision_recall
+from evals.metrics import (
+    SEVERITIES,
+    confusion,
+    cwe_related,
+    metric_agreement,
+    precision_recall,
+    within_one_band,
+    within_points,
+)
 from vuln_triage.guardrails import METRIC_ORDER, finalize, proposed_vector, score_vector
 from vuln_triage.triage import MODEL, PROMPT_VERSION, PROMPTS, Prompt, TriageError, call_model
 
@@ -101,6 +109,12 @@ def compute(rows: list[dict], model: str) -> dict:
             "raw_under_scored": sum(rank(r["raw_severity"]) < rank(r["severity"]) for r in nvd),
             "raw_score_bias": round(statistics.mean(score_diffs), 2),
             "raw_score_mae": round(statistics.mean(abs(d) for d in score_diffs), 2),
+            # Over all NVD items; a missing raw vector (non-report answer or parse failure) counts as a miss.
+            "raw_within_one_band": within_one_band(gold_sev, [r["raw_severity"] for r in nvd]),
+            "raw_score_within_1": within_points(
+                [score_vector(r["vector"])[0] for r in nvd],
+                [score_vector(r["raw_vector"])[0] if r["raw_severity"] != "unknown" else None for r in nvd],
+            ),
             "raw_accuracy_when_withheld": sum(r["raw_severity"] == r["severity"] for r in withheld) / len(withheld)
             if withheld
             else None,
@@ -169,7 +183,9 @@ def to_markdown(m: dict, rows: list[dict], split: str, prompt: str) -> str:
         f"({sev['raw_over_scored']} over-scored, {sev['raw_under_scored']} under-scored); "
         f"on the withheld items alone: {pct(sev['raw_accuracy_when_withheld'])}. "
         f"Raw base score minus NVD base score: mean {sev['raw_score_bias']:+}, "
-        f"mean absolute {sev['raw_score_mae']}.",
+        f"mean absolute {sev['raw_score_mae']}. Over all {sev['n']} NVD items, the raw severity is within one "
+        f"band of NVD's (None < Low < Medium < High < Critical) for {pct(sev['raw_within_one_band'])}, and the raw "
+        f"base score is within 1.0 point of NVD's for {pct(sev['raw_score_within_1'])}.",
         "",
         "| severity | precision | recall | support | predicted |",
         "|---|---|---|---|---|",
