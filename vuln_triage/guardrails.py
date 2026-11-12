@@ -14,6 +14,9 @@ MAX_METRICS_PER_QUOTE = 3  # one sentence cannot be the evidence for most of a v
 
 
 def _normalize(text: str) -> str:
+    """Lowercase, collapse whitespace, and drop comment markers that start a line (#, //, *, >), so a
+    quote of a sentence wrapped across commented lines of a write-up still matches."""
+    text = re.sub(r"(?m)^[ \t]*(#+|//+|\*+|>+)[ \t]?", "", text)
     return re.sub(r"\s+", " ", text).strip().lower()
 
 

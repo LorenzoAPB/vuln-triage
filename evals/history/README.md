@@ -16,6 +16,8 @@ of the cache key).
 | `v3-test-gpt-5-mini` | test | v3 | gpt-5-mini | Same-model baseline for v4 (Batch API). CWE exact 17% -> 47% vs v2; bias +1.31 -> +0.07 |
 | `v4-test-gpt-5-mini` | test | v4: v3 prompt, inferred vectors published as provisional | gpt-5-mini | Current test results (`../results.md`); same responses as v3 |
 | `v4-test-gpt-4o-mini` | test | v4 | gpt-4o-mini | Same responses as `v3-test-gpt-4o-mini`; coverage 8% -> 100% |
+| `dev-v5-gpt-5-mini` | dev (NVD descriptions) | v5 | gpt-5-mini | The write-up prompt on NVD descriptions: 44% severity vs 56% for v4, so v4 stays the default |
+| `compare-writeups-vs-nvd-v5-gpt-5-mini.md` | writeups-test | v5 | gpt-5-mini | Same CVEs: Exploit-DB write-up vs NVD description |
 | `compare-*.md` | test | - | same model in both columns | Generated before/after tables (`python -m evals.compare`) |
 
 The dev split grew from 15 to 39 items for v4 (`../build_dataset.py`); the `dev-*-gpt-5-nano` snapshots use the old 15-item split. v4's dev iteration is in `../ablation.md`.

@@ -27,6 +27,12 @@ jobs:
         run: python -m evals.run --split test --offline --check
       - name: Dev-split ablation table (replay)
         run: python -m evals.ablation --check
+      - name: Researcher write-ups, dev split, ablation and held-out test (replay)
+        run: |
+          python -m evals.run --split writeups-dev --offline --check
+          python -m evals.ablation --split writeups-dev --check
+          python -m evals.run --split writeups-test --offline --check
+          python -m evals.run --split writeups-test-nvd --offline --check
 
   live-smoke:
     # One real API call through the CLI. Runs only if the repo has an OPENAI_API_KEY secret.

@@ -27,6 +27,9 @@ PRICES_PER_MTOK = {
 }
 
 # Reasoning models reject `temperature`; the lowest reasoning effort for gpt-5-mini/nano is "minimal".
+# A triage is about 1-2k output tokens. The cap stops a looping response from billing up to 128k tokens,
+# which happened once on a writeups-dev batch at low reasoning effort (PROGRESS.md, iteration 5).
+MAX_OUTPUT_TOKENS = 16_000
 REQUEST_OPTIONS: dict[str, dict] = {
     "gpt-5-mini": {"reasoning": {"effort": "minimal"}},
     "gpt-5-nano": {"reasoning": {"effort": "minimal"}},
@@ -76,6 +79,21 @@ KNN_SYSTEM_PROMPT = (  # used by the exp-knn experiments, not by the default ver
   quotes ''). Prefer the report's own statements when they disagree with the examples."""
 )
 
+WRITEUP_SYSTEM_PROMPT = (  # v4 plus how to read exploit write-ups (proof-of-concept code, HTTP requests)
+    V3_SYSTEM_PROMPT
+    + """
+- The report may be a researcher's exploit write-up with proof-of-concept code, HTTP requests, or
+  shell sessions. Treat them as evidence and quote the lines that show it:
+  - PR: a login step, session cookie, or auth token in the exploit means L, or H if the account is
+    an administrator; a request that works without any of these means N.
+  - UI: N when the attacker sends the payload straight to the service; R when a victim has to load
+    a page, link, or file the attacker prepared (stored or reflected XSS, CSRF).
+  - C, I, A: score what the exploit demonstrates, e.g. a shell or command output means H for all
+    three; a crash alone means A only.
+  - AV: an exploit run against a remote host or URL means N; one run on the target machine itself
+    (a local binary, service, or file path) means L."""
+)
+
 
 @dataclass(frozen=True)
 class Prompt:
@@ -96,6 +114,8 @@ PROMPTS = {  # every version with recorded results stays here, so CI can replay 
     "exp-knn": Prompt("exp-knn", KNN_SYSTEM_PROMPT, neighbours=5, publish_inferred=True),
     "exp-low": Prompt("exp-low", V3_SYSTEM_PROMPT, neighbours=0, publish_inferred=True, effort="low"),
     "exp-knn-low": Prompt("exp-knn-low", KNN_SYSTEM_PROMPT, neighbours=5, publish_inferred=True, effort="low"),
+    # v5 = v4 plus rules for reading exploit write-ups; it won on writeups-dev (evals/writeups_ablation.md).
+    "v5": Prompt("v5", WRITEUP_SYSTEM_PROMPT, neighbours=0, publish_inferred=True),
 }
 PROMPT_VERSION = "v4"  # the default; results files record the version that produced them
 
@@ -154,6 +174,7 @@ def request_body(user_content: str, model: str, prompt: Prompt) -> dict:
     return {
         "model": model,
         "input": [{"role": "system", "content": prompt.system}, {"role": "user", "content": user_content}],
+        "max_output_tokens": MAX_OUTPUT_TOKENS,
         **options,
     }
 

@@ -14,6 +14,10 @@ eval:  ## replay recorded responses for both splits; free and deterministic
 	python -m evals.run --split dev --offline --check
 	python -m evals.run --split test --offline --check
 	python -m evals.ablation --check
+	python -m evals.run --split writeups-dev --offline --check
+	python -m evals.ablation --split writeups-dev --check
+	python -m evals.run --split writeups-test --offline --check
+	python -m evals.run --split writeups-test-nvd --offline --check
 
 eval-dev:  ## Batch API (half price, separate quota), then score: iteration happens here
 	python -m evals.batch --split dev

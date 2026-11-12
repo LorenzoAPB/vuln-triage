@@ -103,3 +103,9 @@ def test_cwe_needs_a_quote_describing_the_weakness():
     result = finalize(proposal(cwe_quote="stored XSS in the comments field"), REPORT)
     assert result.cwe == "unknown"
     assert "cwe_without_evidence" in result.flags
+
+
+def test_quote_matches_across_commented_lines():
+    report = "# Description : A path traversal exists within the File Manager\n# that allows downloading files."
+    assert quote_in_report("A path traversal exists within the File Manager\nthat allows downloading files.", report)
+    assert not quote_in_report("a traversal that is not in the report", report)
