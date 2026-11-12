@@ -1,4 +1,4 @@
-.PHONY: install lint test eval eval-dev eval-test dataset pool
+.PHONY: install lint test eval eval-dev eval-test dataset pool writeups
 
 install:
 	pip install -e ".[dev]"
@@ -28,3 +28,6 @@ dataset:  ## re-fetch NVD records for the dev split (the test split is a committ
 
 pool:  ## re-fetch the 2022 NVD retrieval pool
 	python -m evals.build_pool
+
+writeups:  ## rebuild the Exploit-DB write-up splits (NVD feeds and Exploit-DB files cached in .cache/)
+	python -m evals.build_writeups

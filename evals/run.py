@@ -29,7 +29,24 @@ from vuln_triage.triage import MODEL, PROMPT_VERSION, PROMPTS, Prompt, TriageErr
 HERE = Path(__file__).parent
 RECORDINGS = HERE / "recordings"
 PRED_SEVERITIES = [*SEVERITIES, "None", "unknown"]
-RESULTS = {"test": "results", "dev": "dev_results"}  # file stem per split
+RESULTS = {  # split name: results file stem
+    "test": "results",  # NVD descriptions, March-April 2023
+    "dev": "dev_results",
+    "writeups-test": "writeups_results",  # Exploit-DB researcher write-ups, CVE-2022/2023
+    "writeups-dev": "writeups_dev_results",
+    "writeups-test-nvd": "writeups_nvd_results",  # NVD's own descriptions of the writeups-test CVEs
+}
+
+
+def load_split(split: str) -> list[dict]:
+    """Items of a split. writeups-test-nvd swaps each write-up for NVD's description of the same CVE."""
+    name = "writeups-test" if split == "writeups-test-nvd" else split
+    items = [json.loads(line) for line in (HERE / f"{name.replace('-', '_')}.jsonl").read_text().splitlines() if line]
+    if split == "writeups-test-nvd":
+        items = [i | {"text": i["nvd_text"], "kind": "nvd"} if i["kind"] == "writeup" else i for i in items]
+    return items
+
+
 CWE_PARENTS = json.loads((HERE / "cwe_parents.json").read_text())["parents"]
 
 
@@ -71,7 +88,7 @@ def rank(severity: str) -> int:
 
 def compute(rows: list[dict], model: str) -> dict:
     ok = [r for r in rows if not r["parse_failure"]]
-    nvd = [r for r in ok if r["kind"] == "nvd"]
+    nvd = [r for r in ok if r["vector"]]  # items with an NVD label (NVD descriptions or write-ups)
     unclear = [r for r in ok if r["kind"] in ("thin", "vague")]
 
     gold_report = ["report" if r["is_report"] else "noise" for r in ok]
@@ -173,7 +190,7 @@ def to_markdown(m: dict, rows: list[dict], split: str, prompt: str) -> str:
             for c in ["report", "noise"]
         ],
         "",
-        f"## Severity ({sev['n']} NVD items)",
+        f"## Severity ({sev['n']} NVD-labeled items)",
         "",
         f"A severity is published unless the guardrails withhold the vector. "
         f"Published for {pct(sev['coverage'])} of items; accuracy when published: "
@@ -274,7 +291,7 @@ def main() -> int:
     model = committed["model"] if committed else args.model
     prompt = PROMPTS[committed_file["prompt"]] if committed_file else PROMPTS[args.prompt]
 
-    items = [json.loads(line) for line in (HERE / f"{args.split}.jsonl").read_text().splitlines() if line]
+    items = load_split(args.split)
     rows, live = [], 0
     for item in items:
         row, was_live = run_item(item, model, args.offline, prompt)

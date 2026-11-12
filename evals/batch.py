@@ -17,6 +17,7 @@ from pathlib import Path
 from openai import OpenAI
 from openai.lib._parsing._responses import type_to_text_format_param  # what responses.parse sends
 
+from evals.run import RESULTS, load_split
 from vuln_triage.schema import ModelTriage
 from vuln_triage.triage import MODEL, PROMPT_VERSION, PROMPTS, cache_key, request_body, user_message
 
@@ -39,13 +40,13 @@ def output_text(body: dict) -> str | None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--split", choices=["dev", "test"], required=True)
+    parser.add_argument("--split", choices=RESULTS, required=True)
     parser.add_argument("--model", default=MODEL)
     parser.add_argument("--prompt", choices=PROMPTS, default=PROMPT_VERSION)
     args = parser.parse_args()
     prompt = PROMPTS[args.prompt]
 
-    items = [json.loads(line) for line in (HERE / f"{args.split}.jsonl").read_text().splitlines() if line]
+    items = load_split(args.split)
     pending: dict[str, str] = {}  # cache key -> user message, for items without a recording
     for item in items:
         content = user_message(item["text"], prompt)
