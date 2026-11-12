@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CONPROSYS HMI System (CHS) versions prior to 3.5.3 have incorrect ACLs on the local installation folder, allowing wide-ranging local user privileges that may enable system destruction or execution of malicious programs.",
+    "affected_product": "CONPROSYS HMI System (CHS) versions prior to 3.5.3",
+    "cwe": "CWE-732",
+    "cwe_quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "a user of the PC where the affected product is installed."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system"
+      },
+      "I": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      },
+      "A": {
+        "value": "H",
+        "quote": "the user may be able to destroy the system and/or execute a malicious program."
+      }
+    },
+    "recommended_next_step": "Request or verify vendor-supplied advisory or patch notes for CHS 3.5.3 that describe the ACL change; obtain reproduction steps or exploit PoC to confirm required privileges and impact scope.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Incorrect ACL on installation folder",
+        "quote": "ACL (Access Control List) is not appropriately set to the local folder where the affected product is installed, therefore a wide range of privileges is permitted to a user of the PC where the affected product is installed."
+      },
+      {
+        "claim": "Versions affected",
+        "quote": "CONPROSYS HMI System (CHS) versions prior to 3.5.3."
+      },
+      {
+        "claim": "Potential impact \u2014 destroy system",
+        "quote": "the user may be able to destroy the system"
+      },
+      {
+        "claim": "Potential impact \u2014 execute malicious program",
+        "quote": "execute a malicious program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1695,
+    "output_tokens": 624,
+    "latency_s": null,
+    "batch": true
+  }
+}

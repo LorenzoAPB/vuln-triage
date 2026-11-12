@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A use-after-free vulnerability in hfsplus_put_super in fs/hfsplus/super.c in the Linux kernel can allow a local user to cause a denial of service.",
+    "affected_product": "Linux kernel (hfsplus filesystem), versions: unknown",
+    "cwe": "CWE-416",
+    "cwe_quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "I": {
+        "value": "N",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      },
+      "A": {
+        "value": "L",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    },
+    "recommended_next_step": "Request or locate a patched commit or vendor advisory; obtain a minimal reproduction or PoC to confirm impact and determine fixed versions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and location",
+        "quote": "A use after free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel."
+      },
+      {
+        "claim": "Impact described (local user, denial of service)",
+        "quote": "This flaw could allow a local user to cause a denial of service problem."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1646,
+    "output_tokens": 505,
+    "latency_s": null,
+    "batch": true
+  }
+}

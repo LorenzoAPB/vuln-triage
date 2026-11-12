@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The ashmem mmap implementation stores the backing shmem file in vm_file without enforcing ashmem's protection mask on that file's ->mmap(), allowing an attacker to call remap_file_pages() on an ashmem mapping to restore VM_MAYWRITE and subsequently gain write access to an ashmem region that was supposed to be read-only. Additionally, read-only ashmem fds allow ASHMEM_PIN/UNPIN operations so pages can be marked purgable even without write access.",
+    "affected_product": "Android ashmem (kernel driver) and upstream Linux ashmem driver; specific versions not stated (reproducer works on upstream Linux master and a Pixel 2 at 2019-09-05 security patch level)",
+    "cwe": "CWE-276",
+    "cwe_quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler does not enforce the same restrictions, in ->vm_file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "calling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "calling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      },
+      "C": {
+        "value": "L",
+        "quote": "mapping[0] = 'X'"
+      },
+      "I": {
+        "value": "L",
+        "quote": "mapping[0] = 'X'"
+      },
+      "A": {
+        "value": "L",
+        "quote": "remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      }
+    },
+    "recommended_next_step": "Backport a kernel fix that prevents storing the underlying shmem file in vma->vm_file (or ensure the file's ->mmap enforces the same prot_mask), and add a test covering remap_file_pages() on ashmem mappings; consider disabling remap_file_pages in seccomp for relevant processes if not needed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of improper vm_file storage",
+        "quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler does not enforce the same restrictions, in ->vm_file."
+      },
+      {
+        "claim": "Attack via remap_file_pages",
+        "quote": "calling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      },
+      {
+        "claim": "Reproducer demonstrates write after attack",
+        "quote": "mapping[0] = 'X'"
+      },
+      {
+        "claim": "Reproducer: original mapping set to read-only prot mask",
+        "quote": "if (ioctl(ashmem_fd, ASHMEM_SET_PROT_MASK, PROT_READ))\n    err(1, \"ASHMEM_SET_SIZE\");"
+      },
+      {
+        "claim": "Reproducer: remap_file_pages syscall used",
+        "quote": "if (remap_file_pages(mapping, /*size=*/0x1000, /*prot=*/0, /*pgoff=*/0, /*flags=*/0))\n    err(1, \"remap_file_pages\");"
+      },
+      {
+        "claim": "ashmem purgable operations available without write access",
+        "quote": "ashmem supports purgable memory via ASHMEM_UNPIN/ASHMEM_PIN. Unfortunately, there is no access control for these - even if you only have read-only access to an ashmem file, you can still mark pages in it as purgable, causing them to effectively be zeroed ou"
+      },
+      {
+        "claim": "Reproducer shows initial writable mmap is rejected",
+        "quote": "mmap ashmem writable failed as expected: Operation not permitted"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3299,
+    "output_tokens": 1105,
+    "latency_s": null,
+    "batch": true
+  }
+}

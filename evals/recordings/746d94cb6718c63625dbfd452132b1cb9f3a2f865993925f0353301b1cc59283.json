@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "WordPress Plugin Duplicator <= 1.4.7 discloses some system information via the 'view' parameter in the installer script main.installer.php.",
+    "affected_product": "WordPress Plugin Duplicator <= 1.4.7",
+    "cwe": "CWE-200",
+    "cwe_quote": "Some system information may be disclosure.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "http://[PATH]/backups-dup-lite/dup-installer/main.installer.php"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Some system information may be disclosure."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reproduce the issue by requesting main.installer.php with the 'view' parameter on an up-to-date test instance to capture the exact information disclosed and determine its sensitivity; then notify maintainers and prepare a patch to restrict access or sanitize output.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerable product and versions",
+        "quote": "WordPress Plugin Duplicator <= 1.4.7"
+      },
+      {
+        "claim": "Description of the vulnerability",
+        "quote": "Some system information may be disclosure."
+      },
+      {
+        "claim": "Proof-of-concept request demonstrating reachable endpoint",
+        "quote": "http://[PATH]/backups-dup-lite/dup-installer/main.installer.php"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1809,
+    "output_tokens": 479,
+    "latency_s": null,
+    "batch": true
+  }
+}

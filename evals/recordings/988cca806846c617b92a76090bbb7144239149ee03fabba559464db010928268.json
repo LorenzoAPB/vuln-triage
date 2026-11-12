@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple unauthenticated or insufficiently authorized API endpoints in Global RADAR BSA Radar 1.6.7234.24750 and lower allow an attacker to change other users' passwords, modify arbitrary user profiles (including stored XSS in firstname/lastname), and enumerate/view arbitrary user details via UserID.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-639",
+    "cwe_quote": "The Global RADAR BSA Radar 1.6.7234.X application lacks valid authorization controls in multiple functions while logged into the application.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /WS/AjaxWS.asmx/ChangePassword"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The Global RADAR BSA Radar 1.6.7234.X application lacks valid authorization controls in multiple functions while logged into the application."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      }
+    },
+    "recommended_next_step": "Verify whether the endpoints require authentication and proper authorization checks; reproduce the ChangePassword, SaveUserProfile, and GetUser calls in a test environment to confirm impact, and collect request/response details and required privileges to prepare coordinated disclosure.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Lack of authorization controls",
+        "quote": "The Global RADAR BSA Radar 1.6.7234.X application lacks valid authorization controls in multiple functions while logged into the application."
+      },
+      {
+        "claim": "ChangePassword allows changing another user's password by UserID",
+        "quote": "ChangePassword API endpoint - Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      },
+      {
+        "claim": "ChangePassword PoC endpoint",
+        "quote": "POST /WS/AjaxWS.asmx/ChangePassword"
+      },
+      {
+        "claim": "SaveUserProfile allows updating other users and stored XSS in firstname/lastname",
+        "quote": "SaveUserProfile API endpoint - Allows the ability to update the user profile belonging to another account by using their UserID. This includes modifiable details like first name, last name, email, and phone number. This also allows for injection of a Stored Cross-Site Scripting (XSS) into arbitrary user account profiles as the first name and last name parameters are vulnerable."
+      },
+      {
+        "claim": "SaveUserProfile PoC endpoint",
+        "quote": "POST /WS/AjaxWS.asmx/SaveUserProfile"
+      },
+      {
+        "claim": "GetUser allows viewing arbitrary user details by UserID",
+        "quote": "GetUser API endpoint - Allows the ability to view the user account details of any arbitrary user by enumerating their UserID."
+      },
+      {
+        "claim": "GetUser PoC endpoint",
+        "quote": "POST /WS/AjaxWS.asmx/GetUser"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2055,
+    "output_tokens": 866,
+    "latency_s": null,
+    "batch": true
+  }
+}

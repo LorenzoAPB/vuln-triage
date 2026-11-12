@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A file upload vulnerability in DWSurvey OSS v3.2.0 and earlier allows a remote attacker to execute arbitrary code via the saveimage method and saveFile in action/UploadAction.java.",
+    "affected_product": "DWSurvey OSS v3.2.0 and before",
+    "cwe": "CWE-434",
+    "cwe_quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      }
+    },
+    "recommended_next_step": "Obtain the vulnerable source (action/UploadAction.java) and review the saveimage/saveFile implementations to confirm upload validation and execution paths; if confirmed, prepare coordinated disclosure and provide patch removing arbitrary-code execution (validate file type, restrict upload paths, run as unprivileged user).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description including affected versions and location",
+        "quote": "File Upload vulnerability in DWSurvey DWSurvey-OSS v.3.2.0 and before allows a remote attacker to execute arbitrary code via the saveimage method and savveFile in the action/UploadAction.java file."
+      },
+      {
+        "claim": "Remote attacker can execute arbitrary code",
+        "quote": "allows a remote attacker to execute arbitrary code"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1652,
+    "output_tokens": 540,
+    "latency_s": null,
+    "batch": true
+  }
+}

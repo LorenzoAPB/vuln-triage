@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Session tokens in RWS WorldServer 11.7.3 and earlier have low entropy and can be enumerated, allowing unauthorized access to user sessions.",
+    "affected_product": "RWS WorldServer 11.7.3 and earlier",
+    "cwe": "CWE-331",
+    "cwe_quote": "Session tokens in RWS WorldServer 11.7.3 and earlier have a low entropy and can be enumerated, leading to unauthorized access to user sessions.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be enumerated, leading to unauthorized access to user sessions."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "can be enumerated, leading to unauthorized access to user sessions."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "leading to unauthorized access to user sessions."
+      },
+      "I": {
+        "value": "L",
+        "quote": "leading to unauthorized access to user sessions."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review session token generation and entropy sources in WorldServer; implement cryptographically secure random session identifiers and rotate existing sessions. Perform an access review for potentially impacted accounts and notify affected users to re-authenticate.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Session tokens in RWS WorldServer 11.7.3 and earlier have a low entropy and can be enumerated, leading to unauthorized access to user sessions."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1638,
+    "output_tokens": 456,
+    "latency_s": null,
+    "batch": true
+  }
+}

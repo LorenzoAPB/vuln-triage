@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Suprema BioStar 2 v2.8.16 contains a SQL injection vulnerability via the values parameter at /users/absence?search_month=1.",
+    "affected_product": "Suprema BioStar 2 v2.8.16",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability via the values parameter",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "via the values parameter at /users/absence?search_month=1."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm the vulnerability by reproducing the SQL injection against an affected instance, identify impacted queries and database, and develop a patch or parameterized query remediation; in the meantime mitigate by restricting access to the endpoint and applying WAF rules to block malicious input.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability location and parameter",
+        "quote": "via the values parameter at /users/absence?search_month=1."
+      },
+      {
+        "claim": "Product and version",
+        "quote": "Suprema BioStar 2 v2.8.16 was discovered to contain a SQL injection vulnerability"
+      },
+      {
+        "claim": "Type of vulnerability",
+        "quote": "SQL injection vulnerability via the values parameter"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1640,
+    "output_tokens": 334,
+    "latency_s": null,
+    "batch": true
+  }
+}

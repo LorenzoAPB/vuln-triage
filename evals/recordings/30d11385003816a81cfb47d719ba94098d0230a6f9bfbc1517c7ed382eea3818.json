@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The reporter claims the application's login page is vulnerable to SQL injection allowing dumping of the entire database.",
+    "affected_product": "unknown",
+    "cwe": "CWE-89",
+    "cwe_quote": "your login page is vulnerable to sql injection, i can dump the whole db.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      },
+      "I": {
+        "value": "H",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      },
+      "A": {
+        "value": "H",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce the issue: capture a proof-of-concept request and server response against a non-production instance, identify affected endpoints and parameter(s), and determine authentication requirements before applying mitigations (use parameterized queries or ORM, and audit query construction).",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Reporter describes the vulnerability and impact",
+        "quote": "your login page is vulnerable to sql injection, i can dump the whole db."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1626,
+    "output_tokens": 435,
+    "latency_s": null,
+    "batch": true
+  }
+}

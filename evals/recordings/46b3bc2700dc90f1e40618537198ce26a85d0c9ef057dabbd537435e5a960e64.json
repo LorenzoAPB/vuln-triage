@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An SQL injection vulnerability exists in Moodle versions 3.11 through 3.11.4 in the h5p activity web service that fetches user attempt data.",
+    "affected_product": "Moodle 3.11 - 3.11.4",
+    "cwe": "CWE-89",
+    "cwe_quote": "An SQL injection risk was identified in the h5p activity web service responsible for fetching user attempt data.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An SQL injection risk was identified in the h5p activity web service responsible for fetching user attempt data."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An SQL injection risk was identified in the h5p activity web service responsible for fetching user attempt data."
+      },
+      "I": {
+        "value": "L",
+        "quote": "An SQL injection risk was identified in the h5p activity web service responsible for fetching user attempt data."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory or patch, reproduce the issue against an up-to-date test instance to confirm impact and required privileges, and prepare coordinated disclosure/patching guidance.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and location",
+        "quote": "An SQL injection risk was identified in the h5p activity web service responsible for fetching user attempt data."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Moodle in versions 3.11 to 3.11.4."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1646,
+    "output_tokens": 486,
+    "latency_s": null,
+    "batch": true
+  }
+}

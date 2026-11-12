@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SolarView Compact ver.6.00 contains a command injection vulnerability in conf_mail.php.",
+    "affected_product": "SolarView Compact ver.6.00",
+    "cwe": "CWE-77",
+    "cwe_quote": "command injection vulnerability via conf_mail.php",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "via conf_mail.php"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "command injection vulnerability"
+      },
+      "I": {
+        "value": "H",
+        "quote": "command injection vulnerability"
+      },
+      "A": {
+        "value": "H",
+        "quote": "command injection vulnerability"
+      }
+    },
+    "recommended_next_step": "Obtain the conf_mail.php proof-of-concept or exploit details to confirm the injection vector, reproduce the issue on a test instance of SolarView Compact 6.00, and identify input validation/sanitization gaps; if confirmed, coordinate disclosure with the vendor and prepare mitigations or patches.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "SolarView Compact ver.6.00 was discovered to contain a command injection vulnerability via conf_mail.php."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1626,
+    "output_tokens": 396,
+    "latency_s": null,
+    "batch": true
+  }
+}

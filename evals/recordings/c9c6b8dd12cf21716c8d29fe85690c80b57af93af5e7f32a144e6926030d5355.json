@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Command injection vulnerability in the inSyncCPHwnet64 RPC service of Druva inSync Windows Client 6.6.3 allows a local attacker to execute arbitrary commands as NT AUTHORITY\\SYSTEM by bypassing path validation via appended directory traversal sequences.",
+    "affected_product": "Druva inSync Windows Client 6.6.3",
+    "cwe": "CWE-78",
+    "cwe_quote": "Command injection in inSyncCPHwnet64 RPC service",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Command injection in inSyncCPHwnet64 RPC service"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Command injection in inSyncCPHwnet64 RPC service\n\nRuns as nt authority\\system. so we have a local privilege escalation"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "C": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      }
+    },
+    "recommended_next_step": "Confirm reproducibility against the vendor-supplied version, capture exact exploit steps and RPC parameters, and coordinate disclosure with vendor to obtain a patch; advise users to stop the inSync service until patched.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "Command injection in inSyncCPHwnet64 RPC service"
+      },
+      {
+        "claim": "Privilege level achieved",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      {
+        "claim": "Root cause of bypass",
+        "quote": "The path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path."
+      },
+      {
+        "claim": "Affected product and version",
+        "quote": "Version: 6.6.3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2007,
+    "output_tokens": 648,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes SQL injection vulnerabilities (boolean-based blind and time-based) in Suprema BioStar 2 v2.8.16 at the endpoint /api/users/absence?search_month=1 via the JSON \"values\" parameter, allowing remote unauthenticated attackers to execute arbitrary SQL queries and extract database contents.",
+    "affected_product": "Suprema BioStar 2 v2.8.16",
+    "cwe": "CWE-89",
+    "cwe_quote": "A Boolean-based SQL injection/Time based SQL vulnerability in the page (/api/users/absence?search_month=1) in Suprema BioStar 2 v2.8.16 allows remote unauthenticated attackers to execute remote arbitrary SQL commands through \"values\" JSON parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A Boolean-based SQL injection/Time based SQL vulnerability in the page (/api/users/absence?search_month=1) in Suprema BioStar 2 v2.8.16 allows remote unauthenticated attackers to execute remote arbitrary SQL commands through \"values\" JSON parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute remote arbitrary SQL commands through \"values\" JSON parameter."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "the exploit demonstrates retrieving database names and contents via sqlmap (e.g. \"retrieved: biostar2_ac\")."
+      },
+      "I": {
+        "value": "L",
+        "quote": "the exploit demonstrates retrieving database names and contents via sqlmap (e.g. \"retrieved: biostar2_ac\")."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Time based SQL injection (set 4 \u2013 response delays for 8 seconds)."
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability against an up-to-date instance, reproduce the injection with minimal PoC, identify affected query construction, and implement parameterized queries or proper input validation and escaping; if confirmed, prepare coordinated disclosure and provide upgrade or mitigation guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and affected endpoint",
+        "quote": "A Boolean-based SQL injection/Time based SQL vulnerability in the page (/api/users/absence?search_month=1) in Suprema BioStar 2 v2.8.16 allows remote unauthenticated attackers to execute remote arbitrary SQL commands through \"values\" JSON parameter."
+      },
+      {
+        "claim": "PoC showing payload in JSON values and time-based behavior",
+        "quote": "{\"Query\":{\"offset\":0,\"limit\":51,\"atLeastOneFilterExists\":true,\"conditions\":[{\"column\":\"user_group_id.id\",\"operator\":2,\"values\":[\"(select*from(select(sleep(4)))a)\",4840,20120]}],\"orders\":[],\"total\":false}}"
+      },
+      {
+        "claim": "PoC showing boolean-based injection payload",
+        "quote": "{\"Query\":{\"offset\":0,\"limit\":51,\"atLeastOneFilterExists\":true,\"conditions\":[{\"column\":\"user_group_id.id\",\"operator\":2,\"values\":[\"1 and 3523=03523\",4840,20120]}],\"orders\":[],\"total\":false}}"
+      },
+      {
+        "claim": "Exploit with sqlmap demonstrating database retrieval",
+        "quote": "[05:02:50] [INFO] fetching database names"
+      },
+      {
+        "claim": "Exploit with sqlmap retrieved database name",
+        "quote": "[05:03:12] [INFO] retrieved: biostar2_ac"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2804,
+    "output_tokens": 897,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An information disclosure in GitLab EE (versions 16.2 < 16.2.5 and 16.3 < 16.3.1) allowed other Group Owners to view the Public Key for a Google Cloud Logging audit event streaming destination; the fix restricts Owners to writing the key only.",
+    "affected_product": "GitLab EE versions 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify whether any sensitive keys were exposed in affected instances and rotate any publicly visible keys; upgrade GitLab EE to 16.2.5, 16.3.1 or later.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "GitLab EE affecting all versions from 16.2 prior to 16.2.5, and 16.3 prior to 16.3.1"
+      },
+      {
+        "claim": "What was exposed",
+        "quote": "allowed other Group Owners to see the Public Key for a Google Cloud Logging audit event streaming destination, if configured."
+      },
+      {
+        "claim": "Fix behavior",
+        "quote": "Owners can now only write the key, not read it."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1677,
+    "output_tokens": 586,
+    "latency_s": null,
+    "batch": true
+  }
+}

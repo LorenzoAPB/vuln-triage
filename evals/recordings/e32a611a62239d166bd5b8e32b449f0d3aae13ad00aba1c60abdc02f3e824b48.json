@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A partial blind CSRF in perfSONAR v4.x \u2264 v4.4.5 allows attacker-controlled URL parameters on /perfsonar-graphs/ to make the client browser perform background XMLHTTPRequests to arbitrary sites, bypassing the whitelist. Patched in v4.4.6.",
+    "affected_product": "perfSONAR v4.x <= v4.4.5",
+    "cwe": "CWE-352",
+    "cwe_quote": "A partial blind CSRF vulnerability exists in perfSONAR v4.x <= v4.4.5 within the /perfsonar-graphs/ test results page.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Client browser connects to www.google.com in the background.\nhttp://192.168.68.145/perfsonar-graphs/?source=1&dest=2&url=https://www.google.com"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Parameters and values can be injected/passed via the URL parameter, forcing the client to connect unknowingly in the background to other sites via transparent XMLHTTPRequests."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "Client browser connects to arbitrary IP and port in the background, passing delete parameter to /api endpoint.\nhttp://192.168.68.145/perfsonar-graphs/?source=8.8.8.8&dest=%26action%3Ddelete&url=http://192.168.68.113:4444/api"
+      }
+    },
+    "recommended_next_step": "Verify the behavior on a vulnerable instance by reproducing the provided example URLs and confirm the patch in v4.4.6 mitigates the injected XMLHTTPRequest; if confirmed, prepare advisory and coordinate disclosure.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and location",
+        "quote": "A partial blind CSRF vulnerability exists in perfSONAR v4.x <= v4.4.5 within the /perfsonar-graphs/ test results page."
+      },
+      {
+        "claim": "Mechanism: attacker-controlled URL parameters cause background requests",
+        "quote": "Parameters and values can be injected/passed via the URL parameter, forcing the client to connect unknowingly in the background to other sites via transparent XMLHTTPRequests."
+      },
+      {
+        "claim": "PoC example connecting to google",
+        "quote": "Client browser connects to www.google.com in the background.\nhttp://192.168.68.145/perfsonar-graphs/?source=1&dest=2&url=https://www.google.com"
+      },
+      {
+        "claim": "PoC example connecting to arbitrary IP and passing delete to /api",
+        "quote": "Client browser connects to arbitrary IP and port in the background, passing delete parameter to /api endpoint.\nhttp://192.168.68.145/perfsonar-graphs/?source=8.8.8.8&dest=%26action%3Ddelete&url=http://192.168.68.113:4444/api"
+      },
+      {
+        "claim": "Patch information",
+        "quote": "This vulnerability was patched in perfSONAR v4.4.6."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1920,
+    "output_tokens": 848,
+    "latency_s": null,
+    "batch": true
+  }
+}

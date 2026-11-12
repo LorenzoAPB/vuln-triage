@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CVAT versions prior to 2.0.0 are affected by a server-side request forgery (SSRF) vulnerability; validation of URLs in the affected code path was added in 2.0.0 and users are advised to upgrade.",
+    "affected_product": "CVAT < 2.0.0",
+    "cwe": "CWE-918",
+    "cwe_quote": "Server-side request forgery (SSRF) vulnerability",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      }
+    },
+    "recommended_next_step": "Request a detailed technical report or PoC showing the SSRF attack path and impact (whether internal network access, data exfiltration, or request-triggered actions) and confirm affected endpoints; if confirmed, prepare an advisory with CVSS vector finalized and coordinate disclosure and updates.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and name",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      },
+      {
+        "claim": "Versions affected and mitigation",
+        "quote": "Versions prior to 2.0.0 were found to be subject to a Server-side request forgery (SSRF) vulnerability. Validation has been added to urls used in the affected code path in version 2.0.0."
+      },
+      {
+        "claim": "Upgrade recommendation / no workaround",
+        "quote": "Users are advised to upgrade. There are no known workarounds for this issue."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1686,
+    "output_tokens": 529,
+    "latency_s": null,
+    "batch": true
+  }
+}

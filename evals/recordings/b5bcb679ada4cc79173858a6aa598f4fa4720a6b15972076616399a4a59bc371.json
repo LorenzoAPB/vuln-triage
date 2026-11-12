@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Password-reset authentication bypass in CTROMS Terminal OS - Port Portal: verification code is reflected in the HTTP response from getverificationcode.jsp and md5 \"rand\" cookie values returned in that response can be used to reset the user's password, allowing an attacker who knows a username to set a new password for that account.",
+    "affected_product": "CTROMS Terminal OS - Port Portal (versions not specified)",
+    "cwe": "CWE-200",
+    "cwe_quote": "When the \"userId\" parameter is posted to \"getverificationcode.jsp\", a verification code is transmitted to the account's phone number for password reset. But this verification code written in the database is also reflected in the response of the request.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This module exploits an authentication bypass in CTROMS, triggered by password reset verification code disclosure."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "If these values are assigned in the response, password reset can be done via these cookie values."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "In order to exploit this vulnerability, the username must be known."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      }
+    },
+    "recommended_next_step": "Reproduce against a test instance to confirm exploitability; if confirmed, notify the vendor and request a fix that stops reflecting verification codes and prevents use of server-returned cookie values for password reset. As mitigation, invalidate existing password-reset tokens, require stronger server-side verification, and require multi-factor reset flows.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Verification code is reflected in the response",
+        "quote": "When the \"userId\" parameter is posted to \"getverificationcode.jsp\", a verification code is transmitted to the account's phone number for password reset. But this verification code written in the database is also reflected in the response of the request."
+      },
+      {
+        "claim": "Cookie 'rand' values returned and usable for reset",
+        "quote": "The second vector is the \"rand\" cookie values returned in this request. These values are md5. If these values are assigned in the response, password reset can be done via these cookie values."
+      },
+      {
+        "claim": "Attacker only needs to know username",
+        "quote": "In order to exploit this vulnerability, the username must be known."
+      },
+      {
+        "claim": "Exploit creates a new password for the specified user",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      },
+      {
+        "claim": "Metasploit module checks endpoint response includes '\"rand\"'",
+        "quote": "if res.code == 200 and res.body.include? '\"rand\"'\n      return Exploit::CheckCode::Appears"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2648,
+    "output_tokens": 1550,
+    "latency_s": null,
+    "batch": true
+  }
+}

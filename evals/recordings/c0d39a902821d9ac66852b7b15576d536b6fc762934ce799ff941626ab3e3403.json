@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Report describes a Server Side Request Forgery (SSRF) in wkhtmltopdf 0.12.6 where crafted HTML (an iframe pointing to an internal IP) sent to a /PDF/FromHTML endpoint causes the server-side renderer to fetch attacker-specified URLs.",
+    "affected_product": "wkhtmltopdf 0.12.6",
+    "cwe": "CWE-918",
+    "cwe_quote": "<iframe+src=\u201chttp://10.10.10.1\u201d>",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /PDF/FromHTML HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "<iframe+src=\u201chttp://10.10.10.1\u201d>"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SSRF by sending crafted HTML to the /PDF/FromHTML endpoint against a test instance of wkhtmltopdf 0.12.6 and capture outgoing requests; if confirmed, block external/internal URL fetching or add allowlist and sanitize input.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "HTTP request used to invoke the vulnerable endpoint",
+        "quote": "POST /PDF/FromHTML HTTP/1.1"
+      },
+      {
+        "claim": "Exploit supplies HTML containing an iframe pointing to internal IP",
+        "quote": "<iframe+src=\u201chttp://10.10.10.1\u201d>"
+      },
+      {
+        "claim": "Report target product and version",
+        "quote": "Version: 0.12.6"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1925,
+    "output_tokens": 391,
+    "latency_s": null,
+    "batch": true
+  }
+}

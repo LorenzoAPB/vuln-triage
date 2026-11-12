@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes a reflected cross-site scripting (XSS) vulnerability in PKP Open Journal Systems 2.4.8 through >= 3.3 where attackers can inject code via the X-Forwarded-Host header.",
+    "affected_product": "PKP Open Journal Systems (OJS) 2.4.8 through >= 3.3",
+    "cwe": "CWE-79",
+    "cwe_quote": "Cross-site scripting (XSS) via Host Header injection in PKP Open Journals System 2.4.8 >= 3.3 allows remote attackers to inject arbitary code via the X-Forwarded-Host Header.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote attackers to inject arbitary code via the X-Forwarded-Host Header."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Cross-site scripting (XSS) via Host Header injection in PKP Open Journals System 2.4.8 >= 3.3 allows remote attackers to inject arbitary code via the X-Forwarded-Host Header."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Cross-site scripting (XSS) via Host Header injection in PKP Open Journals System 2.4.8 >= 3.3 allows remote attackers to inject arbitary code via the X-Forwarded-Host Header."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the original report or proof-of-concept demonstrating where the X-Forwarded-Host value is reflected (response context), whether authentication is required, and any exploit HTTP request/response examples so CVSS metrics and impact can be finalized.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and vector",
+        "quote": "Cross-site scripting (XSS) via Host Header injection in PKP Open Journals System 2.4.8 >= 3.3 allows remote attackers to inject arbitary code via the X-Forwarded-Host Header."
+      },
+      {
+        "claim": "Attack is remote and uses X-Forwarded-Host header",
+        "quote": "allows remote attackers to inject arbitary code via the X-Forwarded-Host Header."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1652,
+    "output_tokens": 633,
+    "latency_s": null,
+    "batch": true
+  }
+}

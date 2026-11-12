@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple unauthenticated/insufficient authorization API endpoints in Global RADAR BSA Radar 1.6.7234.24750 and lower allow changing other users' passwords, modifying other users' profiles (including stored XSS in name fields), and enumerating arbitrary user account details via UserID.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-285",
+    "cwe_quote": "The Global RADAR BSA Radar 1.6.7234.X application lacks valid authorization controls in multiple functions while logged into the application.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /WS/AjaxWS.asmx/ChangePassword"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The UserID and NewPassword parameters can be forged to force the password change of another existing user account by using their UserID."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Allows the ability to update the password belonging to another account by their UserID, and therefore leading to account takeover."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the ChangePassword, SaveUserProfile, and GetUser API requests against an up-to-date test instance to confirm whether authentication is required and whether authorization checks validate the acting user; collect request/response pairs and determine affected endpoints and required privileges.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Lack of authorization controls",
+        "quote": "The Global RADAR BSA Radar 1.6.7234.X application lacks valid authorization controls in multiple functions while logged into the application."
+      },
+      {
+        "claim": "Change password allows changing another account by UserID",
+        "quote": "The UserID and NewPassword parameters can be forged to force the password change of another existing user account by using their UserID."
+      },
+      {
+        "claim": "ChangePassword endpoint and request",
+        "quote": "POST /WS/AjaxWS.asmx/ChangePassword\n\n\t\t{\"password\":\n\t\t{\"UserID\":XXXX,\"NewPassword\":\"NEWPASSHERE\",\"NewPasswordConfirm\":\"NEWPASSHERE\",<REMAINDER OF REQUEST HERE>} }"
+      },
+      {
+        "claim": "SaveUserProfile allows updating other user profile fields and stored XSS",
+        "quote": "Allows the ability to update the user profile belonging to another account by using their UserID. This includes modifiable details like first name, last name, email, and phone number. This also allows for injection of a Stored Cross-Site Scripting (XSS) into arbitrary user account profiles as the first name and last name parameters are vulnerable."
+      },
+      {
+        "claim": "SaveUserProfile endpoint and request",
+        "quote": "POST /WS/AjaxWS.asmx/SaveUserProfile\n\n\t\t{\"user\":\n\t\t{\"UserID\":XXXX,\"BankID\":XXX,\"Firstname\":<ARBITRARY INPUT HERE OR STORED XSS SCRIPT>\",\"Lastname\":\"<ARBITRARY INPUT HERE OR STORED XSS SCRIPT>\",\"Title\":\"\",\"Phone\":\"<ARBITRARY INPUT HERE>\",\"Email\":\"<Correct email here>\",<REMAINDER OF REQUEST HERE>} }"
+      },
+      {
+        "claim": "GetUser allows enumerating user details",
+        "quote": "The UserID paramter can be forged to enumerate over existing userID's in order to return their account details such as full name, username, user permissions, account role, email, and password question."
+      },
+      {
+        "claim": "GetUser endpoint and request",
+        "quote": "POST /WS/AjaxWS.asmx/GetUser\n\n\t\t{\"userID\":XXXX }"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2257,
+    "output_tokens": 1005,
+    "latency_s": null,
+    "batch": true
+  }
+}

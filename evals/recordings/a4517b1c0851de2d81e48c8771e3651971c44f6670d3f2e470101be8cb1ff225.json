@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Roxy-WI before 6.1.1.0 allows remote execution of system commands via subprocess_execute in /app/options.py because inputs from users are not processed; version 6.1.1.0 patches the issue.",
+    "affected_product": "Roxy-WI prior to 6.1.1.0",
+    "cwe": "CWE-78",
+    "cwe_quote": "the system command can be run remotely via the subprocess_execute function without processing the inputs received from the user in the /app/options.py file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "can be run remotely via the subprocess_execute function"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "the system command can be run remotely via the subprocess_execute function"
+      },
+      "I": {
+        "value": "H",
+        "quote": "the system command can be run remotely via the subprocess_execute function"
+      },
+      "A": {
+        "value": "H",
+        "quote": "the system command can be run remotely via the subprocess_execute function"
+      }
+    },
+    "recommended_next_step": "Review the patched changes in version 6.1.1.0 to confirm input sanitization/escaping, and if patch not applied, upgrade Roxy-WI to 6.1.1.0 or apply equivalent fix; perform code audit of subprocess_execute usage and validate with tests.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Unvalidated command execution",
+        "quote": "the system command can be run remotely via the subprocess_execute function without processing the inputs received from the user in the /app/options.py file."
+      },
+      {
+        "claim": "Affected versions and patch",
+        "quote": "Prior to version 6.1.1.0"
+      },
+      {
+        "claim": "Patch available in fixed version",
+        "quote": "Version 6.1.1.0 contains a patch for this issue."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1683,
+    "output_tokens": 559,
+    "latency_s": null,
+    "batch": true
+  }
+}

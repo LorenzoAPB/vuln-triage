@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Default installation of Lansweeper 6.0.x through 7.2.x enables a Built-in admin account by default, allowing access to Add New Package and Scheduled Deployments features and enabling command execution.",
+    "affected_product": "Lansweeper 6.0.x through 7.2.x",
+    "cwe": "CWE-284",
+    "cwe_quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Remote code execution\ncan expose the organization to unauthorized access of data and programs, fraud."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Remote code execution\ncan expose the organization to unauthorized access of data and programs, fraud."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Remote code execution\ncan expose the organization to unauthorized access of data and programs, fraud."
+      }
+    },
+    "recommended_next_step": "Verify whether the instance uses the Built-in admin account by default and attempt to reproduce access to Add New Package / Scheduled Deployments; if reproducible, disable Built-in admin, apply access restrictions to the web console, and investigate for signs of code execution or compromise.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "Version: 6.0.x through 7.2.x"
+      },
+      {
+        "claim": "Default built-in admin enabled allowing access",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      {
+        "claim": "Features enabling command execution",
+        "quote": "This allows command execution via the Add New Package and Scheduled Deployments features."
+      },
+      {
+        "claim": "Impact described as remote code execution",
+        "quote": "Remote code execution\ncan expose the organization to unauthorized access of data and programs, fraud."
+      },
+      {
+        "claim": "Discovery via Shodan",
+        "quote": "By using shodan with this filter title:\"Lansweeper - Login\"\nWe will find some Lansweeper with default installation on it"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1857,
+    "output_tokens": 723,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Optoma 1080PSTX firmware C02 web interface can be accessed without authentication by setting the 'atop' cookie to '1', allowing an attacker on the same network to bypass the login.",
+    "affected_product": "Optoma 1080PSTX Firmware C02",
+    "cwe": "CWE-287",
+    "cwe_quote": "an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\".",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "By default the web interface of the 1080PSTX requires a username and password to access the application control panel.  However, an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      },
+      "I": {
+        "value": "L",
+        "quote": "By default the web interface of the 1080PSTX requires a username and password to access the application control panel.  However, an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      },
+      "A": {
+        "value": "L",
+        "quote": "By default the web interface of the 1080PSTX requires a username and password to access the application control panel.  However, an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      }
+    },
+    "recommended_next_step": "Confirm reproducibility on a device: attempt to access /index.asp without valid credentials both with and without atop=1 cookie; identify all functions exposed post-bypass and determine whether administrative privileges are granted. Collect additional request/response evidence to refine impact and CVSS metrics.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Authentication bypass description",
+        "quote": "an attacker, on the same network, can bypass it by manually setting the \"atop\" cookie to the value of \"1\"."
+      },
+      {
+        "claim": "Product and version",
+        "quote": "Version: Optoma 1080PSTX Firmware C02"
+      },
+      {
+        "claim": "HTTP request showing cookie usage",
+        "quote": "Cookie: atop=1"
+      },
+      {
+        "claim": "Default requires username and password",
+        "quote": "By default the web interface of the 1080PSTX requires a username and password to access the application control panel."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1928,
+    "output_tokens": 756,
+    "latency_s": null,
+    "batch": true
+  }
+}

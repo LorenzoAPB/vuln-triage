@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Pydio Cells up to 4.1.2 contains a server-side request forgery (SSRF) via the 'remote-download' background job which causes the backend to perform an HTTP GET to an attacker-specified URL and save the response to a file.",
+    "affected_product": "Pydio Cells through 4.1.2",
+    "cwe": "CWE-918",
+    "cwe_quote": "Pydio Cells allows SSRF. For longer running processes, Pydio Cells allows for the creation of jobs, which are run in the background. The job \"remote-download\" can be used to cause the backend to send a HTTP GET request to a specified URL and save the response to a new file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The job \"remote-download\" can be used to cause the backend to send a HTTP GET request to a specified URL"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "save the response to a new file. The response file is then available in a user-specified folder in Pydio Cells."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "The job \"remote-download\" can be used to cause the backend to send a HTTP GET request to a specified URL and save the response to a new file."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SSRF by creating a remote-download job against controlled internal and external URLs to confirm access scope, required authentication, and possible sensitive endpoints; capture request behavior and evaluate whether access control restricts job creation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Product and versions",
+        "quote": "Pydio Cells through 4.1.2"
+      },
+      {
+        "claim": "Vulnerability type and description",
+        "quote": "Pydio Cells allows SSRF. For longer running processes, Pydio Cells allows for the creation of jobs, which are run in the background. The job \"remote-download\" can be used to cause the backend to send a HTTP GET request to a specified URL and save the response to a new file."
+      },
+      {
+        "claim": "Impact: file saved and available to users",
+        "quote": "save the response to a new file. The response file is then available in a user-specified folder in Pydio Cells."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1693,
+    "output_tokens": 663,
+    "latency_s": null,
+    "batch": true
+  }
+}

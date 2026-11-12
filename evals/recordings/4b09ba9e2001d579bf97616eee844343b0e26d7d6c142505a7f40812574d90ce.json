@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Crestron HD-MD4X2-4K-E web interface (v1.0.0.2159) discloses administrative credentials in an unauthenticated HTTP response to a browser request, allowing those credentials to be used to authenticate to the device and perform administrative actions.",
+    "affected_product": "Crestron HD-MD4X2-4K-E v1.0.0.2159",
+    "cwe": "CWE-200",
+    "cwe_quote": "This request results in a response similar to the following:\n\n{\n  \"login_ur\": 0,\n  \"front_val\": [\n    0,\n    1\n  ],\n  \"uname\": \"admin\",\n  \"upassword\": \"password\"\n}",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Requesting the URL \"http://crestron.example.com/\" via a web browser results in multiple HTTP requests being sent."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Upon visiting the device's web interface using a web browser, a login form is displayed requiring to enter username and password to authenticate. The analysis of sent HTTP traffic revealed that in addition to the loading of the website, a few more HTTP requests are automatically triggered. One of the associated responses contains a username and a password which can be used to authenticate as the affected user."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Requesting the URL \"http://crestron.example.com/\" via a web browser results in multiple HTTP requests being sent."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "As user credentials are disclosed to visitors of the web interface they can directly be used to authenticate to it. The access allows to modify the device's input and output settings as well as to upload and install new firmware."
+      },
+      "I": {
+        "value": "L",
+        "quote": "As user credentials are disclosed to visitors of the web interface they can directly be used to authenticate to it. The access allows to modify the device's input and output settings as well as to upload and install new firmware."
+      },
+      "A": {
+        "value": "L",
+        "quote": "As user credentials are disclosed to visitors of the web interface they can directly be used to authenticate to it. The access allows to modify the device's input and output settings as well as to upload and install new firmware."
+      }
+    },
+    "recommended_next_step": "Verify the disclosure on a device, capture the HTTP response to confirm credentials are present, and mitigate by restricting network access to the management interface (firewall) and, if possible, disabling the vulnerable service or updating firmware when available.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and version",
+        "quote": "Product: Crestron HD-MD4X2-4K-E\nAffected Versions: 1.0.0.2159"
+      },
+      {
+        "claim": "Unauthenticated request returns credentials",
+        "quote": "This request results in a response similar to the following:\n\n{\n  \"login_ur\": 0,\n  \"front_val\": [\n    0,\n    1\n  ],\n  \"uname\": \"admin\",\n  \"upassword\": \"password\"\n}"
+      },
+      {
+        "claim": "Credentials can be used to authenticate",
+        "quote": "The values for the keys \"uname\" and \"upassword\" could be used to successfully authenticate to the web interface as the affected user."
+      },
+      {
+        "claim": "Attack surface is web interface accessed via browser",
+        "quote": "Upon visiting the device's web interface using a web browser, a login form is displayed requiring to enter username and password to authenticate."
+      },
+      {
+        "claim": "Vendor will not fix",
+        "quote": "2021-12-28 Vendor confirms that the vulnerability will not be corrected."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2626,
+    "output_tokens": 960,
+    "latency_s": null,
+    "batch": true
+  }
+}

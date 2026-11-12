@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Lansweeper 6.0.x through 7.2.x default installations allow unauthenticated access to a Built-in Admin function, enabling command execution via the Add New Package and Scheduled Deployments features.",
+    "affected_product": "Lansweeper 6.0.x through 7.2.x",
+    "cwe": "CWE-284",
+    "cwe_quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This allows command execution via the Add New Package and Scheduled Deployments features."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This allows command execution via the Add New Package and Scheduled Deployments features."
+      },
+      "A": {
+        "value": "H",
+        "quote": "This allows command execution via the Add New Package and Scheduled Deployments features."
+      }
+    },
+    "recommended_next_step": "Restrict network access to the Lansweeper web console, disable or reconfigure the Built-in Admin account, and apply any vendor-supplied patches or configuration changes that remove the default built-in admin behaviour. If exposed, audit for signs of unauthorized command execution.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Default installation allows built-in admin access without authentication",
+        "quote": "By default, everyone in your network can access all of Lansweeper's features and menus simply by browsing to the web console URL and hitting the Built-in Admin button."
+      },
+      {
+        "claim": "Vulnerability leads to command execution",
+        "quote": "This allows command execution via the Add New Package and Scheduled Deployments features."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Version: 6.0.x through 7.2.x"
+      },
+      {
+        "claim": "Product description",
+        "quote": "The Lansweeper application is agentless network inventory software that can be used for IT asset management."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1857,
+    "output_tokens": 1165,
+    "latency_s": null,
+    "batch": true
+  }
+}

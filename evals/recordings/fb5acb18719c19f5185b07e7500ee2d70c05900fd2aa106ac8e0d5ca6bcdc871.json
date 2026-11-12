@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "perfSONAR v4.x <= v4.4.5 contains a Cross-Site Request Forgery (CSRF) triggered by crafted input injected into the Search function.",
+    "affected_product": "perfSONAR v4.x <= v4.4.5",
+    "cwe": "CWE-352",
+    "cwe_quote": "Cross-Site Request Forgery (CSRF) which is triggered when an attacker injects crafted input into the Search function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "perfSONAR v4.x <= v4.4.5 was discovered to contain a Cross-Site Request Forgery (CSRF)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Cross-Site Request Forgery (CSRF) which is triggered when an attacker injects crafted input into the Search function."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the CSRF by reproducing the issue against a vulnerable instance and determine required user privileges and exact impact; implement CSRF protections (anti-CSRF tokens or same-site cookies) and prepare patch or mitigation guidance.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and trigger",
+        "quote": "perfSONAR v4.x <= v4.4.5 was discovered to contain a Cross-Site Request Forgery (CSRF) which is triggered when an attacker injects crafted input into the Search function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1648,
+    "output_tokens": 479,
+    "latency_s": null,
+    "batch": true
+  }
+}

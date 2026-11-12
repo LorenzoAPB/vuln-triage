@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Report describes a directory traversal vulnerability in SolarView Compact v6.00 allowing unauthenticated retrieval of arbitrary files (example: /etc/passwd) via the downloader.php file parameter.",
+    "affected_product": "SolarView Compact ver.6.00",
+    "cwe": "CWE-22",
+    "cwe_quote": "Exploit: http://IP_ADDRESS/downloader.php?file=../../../../../../../../../../../../../etc/passwd%00.jpg",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Exploit: http://IP_ADDRESS/downloader.php?file=../../../../../../../../../../../../../etc/passwd%00.jpg"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Required: No"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Exploit: http://IP_ADDRESS/downloader.php?file=../../../../../../../../../../../../../etc/passwd%00.jpg"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reproduce the issue against a test instance to confirm file read access and determine full impact (which files are accessible), then implement input validation and canonicalization to prevent path traversal or apply filtering to the downloader.php file parameter.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerable request showing directory traversal and null byte termination to read /etc/passwd",
+        "quote": "Exploit: http://IP_ADDRESS/downloader.php?file=../../../../../../../../../../../../../etc/passwd%00.jpg"
+      },
+      {
+        "claim": "Product version",
+        "quote": "Version: ver.6.00"
+      },
+      {
+        "claim": "No authentication required",
+        "quote": "Authentication Required: No"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1739,
+    "output_tokens": 525,
+    "latency_s": null,
+    "batch": true
+  }
+}

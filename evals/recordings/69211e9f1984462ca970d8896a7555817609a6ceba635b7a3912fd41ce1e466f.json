@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Unquoted service path for GameSDK Service (GameSDK.exe) allows a local attacker who can write to certain filesystem locations to get a service to execute an attacker-controlled binary when the service starts.",
+    "affected_product": "Asus GameSDK v1.0.0.4 (patched in 1.0.5.0)",
+    "cwe": "CWE-428",
+    "cwe_quote": "NOME_PERCORSO_BINARIO     : C:\\Program Files (x86)\\ASUS\\GameSDK Service\\GameSDK.exe",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "If an attacker had already compromised the system and the current user has the privileges to write in the \"C:\\Program Files (x86)\\ASUS\\\" folder or in \"C:\\\" , he could place his own \"Program.exe\" or \"GameSDK.exe\" files respectively, and when the service starts, it would launch the malicious file, rather than the original \"GameSDK.exe\"."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "If an attacker had already compromised the system and the current user has the privileges to write in the \"C:\\Program Files (x86)\\ASUS\\\" folder or in \"C:\\\" , he could place his own \"Program.exe\" or \"GameSDK.exe\" files respectively"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "when the service starts, it would launch the malicious file, rather than the original \"GameSDK.exe\"."
+      },
+      "I": {
+        "value": "H",
+        "quote": "when the service starts, it would launch the malicious file, rather than the original \"GameSDK.exe\"."
+      },
+      "A": {
+        "value": "H",
+        "quote": "when the service starts, it would launch the malicious file, rather than the original \"GameSDK.exe\"."
+      }
+    },
+    "recommended_next_step": "Verify the service binary path and deploy the vendor-updated patched version (1.0.5.0). As a mitigation, quote the service path or move binaries to paths without spaces and restrict write permissions to the Program Files locations. Re-audit other services for unquoted paths.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Service binary path shows unquoted path with spaces",
+        "quote": "NOME_PERCORSO_BINARIO     : C:\\Program Files (x86)\\ASUS\\GameSDK Service\\GameSDK.exe"
+      },
+      {
+        "claim": "Exploit description showing attacker can place executable in Program Files or C:\\",
+        "quote": "If an attacker had already compromised the system and the current user has the privileges to write in the \"C:\\Program Files (x86)\\ASUS\\\" folder or in \"C:\\\" , he could place his own \"Program.exe\" or \"GameSDK.exe\" files respectively, and when the service starts, it would launch the malicious file, rather than the original \"GameSDK.exe\"."
+      },
+      {
+        "claim": "Service runs as LocalSystem",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1989,
+    "output_tokens": 795,
+    "latency_s": null,
+    "batch": true
+  }
+}

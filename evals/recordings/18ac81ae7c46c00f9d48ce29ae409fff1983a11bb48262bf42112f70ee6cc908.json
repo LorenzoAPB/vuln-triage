@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "PandoraFMS 7.0 NG (<= 746) contains a persistent cross-site scripting (XSS) vulnerability that can be triggered by having a network administrator scan an SNMP device; the report demonstrates loading a remote JavaScript which is used to create a plugin and achieve remote code execution on the server.",
+    "affected_product": "PandoraFMS 7.0 NG <= 746",
+    "cwe": "CWE-79",
+    "cwe_quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      "I": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      "A": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      }
+    },
+    "recommended_next_step": "Sanitize or validate SNMP-provided fields before rendering in the web UI; in the short term, restrict admins from viewing SNMP-originated device metadata, and update PandoraFMS to a version that removes this XSS. Also review and remove any injected plugins and rotate credentials.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "How XSS is triggered (description)",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      {
+        "claim": "Demonstration of remote script leading to code execution",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      {
+        "claim": "Affected version statement",
+        "quote": "Version: 7xx \u0013 746"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3163,
+    "output_tokens": 1304,
+    "latency_s": null,
+    "batch": true
+  }
+}

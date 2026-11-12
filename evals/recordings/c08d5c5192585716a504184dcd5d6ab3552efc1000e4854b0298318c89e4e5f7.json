@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Cartography (positions) plugin for GLPI before 6.0.1 allows remote code execution via PHP code in POST data to front/upload.php.",
+    "affected_product": "Cartography (positions) plugin for GLPI, versions before 6.0.1",
+    "cwe": "CWE-94",
+    "cwe_quote": "allows remote code execution via PHP code in the POST data to front/upload.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote code execution via PHP code in the POST data to front/upload.php."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote code execution via PHP code in the POST data to front/upload.php."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote code execution via PHP code in the POST data to front/upload.php."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows remote code execution via PHP code in the POST data to front/upload.php."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows remote code execution via PHP code in the POST data to front/upload.php."
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce the issue against an instance with the affected plugin version by sending crafted POST data to front/upload.php; capture request/response and determine required authentication. If confirmed, upgrade to 6.0.1 or apply a patch; prepare disclosure and advisories.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "The Cartography (aka positions) plugin before 6.0.1 for GLPI allows remote code execution via PHP code in the POST data to front/upload.php."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1639,
+    "output_tokens": 499,
+    "latency_s": null,
+    "batch": true
+  }
+}

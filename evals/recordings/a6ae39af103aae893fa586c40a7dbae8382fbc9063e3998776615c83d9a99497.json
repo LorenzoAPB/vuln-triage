@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "GitLab versions from 4.1 through before 16.1.5, 16.2 before 16.2.5, and 16.3 before 16.3.1 allow creation of a URL that redirects to a different project.",
+    "affected_product": "GitLab all versions starting from 4.1 before 16.1.5; starting from 16.2 before 16.2.5; starting from 16.3 before 16.3.1",
+    "cwe": "CWE-601",
+    "cwe_quote": "it was possible to create a URL that would redirect to a different project.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "it was possible to create a URL that would redirect to a different project."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory or patch details and test the fixed versions; if possible, identify and block or rewrite malicious redirect URLs in affected installations until patched.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions and vulnerability",
+        "quote": "An issue has been discovered in GitLab affecting all versions starting from 4.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1 where it was possible to create a URL that would redirect to a different project."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1677,
+    "output_tokens": 497,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated command injection in the VR-3033 web interface ping and traceroute diagnostic pages allows an authenticated attacker to execute OS commands and obtain command output (e.g., directory listing).",
+    "affected_product": "Comtrend VR-3033, firmware DE11-416SSG-C01_R02.A2pvI042j1.d26m",
+    "cwe": "CWE-78",
+    "cwe_quote": "4- on the text input, type 'google.fr;ls - l'\n5 - a list of folder names should appear.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "To reproduce the vulnerability attacker has to access the interface at least with minimum privilege."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      }
+    },
+    "recommended_next_step": "Validate the issue by reproducing the PoC in a lab, then remediate by fixing input handling on ping/traceroute (properly validate/escape or avoid passing user input to a shell). Vendor should produce a firmware update; as a mitigation restrict access to the web interface and require strong admin authentication until fixed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "PoC HTTP request demonstrating injection",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      {
+        "claim": "Reproduction steps showing injection payload and observed output",
+        "quote": "4- on the text input, type 'google.fr;ls - l'\n5 - a list of folder names should appear."
+      },
+      {
+        "claim": "Description of impact (full control)",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      {
+        "claim": "Authentication requirement",
+        "quote": "To reproduce the vulnerability attacker has to access the interface at least with minimum privilege."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2587,
+    "output_tokens": 1190,
+    "latency_s": null,
+    "batch": true
+  }
+}

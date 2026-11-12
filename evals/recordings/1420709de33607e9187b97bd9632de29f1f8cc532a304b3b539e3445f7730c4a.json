@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "wkhtmlTOpdf 0.12.6 is reported vulnerable to an SSRF that allows an attacker to inject an iframe tag pointing at internal asset IP addresses, enabling access to internal assets and potential takeover of infrastructure.",
+    "affected_product": "wkhtmlTOpdf 0.12.6",
+    "cwe": "CWE-918",
+    "cwe_quote": "SSRF which allows an attacker to get initial access into the target's system by injecting iframe tag with initial asset IP address on it's source.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "SSRF which allows an attacker to get initial access into the target's system by injecting iframe tag with initial asset IP address on it's source."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "injecting iframe tag with initial asset IP address on it's source"
+      },
+      "S": {
+        "value": "C",
+        "quote": "This allows the attacker to takeover the whole infrastructure by accessing their internal assets."
+      },
+      "C": {
+        "value": "L",
+        "quote": "This allows the attacker to takeover the whole infrastructure by accessing their internal assets."
+      },
+      "I": {
+        "value": "L",
+        "quote": "This allows the attacker to takeover the whole infrastructure by accessing their internal assets."
+      },
+      "A": {
+        "value": "L",
+        "quote": "This allows the attacker to takeover the whole infrastructure by accessing their internal assets."
+      }
+    },
+    "recommended_next_step": "Request and review a detailed proof-of-concept demonstrating the SSRF (HTTP requests or HTML payload), and confirm whether exploitation requires user interaction, authentication, or specific configuration; then reproduce locally to determine precise impact and produce a CVSS score.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and method",
+        "quote": "SSRF which allows an attacker to get initial access into the target's system by injecting iframe tag with initial asset IP address on it's source."
+      },
+      {
+        "claim": "Attack consequence claim",
+        "quote": "This allows the attacker to takeover the whole infrastructure by accessing their internal assets."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1661,
+    "output_tokens": 559,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "On systems using legacy IBRS, the Linux kernel could leave userspace processes vulnerable to cross-thread branch target injection (Spectre-BTI) because it cleared the IBRS bit on return to userspace, disabling the implicit STIBP protection.",
+    "affected_product": "Linux kernel (versions not specified); observed on VMs of at least one major cloud provider and on bare-metal when forcing IBRS on the boot command line",
+    "cwe": "CWE-200",
+    "cwe_quote": "left userspace threads vulnerable to cross-thread branch target injection against which STIBP protects.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "observed on VMs of at least one major cloud provider"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "This happened because when plain IBRS was enabled (not enhanced IBRS), the kernel had some logic that determined that STIBP was not needed."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "left userspace threads vulnerable to cross-thread branch target injection"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "left userspace threads vulnerable to cross-thread branch target injection against which STIBP protects."
+      },
+      "C": {
+        "value": "L",
+        "quote": "left userspace threads vulnerable to cross-thread branch target injection against which STIBP protects."
+      },
+      "I": {
+        "value": "L",
+        "quote": "left userspace threads vulnerable to cross-thread branch target injection"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm affected kernel versions and vendor configurations, reproduce PoC to show impact (data leak or attackability), and prepare coordinated disclosure with cloud provider and kernel maintainers; backport/patch kernel logic to preserve STIBP or not clear IBRS on userspace return when legacy IBRS is in use.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability observed on cloud VMs",
+        "quote": "We had noticed that on VMs of at least one major cloud provider, the kernel still left the victim process exposed to attacks in some cases even after enabling the spectre-BTI mitigation with prctl."
+      },
+      {
+        "claim": "Also reproducible on bare-metal when forcing IBRS",
+        "quote": "The same behavior can be observed on a bare-metal machine when forcing the mitigation to IBRS on boot command line."
+      },
+      {
+        "claim": "Cause: plain IBRS logic determined STIBP not needed",
+        "quote": "This happened because when plain IBRS was enabled (not enhanced IBRS), the kernel had some logic that determined that STIBP was not needed."
+      },
+      {
+        "claim": "Legacy IBRS clears IBRS bit on return to userspace",
+        "quote": "However, with legacy IBRS, the IBRS bit was cleared on returning to userspace, due to performance reasons, which disabled the implicit STIBP and left userspace threads vulnerable to cross-thread branch target injection against which STIBP protects."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1796,
+    "output_tokens": 754,
+    "latency_s": null,
+    "batch": true
+  }
+}

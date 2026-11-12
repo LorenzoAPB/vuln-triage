@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "LearnPress WordPress plugin (versions before 4.1.5) allows authenticated users to upload an avatar image (JPG/PNG), crop it, and submit a POST request containing a user-supplied image name. The server renames the image to an MD5-derived name based on that supplied name, enabling an attacker to rename arbitrary image files which could disrupt site design.",
+    "affected_product": "LearnPress WordPress plugin before 4.1.5",
+    "cwe": "CWE-73",
+    "cwe_quote": "An attacker can use this vulnerability in order to rename an arbitrary image file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "a \"POST\" request that contains user supplied name of the image is sent to the server for renaming and cropping of the image."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Users of the LearnPress WordPress plugin before 4.1.5 can upload an image as a profile avatar after the registration."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "a \"POST\" request that contains user supplied name of the image is sent to the server for renaming and cropping of the image."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, they could destroy the design of the web site."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, they could destroy the design of the web site."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue on a test instance with an unprivileged user account: register or log in, upload a JPG/PNG avatar, submit a crafted POST with a chosen filename, and observe whether arbitrary existing image files are renamed. Collect the exact request/response and file-system effects for patching and to create a proof-of-concept.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions / capability to upload after registration",
+        "quote": "Users of the LearnPress WordPress plugin before 4.1.5 can upload an image as a profile avatar after the registration."
+      },
+      {
+        "claim": "Flow: crop and save triggers POST with user-supplied name",
+        "quote": "After this process the user crops and saves the image. Then a \"POST\" request that contains user supplied name of the image is sent to the server for renaming and cropping of the image."
+      },
+      {
+        "claim": "Server changes name to MD5 value",
+        "quote": "As a result of this request, the name of the user-supplied image is changed with a MD5 value."
+      },
+      {
+        "claim": "Restricted to JPG or PNG",
+        "quote": "This process can be conducted only when type of the image is JPG or PNG."
+      },
+      {
+        "claim": "Impact: rename arbitrary image file and break design",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, they could destroy the design of the web site."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1741,
+    "output_tokens": 813,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Exploit for Source Engine (CS:GO and others) BuildIDs allows arbitrary code execution by writing a crafted payload to /tmp/hl2_relaunch and invoking a shell command on macOS (posix).",
+    "affected_product": "Source Engine (CS:GO BuildID: 4937372, TF2 BuildID: 4871679, Garry's Mod BuildID: 4803834, Half Life 2 BuildID: 4233302)",
+    "cwe": "CWE-78",
+    "cwe_quote": "payload = '\"; ' + command + '; echo \"'",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "payload = '\"; ' + command + '; echo \"'"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "if os.name == \"posix\":\n    command = str(input(\"Code to run? \"))"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Code to run? "
+      },
+      "I": {
+        "value": "H",
+        "quote": "Code to run? "
+      },
+      "A": {
+        "value": "H",
+        "quote": "payload = '\"; ' + command + '; echo \"'"
+      }
+    },
+    "recommended_next_step": "Obtain the original vulnerability report or vendor advisory describing how the payload is delivered and how the engine invokes /tmp/hl2_relaunch; reproduce on a test system and identify the vulnerable code path to create a patch or mitigation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit writes a payload to /tmp/hl2_relaunch",
+        "quote": "f = open(\"/tmp/hl2_relaunch\", \"w\")"
+      },
+      {
+        "claim": "Exploit composes shell-injection payload from attacker-supplied command",
+        "quote": "payload = '\"; ' + command + '; echo \"'"
+      },
+      {
+        "claim": "The script requests attacker-supplied command input",
+        "quote": "command = str(input(\"Code to run? \"))"
+      },
+      {
+        "claim": "Affected products and tested build IDs",
+        "quote": "Version: Source Engine, Tested on CS:GO BuildID: 4937372 TF2 BuildID: 4871679 Garry's Mod BuildID: 4803834 Half Life 2 BuildID: 4233302"
+      },
+      {
+        "claim": "Tested on macOS (posix)",
+        "quote": "Tested on: MacOS 15.3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1864,
+    "output_tokens": 682,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Duplicator WordPress plugin before 1.4.7 exposes system information to unauthenticated visitors, including server software, PHP version, and full filesystem path to the site.",
+    "affected_product": "Duplicator WordPress plugin before 1.4.7",
+    "cwe": "CWE-200",
+    "cwe_quote": "does not authenticate or authorize visitors before displaying information about the system such as server software, php version and full file system path to the site.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "does not authenticate or authorize visitors before displaying information about the system"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "does not authenticate or authorize visitors before displaying information about the system"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "displaying information about the system such as server software, php version and full file system path to the site."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the exposure by requesting the relevant Duplicator plugin endpoint on a test site running a vulnerable version and confirm the exact fields returned; then coordinate disclosure with the vendor and recommend updating to >= 1.4.7 or applying an access control check to restrict this information to authenticated admin users.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated information disclosure",
+        "quote": "does not authenticate or authorize visitors before displaying information about the system such as server software, php version and full file system path to the site."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1647,
+    "output_tokens": 478,
+    "latency_s": null,
+    "batch": true
+  }
+}

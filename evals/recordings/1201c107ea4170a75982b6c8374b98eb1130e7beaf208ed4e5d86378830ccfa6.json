@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Genexis Platinum-4410 v2.1 router's login page source (http://192.168.1.1/cgi-bin/index2.asp) discloses passwords for each user (Admin, GENEXIS, user3) in plain text, which could allow an attacker to access the device and perform administrative actions.",
+    "affected_product": "Genexis Platinum-4410 v2.1 (Firmware P4410-V2\u20131.28)",
+    "cwe": "CWE-200",
+    "cwe_quote": "Genexis Platinum-4410 v2.1 Home Gateway Router discloses passwords of each users(Admin,GENEXIS,user3) in plain text behind login page source \u201chttp://192.168.1.1/cgi-bin/index2.asp\".",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This could potentially allow a remote attacker access sensitive information and perform actions such as reset router, changing passwords, upload malicious firmware etc."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Suppose 192.168.1.1 is the router IP and check view page source of login page \u201chttp://192.168.1.1/cgi-bin/index2.asp\",There we can found passwords for each login accounts in clear text."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Genexis Platinum-4410 v2.1 Home Gateway Router discloses passwords of each users(Admin,GENEXIS,user3) in plain text behind login page source \u201chttp://192.168.1.1/cgi-bin/index2.asp\"."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This could potentially allow a remote attacker access sensitive information and perform actions such as reset router, changing passwords, upload malicious firmware etc."
+      },
+      "A": {
+        "value": "L",
+        "quote": "This could potentially allow a remote attacker access sensitive information and perform actions such as reset router, changing passwords, upload malicious firmware etc."
+      }
+    },
+    "recommended_next_step": "Reproduce by viewing the referenced page source to confirm plaintext credential exposure, then notify vendor to remove plaintext credentials from web pages, rotate exposed credentials, and issue firmware patch that removes/securely stores credentials.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Passwords disclosed in page source",
+        "quote": "Genexis Platinum-4410 v2.1 Home Gateway Router discloses passwords of each users(Admin,GENEXIS,user3) in plain text behind login page source \u201chttp://192.168.1.1/cgi-bin/index2.asp\"."
+      },
+      {
+        "claim": "How to reproduce / viewing source",
+        "quote": "Suppose 192.168.1.1 is the router IP and check view page source of login page \u201chttp://192.168.1.1/cgi-bin/index2.asp\",There we can found passwords for each login accounts in clear text."
+      },
+      {
+        "claim": "Potential attacker impact",
+        "quote": "This could potentially allow a remote attacker access sensitive information and perform actions such as reset router, changing passwords, upload malicious firmware etc."
+      },
+      {
+        "claim": "PoC video",
+        "quote": "https://youtu.be/IO_Ez4XH-0Y"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1725,
+    "output_tokens": 1630,
+    "latency_s": null,
+    "batch": true
+  }
+}

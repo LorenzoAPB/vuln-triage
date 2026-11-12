@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Certain IBM TXSeries and CICS TX products could transmit sensitive information in query parameters that could be intercepted via man-in-the-middle techniques.",
+    "affected_product": "IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1; CICS TX Standard 11.1; CICS TX Advanced 10.1, 11.1",
+    "cwe": "CWE-200",
+    "cwe_quote": "could transmit sensitive information in query parameters",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "could be intercepted using man in the middle techniques"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "could transmit sensitive information in query parameters"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or review IBM X-Force advisory ID 257105 and vendor patch/mitigation details; confirm whether transport protection (TLS) or application behavior causes credentials or secrets to appear in URLs and recommend removing sensitive data from query parameters or enforcing TLS.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected products and versions",
+        "quote": "IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1"
+      },
+      {
+        "claim": "Description of issue",
+        "quote": "could transmit sensitive information in query parameters"
+      },
+      {
+        "claim": "Attack vector",
+        "quote": "could be intercepted using man in the middle techniques"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1682,
+    "output_tokens": 515,
+    "latency_s": null,
+    "batch": true
+  }
+}

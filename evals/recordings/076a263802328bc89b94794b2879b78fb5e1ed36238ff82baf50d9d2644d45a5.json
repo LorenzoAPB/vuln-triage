@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Report states an OS command injection vulnerability in packagist package microweber/microweber affecting versions prior to 1.2.11.",
+    "affected_product": "microweber/microweber prior to 1.2.11",
+    "cwe": "CWE-78",
+    "cwe_quote": "OS Command Injection in Packagist microweber/microweber prior to 1.2.11.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "OS Command Injection in Packagist microweber/microweber prior to 1.2.11."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "OS Command Injection in Packagist microweber/microweber prior to 1.2.11."
+      },
+      "I": {
+        "value": "H",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the full advisory or PoC to identify vulnerable code paths, reproduce the issue, and determine required authentication; in parallel, upgrade affected installations to 1.2.11 or later.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description and affected versions",
+        "quote": "OS Command Injection in Packagist microweber/microweber prior to 1.2.11."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1629,
+    "output_tokens": 451,
+    "latency_s": null,
+    "batch": true
+  }
+}

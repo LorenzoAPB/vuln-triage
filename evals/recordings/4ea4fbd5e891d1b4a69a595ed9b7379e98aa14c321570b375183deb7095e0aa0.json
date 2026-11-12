@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authentication bypass in VMware vCenter Server 6.7 (before update 3f) allowing LDAP/AD operations via crafted LDAP packets; exploit creates/modifies users and performs bind without valid credentials.",
+    "affected_product": "VMware vCenter Server 6.7 before update 3f",
+    "cwe": "CWE-287",
+    "cwe_quote": "VMware vCenter Server 6.7 before update 3f",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "_iPORT = 389"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Bypass"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "exploit creates/modifies users"
+      },
+      "I": {
+        "value": "H",
+        "quote": "exploit creates/modifies users"
+      },
+      "A": {
+        "value": "H",
+        "quote": "exploit creates/modifies users"
+      }
+    },
+    "recommended_next_step": "Review vendor advisory VMSA-2020-0006 and apply the vCenter 6.7 update 3f or later; if patching is not immediately possible, isolate vCenter LDAP ports and monitor for suspicious LDAP activity.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and versions",
+        "quote": "Version: vCenter Server 6.7 before update 3f"
+      },
+      {
+        "claim": "Authentication bypass",
+        "quote": "Exploit Title: VMware vCenter Server 6.7 - Authentication Bypass"
+      },
+      {
+        "claim": "Port used by exploit (network attack)",
+        "quote": "_iPORT = 389"
+      },
+      {
+        "claim": "Exploit creates/modifies users",
+        "quote": "Features: exploit + vulnerability checker"
+      },
+      {
+        "claim": "Tested on appliance upgrade path",
+        "quote": "Tested on: vCenter Server Appliance 6.7 RTM (updated from v6.0)"
+      },
+      {
+        "claim": "Vendor advisory",
+        "quote": "https://www.vmware.com/security/advisories/VMSA-2020-0006.html"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3118,
+    "output_tokens": 439,
+    "latency_s": null,
+    "batch": true
+  }
+}

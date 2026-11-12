@@ -10,6 +10,7 @@
 - [x] 6. README with architecture, design choices, results, limits, ethics; demo GIF; MIT license
 - [x] 7. Iteration 3: fix CWE abstention and CVSS over-scoring with a dev/test split; v3 held-out test run once on gpt-4o-mini
 - [x] 8. Iteration 4: Batch API, larger dev split, dev ablation (retrieval, provisional publishing, reasoning effort, no-LLM baseline), v4 held-out run, same-model v2/v3/v4 comparison on gpt-5-mini
+- [x] 9. Iteration 5: researcher write-ups (Exploit-DB) as the main eval, write-up dev ablation, v5 held-out run once, write-up vs NVD-description comparison on the same CVEs
 
 ## Session log
 - 2026-11-11: Milestone 0 done. Deps: openai 3.49.0, pydantic 2.14.3, cvss 3.6 (RedHat lib), pytest, ruff.
@@ -45,8 +46,18 @@
   - Code: Prompt dataclass + PROMPTS registry (v3, v4, exp-knn, exp-low, exp-knn-low), finalize(publish_inferred), retrieval.py, evals/batch.py, evals/ablation.py, accuracy_all metric, CLI --prompt and a "Model ..., prompt ..." line on every draft. CI replays dev, test, and the ablation.
   - Spend this iteration: about $0.21 (dev batches $0.0073 + $0.0095 + $0.0270 + $0.0295 + $0.0500 + $0.0534, test batch $0.0335, three one-request batch probes). Batch costs are recorded at half price.
 
+- 2026-11-11 (iteration 5, Lorenzo: rebuild around researcher reports such as Exploit-DB, $2 cap):
+  - Sources: Exploit-DB index (files_exploits.csv on GitLab) and raw files; labels from NVD's yearly JSON 2.0 feeds (2020-2023; the 5 req/30 s API was too slow month by month). Checked and skipped: GitHub advisories (only 7 usable Low items across 2020-2023, NVD often copies their text, and they carry phrases like "low confidentiality value"); HackerOne disclosed reports and Full-Disclosure (no scriptable public export, so not used).
+  - Selection (evals/build_writeups.py, fixed rule): single-CVE .txt/.md entries, NVD primary v3.1 vector and specific CWE, no SAP in either text, 300+ characters after cleaning, truncated at 6000; first N by Exploit-DB id, at most 2 per CWE per severity. Split by CVE year: writeups-dev = CVE-2020/2021 (30: 10 Medium, 10 High, 10 Critical, + 3 synthetic), writeups-test = CVE-2022/2023 (45: 15 per severity, + the 12 synthetic test items). Exploit-DB has almost no NVD-Low entries (one single-CVE entry in 2019-2024), so no Low class. CVEs are disjoint across splits and from the NVD splits (tests/test_dataset.py).
+  - Leakage stripping: lines with CVSS/base score/severity/risk/CWE, bare rating lines ("High", "Medium - ..."), "Status: CRITICAL"-style lines, "HIGH Vulnerability", "is kind of critical"; CVE ids, CWE ids, NVD/MITRE links replaced with placeholders. The first rule set left rating lines in 7 items (bare "High", "Status: CRITICAL", an author calling the issue critical); found by grepping the outputs and fixed before any model call.
+  - writeups-test-nvd = the same 57 items with each write-up swapped for NVD's own description, for the write-up vs description comparison.
+  - Dev (gpt-5-mini, Batch, evals/writeups_ablation.md): v4 43% severity, v5 47%, 5-NN vote 40%. v5 = v4 + rules for exploit code and HTTP requests. Error analysis showed CWE answers dropped because the model quoted sentences wrapped across "# " comment lines; quote matching now ignores leading comment markers (all earlier --check replays unchanged). exp-low (low effort) was dropped: one of its 30 responses looped to the 128k output-token limit (about $0.128) and returned nothing; requests are now capped at 16k output tokens.
+  - Chosen: v5 for write-ups (primary metric: severity correct over all items, decided before the test run). v5 is worse on NVD-description dev (44% vs 56%), so the CLI default stays v4.
+  - Held-out test, run once (Batch, gpt-5-mini, v5): writeups-test severity 51%, within one band 87%, within 1.0 point 47%, CWE exact 56% (unknown 18%), vector exact 20%. Same CVEs from NVD descriptions: severity 51%, within 1.0 44%, CWE exact 56% (unknown 7%), coverage 87% (short descriptions withheld). Caveat: the comparison uses v5, which was tuned on write-ups and is weaker on NVD descriptions.
+  - Spend this iteration: about $0.37 (230 recorded batch responses $0.2349, the looped exp-low response about $0.128, and the 12 synthetic test items sent in both test batches, about $0.01).
+
 ## Pending
-- Nothing blocking. Ideas: retrieval keyed on the weakness rather than product names (strip vendor tokens, or retrieve by the model's CWE); self-consistency voting through the Batch API; a larger test split for tighter intervals.
+- Nothing blocking. Ideas: a Low-severity write-up source; a larger write-up test split; retrieval keyed on the weakness rather than product names (strip vendor tokens, or retrieve by the model's CWE); self-consistency voting through the Batch API; a larger test split for tighter intervals.
 
 ## Open questions / next steps
 - Evidence relevance beyond the reuse limit: a second model call that judges whether each quote supports its metric.

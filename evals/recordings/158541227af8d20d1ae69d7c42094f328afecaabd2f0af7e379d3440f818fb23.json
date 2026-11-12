@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Hospital Management System v4.0 contains a SQL injection vulnerability in /Hospital-Management-System-master/func.php via the email parameter.",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability in /Hospital-Management-System-master/func.php via the email parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "SQL injection vulnerability in /Hospital-Management-System-master/func.php via the email parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a proof-of-concept or exploit details demonstrating exact impact and attack context (authentication required, exploitable over network, and payload effects), and reproduce the issue against an instrumented instance to confirm data exposure and scope.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "SQL injection vulnerability in /Hospital-Management-System-master/func.php via the email parameter."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1635,
+    "output_tokens": 397,
+    "latency_s": null,
+    "batch": true
+  }
+}

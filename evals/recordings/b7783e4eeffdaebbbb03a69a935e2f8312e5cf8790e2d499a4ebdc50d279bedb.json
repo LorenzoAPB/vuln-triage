@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A vulnerability in BigBlueButton 2.2.25 allows conference participants with upload privileges to read arbitrary files from the server filesystem and perform server-side requests during document conversion, which can lead to administrative access.",
+    "affected_product": "BigBlueButton 2.2.25",
+    "cwe": "CWE-200",
+    "cwe_quote": "allows participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "To exploit this vulnerability, attackers need to have access to a conference with the ability to upload presentations."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API (see [5]), including all conferences."
+      },
+      "I": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API (see [5]), including all conferences."
+      },
+      "A": {
+        "value": "H",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API (see [5]), including all conferences."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce on a test instance running 2.2.25 by uploading a crafted ODF as described; if confirmed, upgrade to BigBlueButton 2.2.27 and rotate API/instance credentials.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability allows reading arbitrary files and performing server-side requests",
+        "quote": "allows participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      {
+        "claim": "Exploitation requires conference upload privileges",
+        "quote": "To exploit this vulnerability, attackers need to have access to a conference with the ability to upload presentations."
+      },
+      {
+        "claim": "Proof-of-concept uses xlink:href to include /etc/passwd",
+        "quote": "Replace the <office:body> element in the file content.xml with the following:\n\n<office:body>\n  <office:text>\n    <text:section text:name=\"string\">\n      <text:section-source\n        xlink:href=\"file:///etc/passwd\"\n        xlink:type=\"simple\"\n        xlink:show=\"embed\"\n        xlink:actuate=\"onLoad\"/>\n    </text:section>\n  </office:text>\n</office:body>"
+      },
+      {
+        "claim": "File disclosure can lead to admin access via extracted credentials",
+        "quote": "attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API (see [5]), including all conferences."
+      },
+      {
+        "claim": "Vendor fixed in 2.2.27",
+        "quote": "Fixed Versions: 2.2.27"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2764,
+    "output_tokens": 1559,
+    "latency_s": null,
+    "batch": true
+  }
+}

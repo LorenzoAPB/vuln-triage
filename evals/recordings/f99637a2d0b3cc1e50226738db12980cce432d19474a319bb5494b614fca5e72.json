@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A stored (persistent) cross-site scripting vulnerability in Hospital Management System v4.0 allows attacker-supplied script to be stored via the 'doctorspecilization' POST parameter and later executed when viewed.",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-79",
+    "cwe_quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /hospital/hospital/hms/admin/doctor-specilization.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reproduce the report on a test instance, confirm the stored XSS payload executes in a victim's browser, capture the HTTP request/response where the payload is stored and rendered, and identify affected pages and user roles. Then implement output encoding on displayed values or sanitize input and prepare a patch or mitigation guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit target URL and parameter",
+        "quote": "URL  :  http://10.0.0.214/hospital/hospital/hms/admin/doctor-specilization.php\nMethod   :  POST\nParameter:  doctorspecilization"
+      },
+      {
+        "claim": "PoC payload in POST body",
+        "quote": "doctorspecilization=%3C%2Ftd%3E%3Cscript%3Ealert%28%22XSS%22%29%3B%3C%2Fscript%3E%3Ctd%3E&submit="
+      },
+      {
+        "claim": "Description of vulnerability type",
+        "quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed"
+      },
+      {
+        "claim": "HTTP request demonstrating network exploitable endpoint",
+        "quote": "POST /hospital/hospital/hms/admin/doctor-specilization.php HTTP/1.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2078,
+    "output_tokens": 657,
+    "latency_s": null,
+    "batch": true
+  }
+}

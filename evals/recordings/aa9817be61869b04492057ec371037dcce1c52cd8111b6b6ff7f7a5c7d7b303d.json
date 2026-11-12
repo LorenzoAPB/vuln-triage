@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple API endpoints in Global RADAR BSA Radar 1.6.7234.24750 and lower lack proper authorization, allowing an authenticated user to change another user's password, modify arbitrary user profiles (including stored XSS in name fields), and enumerate user account details by UserID.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-284",
+    "cwe_quote": "lacks valid authorization controls in multiple functions while logged into the application.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /WS/AjaxWS.asmx/ChangePassword"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The UserID and NewPassword parameters can be forged to force the password change of another existing user account by using their UserID."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "lacks valid authorization controls in multiple functions while logged into the application."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This can allow for manipulation and takeover of user accounts if successfully exploited."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This can allow for manipulation and takeover of user accounts if successfully exploited."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issues against an instrumented test instance by invoking ChangePassword, SaveUserProfile, and GetUser with forged UserID values; if confirmed, implement server-side authorization checks to ensure the authenticated user is authorized for the target UserID, add CSRF protections, and sanitize/encode profile fields (Firstname/Lastname) to prevent stored XSS.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Product and versions affected",
+        "quote": "BSA Radar - Version 1.6.7234.24750 and lower"
+      },
+      {
+        "claim": "Lack of authorization controls",
+        "quote": "lacks valid authorization controls in multiple functions while logged into the application."
+      },
+      {
+        "claim": "ChangePassword endpoint allows changing another user's password by forging UserID",
+        "quote": "The UserID and NewPassword parameters can be forged to force the password change of another existing user account by using their UserID."
+      },
+      {
+        "claim": "SaveUserProfile endpoint allows updating other users and stored XSS in Firstname/Lastname",
+        "quote": "The Firstname and Lastname parameters are vulnerable to a stored XSS attack which can be used to inject malicious scripts into existing user accounts to steal sessions or account data, or to redirect users to malicious pages."
+      },
+      {
+        "claim": "GetUser endpoint allows enumeration of user details by UserID",
+        "quote": "The UserID paramter can be forged to enumerate over existing userID's in order to return their account details such as full name, username, user permissions, account role, email, and password question."
+      },
+      {
+        "claim": "Concrete impact statement",
+        "quote": "This can allow for manipulation and takeover of user accounts if successfully exploited."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2055,
+    "output_tokens": 1535,
+    "latency_s": null,
+    "batch": true
+  }
+}

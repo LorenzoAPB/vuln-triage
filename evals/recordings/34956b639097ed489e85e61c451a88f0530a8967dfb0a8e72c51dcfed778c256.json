@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Wavlink WN533A8 firmware exposes administrative credentials in plaintext on a publicly accessible sysinit.shtml page (version M33A8.V5030.190716). No authentication is required to view the page.",
+    "affected_product": "Wavlink WN533A8 M33A8.V5030.190716",
+    "cwe": "CWE-200",
+    "cwe_quote": "search for var syspasswd=\"\nyou will find the username and the password",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "view-source:http://IP_ADDRESS/sysinit.shtml"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Required: No"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "you will find the username and the password"
+      },
+      "I": {
+        "value": "H",
+        "quote": "you will find the username and the password"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by fetching /sysinit.shtml from a device running the stated firmware, confirm credentials exposure, and coordinate disclosure with the vendor to remove plaintext credentials from publicly accessible pages and rotate exposed credentials.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Location of sensitive file",
+        "quote": "view-source:http://IP_ADDRESS/sysinit.shtml"
+      },
+      {
+        "claim": "How to find credentials",
+        "quote": "search for var syspasswd=\""
+      },
+      {
+        "claim": "Credentials are present",
+        "quote": "you will find the username and the password"
+      },
+      {
+        "claim": "No authentication required",
+        "quote": "Authentication Required: No"
+      },
+      {
+        "claim": "Affected version",
+        "quote": "Version: M33A8.V5030.190716"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1725,
+    "output_tokens": 539,
+    "latency_s": null,
+    "batch": true
+  }
+}

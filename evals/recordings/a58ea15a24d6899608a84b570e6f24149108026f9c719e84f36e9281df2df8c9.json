@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Teleport 9.3.6 contains a command injection vulnerability in handling an ssh-agent installation link where a URL\u2011encoded bash escape with CRLF can be used as a token to execute commands, enabling unauthenticated remote code execution via social engineering.",
+    "affected_product": "Teleport 9.3.6",
+    "cwe": "CWE-77",
+    "cwe_quote": "An attacker can craft a malicious ssh agent installation link by URL encoding a bash escape with carriage return line feed.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This is fully unauthenticated attack utilizing the trusted teleport server to deliver the payload."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "This is fully unauthenticated attack utilizing the trusted teleport server to deliver the payload."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "This url encoded payload can be used in place of a token and sent to a user in a social engineering attack."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Teleport 9.3.6 is vulnerable to Command injection leading to Remote Code Execution."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Teleport 9.3.6 is vulnerable to Command injection leading to Remote Code Execution."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Teleport 9.3.6 is vulnerable to Command injection leading to Remote Code Execution."
+      }
+    },
+    "recommended_next_step": "Obtain a proof-of-concept or reproduction steps and immediately notify the Teleport product security team; if confirmed, coordinate disclosure and provide mitigations such as blocking crafted tokens and updating to a patched release.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Product and version",
+        "quote": "Teleport 9.3.6 is vulnerable to Command injection leading to Remote Code Execution."
+      },
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "Teleport 9.3.6 is vulnerable to Command injection leading to Remote Code Execution."
+      },
+      {
+        "claim": "Payload delivery method",
+        "quote": "An attacker can craft a malicious ssh agent installation link by URL encoding a bash escape with carriage return line feed."
+      },
+      {
+        "claim": "Use in place of token and social engineering",
+        "quote": "This url encoded payload can be used in place of a token and sent to a user in a social engineering attack."
+      },
+      {
+        "claim": "Unauthenticated exploit / server delivery",
+        "quote": "This is fully unauthenticated attack utilizing the trusted teleport server to deliver the payload."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1685,
+    "output_tokens": 677,
+    "latency_s": null,
+    "batch": true
+  }
+}

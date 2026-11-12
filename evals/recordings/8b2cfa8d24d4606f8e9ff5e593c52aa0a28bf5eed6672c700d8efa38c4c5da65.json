@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Neo Billing version 3.5 contains a stored cross-site scripting (XSS) vulnerability in ticket input fields (Subject/Description) allowing attacker-supplied HTML/JavaScript to be stored and later rendered.",
+    "affected_product": "Neo Billing 3.5",
+    "cwe": "CWE-79",
+    "cwe_quote": "Due to improper input fields data filtering, version 3.5 (and possibly previous versions), are affected by a stored XSS vulnerability.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /neo/crm/tickets/addticket HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "Due to improper input fields data filtering, version 3.5 (and possibly previous versions), are affected by a stored XSS vulnerability."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Authorization  as customer (regular user account) [//host/neo/crm/user/login]"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "The code is stored [//host/neo/crm/tickets] \u2228 [//host/neo/crm/tickets/thread/?id=ticketid]"
+      },
+      "S": {
+        "value": "U",
+        "quote": "The code is stored [//host/neo/crm/tickets] \u2228 [//host/neo/crm/tickets/thread/?id=ticketid]"
+      },
+      "C": {
+        "value": "L",
+        "quote": "\"\"><script>alert(document.cookie)</script>"
+      },
+      "I": {
+        "value": "L",
+        "quote": "\"\"><script>alert(document.cookie)</script>"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce by logging in as a customer and submitting the provided payload to /neo/crm/tickets/addticket. If confirmed, sanitize/validate input and/or apply proper HTML output encoding for ticket title and content, and release a patch for 3.5 (and earlier affected versions).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and cause",
+        "quote": "Due to improper input fields data filtering, version 3.5 (and possibly previous versions), are affected by a stored XSS vulnerability."
+      },
+      {
+        "claim": "Requires customer (regular user) authorization to submit exploit",
+        "quote": "Authorization  as customer (regular user account) [//host/neo/crm/user/login]"
+      },
+      {
+        "claim": "Where to submit the malicious input",
+        "quote": "POST /neo/crm/tickets/addticket HTTP/1.1"
+      },
+      {
+        "claim": "Stored payload location (where it's rendered)",
+        "quote": "The code is stored [//host/neo/crm/tickets] \u2228 [//host/neo/crm/tickets/thread/?id=ticketid]"
+      },
+      {
+        "claim": "Example payload demonstrating JavaScript execution and potential cookie access",
+        "quote": "\"\"><script>alert(document.cookie)</script>"
+      },
+      {
+        "claim": "Alternate example payload demonstrating execution",
+        "quote": "\"><img src=\"x\" onerror=\"alert('XSS');\">"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2035,
+    "output_tokens": 1395,
+    "latency_s": null,
+    "batch": true
+  }
+}

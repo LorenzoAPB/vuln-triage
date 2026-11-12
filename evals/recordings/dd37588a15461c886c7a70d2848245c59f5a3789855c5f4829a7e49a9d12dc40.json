@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A crafted SMB3 compression transform header with a large offset value causes the decompressor to buffer overflow and crash the kernel in Windows 10 1903/1909 (SMBGhost).",
+    "affected_product": "Windows 10 1903/1909",
+    "cwe": "CWE-119",
+    "cwe_quote": "CVE id removed is caused by a lack of bounds checking in that offset size, which is directly passed to several subroutines.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This script connects to the target host, and compresses the authentication request with a bad offset field set in the transformation header, causing the decompressor to buffer overflow and crash the target."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "causing the decompressor to buffer overflow and crash the target."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the crash in a controlled lab: run the PoC against a vulnerable Windows 10 1903/1909 VM, capture kernel crash dumps, and trace the decompressor code path to confirm the bounds-check omission and determine exploitability for RCE.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "PoC connects to target and triggers crash by setting bad offset",
+        "quote": "This script connects to the target host, and compresses the authentication request with a bad offset field set in the transformation header, causing the decompressor to buffer overflow and crash the target."
+      },
+      {
+        "claim": "PoC sets a very large offset value in transform header",
+        "quote": "header['offset'] = 4294967295"
+      },
+      {
+        "claim": "Vulnerability is caused by lack of bounds checking in offset",
+        "quote": "CVE id removed is caused by a lack of bounds checking in that offset size, which is directly passed to several subroutines."
+      },
+      {
+        "claim": "Affected SMB feature and versions",
+        "quote": "CVE id removed is a bug in Windows 10 1903/1909's new SMB3 compression capability."
+      },
+      {
+        "claim": "Potential for further exploitation",
+        "quote": "With further work, this could be developed into a RCE exploit."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1993,
+    "output_tokens": 1386,
+    "latency_s": null,
+    "batch": true
+  }
+}

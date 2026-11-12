@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A command injection vulnerability in the inSyncCPHwnet64 RPC service in Druva inSync Windows Client 6.6.3 allows a local attacker to execute arbitrary commands as NT AUTHORITY\\SYSTEM by bypassing path validation via a directory-traversal suffix.",
+    "affected_product": "Druva inSync Windows Client 6.6.3",
+    "cwe": "CWE-78",
+    "cwe_quote": "Command injection in inSyncCPHwnet64 RPC service\nThe path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "# Exploit Title: Druva inSync Windows Client 6.6.3 - Local Privilege Escalation"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "# Exploit Title: Druva inSync Windows Client 6.6.3 - Local Privilege Escalation"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "C": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      }
+    },
+    "recommended_next_step": "Apply the vendor's patch or upgrade to a fixed inSync Windows Client version. If a patch is not available, restrict access to the service socket (localhost only) and remove or mitigate the privileged service until a vendor fix is available.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit title indicates local privilege escalation",
+        "quote": "# Exploit Title: Druva inSync Windows Client 6.6.3 - Local Privilege Escalation"
+      },
+      {
+        "claim": "Description of the vulnerability and bypass method",
+        "quote": "The path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path."
+      },
+      {
+        "claim": "Privilege obtained (system) and impact",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      {
+        "claim": "Example usage demonstrating arbitrary command execution",
+        "quote": "python insync.py \"windows\\system32\\cmd.exe /C net user Leon /add\""
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2007,
+    "output_tokens": 2076,
+    "latency_s": null,
+    "batch": true
+  }
+}

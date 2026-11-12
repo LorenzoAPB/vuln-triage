@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "College Management System v1.0 contains a SQL injection vulnerability in the course_code parameter.",
+    "affected_product": "College Management System v1.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "SQL injection vulnerability via the course_code parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      },
+      "I": {
+        "value": "H",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      },
+      "A": {
+        "value": "H",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the SQL injection against an isolated test instance and determine impact (data read, modified, or ability to execute administrative queries); capture PoC queries and affected endpoints, then notify vendor with reproduction details.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "SQL injection vulnerability via the course_code parameter."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1626,
+    "output_tokens": 395,
+    "latency_s": null,
+    "batch": true
+  }
+}

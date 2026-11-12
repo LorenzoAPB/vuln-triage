@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An unauthenticated CGI script upgradeStatusReboot.cgi on D-Link DSR-250N allows an attacker on the same local network to trigger a device reboot, causing denial of service for roughly four minutes. A firmware preview 3.17B removes the script.",
+    "affected_product": "D-Link DSR-250N, affected versions: 3.12 and potentially later; fixed in 3.17B",
+    "cwe": "CWE-306",
+    "cwe_quote": "it was then confirmed that CGI scripts exist on the router that can be directly accessed with a web browser, without any authentication.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "the attack is only possible if the attacker resides on the same network"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "No authentication is needed to excute the CGI script and thereby reboot the device."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "Executing this script renders the device unusable for the time of the reboot."
+      }
+    },
+    "recommended_next_step": "Verify the presence of /scgi-bin/upgradeStatusReboot.cgi on firmware versions in scope, reproduce the unauthenticated reboot via an HTTP GET in a controlled lab, and confirm that firmware 3.17B no longer exposes the script; if confirmed, coordinate disclosure and provide mitigation guidance to disable WAN/web access.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated CGI scripts accessible",
+        "quote": "it was then confirmed that CGI scripts exist on the router that can be directly accessed with a web browser, without any authentication."
+      },
+      {
+        "claim": "Specific reboot CGI and its contents",
+        "quote": "In particular, the script \"upgradeStatusReboot.cgi\" executes the command to reboot the device. Its contents are:\n\n------------------------------------------------------------------------\n#!/bin/sh\necho Content-type: text/plain\necho \"\"\nstat=`/sbin/reboot -d 8 &`\necho $stat\n------------------------------------------------------------------------"
+      },
+      {
+        "claim": "Attack requires same local network",
+        "quote": "the attack is only possible if the attacker resides on the same network"
+      },
+      {
+        "claim": "No authentication needed",
+        "quote": "No authentication is needed to excute the CGI script and thereby reboot the device."
+      },
+      {
+        "claim": "Reboot causes device unusable ~4 minutes",
+        "quote": "In tests, it turned out that the device needs roughly four minutes to complete a reboot."
+      },
+      {
+        "claim": "PoC curl command",
+        "quote": "$ curl -k -s https://IP-ADDRESS/scgi-bin/upgradeStatusReboot.cgi"
+      },
+      {
+        "claim": "Fixed in firmware 3.17B (script removed)",
+        "quote": "A preview firmware version named 3.17B which should correct the issue was received at the end of September from the vendor. RedTeam Pentesting was not able to verify the fix due to lack of access to a test device. However, the formerly accessible CGI script is no longer part of the firmware."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2575,
+    "output_tokens": 832,
+    "latency_s": null,
+    "batch": true
+  }
+}

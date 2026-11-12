@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Avaya IP Office web interface passes Base64-encoded credentials in URL query strings and WebSocket requests, exposing plaintext credentials (Administrator:Administrator) which may be recovered from browser history, logs, proxies, or other storage.",
+    "affected_product": "Avaya IP Office 9.x, 10.0 through 10.1.0.7, 11.0 through 11.0.4.2",
+    "cwe": "CWE-200",
+    "cwe_quote": "The request URL on port 7071 and the web socket component requests on port 7070 used by Atmosphere-Framework within Avaya IP Office, pass Base64 encoded credentials as part of the URL query string.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Network Access\nRemote"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      "A": {
+        "value": "N",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker."
+      }
+    },
+    "recommended_next_step": "Verify whether URLs or WebSocket query strings include Base64 credentials on affected systems; if confirmed, remove credentials from URLs, require authentication via POST or secure cookies, rotate exposed credentials, and apply vendor-provided update.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and where credentials are passed",
+        "quote": "The request URL on port 7071 and the web socket component requests on port 7070 used by Atmosphere-Framework within Avaya IP Office, pass Base64 encoded credentials as part of the URL query string."
+      },
+      {
+        "claim": "Example autologin URL with Base64 auth parameter",
+        "quote": "https://<TARGET-IP>:7071/serveredition/autologin?auth=QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y&referrer=https://x.x.x.x:7070&lang=en_US"
+      },
+      {
+        "claim": "Example websocket request with Base64 credentials",
+        "quote": "wss://<TARGET-IP>:7070/WebManagement/webmanagement/atmosphere/QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y?X-Atmosphere-tracking-id=0&\nX-Atmosphere-Framework=2.0.5-javascript&X-Atmosphere-Transport=websocket&X-Cache-Date=0&Content-Type=text/x-gwt-rpc;%20charset=UTF-8&X-atmo-protocol=true"
+      },
+      {
+        "claim": "Decoded credential value",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      {
+        "claim": "Possible places credentials may be leaked or stored",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker.\nThe URL plus the credentials can potentially be leaked or stored in some of the following locations.\n\nBrowser History\nBrowser Cache\nBrowser Developer Tools\nCached by web proxy\nReferer Header\nWeb Logs\nShared Systems"
+      },
+      {
+        "claim": "Affected product versions",
+        "quote": "Avaya IP Office 9.x, 10.0 through 10.1.0.7, 11.0 through 11.0.4.2"
+      },
+      {
+        "claim": "Network access",
+        "quote": "Network Access\nRemote"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2448,
+    "output_tokens": 1013,
+    "latency_s": null,
+    "batch": true
+  }
+}

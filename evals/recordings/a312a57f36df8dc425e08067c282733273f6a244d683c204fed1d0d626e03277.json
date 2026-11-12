@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Pydio Cells (<= 4.1.2) contains a server-side request forgery (SSRF) via the 'remote-download' job API which causes the server to perform HTTP GET requests to attacker-controlled URLs and save responses to user-specified targets.",
+    "affected_product": "Pydio Cells 4.1.2 and earlier",
+    "cwe": "CWE-918",
+    "cwe_quote": "\"When the job is started, HTTP GET requests are sent from the Pydio Cells server to the specified URLs. The responses are saved into a file, which are uploaded to the specified folder within Pydio Cells.\"",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "\"curl --header \"Authorization: Bearer $JWT\" --header 'Content-Type: application/json' --request PUT --data @remote-download.json 'https://example.com/a/jobs/user/remote-download'\""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "\"Log into Pydio Cells and retrieve the JWT from the HTTP requests.\""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "\"The responses are saved into a file, which are uploaded to the specified folder within Pydio Cells.\""
+      },
+      "I": {
+        "value": "L",
+        "quote": "\"The responses are saved into a file, which are uploaded to the specified folder within Pydio Cells.\""
+      },
+      "A": {
+        "value": "L",
+        "quote": "\"When the job is started, HTTP GET requests are sent from the Pydio Cells server to the specified URLs. The responses are saved into a file, which are uploaded to the specified folder within Pydio Cells.\""
+      }
+    },
+    "recommended_next_step": "Verify whether authentication is required to invoke the /a/jobs/user/remote-download API on your deployment; if vulnerable, upgrade to a fixed version (>= 4.1.3 / 4.2.0 / 3.0.12) or block outbound HTTP from the server to untrusted network destinations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit shows API request to start remote-download job",
+        "quote": "$ curl --header \"Authorization: Bearer $JWT\" \\\n--header 'Content-Type: application/json' \\\n--request PUT \\\n--data @remote-download.json 'https://example.com/a/jobs/user/remote-download'"
+      },
+      {
+        "claim": "Server performs HTTP GET to attacker-specified URL and saves response",
+        "quote": "\"When the job is started, HTTP GET requests are sent from the Pydio Cells server to the specified URLs. The responses are saved into a file, which are uploaded to the specified folder within Pydio Cells.\""
+      },
+      {
+        "claim": "Authentication required (JWT)",
+        "quote": "\"Log into Pydio Cells and retrieve the JWT from the HTTP requests.\""
+      },
+      {
+        "claim": "Example JSON payload demonstrating attacker-controlled URL and target",
+        "quote": "$ echo '{\"urls\": [\"http://localhost:8000/internal.html\"], \"target\": \"personal-files\"}' \\\n| jq '{\"JobName\": \"remote-download\", \"JsonParameters\": (. | tostring)}' \\\n| tee remote-download.json"
+      },
+      {
+        "claim": "Affected versions stated",
+        "quote": "Affected Versions: 4.1.2 and earlier versions"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2640,
+    "output_tokens": 864,
+    "latency_s": null,
+    "batch": true
+  }
+}

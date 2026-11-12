@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Avaya IP Office web interface transmits Base64-encoded credentials in URL query strings on ports 7071 and 7070 (Atmosphere framework), exposing credentials such as 'Administrator:Administrator' which may be leaked via browser history, logs, referer headers or proxies.",
+    "affected_product": "Avaya IP Office 9.x, 10.0 through 10.1.0.7, 11.0 through 11.0.4.2",
+    "cwe": "CWE-200",
+    "cwe_quote": "The request URL on port 7071 and the web socket component requests on port 7070 used by Atmosphere-Framework within Avaya IP Office, pass Base64 encoded credentials as part of the URL query string.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Network Access\nRemote"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the issue in a test environment, confirm which endpoints leak credentials, and update the product to the vendor-released fixed version; if not possible, block access to management ports (7070/7071) from untrusted networks and invalidate exposed credentials.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of credentials in URL on port 7071",
+        "quote": "https://<TARGET-IP>:7071/serveredition/autologin?auth=QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y&referrer=https://x.x.x.x:7070&lang=en_US"
+      },
+      {
+        "claim": "Description of credentials in websocket URL on port 7070",
+        "quote": "wss://<TARGET-IP>:7070/WebManagement/webmanagement/atmosphere/QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y?X-Atmosphere-tracking-id=0&\nX-Atmosphere-Framework=2.0.5-javascript&X-Atmosphere-Transport=websocket&X-Cache-Date=0&Content-Type=text/x-gwt-rpc;%20charset=UTF-8&X-atmo-protocol=true"
+      },
+      {
+        "claim": "Decoded credential value",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      {
+        "claim": "Possible locations where URL may be leaked",
+        "quote": "The URL plus the credentials can potentially be leaked or stored in some of the following locations.\n\nBrowser History\nBrowser Cache\nBrowser Developer Tools\nCached by web proxy\nReferer Header\nWeb Logs\nShared Systems"
+      },
+      {
+        "claim": "Affected product versions listed",
+        "quote": "Avaya IP Office 9.x, 10.0 through 10.1.0.7, 11.0 through 11.0.4.2"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2246,
+    "output_tokens": 982,
+    "latency_s": null,
+    "batch": true
+  }
+}

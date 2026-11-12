@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "LearnPress WordPress plugin 4.1.4.1 allows an authenticated user who can upload and crop an avatar to specify an arbitrary file path in the lp-user-avatar-crop[name] POST parameter, causing the server to rename an arbitrary image file under /wp-content/uploads/ to an MD5-based name.",
+    "affected_product": "LearnPress plugin 4.1.4.1",
+    "cwe": "CWE-73",
+    "cwe_quote": "Change the value of the `lp-user-avatar-crop[name]` parameter to an arbitrary image file path that is in the website (example, /2021/01/image.png or /../../image.png). The path is relative to \"/wp-content/uploads/\".",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /lp-profile/<username>/settings/avatar/?lp-ajax=save-uploaded-user-avatar HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Register and login to the learnpress system."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "While saving the image, intercept the POST request by a local proxy tool such as Burpsuite."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, he/she can destroy the design of the web site."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, he/she can destroy the design of the web site."
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability on a test instance, confirm exactly which file paths can be targeted and whether directory traversal is possible beyond wp-content/uploads, and prepare a patch or input validation restricting lp-user-avatar-crop[name] to allowed filenames within the user's own upload directory.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Endpoint used to save uploaded avatar via POST",
+        "quote": "POST /lp-profile/<username>/settings/avatar/?lp-ajax=save-uploaded-user-avatar HTTP/1.1"
+      },
+      {
+        "claim": "Attack requires authenticated user (register and login)",
+        "quote": "Register and login to the learnpress system."
+      },
+      {
+        "claim": "Exploit changes lp-user-avatar-crop[name] to arbitrary path relative to uploads",
+        "quote": "Change the value of the `lp-user-avatar-crop[name]` parameter to an arbitrary image file path that is in the website (example, /2021/01/image.png or /../../image.png). The path is relative to \"/wp-content/uploads/\"."
+      },
+      {
+        "claim": "Impact is renaming arbitrary image file and breaking site design",
+        "quote": "An attacker can use this vulnerability in order to rename an arbitrary image file. By doing this, he/she can destroy the design of the web site."
+      },
+      {
+        "claim": "PoC request shows lp-user-avatar-crop[name] set to /../../image.jpg",
+        "quote": "lp-user-avatar-crop%5Bname%5D=%2f..%2f..%2fimage.jpg&lp-user-avatar-crop%5Bwidth%5D=250&lp-user-avatar-crop%5Bheight%5D=250&lp-user-avatar-crop%5Bpoints%5D=0%2C0%2C300%2C300&lp-user-avatar-crop%5Bnonce%5D=8bdc969b07&lp-user-avatar-custom=yes"
+      },
+      {
+        "claim": "Server response shows avatar renamed to MD5-based filename",
+        "quote": "{\"success\":true,\"avatar\":\"<img src=\\\"http:\\/\\/127.0.0.1:8000\\/wp-content\\/uploads\\/learn-press-profile\\/2\\/f574f3e6594498507333c41af9426d43.jpg\\\" \\/>\"}"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2905,
+    "output_tokens": 995,
+    "latency_s": null,
+    "batch": true
+  }
+}

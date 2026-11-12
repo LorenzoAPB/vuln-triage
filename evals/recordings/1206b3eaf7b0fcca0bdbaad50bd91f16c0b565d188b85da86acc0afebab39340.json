@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CoreFTP Server (build 725 and below) allows an authenticated attacker to perform directory traversal via ../ in an HTTP PUT request, enabling file creation outside the intended directory.",
+    "affected_product": "CoreFTP Server build 725 and below",
+    "cwe": "CWE-22",
+    "cwe_quote": "CoreFTP Server before 727 allows directory traversal (for file creation) by an authenticated attacker via ../ in an HTTP PUT request.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "curl -k -X PUT -H \"Host: <IP>\" --basic -u <username>:<password> --data-binary \"PoC.\" --path-as-is https://<IP>/../../../../../../whoops"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "curl -k -X PUT -H \"Host: <IP>\" --basic -u <username>:<password> --data-binary \"PoC.\" --path-as-is https://<IP>/../../../../../../whoops"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "CoreFTP Server before 727 allows directory traversal (for file creation) by an authenticated attacker via ../ in an HTTP PUT request."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "CoreFTP Server before 727 allows directory traversal (for file creation) by an authenticated attacker via ../ in an HTTP PUT request."
+      }
+    },
+    "recommended_next_step": "Validate the issue against a current deployment, reproduce the PUT request with ../ payload, determine filesystem write location and required privileges, and coordinate with the vendor for a patch or mitigation (deny ../ sequences and normalize paths).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "CoreFTP Server before 727 allows directory traversal (for file creation) by an authenticated attacker via ../ in an HTTP PUT request."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Version: build 725 and below"
+      },
+      {
+        "claim": "Proof-of-concept demonstrating remote HTTP PUT with credentials",
+        "quote": "curl -k -X PUT -H \"Host: <IP>\" --basic -u <username>:<password> --data-binary \"PoC.\" --path-as-is https://<IP>/../../../../../../whoops"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1761,
+    "output_tokens": 648,
+    "latency_s": null,
+    "batch": true
+  }
+}

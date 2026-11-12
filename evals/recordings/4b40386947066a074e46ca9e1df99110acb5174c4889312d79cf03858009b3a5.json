@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "FileCloud versions prior to 21.3 are vulnerable to a Cross-Site Request Forgery (CSRF) that allows creating an administrative user via an authenticated administrator's browser when cookies use SameSite=None and Secure over HTTPS, by POSTing a CSV import to /admin/?op=import.",
+    "affected_product": "FileCloud, all versions prior to 21.3",
+    "cwe": "CWE-352",
+    "cwe_quote": "PoC (HTML)\n...\nfetch(\"https://192.168.159.129:8443/admin/?op=import&sendapprovalemail=0&sendpwdasplaintext=0\", { method: \"post\", body: myFormData, credentials: \"include\"});",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "fetch(\"https://192.168.159.129:8443/admin/?op=import&sendapprovalemail=0&sendpwdasplaintext=0\", { method: \"post\", body: myFormData, credentials: \"include\"});"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Cookie: X-XSRF-TOKEN-admin=rhedxvo0gullbvzkgwwv; X-XSRF-TOKEN=rhedxvo0gullbvzkgwwv; tonidocloud-au=admin; tonidocloud-as=29352577-cfaa-42e6-80e5-7a304bc78333; tonidocloud-ah=4514fb08f852d2682151efdb938d377734b1e493"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "fetch(\"https://192.168.159.129:8443/admin/?op=import&sendapprovalemail=0&sendpwdasplaintext=0\", { method: \"post\", body: myFormData, credentials: \"include\"});"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Creat hacker user with Password1 via CSV file upload."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Creat hacker user with Password1 via CSV file upload."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Creat hacker user with Password1 via CSV file upload."
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability in a test environment, confirm whether the import action requires administrator privileges, and check cookie SameSite/Secure settings; if confirmed, publish advisory and provide patch or configuration mitigation (set SameSite to Lax/Strict or enforce CSRF tokens).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit demonstrates POST to admin import endpoint using credentials included",
+        "quote": "fetch(\"https://192.168.159.129:8443/admin/?op=import&sendapprovalemail=0&sendpwdasplaintext=0\", { method: \"post\", body: myFormData, credentials: \"include\"});"
+      },
+      {
+        "claim": "PoC creates a hacker user via CSV upload",
+        "quote": "Creat hacker user with Password1 via CSV file upload."
+      },
+      {
+        "claim": "Condition: cookies must have SameSite set to None",
+        "quote": "Only vulnerable if cookies have samesite set to None (SameSite=None)."
+      },
+      {
+        "claim": "Condition: use HTTPS",
+        "quote": "Use https as target url (When cookies set SameSite=None, also set Secure)."
+      },
+      {
+        "claim": "Exploit request includes admin authentication cookies",
+        "quote": "Cookie: X-XSRF-TOKEN-admin=rhedxvo0gullbvzkgwwv; X-XSRF-TOKEN=rhedxvo0gullbvzkgwwv; tonidocloud-au=admin; tonidocloud-as=29352577-cfaa-42e6-80e5-7a304bc78333; tonidocloud-ah=4514fb08f852d2682151efdb938d377734b1e493"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2498,
+    "output_tokens": 988,
+    "latency_s": null,
+    "batch": true
+  }
+}

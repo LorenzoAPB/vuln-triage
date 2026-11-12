@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Buffer overflow in NETGEAR R6400v2 httpd before 1.0.4.118 allows remote unauthenticated attackers to execute arbitrary code via a crafted URL.",
+    "affected_product": "NETGEAR R6400v2 before 1.0.4.118",
+    "cwe": "CWE-120",
+    "cwe_quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      }
+    },
+    "recommended_next_step": "Request or review vendor advisory and patch details; obtain PoC or exploit trace to reproduce and confirm affected firmware versions and mitigation steps.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and impact",
+        "quote": "Buffer Overflow vulnerability in NETGEAR R6400v2 before version 1.0.4.118, allows remote unauthenticated attackers to execute arbitrary code via crafted URL to httpd."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1645,
+    "output_tokens": 512,
+    "latency_s": null,
+    "batch": true
+  }
+}

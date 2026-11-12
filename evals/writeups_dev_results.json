@@ -1,0 +1,1606 @@
+{
+  "prompt": "v5",
+  "metrics": {
+    "model": "gpt-5-mini",
+    "items": 33,
+    "parse_failures": 0,
+    "report_detection": {
+      "report": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 32,
+        "predicted": 32
+      },
+      "noise": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1,
+        "predicted": 1
+      },
+      "confusion": {
+        "report": {
+          "report": 32
+        },
+        "noise": {
+          "noise": 1
+        }
+      }
+    },
+    "severity": {
+      "n": 30,
+      "coverage": 1.0,
+      "per_class": {
+        "Critical": {
+          "precision": 0.5,
+          "recall": 0.4,
+          "support": 10,
+          "predicted": 8
+        },
+        "High": {
+          "precision": 0.38461538461538464,
+          "recall": 0.5,
+          "support": 10,
+          "predicted": 13
+        },
+        "Medium": {
+          "precision": 0.625,
+          "recall": 0.5,
+          "support": 10,
+          "predicted": 8
+        },
+        "Low": {
+          "precision": 0.0,
+          "recall": null,
+          "support": 0,
+          "predicted": 1
+        }
+      },
+      "confusion": {
+        "Medium": {
+          "Medium": 5,
+          "High": 3,
+          "Low": 1,
+          "Critical": 1
+        },
+        "High": {
+          "High": 5,
+          "Medium": 2,
+          "Critical": 3
+        },
+        "Critical": {
+          "Critical": 4,
+          "High": 5,
+          "Medium": 1
+        }
+      },
+      "accuracy_when_published": 0.4666666666666667,
+      "accuracy_all": 0.4666666666666667,
+      "raw_accuracy": 0.4666666666666667,
+      "raw_confusion": {
+        "Medium": {
+          "Medium": 5,
+          "High": 3,
+          "Low": 1,
+          "Critical": 1
+        },
+        "High": {
+          "High": 5,
+          "Medium": 2,
+          "Critical": 3
+        },
+        "Critical": {
+          "Critical": 4,
+          "High": 5,
+          "Medium": 1
+        }
+      },
+      "raw_over_scored": 7,
+      "raw_under_scored": 9,
+      "raw_score_bias": -0.24,
+      "raw_score_mae": 1.39,
+      "raw_within_one_band": 0.9333333333333333,
+      "raw_score_within_1": 0.4666666666666667,
+      "raw_accuracy_when_withheld": null
+    },
+    "severity_accuracy_by_confidence": {
+      "low": {
+        "n": 17,
+        "accuracy": 0.5294117647058824
+      },
+      "medium": {
+        "n": 13,
+        "accuracy": 0.38461538461538464
+      }
+    },
+    "cwe": {
+      "exact": 0.5333333333333333,
+      "in_any_nvd_cwe": 0.5333333333333333,
+      "parent_or_child": 0.6333333333333333,
+      "unknown": 0.1
+    },
+    "cvss_vector": {
+      "exact_published": 0.26666666666666666,
+      "exact_raw": 0.26666666666666666,
+      "per_metric_raw": {
+        "AV": 0.8,
+        "AC": 0.9666666666666667,
+        "PR": 0.7333333333333333,
+        "UI": 0.8333333333333334,
+        "S": 0.8,
+        "C": 0.6666666666666666,
+        "I": 0.5666666666666667,
+        "A": 0.7
+      }
+    },
+    "thin_and_vague": {
+      "n": 2,
+      "detected_as_report": 2,
+      "low_confidence": 2,
+      "vector_withheld": 1
+    },
+    "cost": {
+      "input_tokens": 79566,
+      "output_tokens": 26493,
+      "usd": 0.0364,
+      "latency_s_mean": null,
+      "latency_s_p50": null,
+      "latency_s_max": null
+    }
+  },
+  "rows": [
+    {
+      "id": "EDB-47289",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "R",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2237,
+        "output_tokens": 808,
+        "latency_s": null,
+        "cost_usd": 0.001087625
+      }
+    },
+    {
+      "id": "EDB-47840",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3361,
+        "output_tokens": 1517,
+        "latency_s": null,
+        "cost_usd": 0.001937125
+      }
+    },
+    {
+      "id": "EDB-47841",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2078,
+        "output_tokens": 657,
+        "latency_s": null,
+        "cost_usd": 0.00091675
+      }
+    },
+    {
+      "id": "EDB-47921",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-276",
+      "cwe_all": [
+        "CWE-276"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-276",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI"
+      ],
+      "usage": {
+        "input_tokens": 3299,
+        "output_tokens": 1105,
+        "latency_s": null,
+        "cost_usd": 0.001517375
+      }
+    },
+    {
+      "id": "EDB-47961",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-200",
+      "cwe_all": [
+        "CWE-200"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1927,
+        "output_tokens": 783,
+        "latency_s": null,
+        "cost_usd": 0.001023875
+      }
+    },
+    {
+      "id": "EDB-47966",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "L",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2518,
+        "output_tokens": 865,
+        "latency_s": null,
+        "cost_usd": 0.00117975
+      }
+    },
+    {
+      "id": "EDB-48035",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-787",
+      "cwe_all": [
+        "CWE-787"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-125",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2145,
+        "output_tokens": 885,
+        "latency_s": null,
+        "cost_usd": 0.001153125
+      }
+    },
+    {
+      "id": "EDB-48142",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-77",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2789,
+        "output_tokens": 758,
+        "latency_s": null,
+        "cost_usd": 0.001106625
+      }
+    },
+    {
+      "id": "EDB-48151",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Low",
+      "pred_cwe": "CWE-352",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:L",
+      "raw_severity": "Low",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "R",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2463,
+        "output_tokens": 832,
+        "latency_s": null,
+        "cost_usd": 0.001139875
+      }
+    },
+    {
+      "id": "EDB-48190",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1879,
+        "output_tokens": 595,
+        "latency_s": null,
+        "cost_usd": 0.000829875
+      }
+    },
+    {
+      "id": "EDB-48196",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-319",
+      "cwe_all": [
+        "CWE-319"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2850,
+        "output_tokens": 802,
+        "latency_s": null,
+        "cost_usd": 0.00115825
+      }
+    },
+    {
+      "id": "EDB-48212",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1936,
+        "output_tokens": 906,
+        "latency_s": null,
+        "cost_usd": 0.001148
+      }
+    },
+    {
+      "id": "EDB-48216",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-119",
+      "cwe_all": [
+        "CWE-119"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2195,
+        "output_tokens": 749,
+        "latency_s": null,
+        "cost_usd": 0.001023375
+      }
+    },
+    {
+      "id": "EDB-48297",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-22",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 1819,
+        "output_tokens": 641,
+        "latency_s": null,
+        "cost_usd": 0.000868375
+      }
+    },
+    {
+      "id": "EDB-48342",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-20",
+      "cwe_all": [
+        "CWE-20"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2107,
+        "output_tokens": 749,
+        "latency_s": null,
+        "cost_usd": 0.001012375
+      }
+    },
+    {
+      "id": "EDB-48387",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-78",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2066,
+        "output_tokens": 683,
+        "latency_s": null,
+        "cost_usd": 0.00094125
+      }
+    },
+    {
+      "id": "EDB-48448",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-276",
+      "cwe_all": [
+        "CWE-276"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-276",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "C",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1029,
+        "latency_s": null,
+        "cost_usd": 0.001447625
+      }
+    },
+    {
+      "id": "EDB-48500",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-94",
+      "cwe_all": [
+        "CWE-94"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-94",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1989,
+        "output_tokens": 669,
+        "latency_s": null,
+        "cost_usd": 0.000917625
+      }
+    },
+    {
+      "id": "EDB-48505",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-78",
+      "pred_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "L",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2209,
+        "output_tokens": 719,
+        "latency_s": null,
+        "cost_usd": 0.000995125
+      }
+    },
+    {
+      "id": "EDB-48535",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-306",
+      "cwe_all": [
+        "CWE-306"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3320,
+        "output_tokens": 835,
+        "latency_s": null,
+        "cost_usd": 0.00125
+      }
+    },
+    {
+      "id": "EDB-48573",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-732",
+      "cwe_all": [
+        "CWE-732"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-276",
+      "pred_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "L",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2328,
+        "output_tokens": 803,
+        "latency_s": null,
+        "cost_usd": 0.001094
+      }
+    },
+    {
+      "id": "EDB-48581",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-200",
+      "cwe_all": [
+        "CWE-200"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2448,
+        "output_tokens": 1013,
+        "latency_s": null,
+        "cost_usd": 0.001319
+      }
+    },
+    {
+      "id": "EDB-48618",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-1188",
+      "cwe_all": [
+        "CWE-1188"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-284",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2059,
+        "output_tokens": 747,
+        "latency_s": null,
+        "cost_usd": 0.001004375
+      }
+    },
+    {
+      "id": "EDB-48653",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-862",
+      "cwe_all": [
+        "CWE-862"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-285",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2257,
+        "output_tokens": 1005,
+        "latency_s": null,
+        "cost_usd": 0.001287125
+      }
+    },
+    {
+      "id": "EDB-48666",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-22",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1985,
+        "output_tokens": 705,
+        "latency_s": null,
+        "cost_usd": 0.000953125
+      }
+    },
+    {
+      "id": "EDB-48679",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-352",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "N",
+        "I": "H",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S",
+        "C",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1832,
+        "output_tokens": 664,
+        "latency_s": null,
+        "cost_usd": 0.000893
+      }
+    },
+    {
+      "id": "EDB-48707",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 3365,
+        "output_tokens": 1095,
+        "latency_s": null,
+        "cost_usd": 0.001515625
+      }
+    },
+    {
+      "id": "EDB-48863",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-306",
+      "cwe_all": [
+        "CWE-306"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-73",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2777,
+        "output_tokens": 841,
+        "latency_s": null,
+        "cost_usd": 0.001188125
+      }
+    },
+    {
+      "id": "EDB-49070",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2966,
+        "output_tokens": 1139,
+        "latency_s": null,
+        "cost_usd": 0.00150975
+      }
+    },
+    {
+      "id": "EDB-49299",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-601",
+      "cwe_all": [
+        "CWE-601"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-93",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 4067,
+        "output_tokens": 679,
+        "latency_s": null,
+        "cost_usd": 0.001187375
+      }
+    },
+    {
+      "id": "dev-syn-thin-1",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-22",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1627,
+        "output_tokens": 436,
+        "latency_s": null,
+        "cost_usd": 0.000639375
+      }
+    },
+    {
+      "id": "dev-syn-vague-1",
+      "kind": "vague",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "None",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "None",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1664,
+        "output_tokens": 536,
+        "latency_s": null,
+        "cost_usd": 0.000744
+      }
+    },
+    {
+      "id": "dev-syn-noise-1",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1655,
+        "output_tokens": 243,
+        "latency_s": null,
+        "cost_usd": 0.000449875
+      }
+    }
+  ]
+}

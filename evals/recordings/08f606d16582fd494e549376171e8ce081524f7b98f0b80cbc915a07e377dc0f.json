@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "User reports that after logging out of the mobile app they can sometimes still see their account when navigating back, possibly due to session handling or caching issues.",
+    "affected_product": "unknown",
+    "cwe": "CWE-639",
+    "cwe_quote": "Sometimes after logging out I can still see my account if I go back.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "I was testing your mobile app over the weekend and I think something is off with how it handles sessions."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the reporter's app version and steps to reproduce (exact navigation, screenshots or a screen recording) and attempt to reproduce locally; check logout flow for server-side session invalidation and client-side cache/back-stack handling.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Reporter describes the session/logout issue",
+        "quote": "Sometimes after logging out I can still see my account if I go back."
+      },
+      {
+        "claim": "Reporter tested a mobile app and suspects session handling",
+        "quote": "I was testing your mobile app over the weekend and I think something is off with how it handles sessions."
+      },
+      {
+        "claim": "Reporter does not recall app version",
+        "quote": "I do not remember which version I had installed."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1677,
+    "output_tokens": 499,
+    "latency_s": null,
+    "batch": true
+  }
+}

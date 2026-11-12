@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Optoma 1080PSTX C02 projector has an authentication bypass that allows access to the administration console without valid credentials.",
+    "affected_product": "Optoma 1080PSTX C02",
+    "cwe": "CWE-287",
+    "cwe_quote": "allows an attacker to access the administration console without valid credentials.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      },
+      "A": {
+        "value": "L",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the authentication bypass against a test device and capture the exact steps or requests that bypass authentication; if confirmed, notify vendor and request a firmware update or mitigation guidance.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Authentication bypass allowing admin console access without credentials",
+        "quote": "allows an attacker to access the administration console without valid credentials."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1631,
+    "output_tokens": 426,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "front/icon.send.php in the CMDB plugin for GLPI before 3.0.3 allows attackers to read sensitive information by supplying a _log/ pathname in the file parameter.",
+    "affected_product": "CMDB plugin for GLPI before 3.0.3",
+    "cwe": "CWE-22",
+    "cwe_quote": "allows attackers to gain read access to sensitive information via a _log/ pathname in the file parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "front/icon.send.php in the CMDB plugin before 3.0.3 for GLPI allows attackers to gain read access to sensitive information via a _log/ pathname in the file parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attackers to gain read access to sensitive information via a _log/ pathname in the file parameter."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review and patch front/icon.send.php to validate and sanitize the file parameter (disallow path traversal and _log/ paths); if patch unavailable, block access to vulnerable endpoint and audit logs for unauthorized access to sensitive files.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerable endpoint and effect",
+        "quote": "front/icon.send.php in the CMDB plugin before 3.0.3 for GLPI allows attackers to gain read access to sensitive information via a _log/ pathname in the file parameter."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1644,
+    "output_tokens": 480,
+    "latency_s": null,
+    "batch": true
+  }
+}

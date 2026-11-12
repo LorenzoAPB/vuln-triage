@@ -1,0 +1,2612 @@
+{
+  "prompt": "v5",
+  "metrics": {
+    "model": "gpt-5-mini",
+    "items": 57,
+    "parse_failures": 0,
+    "report_detection": {
+      "report": {
+        "precision": 1.0,
+        "recall": 0.9803921568627451,
+        "support": 51,
+        "predicted": 50
+      },
+      "noise": {
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "support": 6,
+        "predicted": 7
+      },
+      "confusion": {
+        "report": {
+          "report": 50,
+          "noise": 1
+        },
+        "noise": {
+          "noise": 6
+        }
+      }
+    },
+    "severity": {
+      "n": 45,
+      "coverage": 1.0,
+      "per_class": {
+        "Critical": {
+          "precision": 0.7272727272727273,
+          "recall": 0.5333333333333333,
+          "support": 15,
+          "predicted": 11
+        },
+        "High": {
+          "precision": 0.4444444444444444,
+          "recall": 0.26666666666666666,
+          "support": 15,
+          "predicted": 9
+        },
+        "Medium": {
+          "precision": 0.4583333333333333,
+          "recall": 0.7333333333333333,
+          "support": 15,
+          "predicted": 24
+        },
+        "Low": {
+          "precision": null,
+          "recall": null,
+          "support": 0,
+          "predicted": 0
+        }
+      },
+      "confusion": {
+        "Medium": {
+          "High": 3,
+          "Medium": 11,
+          "None": 1
+        },
+        "High": {
+          "Medium": 8,
+          "High": 4,
+          "Critical": 3
+        },
+        "Critical": {
+          "High": 2,
+          "Medium": 5,
+          "Critical": 8
+        }
+      },
+      "accuracy_when_published": 0.5111111111111111,
+      "accuracy_all": 0.5111111111111111,
+      "raw_accuracy": 0.5111111111111111,
+      "raw_confusion": {
+        "Medium": {
+          "High": 3,
+          "Medium": 11,
+          "None": 1
+        },
+        "High": {
+          "Medium": 8,
+          "High": 4,
+          "Critical": 3
+        },
+        "Critical": {
+          "High": 2,
+          "Medium": 5,
+          "Critical": 8
+        }
+      },
+      "raw_over_scored": 6,
+      "raw_under_scored": 16,
+      "raw_score_bias": -0.94,
+      "raw_score_mae": 1.53,
+      "raw_within_one_band": 0.8666666666666667,
+      "raw_score_within_1": 0.4666666666666667,
+      "raw_accuracy_when_withheld": null
+    },
+    "severity_accuracy_by_confidence": {
+      "low": {
+        "n": 19,
+        "accuracy": 0.5263157894736842
+      },
+      "medium": {
+        "n": 25,
+        "accuracy": 0.52
+      },
+      "high": {
+        "n": 1,
+        "accuracy": 0.0
+      }
+    },
+    "cwe": {
+      "exact": 0.5555555555555556,
+      "in_any_nvd_cwe": 0.5555555555555556,
+      "parent_or_child": 0.6222222222222222,
+      "unknown": 0.17777777777777778
+    },
+    "cvss_vector": {
+      "exact_published": 0.2,
+      "exact_raw": 0.2,
+      "per_metric_raw": {
+        "AV": 0.9555555555555556,
+        "AC": 0.9555555555555556,
+        "PR": 0.8,
+        "UI": 0.8888888888888888,
+        "S": 0.9333333333333333,
+        "C": 0.4444444444444444,
+        "I": 0.5111111111111111,
+        "A": 0.6
+      }
+    },
+    "thin_and_vague": {
+      "n": 6,
+      "detected_as_report": 5,
+      "low_confidence": 6,
+      "vector_withheld": 5
+    },
+    "cost": {
+      "input_tokens": 116804,
+      "output_tokens": 39570,
+      "usd": 0.0542,
+      "latency_s_mean": null,
+      "latency_s_p50": null,
+      "latency_s_max": null
+    }
+  },
+  "rows": [
+    {
+      "id": "EDB-50652",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-22",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 1761,
+        "output_tokens": 648,
+        "latency_s": null,
+        "cost_usd": 0.000868125
+      }
+    },
+    {
+      "id": "EDB-50663",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2047,
+        "output_tokens": 691,
+        "latency_s": null,
+        "cost_usd": 0.000946875
+      }
+    },
+    {
+      "id": "EDB-50675",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-287",
+      "cwe_all": [
+        "CWE-287"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2626,
+        "output_tokens": 960,
+        "latency_s": null,
+        "cost_usd": 0.00128825
+      }
+    },
+    {
+      "id": "EDB-50700",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2139,
+        "output_tokens": 1487,
+        "latency_s": null,
+        "cost_usd": 0.001754375
+      }
+    },
+    {
+      "id": "EDB-50706",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-327",
+      "cwe_all": [
+        "CWE-327"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-73",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2905,
+        "output_tokens": 995,
+        "latency_s": null,
+        "cost_usd": 0.001358125
+      }
+    },
+    {
+      "id": "EDB-50718",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2606,
+        "output_tokens": 958,
+        "latency_s": null,
+        "cost_usd": 0.00128375
+      }
+    },
+    {
+      "id": "EDB-50724",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "None",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:N",
+      "raw_severity": "None",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "C",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1842,
+        "output_tokens": 646,
+        "latency_s": null,
+        "cost_usd": 0.00087625
+      }
+    },
+    {
+      "id": "EDB-50768",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1845,
+        "output_tokens": 594,
+        "latency_s": null,
+        "cost_usd": 0.000824625
+      }
+    },
+    {
+      "id": "EDB-50774",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [
+        "cwe_without_evidence"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2498,
+        "output_tokens": 988,
+        "latency_s": null,
+        "cost_usd": 0.00130025
+      }
+    },
+    {
+      "id": "EDB-50852",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-428",
+      "cwe_all": [
+        "CWE-428"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-428",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1944,
+        "output_tokens": 603,
+        "latency_s": null,
+        "cost_usd": 0.000846
+      }
+    },
+    {
+      "id": "EDB-50854",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-352",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "R",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_2_unverified_quotes",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2041,
+        "output_tokens": 708,
+        "latency_s": null,
+        "cost_usd": 0.000963125
+      }
+    },
+    {
+      "id": "EDB-50881",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1920,
+        "output_tokens": 637,
+        "latency_s": null,
+        "cost_usd": 0.000877
+      }
+    },
+    {
+      "id": "EDB-50888",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-798",
+      "cwe_all": [
+        "CWE-798"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-259",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1867,
+        "output_tokens": 706,
+        "latency_s": null,
+        "cost_usd": 0.000939375
+      }
+    },
+    {
+      "id": "EDB-50933",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2170,
+        "output_tokens": 806,
+        "latency_s": null,
+        "cost_usd": 0.00107725
+      }
+    },
+    {
+      "id": "EDB-50940",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-78",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1937,
+        "output_tokens": 664,
+        "latency_s": null,
+        "cost_usd": 0.000906125
+      }
+    },
+    {
+      "id": "EDB-50946",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-78",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2624,
+        "output_tokens": 787,
+        "latency_s": null,
+        "cost_usd": 0.001115
+      }
+    },
+    {
+      "id": "EDB-50947",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-863",
+      "cwe_all": [
+        "CWE-863"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-287",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1843,
+        "output_tokens": 710,
+        "latency_s": null,
+        "cost_usd": 0.000940375
+      }
+    },
+    {
+      "id": "EDB-50950",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-22",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1739,
+        "output_tokens": 525,
+        "latency_s": null,
+        "cost_usd": 0.000742375
+      }
+    },
+    {
+      "id": "EDB-50957",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-352",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 1937,
+        "output_tokens": 1086,
+        "latency_s": null,
+        "cost_usd": 0.001328125
+      }
+    },
+    {
+      "id": "EDB-50985",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-428",
+      "cwe_all": [
+        "CWE-428"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-428",
+      "pred_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "L",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1989,
+        "output_tokens": 795,
+        "latency_s": null,
+        "cost_usd": 0.001043625
+      }
+    },
+    {
+      "id": "EDB-50990",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-863",
+      "cwe_all": [
+        "CWE-863"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1725,
+        "output_tokens": 539,
+        "latency_s": null,
+        "cost_usd": 0.000754625
+      }
+    },
+    {
+      "id": "EDB-50991",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-668",
+      "cwe_all": [
+        "CWE-668"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1730,
+        "output_tokens": 555,
+        "latency_s": null,
+        "cost_usd": 0.00077125
+      }
+    },
+    {
+      "id": "EDB-50993",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-306",
+      "cwe_all": [
+        "CWE-306"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1809,
+        "output_tokens": 479,
+        "latency_s": null,
+        "cost_usd": 0.000705125
+      }
+    },
+    {
+      "id": "EDB-51019",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-78",
+      "cwe_all": [
+        "CWE-78"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1880,
+        "output_tokens": 654,
+        "latency_s": null,
+        "cost_usd": 0.000889
+      }
+    },
+    {
+      "id": "EDB-51028",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-22",
+      "cwe_all": [
+        "CWE-22"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1843,
+        "output_tokens": 953,
+        "latency_s": null,
+        "cost_usd": 0.001183375
+      }
+    },
+    {
+      "id": "EDB-51030",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-918",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "high",
+      "flags": [],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 2226,
+        "output_tokens": 777,
+        "latency_s": null,
+        "cost_usd": 0.00105525
+      }
+    },
+    {
+      "id": "EDB-51037",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-611",
+      "cwe_all": [
+        "CWE-611"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-611",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3270,
+        "output_tokens": 671,
+        "latency_s": null,
+        "cost_usd": 0.00107975
+      }
+    },
+    {
+      "id": "EDB-51039",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-918",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 1925,
+        "output_tokens": 391,
+        "latency_s": null,
+        "cost_usd": 0.000631625
+      }
+    },
+    {
+      "id": "EDB-51041",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-522",
+      "cwe_all": [
+        "CWE-522"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-639",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2027,
+        "output_tokens": 776,
+        "latency_s": null,
+        "cost_usd": 0.001029375
+      }
+    },
+    {
+      "id": "EDB-51057",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "High",
+      "cwe": "CWE-94",
+      "cwe_all": [
+        "CWE-94"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-94",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2056,
+        "output_tokens": 1125,
+        "latency_s": null,
+        "cost_usd": 0.001382
+      }
+    },
+    {
+      "id": "EDB-51099",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-502",
+      "cwe_all": [
+        "CWE-502"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-94",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2042,
+        "output_tokens": 844,
+        "latency_s": null,
+        "cost_usd": 0.00109925
+      }
+    },
+    {
+      "id": "EDB-51109",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-918",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3011,
+        "output_tokens": 796,
+        "latency_s": null,
+        "cost_usd": 0.001172375
+      }
+    },
+    {
+      "id": "EDB-51186",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-352",
+      "cwe_all": [
+        "CWE-352"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-352",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 1920,
+        "output_tokens": 848,
+        "latency_s": null,
+        "cost_usd": 0.001088
+      }
+    },
+    {
+      "id": "EDB-51228",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-434",
+      "cwe_all": [
+        "CWE-434"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-77",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1950,
+        "output_tokens": 752,
+        "latency_s": null,
+        "cost_usd": 0.00099575
+      }
+    },
+    {
+      "id": "EDB-51232",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-200",
+      "cwe_all": [
+        "CWE-200"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-98",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1872,
+        "output_tokens": 672,
+        "latency_s": null,
+        "cost_usd": 0.000906
+      }
+    },
+    {
+      "id": "EDB-51234",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-434",
+      "cwe_all": [
+        "CWE-434"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-434",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1902,
+        "output_tokens": 570,
+        "latency_s": null,
+        "cost_usd": 0.00080775
+      }
+    },
+    {
+      "id": "EDB-51256",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-404",
+      "cwe_all": [
+        "CWE-404"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-404",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "R",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1996,
+        "output_tokens": 648,
+        "latency_s": null,
+        "cost_usd": 0.0008975
+      }
+    },
+    {
+      "id": "EDB-51340",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-89",
+      "cwe_all": [
+        "CWE-89"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "C",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2804,
+        "output_tokens": 897,
+        "latency_s": null,
+        "cost_usd": 0.0012475
+      }
+    },
+    {
+      "id": "EDB-51375",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-276",
+      "cwe_all": [
+        "CWE-276"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Critical",
+      "pred_cwe": "CWE-276",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "N",
+        "A": "H"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I"
+      ],
+      "usage": {
+        "input_tokens": 2121,
+        "output_tokens": 804,
+        "latency_s": null,
+        "cost_usd": 0.001069125
+      }
+    },
+    {
+      "id": "EDB-51384",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-203",
+      "cwe_all": [
+        "CWE-203"
+      ],
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes",
+        "cwe_without_evidence"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 3376,
+        "output_tokens": 1081,
+        "latency_s": null,
+        "cost_usd": 0.001503
+      }
+    },
+    {
+      "id": "EDB-51429",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-522",
+      "cwe_all": [
+        "CWE-522"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-200",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1877,
+        "output_tokens": 699,
+        "latency_s": null,
+        "cost_usd": 0.000933625
+      }
+    },
+    {
+      "id": "EDB-51444",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-287",
+      "cwe_all": [
+        "CWE-287"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-287",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 1928,
+        "output_tokens": 756,
+        "latency_s": null,
+        "cost_usd": 0.000997
+      }
+    },
+    {
+      "id": "EDB-51467",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Critical",
+      "cwe": "CWE-79",
+      "cwe_all": [
+        "CWE-79"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "medium",
+      "flags": [
+        "dropped_1_unverified_quotes"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "S",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1862,
+        "output_tokens": 717,
+        "latency_s": null,
+        "cost_usd": 0.00094975
+      }
+    },
+    {
+      "id": "EDB-51498",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-918",
+      "cwe_all": [
+        "CWE-918"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "unknown",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "L",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "dropped_2_unverified_quotes",
+        "cwe_without_evidence",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 2640,
+        "output_tokens": 864,
+        "latency_s": null,
+        "cost_usd": 0.001194
+      }
+    },
+    {
+      "id": "EDB-51619",
+      "kind": "writeup",
+      "is_report": true,
+      "severity": "Medium",
+      "cwe": "CWE-331",
+      "cwe_all": [
+        "CWE-331"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "High",
+      "pred_cwe": "CWE-330",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "raw_severity": "High",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "L"
+      },
+      "confidence": "medium",
+      "flags": [],
+      "guessed_metrics": [
+        "AC",
+        "S"
+      ],
+      "usage": {
+        "input_tokens": 2925,
+        "output_tokens": 1051,
+        "latency_s": null,
+        "cost_usd": 0.001416625
+      }
+    },
+    {
+      "id": "syn-thin-1",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-79",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1621,
+        "output_tokens": 309,
+        "latency_s": null,
+        "cost_usd": 0.000511625
+      }
+    },
+    {
+      "id": "syn-thin-2",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-89",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1626,
+        "output_tokens": 435,
+        "latency_s": null,
+        "cost_usd": 0.00063825
+      }
+    },
+    {
+      "id": "syn-thin-4",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-94",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "raw_severity": "Critical",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "H",
+        "I": "H",
+        "A": "H"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1634,
+        "output_tokens": 497,
+        "latency_s": null,
+        "cost_usd": 0.00070125
+      }
+    },
+    {
+      "id": "syn-thin-5",
+      "kind": "thin",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "unknown",
+      "pred_cwe": "CWE-639",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "L",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "thin_report",
+        "cvss_quote_overused",
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AV",
+        "AC",
+        "PR",
+        "UI",
+        "S",
+        "C",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1628,
+        "output_tokens": 476,
+        "latency_s": null,
+        "cost_usd": 0.0006795
+      }
+    },
+    {
+      "id": "syn-vague-1",
+      "kind": "vague",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": true,
+      "pred_severity": "Medium",
+      "pred_cwe": "CWE-639",
+      "pred_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "raw_severity": "Medium",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "L",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "cvss_provisional"
+      ],
+      "guessed_metrics": [
+        "AC",
+        "UI",
+        "S",
+        "I",
+        "A"
+      ],
+      "usage": {
+        "input_tokens": 1677,
+        "output_tokens": 499,
+        "latency_s": null,
+        "cost_usd": 0.000708625
+      }
+    },
+    {
+      "id": "syn-vague-2",
+      "kind": "vague",
+      "is_report": true,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1674,
+        "output_tokens": 315,
+        "latency_s": null,
+        "cost_usd": 0.00052425
+      }
+    },
+    {
+      "id": "syn-noise-1",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1652,
+        "output_tokens": 260,
+        "latency_s": null,
+        "cost_usd": 0.0004665
+      }
+    },
+    {
+      "id": "syn-noise-2",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1663,
+        "output_tokens": 379,
+        "latency_s": null,
+        "cost_usd": 0.000586875
+      }
+    },
+    {
+      "id": "syn-noise-3",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "L"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1666,
+        "output_tokens": 475,
+        "latency_s": null,
+        "cost_usd": 0.00068325
+      }
+    },
+    {
+      "id": "syn-noise-5",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1658,
+        "output_tokens": 243,
+        "latency_s": null,
+        "cost_usd": 0.00045025
+      }
+    },
+    {
+      "id": "syn-noise-6",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1652,
+        "output_tokens": 392,
+        "latency_s": null,
+        "cost_usd": 0.0005985
+      }
+    },
+    {
+      "id": "syn-noise-7",
+      "kind": "noise",
+      "is_report": false,
+      "severity": null,
+      "cwe": null,
+      "cwe_all": null,
+      "vector": null,
+      "parse_failure": null,
+      "pred_is_report": false,
+      "pred_severity": "unknown",
+      "pred_cwe": "unknown",
+      "pred_vector": "unknown",
+      "raw_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "raw_severity": "unknown",
+      "raw_metrics": {
+        "AV": "N",
+        "AC": "L",
+        "PR": "N",
+        "UI": "N",
+        "S": "U",
+        "C": "N",
+        "I": "N",
+        "A": "N"
+      },
+      "confidence": "low",
+      "flags": [
+        "not_a_vulnerability_report"
+      ],
+      "guessed_metrics": [],
+      "usage": {
+        "input_tokens": 1656,
+        "output_tokens": 377,
+        "latency_s": null,
+        "cost_usd": 0.000584
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An unauthenticated CGI script on the D-Link DSR-250N (affected version 3.12) can be invoked remotely to reboot the device, causing a denial-of-service while it reboots (approx. 4 minutes). Vendor provided firmware 3.17B that removes the script.",
+    "affected_product": "D-Link DSR-250N, affected versions: 3.12 (fixed in 3.17B)",
+    "cwe": "CWE-306",
+    "cwe_quote": "it was then confirmed that CGI scripts exist on the router that can be directly accessed with a web browser, without any authentication. In particular, the script \"upgradeStatusReboot.cgi\" executes the command to reboot the device.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows unauthenticated attackers in the same local network to execute a CGI script which reboots the device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "An HTTP GET request to the CGI script \"upgradeStatusReboot.cgi\" will reboot the device:"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "can be directly accessed with a web browser, without any authentication."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "An HTTP GET request to the CGI script \"upgradeStatusReboot.cgi\" will reboot the device:"
+      },
+      "S": {
+        "value": "U",
+        "quote": "Executing this script renders the device unusable for the time of the reboot."
+      },
+      "C": {
+        "value": "N",
+        "quote": "No further information can be gathered or control over the devices be obtained."
+      },
+      "I": {
+        "value": "N",
+        "quote": "No further information can be gathered or control over the devices be obtained."
+      },
+      "A": {
+        "value": "L",
+        "quote": "In tests, it turned out that the device needs roughly four minutes to complete a reboot. As a consequence, any network using the device as a switch or router is not accessible during that time, too."
+      }
+    },
+    "recommended_next_step": "Verify the vendor-supplied firmware (3.17B) removes/protects the CGI endpoint; if not available, restrict access to the device management interface (network ACLs), and require authentication and authorization for any reboot/administrative CGI endpoints before patching.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated local attackers can execute the CGI script to reboot the device",
+        "quote": "allows unauthenticated attackers in the same local network to execute a CGI script which reboots the device."
+      },
+      {
+        "claim": "CGI scripts are accessible without authentication and include reboot script",
+        "quote": "it was then confirmed that CGI scripts exist on the router that can be directly accessed with a web browser, without any authentication. In particular, the script \"upgradeStatusReboot.cgi\" executes the command to reboot the device."
+      },
+      {
+        "claim": "Contents of the reboot CGI script call reboot",
+        "quote": "stat=`/sbin/reboot -d 8 &`"
+      },
+      {
+        "claim": "PoC HTTP GET request that triggers reboot",
+        "quote": "$ curl -k -s https://IP-ADDRESS/scgi-bin/upgradeStatusReboot.cgi"
+      },
+      {
+        "claim": "Reboot duration and network impact",
+        "quote": "In tests, it turned out that the device needs roughly four minutes to complete a reboot. As a consequence, any network using the device as a switch or router is not accessible during that time, too."
+      },
+      {
+        "claim": "Affected and fixed versions",
+        "quote": "Affected Versions: 3.12 and potentially later\nFixed Versions: 3.17B"
+      },
+      {
+        "claim": "No data exfiltration or further control observed",
+        "quote": "However, the attack is only possible if the attacker resides on the same network, and no further information can be gathered or control over the devices be obtained."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2575,
+    "output_tokens": 1451,
+    "latency_s": null,
+    "batch": true
+  }
+}

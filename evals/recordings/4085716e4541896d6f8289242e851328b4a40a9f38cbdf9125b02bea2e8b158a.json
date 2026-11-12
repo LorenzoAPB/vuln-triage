@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reflected/Stored Cross Site Scripting (XSS) in the edit user form of Microworld Technologies eScan management console 14.0.1400.2281 via the 'from' parameter allowing remote attacker to inject arbitrary code.",
+    "affected_product": "Microworld Technologies eScan management console 14.0.1400.2281",
+    "cwe": "CWE-79",
+    "cwe_quote": "Cross Site Scripting (XSS) in the edit user form in Microworld Technologies eScan management console 14.0.1400.2281 allows remote attacker to inject arbitrary code via the from parameter.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows remote attacker to inject arbitrary code via the from parameter."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows remote attacker to inject arbitrary code via the from parameter."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "XSS in the edit user form"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows remote attacker to inject arbitrary code via the from parameter."
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows remote attacker to inject arbitrary code via the from parameter."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request a proof-of-concept HTTP request/response showing the injection and whether the payload is reflected or stored; confirm whether authentication is required to reach the edit user form and whether administrator privileges are needed.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and vector",
+        "quote": "Cross Site Scripting (XSS) in the edit user form in Microworld Technologies eScan management console 14.0.1400.2281 allows remote attacker to inject arbitrary code via the from parameter."
+      },
+      {
+        "claim": "Vulnerability location",
+        "quote": "edit user form"
+      },
+      {
+        "claim": "Parameter used for injection",
+        "quote": "from parameter"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1649,
+    "output_tokens": 563,
+    "latency_s": null,
+    "batch": true
+  }
+}

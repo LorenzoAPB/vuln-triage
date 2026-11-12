@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An XML External Entity (XXE) vulnerability in xmlstatus.cgi (webconfig menu.cgi) of MAN-EAM-0003 V3.2.4 allows an unauthenticated user to upload/paste an XML snapshot and retrieve local files such as /etc/passwd.",
+    "affected_product": "MAN-EAM-0003 V3.2.4",
+    "cwe": "CWE-611",
+    "cwe_quote": "<?xml version='1.0'?>\n<!DOCTYPE replace [<!ENTITY example SYSTEM \"file:///etc/passwd\"> ]>",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "browse to http://<Host<http://%3cHost> name>/cgi-bin/xmlstatus.cgi"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "click on \"View saved XML snapshot\" and upload XML exploit file or paste the exploit code and submit the form"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Required: NO"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "click on \"View saved XML snapshot\" and upload XML exploit file or paste the exploit code and submit the form"
+      },
+      "S": {
+        "value": "U",
+        "quote": "you will get /etc/passwd file content"
+      },
+      "C": {
+        "value": "L",
+        "quote": "you will get /etc/passwd file content"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by reproducing the upload/paste steps in a controlled test environment, confirm XXE behavior, identify code paths parsing XML, and apply mitigations (disable external entity resolution or use a safe XML parser).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated access",
+        "quote": "Authentication Required: NO"
+      },
+      {
+        "claim": "Vulnerable endpoint and interaction",
+        "quote": "browse to http://<Host<http://%3cHost> name>/cgi-bin/xmlstatus.cgi"
+      },
+      {
+        "claim": "Exploit steps to upload/paste XML and receive file contents",
+        "quote": "click on \"View saved XML snapshot\" and upload XML exploit file or paste the exploit code and submit the form"
+      },
+      {
+        "claim": "XXE payload example",
+        "quote": "<?xml version='1.0'?>\n<!DOCTYPE replace [<!ENTITY example SYSTEM \"file:///etc/passwd\"> ]>"
+      },
+      {
+        "claim": "Result of exploitation",
+        "quote": "you will get /etc/passwd file content"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3270,
+    "output_tokens": 671,
+    "latency_s": null,
+    "batch": true
+  }
+}

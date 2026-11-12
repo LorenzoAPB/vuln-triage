@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Tutor LMS WordPress plugin (<= 1.5.2) is vulnerable to Cross-Site Request Forgery (CSRF) allowing an attacker to cause an admin to approve or block instructors via crafted GET requests and to add instructor accounts via CSRFed POST requests, potentially enabling the attacker to become an approved instructor.",
+    "affected_product": "Tutor LMS WordPress plugin, version 1.5.2 and below",
+    "cwe": "CWE-352",
+    "cwe_quote": "As the requests for the approval and blocking of instructors are sent using the GET method, the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin visit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly,\nafter retrieving the instructor ID during the registration process.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin\nvisit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      }
+    },
+    "recommended_next_step": "Verify the plugin version in use and reproduce the described CSRF actions (GET approve/blocked endpoints and POST add instructor) against a test site. If confirmed, apply the vendor patch (Tutor LMS >= 1.5.3) or implement CSRF nonce checks and require POST+nonce for state-changing actions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "All WordPress websites using Tutor LMS version 1.5.2 and below are affected."
+      },
+      {
+        "claim": "GET-based approve/block endpoints can be triggered via admin visiting URL",
+        "quote": "the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin\nvisit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly,"
+      },
+      {
+        "claim": "POST form to add instructor via admin visiting attacker page",
+        "quote": "This can be done by tricking the admin to submit the below-given web form as a POST request."
+      },
+      {
+        "claim": "Proof-of-concept form action and parameters",
+        "quote": "<form action=\"https://TARGET/wp-admin/admin-ajax.php\" method=\"POST\">"
+      },
+      {
+        "claim": "Fix released",
+        "quote": "Tutor LMS version 1.5.3 containing the fix released \u0001 February 4, 2020."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2463,
+    "output_tokens": 832,
+    "latency_s": null,
+    "batch": true
+  }
+}

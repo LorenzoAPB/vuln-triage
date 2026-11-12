@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Administrator section of the Surveillance module in Global RADAR - BSA Radar 1.6.7234.X and lower allows authenticated users with valid privileges to download arbitrary local files from the web server by manipulating the FileName (and FilePath) parameters to UC/downloadFile.ashx, enabling local file inclusion and disclosure of sensitive server files.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-22",
+    "cwe_quote": "a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "When downloading the files, a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "When downloading the files, a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the issue using a valid account with the described privileges against /UC/downloadFile.ashx and confirm path traversal; if confirmed, implement server-side validation/whitelisting of filenames, canonicalize and restrict paths to an approved directory, and apply a patch or mitigation to prevent arbitrary file reads.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description (what happens)",
+        "quote": "When downloading the files, a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      {
+        "claim": "Vulnerable endpoint",
+        "quote": "Vulnerable endpoint: /UC/downloadFile.ashx"
+      },
+      {
+        "claim": "Privileges required",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "BSA Radar - Version 1.6.7234.24750 and lower"
+      },
+      {
+        "claim": "Proof-of-concept example showing file path injection",
+        "quote": "GET /UC/downloadFile.ashx?ID=XXXX&FileName=C:\\Windows\\debug\\NetSetup.log&UploadStyle=1&UploadSource=6"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1783,
+    "output_tokens": 1215,
+    "latency_s": null,
+    "batch": true
+  }
+}

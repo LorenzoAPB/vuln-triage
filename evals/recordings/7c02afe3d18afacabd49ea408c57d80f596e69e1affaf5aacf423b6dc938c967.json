@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated SSRF in the Data Import module of Heartex - Label Studio Community Edition <= 1.5.0 allows an authenticated user to access arbitrary files on the system. Default-enabled self-registration permits remote attackers to create accounts and exploit the SSRF.",
+    "affected_product": "Heartex - Label Studio Community Edition <= 1.5.0",
+    "cwe": "CWE-918",
+    "cwe_quote": "A Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition versions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition versions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "allows an authenticated user to access arbitrary files on the system."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows an authenticated user to access arbitrary files on the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by reproducing the SSRF with a test account, confirm whether it can read arbitrary local files, and if confirmed, apply or recommend an upstream patch and advise disabling self-registration until fixed.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "A Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition versions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system."
+      },
+      {
+        "claim": "Self-registration enabling remote attacker",
+        "quote": "self-registration is enabled by default in these versions of Label Studio enabling a remote attacker to create a new account and then exploit the SSRF."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1679,
+    "output_tokens": 577,
+    "latency_s": null,
+    "batch": true
+  }
+}

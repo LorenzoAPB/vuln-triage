@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An OS command injection in the CGI program of multiple Zyxel USG/ATP/VPN/FLEX devices across specified firmware ranges that allows an attacker to modify specific files and then execute OS commands on a vulnerable device.",
+    "affected_product": "Zyxel USG FLEX 100(W) 5.00-5.21 Patch 1; USG FLEX 200 5.00-5.21 Patch 1; USG FLEX 500 5.00-5.21 Patch 1; USG FLEX 700 5.00-5.21 Patch 1; USG FLEX 50(W) 5.10-5.21 Patch 1; USG20(W)-VPN 5.10-5.21 Patch 1; ATP series 5.10-5.21 Patch 1; VPN series 4.60-5.21 Patch 1",
+    "cwe": "CWE-78",
+    "cwe_quote": "OS command injection in the CGI program ... which could allow an attacker to modify specific files and then execute some OS commands on a vulnerable device.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An OS command injection in the CGI program of Zyxel ... which could allow an attacker to modify specific files and then execute some OS commands on a vulnerable device."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "which could allow an attacker to modify specific files and then execute some OS commands on a vulnerable device."
+      },
+      "I": {
+        "value": "L",
+        "quote": "which could allow an attacker to modify specific files and then execute some OS commands on a vulnerable device."
+      },
+      "A": {
+        "value": "H",
+        "quote": "execute some OS commands on a vulnerable device."
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory or exploit details to confirm authentication requirements and exact impact, and test a representative vulnerable device to reproduce the issue and capture proof (HTTP request, shell output) to finalize CVSS and mitigation guidance.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability and impact",
+        "quote": "An OS command injection in the CGI program of Zyxel USG FLEX 100(W) firmware versions 5.00 through 5.21 Patch 1, USG FLEX 200 firmware versions 5.00 through 5.21 Patch 1, USG FLEX 500 firmware versions 5.00 through 5.21 Patch 1, USG FLEX 700 firmware versions 5.00 through 5.21 Patch 1, USG FLEX 50(W) firmware versions 5.10 through 5.21 Patch 1, USG20(W)-VPN firmware versions 5.10 through 5.21 Patch 1, ATP series firmware versions 5.10 through 5.21 Patch 1, VPN series firmware versions 4.60 through 5.21 Patch 1, which could allow an attacker to modify specific files and then execute some OS commands on a vulnerable device."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1796,
+    "output_tokens": 791,
+    "latency_s": null,
+    "batch": true
+  }
+}

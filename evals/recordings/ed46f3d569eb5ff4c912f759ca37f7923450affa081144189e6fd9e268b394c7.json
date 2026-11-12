@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated users with permission to modify database connections in Jedox 2022.4.2 and older can change a connection's host to an attacker-controlled server and use the 'test connection' function to cause the server to connect out and disclose database credentials in cleartext.",
+    "affected_product": "Jedox 2022.4 (22.4.2) and older",
+    "cwe": "CWE-200",
+    "cwe_quote": "An information disclosure vulnerability in `/be/rpc.php` allows remote authenticated users with the appropriate permissions to modify database connections to disclose the clear text credentials via the `test connection` function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An information disclosure vulnerability in `/be/rpc.php` allows remote authenticated users with the appropriate permissions to modify database connections to disclose the clear text credentials via the `test connection` function."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "An information disclosure vulnerability in `/be/rpc.php` allows remote authenticated users with the appropriate permissions to modify database connections to disclose the clear text credentials via the `test connection` function."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "The webserver initiates a connection to the server that you control. Use wireshark to capture network traffic and to ultimately extract the database credentials."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify whether the application logs or network handlers expose credentials during 'test connection' and implement a fix to prevent returning or sending cleartext credentials to attacker-controlled hosts; identify and notify affected customers and issue a patch or mitigation guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability summary describing disclosure",
+        "quote": "An information disclosure vulnerability in `/be/rpc.php` allows remote authenticated users with the appropriate permissions to modify database connections to disclose the clear text credentials via the `test connection` function."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Version: Jedox 2022.4 (22.4.2) and older"
+      },
+      {
+        "claim": "Exploit requires changing host to attacker-controlled server",
+        "quote": "To exploit the vulnerability, the attacker must set the host of the database connection to a server under his control."
+      },
+      {
+        "claim": "Exploit steps cause webserver to initiate connection and leak creds",
+        "quote": "The webserver initiates a connection to the server that you control. Use wireshark to capture network traffic and to ultimately extract the database credentials."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1877,
+    "output_tokens": 699,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Password reset functionality in CTROMS Terminal OS Port Portal discloses the verification code in the response to getverificationcode.jsp and returns predictable 'rand' cookie values; an attacker who knows a username can use these to reset that user's password via getresult.jsp.",
+    "affected_product": "CTROMS Terminal OS - Port Portal (versions not specified)",
+    "cwe": "CWE-200",
+    "cwe_quote": "But this verification code written in the database is also reflected in the response of the request.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "When the \"userId\" parameter is posted to \"getverificationcode.jsp\", a verification code is transmitted to the account's phone number for password reset."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "In order to exploit this vulnerability, the username must be known."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability on a test instance and confirm which endpoints echo the verification code and return the 'rand' cookies; collect full request/response examples, impacted versions, and reproduce the reset flow to create a patch or mitigation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Verification code is reflected in response",
+        "quote": "But this verification code written in the database is also reflected in the response of the request."
+      },
+      {
+        "claim": "Attack requires knowing username (no authentication)",
+        "quote": "In order to exploit this vulnerability, the username must be known."
+      },
+      {
+        "claim": "Verification code sent when posting userId to getverificationcode.jsp",
+        "quote": "When the \"userId\" parameter is posted to \"getverificationcode.jsp\", a verification code is transmitted to the account's phone number for password reset."
+      },
+      {
+        "claim": "Predictable/usable cookies (rand) are returned",
+        "quote": "The second vector is the \"rand\" cookie values returned in this request. These values are md5."
+      },
+      {
+        "claim": "Successful reset creates new password and reveals it",
+        "quote": "Exploiting this vulnerability create a new password for the user you specified and present it to you."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2648,
+    "output_tokens": 680,
+    "latency_s": null,
+    "batch": true
+  }
+}

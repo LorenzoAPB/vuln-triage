@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated remote code execution in Microweber 1.2.11 via profile image upload of a crafted PHP file, allowing an authenticated admin to upload a PHP7 file to userfiles/media/default/shell.php7.",
+    "affected_product": "Microweber 1.2.11",
+    "cwe": "CWE-434",
+    "cwe_quote": "Change/Add image of profile and Select a Crafted Image file\nCrafted image file Aka A image file which craft with PHP CODES for execution",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Path of Uploaded Crafted SHELL https://localhost/userfiles/media/default/shell.php7"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Login using Admin Creds."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Change/Add image of profile and Select a Crafted Image file"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Crafted image file Aka A image file which craft with PHP CODES for execution"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Crafted image file Aka A image file which craft with PHP CODES for execution"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Crafted image file Aka A image file which craft with PHP CODES for execution"
+      }
+    },
+    "recommended_next_step": "Verify the upload handling and file-type validation for user profile images; reproduce the upload with admin credentials and attempt to execute the uploaded PHP file. If confirmed, block execution in uploads directory, enforce server-side MIME/type checks, and patch the upload handler to reject executable extensions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Authentication required (admin)",
+        "quote": "Login using Admin Creds."
+      },
+      {
+        "claim": "Attack vector: file upload to web-accessible path",
+        "quote": "Path of Uploaded Crafted SHELL https://localhost/userfiles/media/default/shell.php7"
+      },
+      {
+        "claim": "How to trigger: upload crafted image containing PHP code",
+        "quote": "Change/Add image of profile and Select a Crafted Image file\nCrafted image file Aka A image file which craft with PHP CODES for execution"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1845,
+    "output_tokens": 594,
+    "latency_s": null,
+    "batch": true
+  }
+}

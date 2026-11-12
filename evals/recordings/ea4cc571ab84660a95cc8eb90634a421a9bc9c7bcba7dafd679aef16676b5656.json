@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Unauthenticated SQL injection in WordPress Core WP_Query before 5.8.3 via user-supplied string in query_vars (tax_query terms) allows remote attackers to disclose sensitive information, including stored credentials.",
+    "affected_product": "WordPress Core < 5.8.3",
+    "cwe": "CWE-89",
+    "cwe_quote": "The specific flaw exists within the WP_Query class,\nThe issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries,",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This vulnerability allows remote attackers to disclose sensitive information on affected installations of WordPress Core,"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries,"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication is not required to exploit this vulnerability,"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "POST /wp-admin/admin-ajax.php HTTP/1.1"
+      },
+      "S": {
+        "value": "U",
+        "quote": "The specific flaw exists within the WP_Query class,"
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker can leverage this vulnerability to disclose stored credentials, leading to further compromise."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain and review the referenced ZDI and HackerOne advisories and vendor release notes to reproduce the issue and verify fixes; if confirmed, coordinate disclosure and recommend updating affected WordPress installations to 5.8.3 or later.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated vulnerability and remote attacker",
+        "quote": "This vulnerability allows remote attackers to disclose sensitive information on affected installations of WordPress Core,\nAuthentication is not required to exploit this vulnerability,"
+      },
+      {
+        "claim": "Location of the flaw (WP_Query) and lack of validation",
+        "quote": "The specific flaw exists within the WP_Query class,\nThe issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries,"
+      },
+      {
+        "claim": "Impact - disclosure of stored credentials",
+        "quote": "An attacker can leverage this vulnerability to disclose stored credentials, leading to further compromise."
+      },
+      {
+        "claim": "Exploit occurs via POST to admin-ajax with crafted query_vars",
+        "quote": "action=<action_name>&nonce=a85a0c3bfa&query_vars={\"tax_query\":{\"0\":{\"field\":\"term_taxonomy_id\",\"terms\":[\"<inject>\"]}}}"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2047,
+    "output_tokens": 691,
+    "latency_s": null,
+    "batch": true
+  }
+}

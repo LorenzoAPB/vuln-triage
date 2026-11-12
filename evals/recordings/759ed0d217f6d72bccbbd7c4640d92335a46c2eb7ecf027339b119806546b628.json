@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Crestron HD-MD4X2-4K-E 1.0.0.2159 administrative web interface discloses user credentials when accessed unauthenticated: aj.html returns a JSON document containing uname and upassword fields.",
+    "affected_product": "Crestron HD-MD4X2-4K-E 1.0.0.2159",
+    "cwe": "CWE-200",
+    "cwe_quote": "aj.html sends a JSON document with uname and upassword fields.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "When the administrative web interface of the HDMI switcher is accessed unauthenticated, user credentials are disclosed"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "When the administrative web interface of the HDMI switcher is accessed unauthenticated, user credentials are disclosed"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "aj.html sends a JSON document with uname and upassword fields."
+      },
+      "I": {
+        "value": "H",
+        "quote": "aj.html sends a JSON document with uname and upassword fields."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the behavior by requesting aj.html on an unpatched device to reproduce the JSON response, capture the uname/upassword values, and determine whether those credentials can authenticate to the web interface; then coordinate disclosure with the vendor and advise removing sensitive data from unauthenticated responses and rotating exposed credentials.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unauthenticated access discloses credentials",
+        "quote": "When the administrative web interface of the HDMI switcher is accessed unauthenticated, user credentials are disclosed"
+      },
+      {
+        "claim": "AJ endpoint returns JSON with username and password fields",
+        "quote": "aj.html sends a JSON document with uname and upassword fields."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1679,
+    "output_tokens": 539,
+    "latency_s": null,
+    "batch": true
+  }
+}

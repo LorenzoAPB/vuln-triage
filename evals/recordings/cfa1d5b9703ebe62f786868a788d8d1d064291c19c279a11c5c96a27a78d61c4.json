@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an unquoted service path for Sherpa Connector Service (SherpaConnectorService.exe) in Sherpa Connector Service 2020.2.20328.2050 that may allow a local user to gain elevated privileges by placing a malicious executable at C:\\Program Files\\Sherpa Software\\Sherpa.exe.",
+    "affected_product": "Sherpa Connector Service 2020.2.20328.2050",
+    "cwe": "CWE-428",
+    "cwe_quote": "There is an unquoted service path in Sherpa Connector Service (SherpaConnectorService.exe) 2020.2.20328.2050.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "There is an unquoted service path in Sherpa Connector Service (SherpaConnectorService.exe) 2020.2.20328.2050."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "This might allow a local user to escalate privileges by creating a \"C:\\Program Files\\Sherpa Software\\Sherpa.exe\" file."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a \"C:\\Program Files\\Sherpa Software\\Sherpa.exe\" file."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a \"C:\\Program Files\\Sherpa Software\\Sherpa.exe\" file."
+      },
+      "A": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a \"C:\\Program Files\\Sherpa Software\\Sherpa.exe\" file."
+      }
+    },
+    "recommended_next_step": "Verify the service binary path and whether the service runs as SYSTEM; if confirmed, update the service path to a quoted full path and advise users to remove writable directories from the service path and replace the service with a non-writable install location or apply least-privilege to service account.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Unquoted service path",
+        "quote": "There is an unquoted service path in Sherpa Connector Service (SherpaConnectorService.exe) 2020.2.20328.2050."
+      },
+      {
+        "claim": "Exploit possibility / local privilege escalation by creating file",
+        "quote": "This might allow a local user to escalate privileges by creating a \"C:\\Program Files\\Sherpa Software\\Sherpa.exe\" file."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1664,
+    "output_tokens": 661,
+    "latency_s": null,
+    "batch": true
+  }
+}

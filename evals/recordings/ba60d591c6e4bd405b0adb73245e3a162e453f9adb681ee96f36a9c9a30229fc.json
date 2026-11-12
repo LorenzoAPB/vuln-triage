@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A bounds-checking bug in IOAccelCommandQueue2::processSegmentKernelCommand() leads to parsing up to 8 bytes out-of-bounds of the IOAccelKernelCommand header in shared memory. Command type 2 (kIOAccelKernelCommandCollectTimeStamp) writes timestamp data into that OOB area, allowing overwriting of the first 1-8 bytes of the subsequent page. PoC triggers on iOS 13 (iPod9,1 17B111).",
+    "affected_product": "iOS 13 on iPod9,1 (17B111); macOS not tested but likely affected",
+    "cwe": "CWE-125",
+    "cwe_quote": "the check excludes the size of the 8-byte header, meaning that processSegmentKernelCommand() will parse up to 8 bytes of out-of-bounds data.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The attached POC should trigger the issue on iOS 13. Tested on iPod9,1 17B111."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The IOAccelKernelCommand is being parsed from shared memory, so the write is visible to userspace."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "The IOAccelKernelCommand is being parsed from shared memory, so the write is visible to userspace."
+      },
+      "C": {
+        "value": "L",
+        "quote": "This makes it possible to overwrite the first 1-8 bytes of the subsequent page of memory with timestamp data."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "This makes it possible to overwrite the first 1-8 bytes of the subsequent page of memory with timestamp data."
+      }
+    },
+    "recommended_next_step": "Reproduce the PoC on an affected device, confirm exact memory layout and whether the overwritten bytes can be leveraged for privilege escalation or information disclosure, and create a patch to include the 8-byte header in the size checks and audit other shared-memory parsing for similar double-fetch/out-of-bounds and non-volatile accesses.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Bounds check excludes header allowing OOB parse",
+        "quote": "the check excludes the size of the 8-byte header, meaning that processSegmentKernelCommand() will parse up to 8 bytes of out-of-bounds data."
+      },
+      {
+        "claim": "Command type 2 writes into OOB memory",
+        "quote": "command type 2 corresponds to kIOAccelKernelCommandCollectTimeStamp, which actually *writes* into the OOB memory rather than just parsing data from it."
+      },
+      {
+        "claim": "Write is visible to userspace (shared memory)",
+        "quote": "The IOAccelKernelCommand is being parsed from shared memory, so the write is visible to userspace."
+      },
+      {
+        "claim": "Impact: overwrite subsequent page bytes",
+        "quote": "This makes it possible to overwrite the first 1-8 bytes of the subsequent page of memory with timestamp data."
+      },
+      {
+        "claim": "Proof-of-concept provided and tested",
+        "quote": "The attached POC should trigger the issue on iOS 13. Tested on iPod9,1 17B111."
+      },
+      {
+        "claim": "Potential broader shared memory issues/double-fetches",
+        "quote": "AGXCommandQueue seems to do a poor job of treating shared memory as volatile, and I suspect that there are further issues here that are worth looking into."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2145,
+    "output_tokens": 885,
+    "latency_s": null,
+    "batch": true
+  }
+}

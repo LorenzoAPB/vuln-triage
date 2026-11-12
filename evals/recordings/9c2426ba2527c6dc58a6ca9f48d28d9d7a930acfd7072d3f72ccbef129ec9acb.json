@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "ImageMagick 7.1.0-49 can hang (denial of service) when parsing a PNG image: the convert process may be left waiting for stdin input during image parsing (for example during resize).",
+    "affected_product": "ImageMagick 7.1.0-49",
+    "cwe": "CWE-400",
+    "cwe_quote": "When it parses a PNG image (e.g., for resize), the convert process could be left waiting for stdin input.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "When it parses a PNG image (e.g., for resize), the convert process could be left waiting for stdin input."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "When it parses a PNG image (e.g., for resize), the convert process could be left waiting for stdin input."
+      }
+    },
+    "recommended_next_step": "Obtain the exact vendor advisory or patch info and reproduce the issue to confirm attack vector and required attacker access; if confirmed, apply vendor patch or mitigate by validating/sanitizing PNG inputs and running convert with restricted time/resource limits.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "When it parses a PNG image (e.g., for resize), the convert process could be left waiting for stdin input."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1648,
+    "output_tokens": 463,
+    "latency_s": null,
+    "batch": true
+  }
+}

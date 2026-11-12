@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An authentication bypass vulnerability in VMware vCenter Server 6.7 (before update 3f) allows an attacker to bypass authentication and create/modify accounts (including adding to Administrators) via LDAP-related requests, demonstrated by exploit code.",
+    "affected_product": "vCenter Server 6.7 before update 3f",
+    "cwe": "CWE-287",
+    "cwe_quote": "Authentication Bypass",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "_iPORT = 389"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Bypass"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "def buildModifyUserPacket(sUser):"
+      },
+      "I": {
+        "value": "H",
+        "quote": "cn=Administrators,cn=Builtin,dc=vsphere,dc=local"
+      },
+      "A": {
+        "value": "H",
+        "quote": "def buildUserCreatePacket(sUser, sPass):"
+      }
+    },
+    "recommended_next_step": "Apply the vendor's security advisory VMSA-2020-0006 and update vCenter Server 6.7 to the fixed version (update 3f or later). If patching is not immediately possible, restrict access to LDAP/port 389 from untrusted networks and review/create detection rules for unauthorized LDAP Add/Modify operations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Report title describes the issue as an authentication bypass",
+        "quote": "Authentication Bypass"
+      },
+      {
+        "claim": "Affected product and version",
+        "quote": "Version: vCenter Server 6.7 before update 3f"
+      },
+      {
+        "claim": "Exploit targets LDAP service/port 389",
+        "quote": "_iPORT = 389"
+      },
+      {
+        "claim": "Exploit includes functionality to create user entries",
+        "quote": "def buildUserCreatePacket(sUser, sPass):"
+      },
+      {
+        "claim": "Exploit includes functionality to modify group membership to Administrators",
+        "quote": "cn=Administrators,cn=Builtin,dc=vsphere,dc=local"
+      },
+      {
+        "claim": "Vendor advisory referenced",
+        "quote": "https://www.vmware.com/security/advisories/VMSA-2020-0006.html"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3118,
+    "output_tokens": 1280,
+    "latency_s": null,
+    "batch": true
+  }
+}

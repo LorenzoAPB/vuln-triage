@@ -1,0 +1,85 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple SQL injection vulnerabilities in Hospital Management System v4.0: POST parameter 'searchdata' on doctor search, GET parameter 'viewid' on view-patient, POST parameter 'bs' when adding medical history, POST parameter 'patname' when adding a patient, and POST parameter 'cpass' on admin change-password are reported exploitable (union, boolean- and time-based, and time-based blind).",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /hospital/hospital/hms/doctor/search.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "I": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "A": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      }
+    },
+    "recommended_next_step": "Verify and reproduce each listed injection (searchdata, viewid, bs, patname, cpass) in a controlled test environment, capture vulnerable SQL queries in server logs or error output, and then apply parameterized queries (prepared statements) or proper input sanitization for all affected endpoints.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "searchdata parameter vulnerable",
+        "quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login."
+      },
+      {
+        "claim": "sqlmap found UNION injection and database list",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      {
+        "claim": "GET viewid vulnerable",
+        "quote": "GET parameter 'viewid' is vulnerable."
+      },
+      {
+        "claim": "viewid exploitation details (boolean/time/union)",
+        "quote": "Type: boolean-based blind\n    Title: AND boolean-based blind - WHERE or HAVING clause\n    Payload: viewid=6' AND 3413=3413 AND 'nBkv'='nBkv"
+      },
+      {
+        "claim": "bs parameter vulnerable (time-based)",
+        "quote": "Parameter: bs (POST)\n    Type: time-based blind\n    Title: MySQL >= 5.0.12 AND time-based blind"
+      },
+      {
+        "claim": "patname parameter vulnerable",
+        "quote": "patname parameter is vulnerable to SQLi under the add patient in the doctor login"
+      },
+      {
+        "claim": "cpass parameter vulnerable (blind/time-based)",
+        "quote": "the ?cpass parameter is vulnerable to blind SQL injection"
+      },
+      {
+        "claim": "back-end DBMS is MySQL",
+        "quote": "the back-end DBMS is MySQL"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3159,
+    "output_tokens": 859,
+    "latency_s": null,
+    "batch": true
+  }
+}

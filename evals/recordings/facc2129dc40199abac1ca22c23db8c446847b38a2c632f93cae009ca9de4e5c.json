@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes a Cross-Site Request Forgery (CSRF) vulnerability in Marval MSM v14.19.0.12476 that allows an attacker to disable two-factor authentication via an unauthenticated POST to a ScriptHandler.ashx endpoint.",
+    "affected_product": "Marval MSM v14.19.0.12476",
+    "cwe": "CWE-352",
+    "cwe_quote": "<form action=\"https://MSMHandler.io/MSM_Test/RFP/Forms/ScriptHandler.ashx?method=DisableTwoFactorAuthentication&classPath=%2FMSM_Test%2FRFP%2FForms%2FProfile.aspx&classMode=WXr8G2r3eh3984wn3YQvtybzSUW%2B955Uiq5AACvfimwA%2FNZHYRFm8%2Bgidv5CcNfjtLsElRbK%2FRmwvfE9UfeyD6DseGEe5eZGWB32FOJrhdcEh7oNUSSO9Q%3D%3D\" method=\"POST\" enctype=\"text/plain\">",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "<form action=\"https://MSMHandler.io/MSM_Test/RFP/Forms/ScriptHandler.ashx?method=DisableTwoFactorAuthentication&classPath=%2FMSM_Test%2FRFP%2FForms%2FProfile.aspx&classMode=WXr8G2r3eh3984wn3YQvtybzSUW%2B955Uiq5AACvfimwA%2FNZHYRFm8%2Bgidv5CcNfjtLsElRbK%2FRmwvfE9UfeyD6DseGEe5eZGWB32FOJrhdcEh7oNUSSO9Q%3D%3D\" method=\"POST\" enctype=\"text/plain\">"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "<form action=\"https://MSMHandler.io/MSM_Test/RFP/Forms/ScriptHandler.ashx?method=DisableTwoFactorAuthentication&classPath=%2FMSM_Test%2FRFP%2FForms%2FProfile.aspx&classMode=WXr8G2r3eh3984wn3YQvtybzSUW%2B955Uiq5AACvfimwA%2FNZHYRFm8%2Bgidv5CcNfjtLsElRbK%2FRmwvfE9UfeyD6DseGEe5eZGWB32FOJrhdcEh7oNUSSO9Q%3D%3D\" method=\"POST\" enctype=\"text/plain\">"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "2FA Bypass:"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "2FA Bypass:"
+      }
+    },
+    "recommended_next_step": "Verify whether the endpoint requires any anti-CSRF token or authentication and reproduce the CSRF by loading the provided HTML in a victim browser; if confirmed, recommend adding anti-CSRF tokens or requiring authentication and explicit user confirmation for disabling 2FA.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit demonstrates disabling 2FA via POST",
+        "quote": "<form action=\"https://MSMHandler.io/MSM_Test/RFP/Forms/ScriptHandler.ashx?method=DisableTwoFactorAuthentication&classPath=%2FMSM_Test%2FRFP%2FForms%2FProfile.aspx&classMode=WXr8G2r3eh3984wn3YQvtybzSUW%2B955Uiq5AACvfimwA%2FNZHYRFm8%2Bgidv5CcNfjtLsElRbK%2FRmwvfE9UfeyD6DseGEe5eZGWB32FOJrhdcEh7oNUSSO9Q%3D%3D\" method=\"POST\" enctype=\"text/plain\">"
+      },
+      {
+        "claim": "Author labels this a 2FA Bypass",
+        "quote": "2FA Bypass:"
+      },
+      {
+        "claim": "Target product and version",
+        "quote": "Version: v14.19.0.12476"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1937,
+    "output_tokens": 1086,
+    "latency_s": null,
+    "batch": true
+  }
+}

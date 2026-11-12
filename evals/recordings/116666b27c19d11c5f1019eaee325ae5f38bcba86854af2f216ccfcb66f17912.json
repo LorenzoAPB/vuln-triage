@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated command injection in Comtrend VR-3033 ping and traceroute diagnostic pages allows an authenticated user to execute shell commands by injecting shell metacharacters into the pingIpAddress parameter, resulting in command execution on the device.",
+    "affected_product": "Comtrend VR-3033, firmware DE11-416SSG-C01_R02.A2pvI042j1.d26m",
+    "cwe": "CWE-77",
+    "cwe_quote": "on the text input, type 'google.fr;ls - l'",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "To reproduce the vulnerability attacker has to access the interface at least with minimum privilege."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the injection in a test environment, capture the exact vulnerable backend command invocation, and apply input sanitization or use safe APIs; produce a patch that rejects shell metacharacters and/or runs diagnostics without invoking a shell.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Shows exploit HTTP request with injected shell metacharacters",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      {
+        "claim": "Instruction to type injected payload",
+        "quote": "on the text input, type 'google.fr;ls - l'"
+      },
+      {
+        "claim": "Impact: full control and compromise of network",
+        "quote": "Remote attackers are able to get full control and compromise the network managed by the router."
+      },
+      {
+        "claim": "Reproduction requires authenticated access with minimum privilege",
+        "quote": "To reproduce the vulnerability attacker has to access the interface at least with minimum privilege."
+      },
+      {
+        "claim": "Same issue affects traceroute function",
+        "quote": "Same bug with the same way we exploited in ping function can be exploited the same way in traceroute function."
+      },
+      {
+        "claim": "Firmware version",
+        "quote": "DE11-416SSG-C01_R02.A2pvI042j1.d26m"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2587,
+    "output_tokens": 720,
+    "latency_s": null,
+    "batch": true
+  }
+}

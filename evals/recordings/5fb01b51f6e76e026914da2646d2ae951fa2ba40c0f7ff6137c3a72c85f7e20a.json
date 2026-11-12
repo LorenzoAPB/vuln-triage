@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In GitLab EE versions starting from 16.1 before 16.1.5, from 16.2 before 16.2.5, and from 16.3 before 16.3.1, an external user given owner role on a group can create a service account in that group which is not classified as external and can be used to access internal projects, allowing privilege escalation.",
+    "affected_product": "GitLab EE, versions 16.1 < 16.1.5; 16.2 < 16.2.5; 16.3 < 16.3.1",
+    "cwe": "CWE-269",
+    "cwe_quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "C": {
+        "value": "L",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "I": {
+        "value": "L",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the report on a vulnerable GitLab instance, confirm that creating a service account as an external group owner grants access to internal projects, and collect proof (API calls or UI steps) showing accessible internal resources; coordinate disclosure with vendor if not already fixed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Versions affected",
+        "quote": "An issue has been discovered in GitLab EE affecting all versions starting from 16.1 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1."
+      },
+      {
+        "claim": "Privilege escalation by external owner creating service account",
+        "quote": "If an external user is given an owner role on any group, that external user may escalate their privileges on the instance by creating a service account in that group."
+      },
+      {
+        "claim": "Service account can access internal projects",
+        "quote": "This service account is not classified as external and may be used to access internal projects."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1712,
+    "output_tokens": 735,
+    "latency_s": null,
+    "batch": true
+  }
+}

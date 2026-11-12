@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Tutor LMS WordPress plugin (<= 1.5.2) contains CSRF vulnerabilities that allow an attacker to register themselves or have an admin approve or block instructor accounts via forged requests, enabling the attacker to become an instructor and create courses if auto-approve is enabled.",
+    "affected_product": "Tutor LMS WordPress plugin, version 1.5.2 and below",
+    "cwe": "CWE-352",
+    "cwe_quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An approved instructor can also be blocked by directing the admin to visit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=blocked&instructor=7."
+      },
+      "AC": {
+        "value": "L",
+        "quote": "As the requests for the approval and blocking of instructors are sent using the GET method, the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin visit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly"
+      },
+      "PR": {
+        "value": "H",
+        "quote": "an admin who is logged in at https://TARGET can be tricked into visiting the link and triggering the request to add an instructor."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "an admin who is logged in at https://TARGET can be tricked into visiting the link and triggering the request to add an instructor."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      },
+      "A": {
+        "value": "N",
+        "quote": "As the requests for the approval and blocking of instructors are sent using the GET method, the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin visit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly"
+      }
+    },
+    "recommended_next_step": "Verify the site runs Tutor LMS <=1.5.2; apply the vendor fix (upgrade to 1.5.3 or later). If patching is not immediately possible, mitigate by ensuring admin users do not visit untrusted links and by adding/validating nonces (CSRF tokens) for instructor-related actions (approval, blocking, add instructor), and disallow GET for state-changing actions.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and impact",
+        "quote": "An attacker can use CSRF to register themselves as an instructor or block other legit instructors."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "All WordPress websites using Tutor LMS version 1.5.2 and below are affected."
+      },
+      {
+        "claim": "CSRF via GET requests enabling direct approval/blocking",
+        "quote": "As the requests for the approval and blocking of instructors are sent using the GET method, the CSRF attack to approve an attacker-controlled instructor account can be performed by having the admin visit https://TARGET/wp-admin/admin.php?page=tutor-instructors&action=approve&instructor=8 directly,"
+      },
+      {
+        "claim": "Admin must be logged in for CSRF to succeed",
+        "quote": "an admin who is logged in at https://TARGET can be tricked into visiting the link and triggering the request to add an instructor."
+      },
+      {
+        "claim": "CSRF PoC for adding an instructor via POST form",
+        "quote": "CSRF attack can also be performed on the form present at https://TARGET/wp-admin/admin.php?page=tutor-instructors&sub_page=add_new_instructor in order to have the admin add an instructor account for the attacker, thus bypassing the requirement for approval."
+      },
+      {
+        "claim": "Auto-approve increases impact (create courses)",
+        "quote": "if the option to create courses without admin approval is enabled on the plugin\u2019s settings page, the attacker will be able to create courses directly as well."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2261,
+    "output_tokens": 1618,
+    "latency_s": null,
+    "batch": true
+  }
+}

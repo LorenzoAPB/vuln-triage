@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A proof-of-concept exploit for Source Engine (CS:GO and other games) BuildIDs demonstrates arbitrary code execution on the tested macOS target by writing a payload to /tmp/hl2_relaunch that injects shell commands.",
+    "affected_product": "Source Engine (CS:GO BuildID: 4937372, TF2 BuildID: 4871679, Garry's Mod BuildID: 4803834, Half Life 2 BuildID: 4233302)",
+    "cwe": "CWE-78",
+    "cwe_quote": "payload = '\"; ' + command + '; echo \"'",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A proof-of-concept exploit for Source Engine (CS:GO and other games) BuildIDs demonstrates arbitrary code execution on the tested macOS target by writing a payload to /tmp/hl2_relaunch that injects shell commands."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "arbitrary code execution"
+      },
+      "I": {
+        "value": "H",
+        "quote": "arbitrary code execution"
+      },
+      "A": {
+        "value": "H",
+        "quote": "arbitrary code execution"
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce the write-to-/tmp/hl2_relaunch behavior against the listed build IDs, identify the vulnerable code path that accepts or constructs the relaunch payload, and develop a patch to validate/escape inputs and/or restrict file write locations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit demonstrates arbitrary code execution",
+        "quote": "# Exploit Title: Source Engine CS:GO BuildID: 4937372 - Arbitrary Code Execution"
+      },
+      {
+        "claim": "Payload construction injects shell commands",
+        "quote": "payload = '\"; ' + command + '; echo \"'"
+      },
+      {
+        "claim": "PoC writes payload to /tmp/hl2_relaunch",
+        "quote": "f = open(\"/tmp/hl2_relaunch\", \"w\")"
+      },
+      {
+        "claim": "Tested product versions",
+        "quote": "# Version: Source Engine, Tested on CS:GO BuildID: 4937372 TF2 BuildID: 4871679 Garry's Mod BuildID: 4803834 Half Life 2 BuildID: 4233302"
+      },
+      {
+        "claim": "Tested operating system",
+        "quote": "# Tested on: MacOS 15.3"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2066,
+    "output_tokens": 683,
+    "latency_s": null,
+    "batch": true
+  }
+}

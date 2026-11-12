@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SolarView Compact ver.6.00 allows attackers to access sensitive files via directory traversal.",
+    "affected_product": "SolarView Compact ver.6.00",
+    "cwe": "CWE-22",
+    "cwe_quote": "allows attackers to access sensitive files via directory traversal.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "allows attackers to access sensitive files via directory traversal."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to access sensitive files via directory traversal."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows attackers to access sensitive files via directory traversal."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request full technical details or proof-of-concept from the reporter (example HTTP requests, file paths accessed) and reproduction steps; determine which files are exposed and whether authentication is required.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "SolarView Compact ver.6.00 allows attackers to access sensitive files via directory traversal."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1623,
+    "output_tokens": 385,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The reporter states there is an XSS in the search box of AcmeShop.",
+    "affected_product": "AcmeShop (versions not specified)",
+    "cwe": "CWE-79",
+    "cwe_quote": "Found an XSS in the search box of AcmeShop.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request reproduction steps or a proof-of-concept demonstrating the XSS (HTTP request/response or screenshots) and the affected AcmeShop version; if confirmed, identify whether input is reflected or stored and apply appropriate output encoding or input sanitization in the search results rendering.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Summary of issue",
+        "quote": "Found an XSS in the search box of AcmeShop."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1621,
+    "output_tokens": 309,
+    "latency_s": null,
+    "batch": true
+  }
+}

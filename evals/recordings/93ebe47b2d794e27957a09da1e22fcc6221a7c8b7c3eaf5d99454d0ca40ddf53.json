@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Stored cross-site scripting in WordPress plugin CP Blocks 1.0.14: attacker-supplied JavaScript entered into the plugin's License ID field is stored in the database and later executed in a user's browser.",
+    "affected_product": "CP Blocks WordPress plugin 1.0.14",
+    "cwe": "CWE-79",
+    "cwe_quote": "\"Enter JavaScript payload which is mentioned below \\n   \">\\\"<script>alert(0)</script>\\n\"",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "\"You will observe that the payload successfully got stored into the\\n    database and when you are triggering the same functionality at that\\n    time JavaScript payload gets executed successfully and we'll get a\\n    pop-up.\""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "C",
+        "quote": "\"JavaScript payload ... gets executed successfully and we'll get a\\n    pop-up.\""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify and reproduce the stored XSS in a test installation, identify all sinks where the License ID is rendered, and apply proper output encoding or sanitization. Prepare a patch that escapes or strips HTML/JS from the License ID field and release updated plugin and advisory.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit title describing vulnerability type",
+        "quote": "# Exploit Title: WordPress Plugin CP Blocks 1.0.14 - Stored Cross Site Scripting (XSS)"
+      },
+      {
+        "claim": "Steps to reproduce showing stored input and execution",
+        "quote": "3. Navigate to CP Blocks - License >> enter the payload into 'License ID'."
+      },
+      {
+        "claim": "Payload used demonstrating JavaScript stored",
+        "quote": "4. Enter JavaScript payload which is mentioned below\n   \">\\\"<script>alert(0)</script>\n"
+      },
+      {
+        "claim": "Observed effect: payload stored and executed",
+        "quote": "5. You will observe that the payload successfully got stored into the\n    database and when you are triggering the same functionality at that\n    time JavaScript payload gets executed successfully and we'll get a\n    pop-up."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1842,
+    "output_tokens": 646,
+    "latency_s": null,
+    "batch": true
+  }
+}

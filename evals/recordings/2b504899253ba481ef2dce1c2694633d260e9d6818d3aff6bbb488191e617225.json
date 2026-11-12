@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "ImageMagick 7.1.0-49 contains a vulnerability where parsing a crafted PNG can leave the convert process waiting for stdin input, allowing an attacker to crash the program and cause denial of service.",
+    "affected_product": "ImageMagick 7.1.0-49",
+    "cwe": "CWE-404",
+    "cwe_quote": "When it parses a PNG image (e.g., for resize), the convert process\ncould be left waiting for stdin input.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The attacker can easily send a malicious png file to the victim and\nthen when the victim has opened this png he will crash the program."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The attacker can easily send a malicious png file to the victim and\nthen when the victim has opened this png he will crash the program."
+      },
+      "UI": {
+        "value": "R",
+        "quote": "The attacker can easily send a malicious png file to the victim and\nthen when the victim has opened this png he will crash the program."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "When it parses a PNG image (e.g., for resize), the convert process\ncould be left waiting for stdin input.\n...when the victim has opened this png he will crash the program."
+      }
+    },
+    "recommended_next_step": "Obtain a sample PoC from the provided repository and reproduce locally to confirm the crash, then determine whether a patch is available or if input validation/tighter PNG parsing prevents blocking on stdin.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability causes convert to wait for stdin when parsing PNG",
+        "quote": "When it parses a PNG image (e.g., for resize), the convert process\ncould be left waiting for stdin input."
+      },
+      {
+        "claim": "Attack delivery and effect (crash/DoS)",
+        "quote": "The attacker can easily send a malicious png file to the victim and\nthen when the victim has opened this png he will crash the program."
+      },
+      {
+        "claim": "Proof-of-concept and reproduction available",
+        "quote": "[+]Payload:\n[href](https://github.com/nu11secur1ty/CVE-mitre/tree/main/2022/[CVE id removed]/PoC)"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1996,
+    "output_tokens": 648,
+    "latency_s": null,
+    "batch": true
+  }
+}

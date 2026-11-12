@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Hospital Management System v4.0 admin 'doctor-specilization.php' page contains a persistent (stored) cross-site scripting vulnerability via the POST parameter 'doctorspecilization' which accepts script tags and stores them for later viewing.",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-79",
+    "cwe_quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /hospital/hospital/hms/admin/doctor-specilization.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed"
+      },
+      "I": {
+        "value": "L",
+        "quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by submitting benign script payloads in a test environment, identify where stored input is rendered, and implement output encoding or input validation/escaping in the affected page; prepare coordinated disclosure to the vendor.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerable parameter and type of vulnerability",
+        "quote": "?doctorspecilization parameter is vulnerable to create a persistent and stored XSS exploit in the application depending on how it's viewed"
+      },
+      {
+        "claim": "Proof-of-concept payload used",
+        "quote": "doctorspecilization=%3C%2Ftd%3E%3Cscript%3Ealert%28%22XSS%22%29%3B%3C%2Fscript%3E%3Ctd%3E&submit="
+      },
+      {
+        "claim": "Request showing endpoint",
+        "quote": "POST /hospital/hospital/hms/admin/doctor-specilization.php HTTP/1.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1876,
+    "output_tokens": 606,
+    "latency_s": null,
+    "batch": true
+  }
+}

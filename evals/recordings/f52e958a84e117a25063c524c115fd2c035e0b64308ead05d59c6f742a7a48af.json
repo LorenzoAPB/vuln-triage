@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "unknown",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No action: the provided text is product release notes and does not describe a security vulnerability. If you intended to report a vulnerability, provide details of the issue, affected versions, proof-of-concept steps or exploit output, and any authentication or user-interaction requirements.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Text is release notes describing feature updates and not a vulnerability",
+        "quote": "Release notes, version 4.2: added dark mode to the dashboard, the CSV export now includes time zones, search results load about twice as fast, and the onboarding tour can be skipped. Thanks to everyone who sent feedback through the beta program."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1656,
+    "output_tokens": 377,
+    "latency_s": null,
+    "batch": true
+  }
+}

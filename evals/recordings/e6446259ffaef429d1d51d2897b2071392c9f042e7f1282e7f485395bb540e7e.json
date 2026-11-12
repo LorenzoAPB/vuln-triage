@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The text is a marketing email advertising a webinar and offering a report; it does not describe a security vulnerability.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "No triage action required: classify as non-vulnerability communication and ignore or archive. If this originated from an untrusted sender, consider marking as spam.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Not a vulnerability report; marketing webinar invitation",
+        "quote": "Is your PSIRT drowning in reports? ShieldCo's 2026 Vulnerability Trends webinar covers why critical CVEs grew 30% this year and how our platform cuts triage time in half. Register today and get a free copy of our exploitation report. Unsubscribe at any time."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1663,
+    "output_tokens": 379,
+    "latency_s": null,
+    "batch": true
+  }
+}

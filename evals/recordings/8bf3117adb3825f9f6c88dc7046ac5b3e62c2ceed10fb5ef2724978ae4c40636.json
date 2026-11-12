@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CoreFTP Server versions prior to 727 contain a directory traversal vulnerability that allows an authenticated attacker to create files outside the intended directory via '../' in an HTTP PUT request.",
+    "affected_product": "CoreFTP Server before 727",
+    "cwe": "CWE-22",
+    "cwe_quote": "directory traversal (for file creation)",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "in an HTTP PUT request"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "by an authenticated attacker"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "file creation"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "file creation"
+      }
+    },
+    "recommended_next_step": "Confirm reproducibility by authenticating and issuing an HTTP PUT with ../ sequences; determine exact filesystem impact and provide a patch to canonicalize/validate paths on PUT handling.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "directory traversal (for file creation)"
+      },
+      {
+        "claim": "Triggering vector",
+        "quote": "via ../ in an HTTP PUT request"
+      },
+      {
+        "claim": "Authentication required",
+        "quote": "by an authenticated attacker"
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "CoreFTP Server before 727"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1631,
+    "output_tokens": 300,
+    "latency_s": null,
+    "batch": true
+  }
+}

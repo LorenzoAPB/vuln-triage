@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an authenticated SQL injection in College Management System 1.0 via the 'course_code' POST parameter to /admin/asign-single-student-subjects.php, enabling retrieval or modification of database data using SQLMap.",
+    "affected_product": "College Management System 1.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "College Management System 1.0 allows SQL Injection via parameter 'course_code' in /College-Management-System/admin/asign-single-student-subjects.php.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /College-Management-System/admin/asign-single-student-subjects.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Cookie: PHPSESSID=jhnlvntmv8q4gtgsof9l1f1hhe"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "sqlmap -r poc.txt --dbms=mysql"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the injection against a test instance: intercept a valid authenticated POST to asign-single-student-subjects.php, confirm injectable behavior of course_code with boolean or UNION payloads, and capture database responses. If confirmed, identify affected SQL statements and implement parameterized queries or proper input validation; prepare coordinated disclosure to vendor.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "College Management System 1.0 allows SQL Injection via parameter 'course_code' in /College-Management-System/admin/asign-single-student-subjects.php."
+      },
+      {
+        "claim": "Exploitability with sqlmap",
+        "quote": "sqlmap -r poc.txt --dbms=mysql"
+      },
+      {
+        "claim": "Example boolean-based payload",
+        "quote": "Payload: submit=Press&roll_no=3&course_code=-6093' OR 2121=2121 AND 'ddQQ'='ddQQ"
+      },
+      {
+        "claim": "Authenticated request (session cookie shown)",
+        "quote": "Cookie: PHPSESSID=jhnlvntmv8q4gtgsof9l1f1hhe"
+      },
+      {
+        "claim": "HTTP request target",
+        "quote": "POST /College-Management-System/admin/asign-single-student-subjects.php HTTP/1.1"
+      },
+      {
+        "claim": "Potential impacts",
+        "quote": "Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2170,
+    "output_tokens": 806,
+    "latency_s": null,
+    "batch": true
+  }
+}

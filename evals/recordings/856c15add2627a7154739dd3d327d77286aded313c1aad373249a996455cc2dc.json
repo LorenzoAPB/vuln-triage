@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Insecure direct object reference on /api/v2/orders/{id} allows an attacker to change the order id and retrieve other customers' orders including addresses.",
+    "affected_product": "unknown",
+    "cwe": "CWE-639",
+    "cwe_quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "I": {
+        "value": "L",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by reproducing the request and confirm whether authentication is required; implement authorization checks to ensure the requesting user can only access their own orders, and consider logging and rotating any exposed PII.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the vulnerability",
+        "quote": "IDOR on /api/v2/orders/{id} - changing the id shows other customers' orders including addresses."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1628,
+    "output_tokens": 476,
+    "latency_s": null,
+    "batch": true
+  }
+}

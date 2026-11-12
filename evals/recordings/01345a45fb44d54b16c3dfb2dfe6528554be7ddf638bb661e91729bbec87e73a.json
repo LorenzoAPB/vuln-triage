@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In microweber/microweber prior to 1.2.15, an attacker can create an account using a victim's email without email confirmation and social-login email validation does not check for existing accounts, enabling account takeover/persistence and access to the victim's activities and data.",
+    "affected_product": "microweber/microweber prior to 1.2.15",
+    "cwe": "CWE-640",
+    "cwe_quote": "Since, there is no email confirmation, an attacker can easily create an account in the application using the Victim\u2019s Email.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an attacker can easily create an account in the application using the Victim\u2019s Email."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "an attacker can easily create an account in the application using the Victim\u2019s Email."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker would be able to see all the activities performed by the victim user impacting the confidentiality"
+      },
+      "I": {
+        "value": "L",
+        "quote": "attempt to modify/corrupt the data impacting the integrity"
+      },
+      "A": {
+        "value": "L",
+        "quote": "attempt to modify/corrupt the data impacting the integrity and availability factor."
+      }
+    },
+    "recommended_next_step": "Verify and reproduce account creation and social-login flows: test creating an account with an existing user's email and via social login, observe whether email confirmation is required and whether account linking or duplicate-account checks occur. Collect exact requests/responses and account state changes, and recommend requiring email verification and enforcing unique email checks on social login.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "No email confirmation allows account creation with victim's email",
+        "quote": "Since, there is no email confirmation, an attacker can easily create an account in the application using the Victim\u2019s Email."
+      },
+      {
+        "claim": "Social login lacks validation and duplicate account checks",
+        "quote": "due to the lack of proper validation of email coming from Social Login and failing to check if an account already exists, the victim will not identify if an account is already existing."
+      },
+      {
+        "claim": "Attacker access to victim activities impacts confidentiality",
+        "quote": "An attacker would be able to see all the activities performed by the victim user impacting the confidentiality"
+      },
+      {
+        "claim": "Attacker can modify/corrupt data impacting integrity and availability",
+        "quote": "attempt to modify/corrupt the data impacting the integrity and availability factor."
+      },
+      {
+        "claim": "Affected product and versions",
+        "quote": "in GitHub repository microweber/microweber prior to 1.2.15."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1805,
+    "output_tokens": 724,
+    "latency_s": null,
+    "batch": true
+  }
+}

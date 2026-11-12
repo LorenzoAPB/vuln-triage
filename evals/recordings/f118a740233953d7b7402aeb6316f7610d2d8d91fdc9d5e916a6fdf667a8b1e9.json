@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in io_uring's fixed buffer registration (io_sqe_buffer_register in io_uring/rsrc.c) allows out-of-bounds access to physical memory beyond the end of the buffer, enabling full local privilege escalation.",
+    "affected_product": "Linux kernel (io_uring fixed buffer registration), versions: unknown",
+    "cwe": "CWE-125",
+    "cwe_quote": "allows out-of-bounds access to physical memory beyond the end of the buffer",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "full local privilege escalation"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "full local privilege escalation"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer"
+      },
+      "C": {
+        "value": "H",
+        "quote": "full local privilege escalation"
+      },
+      "I": {
+        "value": "H",
+        "quote": "full local privilege escalation"
+      },
+      "A": {
+        "value": "H",
+        "quote": "full local privilege escalation"
+      }
+    },
+    "recommended_next_step": "Obtain vulnerable kernel version details and reproduction steps or PoC, and confirm whether exploit requires any privileges; if confirmed, prepare and publish coordinated disclosure and vendor patching guidance.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Out-of-bounds access",
+        "quote": "allows out-of-bounds access to physical memory beyond the end of the buffer"
+      },
+      {
+        "claim": "Location in code",
+        "quote": "io_sqe_buffer_register in io_uring/rsrc.c"
+      },
+      {
+        "claim": "Privilege escalation result",
+        "quote": "This flaw enables full local privilege escalation."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1663,
+    "output_tokens": 493,
+    "latency_s": null,
+    "batch": true
+  }
+}

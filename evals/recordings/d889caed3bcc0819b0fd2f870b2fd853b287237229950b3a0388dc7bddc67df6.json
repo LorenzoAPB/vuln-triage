@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Path traversal in LimeSurvey 4.1.11+200316 'File Manager' via the 'path' parameter allows downloading arbitrary files and may delete them after download if the web service account has permission, enabling information disclosure and potential denial of service.",
+    "affected_product": "LimeSurvey 4.1.11+200316",
+    "cwe": "CWE-22",
+    "cwe_quote": "A path traversal vulnerability exists within the \"File Manager\" functionality of LimeSurvey\nthat allows an attacker to download arbitrary files.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "https://TARGET/limesurvey/index.php/admin/filemanager/sa/getZipFile?path=/../../../../../../../etc/passwd"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "A path traversal vulnerability exists within the \"File Manager\" functionality of LimeSurvey\nthat allows an attacker to download arbitrary files."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "The file manager functionality will also\ndelete the file after it is downloaded (if the web service account has permissions to do so),\nallowing an attacker to cause a denial of service by specifying a critical LimeSurvey configuration file."
+      }
+    },
+    "recommended_next_step": "Verify the issue against an up-to-date instance, reproduce the path traversal using the provided GET request, identify code that handles 'path' in the File Manager, and implement/validate proper input validation and path canonicalization. Prepare disclosure and patch.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit POC demonstrating attack over network",
+        "quote": "https://TARGET/limesurvey/index.php/admin/filemanager/sa/getZipFile?path=/../../../../../../../etc/passwd"
+      },
+      {
+        "claim": "Description of vulnerability allowing download of arbitrary files",
+        "quote": "A path traversal vulnerability exists within the \"File Manager\" functionality of LimeSurvey\nthat allows an attacker to download arbitrary files."
+      },
+      {
+        "claim": "Description that downloaded files may be deleted enabling DoS",
+        "quote": "The file manager functionality will also\ndelete the file after it is downloaded (if the web service account has permissions to do so),\nallowing an attacker to cause a denial of service by specifying a critical LimeSurvey configuration file."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1617,
+    "output_tokens": 652,
+    "latency_s": null,
+    "batch": true
+  }
+}

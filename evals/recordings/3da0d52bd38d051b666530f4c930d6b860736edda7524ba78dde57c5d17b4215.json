@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated Server-Side Request Forgery (SSRF) in Label Studio <= 1.5.0 allows an authenticated user (including self-registered users) to fetch arbitrary files via the Data Import module, enabling access to local files (file://).",
+    "affected_product": "Label Studio Community Edition <=1.5.0",
+    "cwe": "CWE-918",
+    "cwe_quote": "Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition\nversions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition\nversions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition\nversions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allows an authenticated user to access arbitrary files on the system."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability on an internal test instance and collect request/response evidence (import request, file-upload lookup, retrieved file contents). Determine whether registration is enabled and whether admin privileges are required; if confirmed, redact sensitive data and notify the vendor with reproduction steps and suggested mitigation (validate/whitelist import URL schemes and disable file:// access).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "Server Side Request Forgery (SSRF) in the Data Import module in Heartex - Label Studio Community Edition\nversions 1.5.0 and earlier allows an authenticated user to access arbitrary files on the system."
+      },
+      {
+        "claim": "Self-registration enables remote attacker to get an account",
+        "quote": "Furthermore, self-registration is enabled by default in these versions of Label Studio enabling a remote\nattacker to create a new account and then exploit the SSRF."
+      },
+      {
+        "claim": "Exploit demonstrates using file:// to fetch local files",
+        "quote": "if parsedFilePath.scheme == \"\":\n        filePath = \"file://\" + filePath"
+      },
+      {
+        "claim": "Exploit usage examples showing reading local files",
+        "quote": "# - python3 exploit.py --url http://localhost:8080/ --username \"user@example.com\" --password 12345678 --register --file /etc/passwd"
+      },
+      {
+        "claim": "Exploit sends import with arbitrary URL",
+        "quote": "\"url\": filePath, # This is the main vulnerability, there is no restriction on the \"schema\" of the provided URL"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3011,
+    "output_tokens": 796,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Sherpa Connector Service (version 2020.2.20328.2050) on Windows is installed with an unquoted service path for its binary: C:\\Program Files\\Sherpa Software\\Sherpa Connector\\SherpaConnectorService.exe, and the service runs as LocalSystem with automatic start.",
+    "affected_product": "Sherpa Connector Service v2020.2.20328.2050",
+    "cwe": "CWE-428",
+    "cwe_quote": "BINARY_PATH_NAME   : C:\\Program Files\\Sherpa Software\\Sherpa Connector\\SherpaConnectorService.exe",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "C:\\Program Files\\Sherpa Software\\Sherpa Connector\\SherpaConnectorService.exe"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      },
+      "I": {
+        "value": "H",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      },
+      "A": {
+        "value": "H",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      }
+    },
+    "recommended_next_step": "Confirm whether the unquoted service path allows an attacker to place a malicious executable in a parent path that will be executed by the service at startup; if confirmed, update the service BinaryPathName to a properly quoted full path and advise users to run principle of least privilege instead of LocalSystem where possible.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Unquoted service path shown",
+        "quote": "BINARY_PATH_NAME   : C:\\Program Files\\Sherpa Software\\Sherpa Connector\\SherpaConnectorService.exe"
+      },
+      {
+        "claim": "Service set to Auto start",
+        "quote": "START_TYPE         : 2   AUTO_START"
+      },
+      {
+        "claim": "Service runs as LocalSystem",
+        "quote": "SERVICE_START_NAME : LocalSystem"
+      },
+      {
+        "claim": "wmic output showing path",
+        "quote": "Sherpa Connector Service                                C:\\Program Files\\Sherpa Software\\Sherpa Connector\\SherpaConnectorService.exe"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1944,
+    "output_tokens": 603,
+    "latency_s": null,
+    "batch": true
+  }
+}

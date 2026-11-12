@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Versions of CVAT prior to 2.0.0 contain a Server-Side Request Forgery (SSRF) vulnerability allowing the application to fetch attacker-controlled remote URLs (e.g. http://localhost:8081) when importing remote files. The issue was fixed by adding validation in 2.0.0.",
+    "affected_product": "CVAT < 2.0.0",
+    "cwe": "CWE-918",
+    "cwe_quote": "#CVAT is an opensource interactive video and image annotation tool for computer vision. Versions prior to 2.0.0 were found to be subject to a Server-side request forgery (SSRF) vulnerability.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /api/v1/tasks/2/data HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "Validation has been added to urls used in the affected code path in version 2.0.0."
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Authorization: Token 06d88f739a10c7533991d8010761df721b790b7"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "POST /api/v1/tasks/2/data HTTP/1.1"
+      },
+      "S": {
+        "value": "U",
+        "quote": "POST /api/v1/tasks/2/data HTTP/1.1"
+      },
+      "C": {
+        "value": "L",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      },
+      "I": {
+        "value": "N",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      },
+      "A": {
+        "value": "L",
+        "quote": "Server-side request forgery (SSRF) vulnerability"
+      }
+    },
+    "recommended_next_step": "Request the vulnerable code path and proof-of-concept exploit details (server request behavior) or logs to confirm whether internal network resources can be accessed; verify whether authentication is required and reproduce on a test instance to measure impact.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability and versions affected",
+        "quote": "#CVAT is an opensource interactive video and image annotation tool for computer vision. Versions prior to 2.0.0 were found to be subject to a Server-side request forgery (SSRF) vulnerability."
+      },
+      {
+        "claim": "Fix introduced in version 2.0.0",
+        "quote": "Validation has been added to urls used in the affected code path in version 2.0.0. Users are advised to upgrade."
+      },
+      {
+        "claim": "Exploit POST request showing remote file parameter",
+        "quote": "Content-Disposition: form-data; name=\"remote files[0]\"\n\nhttp://localhost:8081"
+      },
+      {
+        "claim": "Exploit demonstrates authenticated request (token)",
+        "quote": "Authorization: Token 06d88f739a10c7533991d8010761df721b790b7"
+      },
+      {
+        "claim": "Exploit target endpoint",
+        "quote": "POST /api/v1/tasks/2/data HTTP/1.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2226,
+    "output_tokens": 777,
+    "latency_s": null,
+    "batch": true
+  }
+}

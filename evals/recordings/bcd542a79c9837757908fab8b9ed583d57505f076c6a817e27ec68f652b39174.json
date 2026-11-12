@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "SQL injection in Persian VIP Download Script 1.0 on cart_edit.php via the 'active' GET parameter, exploitable with time-based blind payloads.",
+    "affected_product": "Persian VIP Download Script 1.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "$user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sqlmap -u \"http://target.com/cart_edit.php?active=1\" -p active --cookie=[COOKIE] --technique=T --dbs"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm exploitation impact by extracting schema or data with safe, authorized testing (e.g., use time-based or boolean blind queries against a non-production instance) and patch by parameterizing queries or using prepared statements.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerable parameter and file",
+        "quote": "Vulnerable Page:\n\n/cart_edit.php"
+      },
+      {
+        "claim": "unsafe SQL construction using unsanitized parameter",
+        "quote": "$user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));"
+      },
+      {
+        "claim": "source of parameter",
+        "quote": "$active = $_GET['active'];"
+      },
+      {
+        "claim": "sqlmap usage showing remote exploitation",
+        "quote": "sqlmap -u \"http://target.com/cart_edit.php?active=1\" -p active --cookie=[COOKIE] --technique=T --dbs"
+      },
+      {
+        "claim": "time-based blind payload demonstrating injection",
+        "quote": "active=1' AND (SELECT 4169 FROM (SELECT(SLEEP(5)))wAin) AND 'zpth'='zpth"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1879,
+    "output_tokens": 595,
+    "latency_s": null,
+    "batch": true
+  }
+}

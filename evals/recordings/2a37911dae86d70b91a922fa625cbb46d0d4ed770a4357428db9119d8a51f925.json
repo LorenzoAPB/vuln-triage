@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In Jedox 2020.2.5, an authenticated user with permission to modify database connections can use the 'test connection' function in /be/rpc.php to disclose a connection's cleartext password.",
+    "affected_product": "Jedox 2020.2.5",
+    "cwe": "CWE-200",
+    "cwe_quote": "allow remote, authenticated users with permissions to modify database connections to disclose a connections' cleartext password via the 'test connection' function.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remote, authenticated users"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "authenticated users with permissions to modify database connections"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "disclose a connections' cleartext password"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the issue by reproducing the 'test connection' action as a user with database connection modification permissions and confirm cleartext password disclosure; if confirmed, coordinate with vendor for a patch and rotate exposed credentials.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Endpoint and product",
+        "quote": "/be/rpc.php in Jedox GmbH Jedox 2020.2.5"
+      },
+      {
+        "claim": "Attacker privileges and scope",
+        "quote": "remote, authenticated users with permissions to modify database connections"
+      },
+      {
+        "claim": "Vulnerable function and impact",
+        "quote": "disclose a connections' cleartext password via the 'test connection' function."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1656,
+    "output_tokens": 495,
+    "latency_s": null,
+    "batch": true
+  }
+}

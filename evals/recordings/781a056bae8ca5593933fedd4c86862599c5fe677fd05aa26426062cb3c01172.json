@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Administrator section of the Surveillance module in Global RADAR - BSA Radar 1.6.7234.24750 and lower exposes a local file inclusion via the /UC/downloadFile.ashx endpoint by manipulating the FileName (and FilePath) parameter, allowing an authenticated user with privileges to download arbitrary local files from the web server.",
+    "affected_product": "BSA Radar - Version 1.6.7234.24750 and lower",
+    "cwe": "CWE-22",
+    "cwe_quote": "a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "This vulnerability could be used to view local sensitive files or configuration files on the backend server."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability by reproducing the request against a test instance with an administrative account, confirm the set of accessible files, and implement input validation/whitelisting or canonicalization on FileName/FilePath to prevent path traversal. Consider patching to restrict file downloads to intended files and require server-side checks.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Description of vulnerability allowing viewing local files by manipulating parameters",
+        "quote": "a user is able to view local files on the web server by manipulating the FileName and FilePath parameters in the URL"
+      },
+      {
+        "claim": "Vulnerable endpoint",
+        "quote": "Vulnerable endpoint: /UC/downloadFile.ashx"
+      },
+      {
+        "claim": "Privilege requirement",
+        "quote": "The current user is required to have valid privileges to send requests to the target vulnerable endpoint."
+      },
+      {
+        "claim": "Impact \u2014 viewing sensitive files",
+        "quote": "This vulnerability could be used to view local sensitive files or configuration files on the backend server."
+      },
+      {
+        "claim": "Proof of concept showing FileName parameter with full local path",
+        "quote": "GET /UC/downloadFile.ashx?ID=XXXX&FileName=C:\\Windows\\debug\\NetSetup.log&UploadStyle=1&UploadSource=6"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1783,
+    "output_tokens": 697,
+    "latency_s": null,
+    "batch": true
+  }
+}

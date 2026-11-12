@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Marval MSM v14.19.0.12476 is vulnerable to Cross Site Request Forgery (CSRF) that allows an attacker to disable a user's 2FA by sending the user a malicious form.",
+    "affected_product": "Marval MSM v14.19.0.12476",
+    "cwe": "CWE-352",
+    "cwe_quote": "Cross Site Request Forgery (CSRF).",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An attacker can disable the 2FA by sending the user a malicious form."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "An attacker can disable the 2FA by sending the user a malicious form."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An attacker can disable the 2FA by sending the user a malicious form."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request proof-of-concept HTTP requests or steps showing the CSRF request and whether user authentication is required; confirm affected endpoints and provide a mitigated update or recommended CSRF protections (anti-CSRF tokens, SameSite cookies).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and name",
+        "quote": "Cross Site Request Forgery (CSRF)."
+      },
+      {
+        "claim": "Impact (disable 2FA)",
+        "quote": "An attacker can disable the 2FA by sending the user a malicious form."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1645,
+    "output_tokens": 473,
+    "latency_s": null,
+    "batch": true
+  }
+}

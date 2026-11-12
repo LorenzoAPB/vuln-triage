@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "WinGate 9.4.1.5998 installation directory has insecure permissions allowing authenticated local users to replace WinGate.exe and achieve code execution as SYSTEM after a service restart or system reboot.",
+    "affected_product": "WinGate v9.4.1.5998",
+    "cwe": "CWE-276",
+    "cwe_quote": "WinGate has insecure permissions for the installation directory, which allows local\nusers ability to gain privileges by replacing an executable file with a Trojan horse.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "Network Access\nLocal"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "The WinGate directory hands (F) full control to authenticated users, who can then run\narbitrary code as SYSTEM after a WinGate restart or system reboot."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      },
+      "S": {
+        "value": "U",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      },
+      "C": {
+        "value": "H",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      }
+    },
+    "recommended_next_step": "Verify file-system ACLs on the WinGate installation directory and remove write/modify/replace permissions from Authenticated Users; consider notifying vendor for patched release and publish a vendor advisory describing secure permissions and mitigation steps.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Permissions allow replacement of executable leading to SYSTEM code execution",
+        "quote": "WinGate has insecure permissions for the installation directory, which allows local\nusers ability to gain privileges by replacing an executable file with a Trojan horse."
+      },
+      {
+        "claim": "Directory ACL showing Authenticated Users have Full control",
+        "quote": "C:\\Program Files\\WinGate>cacls WinGate.exe\nC:\\Program Files\\WinGate\\WinGate.exe NT AUTHORITY\\Authenticated Users:(ID)F\n                                     NT AUTHORITY\\SYSTEM:(ID)F\n                                     BUILTIN\\Administrators:(ID)F\n                                     BUILTIN\\Users:(ID)R\n                                     APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(ID)R\n                                     APPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(ID)R"
+      },
+      {
+        "claim": "Exploit/POC steps",
+        "quote": "Logon as standard user replace WinGate.exe with a trojan executable, wait for restart or reboot the system, your code runs as SYSTEM."
+      },
+      {
+        "claim": "Attack is local",
+        "quote": "Network Access\nLocal"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2328,
+    "output_tokens": 803,
+    "latency_s": null,
+    "batch": true
+  }
+}

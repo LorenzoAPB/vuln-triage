@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A crafted SMB3.1.1 compressed packet with an oversized 'offset' field in the SMB2_COMPRESSION_TRANSFORM_HEADER can cause a buffer overflow in Windows 10 1903/1909 SMB3 compression handling, crashing the kernel; the report's PoC sets offset=4294967295 and compresses an SMB authentication request.",
+    "affected_product": "Windows 10 1903/1909",
+    "cwe": "CWE-119",
+    "cwe_quote": "This header is a small (16 bytes) structure with a magic value, the uncompressed data size, the compression algorithm used, and an offset value.\n\n[CVE id removed] is caused by a lack of bounds checking in that offset size, which is directly passed to several subroutines.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "This script connects to the target host, and compresses the authentication request with a bad offset field set in the transformation header, causing the decompressor to buffer overflow and crash the target."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "This script connects to the target host, and compresses the authentication request with a bad offset field set in the transformation header, causing the decompressor to buffer overflow and crash the target."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "causing the decompressor to buffer overflow and crash the target."
+      },
+      "C": {
+        "value": "N",
+        "quote": "causing the decompressor to buffer overflow and crash the target."
+      },
+      "I": {
+        "value": "N",
+        "quote": "causing the decompressor to buffer overflow and crash the target."
+      },
+      "A": {
+        "value": "H",
+        "quote": "causing the decompressor to buffer overflow and crash the target."
+      }
+    },
+    "recommended_next_step": "Obtain a debug/crash dump from an affected system while reproducing the PoC and review the vulnerable SMB3 compression code path to identify missing bounds checks; develop and test a patch that validates the transformation header 'offset' and enforces maximums before any buffer operations.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "PoC sets offset to 4294967295",
+        "quote": "header['offset'] = 4294967295"
+      },
+      {
+        "claim": "PoC triggers crash by compressing an authentication request with bad offset",
+        "quote": "This script connects to the target host, and compresses the authentication request with a bad offset field set in the transformation header, causing the decompressor to buffer overflow and crash the target."
+      },
+      {
+        "claim": "Vulnerability due to missing bounds checking in offset",
+        "quote": "[CVE id removed] is caused by a lack of bounds checking in that offset size, which is directly passed to several subroutines."
+      },
+      {
+        "claim": "Affected Windows versions",
+        "quote": "CVE id removed is a bug in Windows 10 1903/1909's new SMB3 compression capability."
+      },
+      {
+        "claim": "SMB3 compression uses a transform header with offset field",
+        "quote": "This header is a small (16 bytes) structure with a magic value, the uncompressed data size, the compression algorithm used, and an offset value."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1993,
+    "output_tokens": 669,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The message is an employee request to reset their account/password; it does not report a security vulnerability.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Not a vulnerability report. Respond to the user through normal helpdesk processes: verify their identity per company policy and reset/unlock the account or direct them to self-service password reset.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "This is a user request to reset password and unlock account",
+        "quote": "Hi IT, I forgot my password again and now my account is locked after too many attempts. Can you reset it so I can get into the timesheet system before payroll closes today?"
+      },
+      {
+        "claim": "Employee ID is in signature",
+        "quote": "My employee ID is in my signature."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1652,
+    "output_tokens": 392,
+    "latency_s": null,
+    "batch": true
+  }
+}

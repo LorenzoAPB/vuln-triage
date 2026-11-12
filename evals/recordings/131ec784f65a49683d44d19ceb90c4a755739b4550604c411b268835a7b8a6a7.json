@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "FileCloud before 21.3 has a CSRF vulnerability in the CSV user import functionality allowing unauthorized requests to perform that action.",
+    "affected_product": "FileCloud before 21.3",
+    "cwe": "CWE-352",
+    "cwe_quote": "the CSV user import functionality is vulnerable to Cross-Site Request Forgery (CSRF).",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "the CSV user import functionality is vulnerable to Cross-Site Request Forgery (CSRF)."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "the CSV user import functionality is vulnerable to Cross-Site Request Forgery (CSRF)."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm exploitability: reproduce CSRF by crafting a cross-site request that triggers CSV user import against an authenticated non-admin and observe whether users are created; if confirmed, recommend adding anti-CSRF tokens and requiring same-site checks or re-authentication for user-import actions.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "the CSV user import functionality is vulnerable to Cross-Site Request Forgery (CSRF)."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1632,
+    "output_tokens": 427,
+    "latency_s": null,
+    "batch": true
+  }
+}

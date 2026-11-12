@@ -1,0 +1,81 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Avaya IP Office web interface embeds Base64-encoded credentials in URLs and WebSocket query strings, disclosing administrator credentials (Administrator:Administrator) which can be leaked via browser history, logs, referer headers, proxies, etc.",
+    "affected_product": "Avaya IP Office 9.x, 10.0 through 10.1.0.7, 11.0 through 11.0.4.2",
+    "cwe": "CWE-200",
+    "cwe_quote": "pass Base64 encoded credentials as part of the URL query string.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Network Access\nRemote"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker."
+      },
+      "PR": {
+        "value": "N",
+        "quote": "pass Base64 encoded credentials as part of the URL query string."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "pass Base64 encoded credentials as part of the URL query string."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Base64 credentials: QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y\nValue: Administrator:Administrator"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the presence of credentials in URLs/WebSocket queries on affected systems, rotate any exposed credentials (especially Administrator), and apply the vendor advisory/patch. Ensure credentials are not embedded in URLs and use secure authentication tokens or POST-based authentication.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Credentials are passed in URL query string",
+        "quote": "The request URL on port 7071 and the web socket component requests on port 7070 used by Atmosphere-Framework within Avaya IP Office, pass Base64 encoded credentials as part of the URL query string."
+      },
+      {
+        "claim": "Example URL showing Base64 encoded credentials",
+        "quote": "https://<TARGET-IP>:7071/serveredition/autologin?auth=QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y&referrer=https://x.x.x.x:7070&lang=en_US"
+      },
+      {
+        "claim": "Example WebSocket query showing Base64 encoded credentials",
+        "quote": "wss://<TARGET-IP>:7070/WebManagement/webmanagement/atmosphere/QWRtaW5pc3RyYXRvcjpBZG1pbmlzdHJhdG9y?X-Atmosphere-tracking-id=0&\nX-Atmosphere-Framework=2.0.5-javascript&X-Atmosphere-Transport=websocket&X-Cache-Date=0&Content-Type=text/x-gwt-rpc;%20charset=UTF-8&X-atmo-protocol=true"
+      },
+      {
+        "claim": "Decoded credential value",
+        "quote": "Value: Administrator:Administrator"
+      },
+      {
+        "claim": "Potential locations where URL+credentials may be leaked or stored",
+        "quote": "Browser History\nBrowser Cache\nBrowser Developer Tools\nCached by web proxy\nReferer Header\nWeb Logs\nShared Systems"
+      },
+      {
+        "claim": "Network access description",
+        "quote": "Network Access\nRemote"
+      },
+      {
+        "claim": "Ease of disclosure supporting low attack complexity",
+        "quote": "The Base64 encoded credentials can be easily disclosed if the machine used to logon to the web Manager is accessed by an attacker."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2246,
+    "output_tokens": 1452,
+    "latency_s": null,
+    "batch": true
+  }
+}

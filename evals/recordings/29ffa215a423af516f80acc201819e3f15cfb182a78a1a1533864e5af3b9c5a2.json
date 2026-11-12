@@ -1,0 +1,89 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "WorldServer (<= 11.7.3) uses low-entropy numeric session tokens (positive values below 2^31) that can be enumerated via the SOAP loginWithToken action, allowing attackers to discover and use valid session tokens including administrative sessions.",
+    "affected_product": "WorldServer 11.7.3 and earlier",
+    "cwe": "CWE-330",
+    "cwe_quote": "WorldServer associates user sessions with numerical tokens, which always are positive values below 2^31.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The --range parameter reflects the possible value range of 2^31 and for each value an HTTP request is sent to the WorldServer SOAP API where the FUZZ marker in the request template is replaced with the respective value."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "For each value an HTTP request is sent to the WorldServer SOAP API where the FUZZ marker in the request template is replaced with the respective value."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "for each value an HTTP request is sent to the WorldServer SOAP API"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Responses will yield a status code of 200 if an administrative session token is found. For an unprivileged user session, status code 500 is returned."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Attackers can efficiently enumerate session tokens. In a penetration test, it was possible to get access to multiple user accounts, including administrative accounts using this method in under three hours."
+      },
+      "A": {
+        "value": "L",
+        "quote": "Attackers can efficiently enumerate session tokens. In a penetration test, it was possible to get access to multiple user accounts, including administrative accounts using this method in under three hours."
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the token enumeration against a test instance: run the provided SOAP loginWithToken fuzzing request pattern to confirm token value distribution and whether administrative tokens are discoverable; capture request/response showing successful administrative login and any session contents.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Tokens are numeric and bounded",
+        "quote": "WorldServer associates user sessions with numerical tokens, which always are positive values below 2^31."
+      },
+      {
+        "claim": "Enumerability and low entropy (7-digit tokens observed)",
+        "quote": "During analysis, many assigned tokens were found to be in the 7-digit range of values. An attacker is therefore able to enumerate user accounts in only a few hours."
+      },
+      {
+        "claim": "Vulnerable SOAP action and request example",
+        "quote": "The SOAP action \"loginWithToken\" allows for a high amount of parallel attempts to check if a token is valid."
+      },
+      {
+        "claim": "Example SOAP request template",
+        "quote": "<com:loginWithToken soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n           <token xsi:type=\"xsd:string\">FUZZ</token>\n        </com:loginWithToken>"
+      },
+      {
+        "claim": "Automated enumeration command example and throughput",
+        "quote": "$ monsoon fuzz --threads 100 \\\n--template-file login-soap.req \\\n--range 1-2147483647 \\\n--hide-pattern \"InvalidSessionException\" \\\n'https://www.example.com'"
+      },
+      {
+        "claim": "Observations of successful responses and speed",
+        "quote": "processed 12000000 HTTP requests in 2h38m38s\n4 of 12000000 requests shown, 1225 req/s"
+      },
+      {
+        "claim": "Administrative and user response indicators",
+        "quote": "Responses will yield a status code of 200 if an administrative session token is found. For an unprivileged user session, status code 500 is returned."
+      },
+      {
+        "claim": "Practical impact: access to accounts",
+        "quote": "In a penetration test, it was possible to get access to multiple user accounts, including administrative accounts using this method in under three hours."
+      },
+      {
+        "claim": "Vendor fixed in 11.8.0",
+        "quote": "According to the vendor, upgrading to versions above 11.8.0 resolves the vulnerability."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2925,
+    "output_tokens": 1051,
+    "latency_s": null,
+    "batch": true
+  }
+}

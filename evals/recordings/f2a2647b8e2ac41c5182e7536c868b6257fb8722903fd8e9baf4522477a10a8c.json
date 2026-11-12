@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A flaw in libcap's pthread_create() may cause __real_pthread_create() to return an error, which can lead to process memory exhaustion when exploited.",
+    "affected_product": "libcap (versions not specified)",
+    "cwe": "CWE-770",
+    "cwe_quote": "This issue may allow a malicious actor to use cause __real_pthread_create() to return an error, which can exhaust the process memory.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "which can exhaust the process memory."
+      }
+    },
+    "recommended_next_step": "Obtain a full technical report or PoC to determine attack vector, affected versions, and reproduction steps; coordinate with maintainers to develop and test a patch that handles __real_pthread_create() errors without leaking or exhausting memory.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Description of the flaw and consequence",
+        "quote": "A vulnerability was found in the pthread_create() function in libcap. This issue may allow a malicious actor to use cause __real_pthread_create() to return an error, which can exhaust the process memory."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1647,
+    "output_tokens": 429,
+    "latency_s": null,
+    "batch": true
+  }
+}

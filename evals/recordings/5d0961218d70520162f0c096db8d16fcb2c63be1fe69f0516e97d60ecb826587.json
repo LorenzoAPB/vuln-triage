@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "FileReplicationPro 7.5.0 installs files and directories under 'C:\\Program Files\\FileReplicationPro' with 'Everyone' full control, allowing replacement of the service binary prunsrv.exe (service 'frp' running as LocalSystem) for privilege escalation. The etc\\properties.xml file contains a SHA-1(base64) password hash that can be modified to gain web interface access.",
+    "affected_product": "FileReplicationPro 7.5.0",
+    "cwe": "CWE-276",
+    "cwe_quote": "Incorrect file/folder permissions in Diasoft Corporation's File Replication Pro 7.5.0 allow privilege escalation by\nreplacing a file with another one that will be executed with \"LocalSystem\" rights from Windows Services application.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Incorrect file/folder permissions in Diasoft Corporation's File Replication Pro 7.5.0 allow privilege escalation by\nreplacing a file with another one that will be executed with \"LocalSystem\" rights from Windows Services application."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Everyone:(F)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "replace the prunsrv.exe executable that runs\nwith LocalSystem privileges as \"frp\" (FRPReplicationServer) service"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "H",
+        "quote": "replace the prunsrv.exe executable that runs\nwith LocalSystem privileges as \"frp\" (FRPReplicationServer) service"
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce by verifying ACLs on the installation directory, attempting to replace prunsrv.exe and observing service execution as LocalSystem; if confirmed, advise vendor to set restrictive ACLs (remove 'Everyone' full control), protect service binary and config files, and rotate credentials/hashes stored in properties.xml.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Directory permissions showing Everyone Full Control",
+        "quote": "c:\\Program Files\\FileReplicationPro Everyone:(F)\n                                    Everyone:(OI)(CI)(IO)(F)"
+      },
+      {
+        "claim": "Service runs as LocalSystem and binary path",
+        "quote": "NOME_PERCORSO_BINARIO     : \"C:\\Program Files\\FileReplicationPro\\prunsrv.exe\" //RS//frp\n        SERVICE_START_NAME : LocalSystem"
+      },
+      {
+        "claim": "Description of exploitation by replacing prunsrv.exe",
+        "quote": "To exploit the vulnerability a malicious actor/process must weaponize or replace the prunsrv.exe executable that runs\nwith LocalSystem privileges as \"frp\" (FRPReplicationServer) service, since the application's path has \"Everyone\" full\naccess permissions."
+      },
+      {
+        "claim": "Properties.xml contains SHA-1(base64) hashed password which can be modified",
+        "quote": "the \"properties.xml\" file in the \"etc\" folder inside program's path contains the hashed password for remote\naccess stored in sha1(base64) value, that is possible to modify."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2121,
+    "output_tokens": 804,
+    "latency_s": null,
+    "batch": true
+  }
+}

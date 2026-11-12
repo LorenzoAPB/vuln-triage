@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Report describes a cross-site request forgery (CSRF) against qdPM 9.2 allowing an attacker to submit a form that updates a user's account (including changing password and email) by tricking a victim into loading an attacker-hosted HTML page.",
+    "affected_product": "qdPM 9.2",
+    "cwe": "CWE-352",
+    "cwe_quote": "Steps to Exploit :\n\t1) Make an HTML file of given POC (Change UserID field Accordingly)and host it.\n\t2) send it to victim.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "2) send it to victim."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "<form action=\"https://qdpm.net/demo/9.2/index.php/myAccount/update\" method=\"POST\">"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "2) send it to victim."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "<input type=\"hidden\" name=\"users[new_password]\" value=\"TEST1122\" />"
+      },
+      "I": {
+        "value": "L",
+        "quote": "<input type=\"hidden\" name=\"users[email]\" value=\"administrator@Lulz.com\" />"
+      },
+      "A": {
+        "value": "L",
+        "quote": "<input type=\"hidden\" name=\"users[new_password]\" value=\"TEST1122\" />"
+      }
+    },
+    "recommended_next_step": "Verify the CSRF by reproducing the POST against an authenticated test account on qdPM 9.2 and confirm whether anti-CSRF tokens or SameSite cookie protections are present; if vulnerable, implement and enforce CSRF tokens and SameSite=strict/lax as appropriate and notify vendor.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit is a hosted HTML form that victim must load",
+        "quote": "Make an HTML file of given POC (Change UserID field Accordingly)and host it."
+      },
+      {
+        "claim": "Attacker instructs to send the hosted page to victim",
+        "quote": "2) send it to victim."
+      },
+      {
+        "claim": "POC posts to the account update endpoint",
+        "quote": "<form action=\"https://qdpm.net/demo/9.2/index.php/myAccount/update\" method=\"POST\">"
+      },
+      {
+        "claim": "POC changes password",
+        "quote": "<input type=\"hidden\" name=\"users[new_password]\" value=\"TEST1122\" />"
+      },
+      {
+        "claim": "POC changes email",
+        "quote": "<input type=\"hidden\" name=\"users[email]\" value=\"administrator@Lulz.com\" />"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2041,
+    "output_tokens": 708,
+    "latency_s": null,
+    "batch": true
+  }
+}

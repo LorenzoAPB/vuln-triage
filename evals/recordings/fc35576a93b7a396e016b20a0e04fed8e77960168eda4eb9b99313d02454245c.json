@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The Persian VIP Download Script 1.0 cart_edit.php script has a SQL injection vulnerability in the 'active' GET parameter allowing time-based blind SQL injection via the id value used in a SQL query.",
+    "affected_product": "Persian VIP Download Script 1.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "mysql_query $user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sqlmap -u \"http://target.com/cart_edit.php?active=1\" -p active --cookie=[COOKIE] --technique=T --dbs"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "Type: time-based blind"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Parameter: active (GET)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "Parameter: active (GET)"
+      },
+      "S": {
+        "value": "U",
+        "quote": "Vulnerable Page:\n\n/cart_edit.php"
+      },
+      "C": {
+        "value": "L",
+        "quote": "mysql_query $user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Reproduce the issue in a test environment, confirm injectable parameter, and remediate by using parameterized queries (prepared statements) or proper input validation/escaping for the 'active' parameter; then verify remediation by attempting the same time-based payload.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerable page",
+        "quote": "Vulnerable Page:\n\n/cart_edit.php"
+      },
+      {
+        "claim": "Vulnerable source code showing unsanitized use of parameter in SQL",
+        "quote": "mysql_query $user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));"
+      },
+      {
+        "claim": "Parameter source",
+        "quote": "$active = $_GET['active'];"
+      },
+      {
+        "claim": "Attack type identified",
+        "quote": "Type: time-based blind"
+      },
+      {
+        "claim": "PoC sqlmap usage demonstrating network exploitation",
+        "quote": "sqlmap -u \"http://target.com/cart_edit.php?active=1\" -p active --cookie=[COOKIE] --technique=T --dbs"
+      },
+      {
+        "claim": "Example time-based payload",
+        "quote": "active=1' AND (SELECT 4169 FROM (SELECT(SLEEP(5)))wAin) AND 'zpth'='zpth"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1677,
+    "output_tokens": 1465,
+    "latency_s": null,
+    "batch": true
+  }
+}

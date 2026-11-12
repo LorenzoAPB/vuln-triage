@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An attacker can gain write access to a read-only ashmem mapping by using remap_file_pages() to invoke the backing shmem file's ->mmap() handler (which is stored in vm_file) and thereby set VM_MAYWRITE, allowing mprotect() to make the mapping writable. Additionally, ashmem allows marking pages purgable (ASHMEM_UNPIN/ASHMEM_PIN) without requiring write permissions.",
+    "affected_product": "Android ashmem kernel driver (kernel staging/android/ashmem.c) and any users of ashmem (e.g. Chrome, art JIT usage); tested on upstream Linux and Pixel 2 (security patch level 2019-09-05)",
+    "cwe": "CWE-269",
+    "cwe_quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler\ndoes not enforce the same restrictions, in ->vm_file.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an\nattacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write\naccess to the ashmem allocation's backing file via mprotect()."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "calling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an\nattacker to raise the VM_MAYWRITE bit"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowing the attacker to gain write\naccess to the ashmem allocation's backing file via mprotect()."
+      },
+      "I": {
+        "value": "L",
+        "quote": "allowing the attacker to gain write\naccess to the ashmem allocation's backing file via mprotect()."
+      },
+      "A": {
+        "value": "L",
+        "quote": "allowing the attacker to gain write\naccess to the ashmem allocation's backing file via mprotect()."
+      }
+    },
+    "recommended_next_step": "Verify kernel versions/patch level where ashmem's mmap stores vm_file and whether remap_file_pages is permitted by platform seccomp; reproduce locally and backport a fix that avoids setting vma->vm_file to the backing shmem file (or ensure the backing file's ->mmap enforces the same prot_mask), and restrict remap_file_pages syscall where not needed.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "ashmem stores backing shmem file in vm_file",
+        "quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler\ndoes not enforce the same restrictions, in ->vm_file."
+      },
+      {
+        "claim": "remap_file_pages can be used to call mmap handler creating new VMA",
+        "quote": "An attacker can abuse this through the remap_file_pages() syscall, which grabs the file pointer of an\nexisting VMA and calls its ->mmap() handler to create a new VMA."
+      },
+      {
+        "claim": "remap_file_pages attack raises VM_MAYWRITE allowing mprotect to make mapping writable",
+        "quote": "In effect,\ncalling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an\nattacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write\naccess to the ashmem allocation's backing file via mprotect()."
+      },
+      {
+        "claim": "reproducer demonstrates writable after attack",
+        "quote": "mapping[0] = 'A'\n...\nattacker exiting\nmapping[0] = 'X'"
+      },
+      {
+        "claim": "ashmem purgable pages can be marked without write access",
+        "quote": "Unfortunately,\nthere is no access control for these - even if you only have read-only access to\nan ashmem file, you can still mark pages in it as purgable, causing them to\neffectively be zeroed ou"
+      },
+      {
+        "claim": "tested on upstream Linux and Pixel 2",
+        "quote": "Reproducer (works both on Linux from upstream master in an X86 VM and on a\nPixel 2 at security patch level 2019-09-05 via adb):"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3097,
+    "output_tokens": 1044,
+    "latency_s": null,
+    "batch": true
+  }
+}

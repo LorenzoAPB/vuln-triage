@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CP Blocks WordPress plugin before 1.0.15 does not sanitize and escape its \"License ID\" settings, allowing high-privilege users to perform Cross-Site Scripting attacks even when unfiltered_html is disallowed.",
+    "affected_product": "CP Blocks WordPress plugin before 1.0.15",
+    "cwe": "CWE-79",
+    "cwe_quote": "\"does not sanitise and escape its \\\"License ID\\\" settings\"",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "H",
+        "quote": "\"allow high privilege users to perform Cross-Site Scripting attacks\""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "\"Cross-Site Scripting attacks\""
+      },
+      "I": {
+        "value": "L",
+        "quote": "\"Cross-Site Scripting attacks\""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerability by testing the License ID setting for stored/reflected XSS in a non-production environment, capture proof-of-concept payload behaviour, and confirm the minimum privileges required. If confirmed, coordinate disclosure and recommend updating to version 1.0.15 or applying proper sanitization/escaping on the License ID field.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Unsanitized setting",
+        "quote": "does not sanitise and escape its \"License ID\" settings"
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "before 1.0.15"
+      },
+      {
+        "claim": "Privileges required and impact",
+        "quote": "allow high privilege users to perform Cross-Site Scripting attacks even when the unfiltered_html is disallowed"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1655,
+    "output_tokens": 515,
+    "latency_s": null,
+    "batch": true
+  }
+}

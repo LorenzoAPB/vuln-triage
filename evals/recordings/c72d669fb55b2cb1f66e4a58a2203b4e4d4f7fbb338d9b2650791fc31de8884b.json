@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Spiceworks 7.5.7.0 accepts and trusts attacker-supplied Host headers, causing generated links and redirects to use the poisoned Host value (host header injection / domain fronting).",
+    "affected_product": "Spiceworks 7.5.7.0",
+    "cwe": "CWE-93",
+    "cwe_quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An issue was discovered in Spiceworks version 7.5.7.0 (may be affected on other versions too). The values of the 'Host' headers are implicitly set as trusted"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "An issue was discovered in Spiceworks version 7.5.7.0 (may be affected on other versions too). The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify and reproduce by sending requests with a manipulated Host header; determine whether any redirects, generated links, or password-reset links use the attacker-supplied host and identify mitigations (validate Host header against configured hostnames or use server-side canonical host).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected version",
+        "quote": "An issue was discovered in Spiceworks version 7.5.7.0 (may be affected on other versions too)."
+      },
+      {
+        "claim": "Host header trusted",
+        "quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting."
+      },
+      {
+        "claim": "Example redirect shows attacker-supplied Host used in Location",
+        "quote": "Location: http://google.com/pro_users/login"
+      },
+      {
+        "claim": "HTML body shows injected link using attacker Host",
+        "quote": "<html><body>You are being <a href=\"http://google.com/pro_users/login\">redirected</a>.</body></html>"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 4067,
+    "output_tokens": 679,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Hospital Management System 4.0 web application is vulnerable to multiple SQL injection vulnerabilities (examples: searchdata POST, viewid GET, bs POST, patname POST, cpass POST) allowing database enumeration via MySQL.",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "The Hospital Management System 4.0 web application is vulnerable to SQL injection in multiple areas, listed below are 5 of the prominent and easy to exploit areas.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /hospital/hospital/hms/doctor/search.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "PR": {
+        "value": "L",
+        "quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "available databases [6]:\n[*] hms\n[*] information_schema\n[*] mysql\n[*] performance_schema\n[*] phpmyadmin\n[*] test"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": "Payload: viewid=6' AND SLEEP(5) AND 'PJim'='PJim"
+      }
+    },
+    "recommended_next_step": "Immediately disable public access to affected endpoints (or require admin/doctor authentication), block the vulnerable parameters, and perform code review to replace string-concatenated SQL with prepared statements/parameterized queries; then validate fixes by retesting the reported parameters (searchdata, viewid, bs, patname, cpass).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Overall vulnerability statement",
+        "quote": "The Hospital Management System 4.0 web application is vulnerable to SQL injection in multiple areas, listed below are 5 of the prominent and easy to exploit areas."
+      },
+      {
+        "claim": "Example vulnerable endpoint (search)",
+        "quote": "POST /hospital/hospital/hms/doctor/search.php HTTP/1.1"
+      },
+      {
+        "claim": "searchdata parameter vulnerable under doctor login",
+        "quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login."
+      },
+      {
+        "claim": "sqlmap found UNION injection and payload",
+        "quote": "Payload: searchdata=' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(CONCAT('qvxbq','zIuFTDXhtLrbZmAXQXxIalrRpZgCjsPnduKboFfW'),'qpqjq'),NULL-- PqeG&search="
+      },
+      {
+        "claim": "Database enumeration succeeded",
+        "quote": "available databases [6]:\n[*] hms\n[*] information_schema\n[*] mysql\n[*] performance_schema\n[*] phpmyadmin\n[*] test"
+      },
+      {
+        "claim": "viewid parameter vulnerable and time-based blind demonstrated",
+        "quote": "Payload: viewid=6' AND SLEEP(5) AND 'PJim'='PJim"
+      },
+      {
+        "claim": "List of other vulnerable parameters (examples)",
+        "quote": "?bs parameter is vulnerable to SQL injection on the doctors login when adding medical history to a patient"
+      },
+      {
+        "claim": "admin change-password cpass vulnerable",
+        "quote": "the ?cpass parameter is vulnerable to blind SQL injection"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3159,
+    "output_tokens": 1888,
+    "latency_s": null,
+    "batch": true
+  }
+}

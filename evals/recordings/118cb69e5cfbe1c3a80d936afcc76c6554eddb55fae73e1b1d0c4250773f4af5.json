@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an unauthenticated OS command injection in SolarView Compact 6.0 via the conf_mail.php POST parameter 'mail_address', allowing remote command execution on the tested Windows system.",
+    "affected_product": "SolarView Compact ver.6.00",
+    "cwe": "CWE-78",
+    "cwe_quote": "mail_address=%3Bid%3Bwhoami%3Bpwd%3Bls%3B&button=%83%81%81%5B%83%8B%91%97%90M",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /conf_mail.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Required: No"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "mail_address=%3Bid%3Bwhoami%3Bpwd%3Bls%3B&button=%83%81%81%5B%83%8B%91%97%90M"
+      },
+      "I": {
+        "value": "H",
+        "quote": "mail_address=%3Bid%3Bwhoami%3Bpwd%3Bls%3B&button=%83%81%81%5B%83%8B%91%97%90M"
+      },
+      "A": {
+        "value": "H",
+        "quote": "mail_address=%3Bid%3Bwhoami%3Bpwd%3Bls%3B&button=%83%81%81%5B%83%8B%91%97%90M"
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce the injection against a test instance, send the payload shown to conf_mail.php, confirm command execution and identify the vulnerable code path; capture request/response and search source for unsanitized use of this parameter in system/exec calls.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit target and endpoint",
+        "quote": "POST /conf_mail.php HTTP/1.1"
+      },
+      {
+        "claim": "Unauthenticated (no auth required)",
+        "quote": "Authentication Required: No"
+      },
+      {
+        "claim": "Exploit payload demonstrating command injection",
+        "quote": "mail_address=%3Bid%3Bwhoami%3Bpwd%3Bls%3B&button=%83%81%81%5B%83%8B%91%97%90M"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1937,
+    "output_tokens": 664,
+    "latency_s": null,
+    "batch": true
+  }
+}

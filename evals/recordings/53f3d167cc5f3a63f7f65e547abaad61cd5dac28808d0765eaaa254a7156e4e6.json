@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x.",
+    "affected_product": "VMware vCenter Server 6.7 before update 3f",
+    "cwe": "CWE-287",
+    "cwe_quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      },
+      "I": {
+        "value": "H",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      },
+      "A": {
+        "value": "H",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      }
+    },
+    "recommended_next_step": "Obtain vendor advisory and confirmed technical details (VMSA-2020-0006) to determine exact vulnerability, reproduce with controlled test system, and apply vendor-provided patch or mitigation.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Affected product and versions",
+        "quote": "Version: vCenter Server 6.7 before update 3f"
+      },
+      {
+        "claim": "Vulnerability type (authentication bypass / account creation)",
+        "quote": "Exploit for VMware vCenter Server 6.7 (prior to update 3f) using LDAP/AD-related packets to bypass authentication and create/modify accounts on vCenter Server Appliance upgraded from 6.x."
+      },
+      {
+        "claim": "Vulnerable setup",
+        "quote": "## Vulnerable setup (requirements): vCenter Server 6.7 that was upgraded from 6.x"
+      },
+      {
+        "claim": "Tested on",
+        "quote": "Tested on: vCenter Server Appliance 6.7 RTM (updated from v6.0)"
+      },
+      {
+        "claim": "Vendor advisory",
+        "quote": "Vendor Advisory: [1] https://www.vmware.com/security/advisories/VMSA-2020-0006.html"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3320,
+    "output_tokens": 835,
+    "latency_s": null,
+    "batch": true
+  }
+}

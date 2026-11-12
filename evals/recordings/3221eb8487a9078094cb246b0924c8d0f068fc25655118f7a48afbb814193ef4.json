@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Authenticated Local File Inclusion (LFI) in the GLPI Activity plugin (versions before 3.1.0) allowing an authenticated user to read arbitrary files via the cra.send.php file parameter.",
+    "affected_product": "GLPI Activity plugin, versions < 3.1.0",
+    "cwe": "CWE-98",
+    "cwe_quote": "GET /marketplace/activity/front/cra.send.php?&file=../../\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts&seefile=1 HTTP/1.1",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "GET /marketplace/activity/front/cra.send.php?&file=../../\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts&seefile=1 HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "Authenticated Local File Inclusion (LFI) in the GLPI Activity plugin (versions before 3.1.0) allowing an authenticated user to read arbitrary files via the cra.send.php file parameter."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "GET /marketplace/activity/front/cra.send.php?&file=../../\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts&seefile=1 HTTP/1.1"
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request full exploit details and authentication requirements from reporter or attempt to reproduce against an instrumented instance to capture which files can be read and whether administrative credentials are required.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Exploit request demonstrating file path traversal and file parameter",
+        "quote": "GET /marketplace/activity/front/cra.send.php?&file=../../\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts&seefile=1 HTTP/1.1"
+      },
+      {
+        "claim": "Vulnerability type and affected versions",
+        "quote": "GLPI Activity < 3.1.0 - Authenticated Local File Inclusion on Activity plugin"
+      },
+      {
+        "claim": "PoC tested on OS",
+        "quote": "Tested on: Ubuntu 22.04"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1872,
+    "output_tokens": 672,
+    "latency_s": null,
+    "batch": true
+  }
+}

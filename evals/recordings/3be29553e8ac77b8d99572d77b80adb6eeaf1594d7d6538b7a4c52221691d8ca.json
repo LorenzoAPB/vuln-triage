@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Spiceworks 7.5.7.0 trusts the HTTP Host header, allowing an attacker to spoof the Host header and cause the application to generate links and redirects that point to an attacker-controlled host (host header injection / domain fronting).",
+    "affected_product": "Spiceworks 7.5.7.0",
+    "cwe": "CWE-601",
+    "cwe_quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Host Header Injection vulnerability may allow an attacker to spoof a particular Host header, allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Host Header Injection vulnerability may allow an attacker to spoof a particular Host header, allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "HTTP/1.1 302 Found\n...\nLocation: http://google.com/pro_users/login\nContent-Length: 99\nConnection: close\nContent-Type: text/html; charset=utf-8\n\n<html><body>You are being <a href=\"http://google.com/pro_users/login\">redirected</a>.</body></html>"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      "I": {
+        "value": "N",
+        "quote": "allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate and canonicalize the Host header on the server: configure the application to use a fixed, trusted host name (or a whitelist of allowed hostnames) and reject or ignore requests with unrecognized or untrusted Host headers. Also ensure redirects and generated links are constructed from the configured host value rather than the incoming Host header.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Host Header Injection vulnerability may allow an attacker to spoof a particular Host header, allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      {
+        "claim": "Product and version",
+        "quote": "An issue was discovered in Spiceworks version 7.5.7.0 (may be affected on other versions too)."
+      },
+      {
+        "claim": "Server responded with Location header reflecting attacker-supplied Host",
+        "quote": "Location: http://google.com/pro_users/login"
+      },
+      {
+        "claim": "Example response showing redirected link using Host header",
+        "quote": "<html><body>You are being <a href=\"http://google.com/pro_users/login\">redirected</a>.</body></html>"
+      },
+      {
+        "claim": "Explanation that Host header values were trusted",
+        "quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3865,
+    "output_tokens": 1573,
+    "latency_s": null,
+    "batch": true
+  }
+}

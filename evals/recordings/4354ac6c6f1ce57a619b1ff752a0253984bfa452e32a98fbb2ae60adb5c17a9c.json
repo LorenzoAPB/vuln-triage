@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "On-premise Pega Platform installations with the JMX interface port exposed to the Internet and without proper port filtering may allow uploading serialized payloads to attack the underlying system. PegaCloud installations are not affected.",
+    "affected_product": "Pega Platform (on-premise); PegaCloud unaffected",
+    "cwe": "CWE-502",
+    "cwe_quote": "it may be possible to upload serialized payloads to attack the underlying system.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "exposed to the Internet"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "exposed to the Internet"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "attack the underlying system"
+      },
+      "I": {
+        "value": "H",
+        "quote": "attack the underlying system"
+      },
+      "A": {
+        "value": "H",
+        "quote": "attack the underlying system"
+      }
+    },
+    "recommended_next_step": "Confirm whether the report demonstrates remote code execution or other data compromise; collect exploit details or PoC, identify affected Pega Platform versions and exact JMX ports, and advise immediate network-level mitigation (block JMX ports from Internet) while vendor-provided mitigations/patches are applied.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Exposure condition",
+        "quote": "If an on-premise installation of the Pega Platform is configured with the port for the JMX interface exposed to the Internet and port filtering is not properly configured, then it may be possible to upload serialized payloads to attack the underlying system."
+      },
+      {
+        "claim": "PegaCloud unaffected",
+        "quote": "This does not affect systems running on PegaCloud due to its design and architecture."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1671,
+    "output_tokens": 503,
+    "latency_s": null,
+    "batch": true
+  }
+}

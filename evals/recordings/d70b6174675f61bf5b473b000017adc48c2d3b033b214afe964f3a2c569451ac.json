@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an information disclosure in Wavlink WN530HG4 firmware M30HG4.V5030.191116 where the device's web page set_safety.shtml contains a JavaScript variable syspasswd exposing the username and password without authentication.",
+    "affected_product": "Wavlink WN530HG4 M30HG4.V5030.191116",
+    "cwe": "CWE-200",
+    "cwe_quote": "search for var syspasswd=\"",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "view-source:http://IP_address/set_safety.shtml?r=52300"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Authentication Required: No"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "view-source:http://IP_address/set_safety.shtml?r=52300"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "search for var syspasswd=\""
+      },
+      "I": {
+        "value": "L",
+        "quote": "search for var syspasswd=\""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify on-device behavior and determine whether the exposed credentials provide administrative access; if confirmed, remove credentials from client-side pages and require authentication to access sensitive data. Prepare a patch or guidance to stop embedding plaintext credentials in served pages and rotate affected credentials.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Page to view source where secret is exposed",
+        "quote": "view-source:http://IP_address/set_safety.shtml?r=52300"
+      },
+      {
+        "claim": "Instruction to find the credential variable",
+        "quote": "search for var syspasswd=\""
+      },
+      {
+        "claim": "Authentication is not required to view the page",
+        "quote": "Authentication Required: No"
+      },
+      {
+        "claim": "Version tested",
+        "quote": "Version: M30HG4.V5030.191116"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1730,
+    "output_tokens": 555,
+    "latency_s": null,
+    "batch": true
+  }
+}

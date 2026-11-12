@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes an unauthenticated remote code execution via an upload endpoint in the GLPI Cartography (positions) plugin (versions < 6.0.0) allowing an attacker to upload a PHP file and execute commands.",
+    "affected_product": "GLPI Cartography plugin (positions) < 6.0.0",
+    "cwe": "CWE-434",
+    "cwe_quote": "POST /marketplace/positions/front/upload.php?name=poc.php HTTP/1.1",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "POST /marketplace/positions/front/upload.php?name=poc.php HTTP/1.1"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "POST /marketplace/positions/front/upload.php?name=poc.php HTTP/1.1"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "<?php echo system($_GET[\"cmd\"]); ?>"
+      },
+      "I": {
+        "value": "H",
+        "quote": "<?php echo system($_GET[\"cmd\"]); ?>"
+      },
+      "A": {
+        "value": "H",
+        "quote": "<?php echo system($_GET[\"cmd\"]); ?>"
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable plugin version by reproducing the upload and command execution in a controlled environment, then remove or patch the plugin and block the upload endpoint; contact vendor for patch and publish coordinated advisory.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "HTTP request showing upload to an upload.php endpoint with a filename parameter",
+        "quote": "POST /marketplace/positions/front/upload.php?name=poc.php HTTP/1.1"
+      },
+      {
+        "claim": "Proof-of-concept PHP payload demonstrating command execution",
+        "quote": "<?php echo system($_GET[\"cmd\"]); ?>"
+      },
+      {
+        "claim": "Advisory and affected application",
+        "quote": "Exploit Title: GLPI  Cartography Plugin v6.0.0 - Unauthenticated Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1902,
+    "output_tokens": 570,
+    "latency_s": null,
+    "batch": true
+  }
+}

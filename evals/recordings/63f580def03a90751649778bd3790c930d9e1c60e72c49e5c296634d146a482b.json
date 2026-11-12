@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Unquoted service path for ASUSTeK Aura Ready Game SDK service (GameSDK.exe) 1.0.0.4 could allow a local user to escalate privileges by creating a malicious %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file.",
+    "affected_product": "ASUSTeK Aura Ready Game SDK service (GameSDK.exe) 1.0.0.4",
+    "cwe": "CWE-428",
+    "cwe_quote": "There is an unquoted service path in ASUSTeK Aura Ready Game SDK service (GameSDK.exe) 1.0.0.4.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      },
+      "I": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      },
+      "A": {
+        "value": "H",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      }
+    },
+    "recommended_next_step": "Verify the service ImagePath contains unquoted spaces on a vulnerable system; if confirmed, update the service to use a fully quoted path and restrict write permissions on the directory. Record exploitability details (which account runs the service) and reproduce local privilege escalation.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of unquoted service path",
+        "quote": "There is an unquoted service path in ASUSTeK Aura Ready Game SDK service (GameSDK.exe) 1.0.0.4."
+      },
+      {
+        "claim": "Potential impact / attack technique",
+        "quote": "This might allow a local user to escalate privileges by creating a %PROGRAMFILES(X86)%\\ASUS\\GameSDK.exe file."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1663,
+    "output_tokens": 639,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "A logic bug in Linux kernel 6.2 can leave user processes vulnerable to cross-thread branch target injection (Spectre v2) when IBRS (but not enhanced IBRS) is used because the kernel disables STIBP and clears the IBRS bit on return to userspace, allowing other hyperthreads/processes on the same core to attack.",
+    "affected_product": "Linux kernel 6.2",
+    "cwe": "CWE-200",
+    "cwe_quote": "This happened because when plain IBRS was enabled (not enhanced IBRS), the kernel had some logic that determined that\n[STIBP] was not needed. The IBRS bit implicitly protects against cross-thread\nbranch target injection. However, with legacy\n[IBRS], the IBRS bit was cleared on returning to userspace, due to performance\nreasons, which disabled the implicit STIBP and left userspace threads\nvulnerable to cross-thread branch target injection against which STIBP\nprotects.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "The test consists of two processes. The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The test consists of two processes. The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address."
+      },
+      "UI": {
+        "value": "N",
+        "quote": "The test consists of two processes. The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address. The\nvictim process measures the mispredict rate and tries to mitigate the\nattack"
+      },
+      "I": {
+        "value": "L",
+        "quote": "The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address. The\nvictim process measures the mispredict rate and tries to mitigate the\nattack"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm affected kernel trees and versions (verify presence of the cited code at arch/x86/kernel/cpu/bugs.c#L1196), reproduce on representative hardware (with and without SMT/eIBRS), and prepare a patch to ensure STIBP is enabled or IBRS bit is preserved for userspace when required.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description (IBRS clears STIBP leaving userspace vulnerable)",
+        "quote": "This happened because when plain IBRS was enabled (not enhanced IBRS), the kernel had some logic that determined that\n[STIBP] was not needed. The IBRS bit implicitly protects against cross-thread\nbranch target injection. However, with legacy\n[IBRS], the IBRS bit was cleared on returning to userspace, due to performance\nreasons, which disabled the implicit STIBP and left userspace threads\nvulnerable to cross-thread branch target injection against which STIBP\nprotects."
+      },
+      {
+        "claim": "Affected code reference",
+        "quote": "The Bug present on Kernel 6.2\n(https://elixir.bootlin.com/linux/v6.2/source/arch/x86/kernel/cpu/bugs.c#L1196)\nimplements an optimization that disables STIBP if the mitgation is\nIBRS or eIBRS."
+      },
+      {
+        "claim": "Proof-of-concept shows attacker and victim processes on same core",
+        "quote": "The test consists of two processes. The attacker constantly poisons an\nindirect call to speculatively redirect it to a target address. The\nvictim process measures the mispredict rate and tries to mitigate the\nattack either by calling PRCTL or writing to the MSR directly using a\nkernel module that exposes MSR read and write operations to userspace."
+      },
+      {
+        "claim": "Exploit demonstrates mitigation via prctl",
+        "quote": "if (prctl(PR_SET_SPECULATION_CTRL, PR_SPEC_INDIRECT_BRANCH,\nPR_SPEC_FORCE_DISABLE, 0, 0) != 0)\n    {\n        perror(\"prctl\");\n    }\n    printf(\"PRCTL GET value 0x%x\\n\", prctl(PR_GET_SPECULATION_CTRL,\nPR_SPEC_INDIRECT_BRANCH, 0, 0, 0));"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3376,
+    "output_tokens": 1081,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Microweber <=1.2.15 allows account takeover by registering an account with a victim's email, then logging in via an OAuth provider using that same email to take over the victim's account.",
+    "affected_product": "Microweber CMS <=1.2.15",
+    "cwe": "CWE-287",
+    "cwe_quote": "Oauth Misconfiguration Leads To Account Takeover.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "When the victim tries to login with default Oauth providers like Google, Github, Microsoft, Twitter, Linkedin, Telegram or Facebook etc(auth login) with that same e-mail id that we created account before, via this way we can take over the victim's account with the recently created login credentials."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Create an account with the victim's email address.\n\nRegister endpoint: https://target-website.com/register#"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "When the victim tries to login with default Oauth providers like Google, Github, Microsoft, Twitter, Linkedin, Telegram or Facebook etc(auth login) with that same e-mail id that we created account before, via this way we can take over the victim's account with the recently created login credentials."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "we can take over the victim's account with the recently created login credentials."
+      },
+      "I": {
+        "value": "L",
+        "quote": "we can take over the victim's account with the recently created login credentials."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm reproduction steps against an instance: register an account using a victim email, then perform OAuth login with that email to observe whether the site links the attacker-controlled account to the victim's existing account; collect exact requests/responses and vendor-config settings responsible for linking by email.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "Microweber Drag and Drop Website Builder E-commerce CMS v1.2.15 Oauth Misconfiguration Leads To Account Takeover."
+      },
+      {
+        "claim": "Exploit step to create account",
+        "quote": "Create an account with the victim's email address.\n\nRegister endpoint: https://target-website.com/register#"
+      },
+      {
+        "claim": "Exploit step using OAuth login to take over account",
+        "quote": "When the victim tries to login with default Oauth providers like Google, Github, Microsoft, Twitter, Linkedin, Telegram or Facebook etc(auth login) with that same e-mail id that we created account before, via this way we can take over the victim's account with the recently created login credentials."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1843,
+    "output_tokens": 710,
+    "latency_s": null,
+    "batch": true
+  }
+}

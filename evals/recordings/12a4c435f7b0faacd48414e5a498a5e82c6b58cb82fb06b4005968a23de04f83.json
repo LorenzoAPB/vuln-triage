@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Reporter states there is a remote code execution (RCE) vulnerability in the web interface of the ExampleNet R200 router running firmware 2.1.",
+    "affected_product": "ExampleNet R200, firmware 2.1",
+    "cwe": "CWE-94",
+    "cwe_quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "I": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      },
+      "A": {
+        "value": "H",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      }
+    },
+    "recommended_next_step": "Request the Proof-of-Concept and any exploit steps, confirm whether authentication is required and whether the web interface is exposed remotely; reproduce the issue in a lab device to collect detailed evidence (HTTP requests, command output) and determine exact attack vector and impact.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Statement of vulnerability and target",
+        "quote": "There is an RCE in the web interface of the ExampleNet R200 router, firmware 2.1."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1634,
+    "output_tokens": 497,
+    "latency_s": null,
+    "batch": true
+  }
+}

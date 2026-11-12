@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "MXsecurity versions prior to 1.0.1 contain an authentication bypass when the web service authenticator uses insufficiently random values, allowing a remote attacker to access the system.",
+    "affected_product": "MXsecurity < 1.0.1",
+    "cwe": "CWE-338",
+    "cwe_quote": "insufficient random values",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "A remote attacker might access the system"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "A remote attacker might access the system"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "bypass authentication"
+      },
+      "I": {
+        "value": "L",
+        "quote": "bypass authentication"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or obtain a proof-of-concept or detailed technical description showing how insufficient randomness is exploited, and determine whether credentials or sessions can be fully impersonated; if confirmed, coordinate disclosure and advise immediate upgrade to 1.0.1 or apply mitigation (improve randomness source).",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Affected versions",
+        "quote": "MXsecurity versions prior to 1.0.1"
+      },
+      {
+        "claim": "Authentication bypass",
+        "quote": "can be exploited to bypass authentication"
+      },
+      {
+        "claim": "Remote attack",
+        "quote": "A remote attacker might access the system"
+      },
+      {
+        "claim": "Root cause",
+        "quote": "if the web service authenticator has insufficient random values"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1647,
+    "output_tokens": 484,
+    "latency_s": null,
+    "batch": true
+  }
+}

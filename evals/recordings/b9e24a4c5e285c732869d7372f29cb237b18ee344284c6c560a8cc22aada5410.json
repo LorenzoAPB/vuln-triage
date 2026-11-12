@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "User reports the desktop client occasionally sends requests to an unfamiliar address on startup and is unsure whether personal data is included.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "sends requests to an address I do not recognize when it starts up"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "UI": {
+        "value": "N",
+        "quote": "sends requests to an address I do not recognize when it starts up"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "I": {
+        "value": "N",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request the reporter to provide (1) the client name and exact version, (2) the full URL or IP address observed, (3) network logs or a packet capture of the startup traffic (or at minimum HTTP request lines/headers), and (4) a brief description of whether the client was configured with an account or credentials at the time.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Client sends requests to an unfamiliar address on startup",
+        "quote": "sends requests to an address I do not recognize when it starts up"
+      },
+      {
+        "claim": "Reporter unsure whether personal data is included",
+        "quote": "I am not a security expert and I could not tell whether any personal data is included"
+      },
+      {
+        "claim": "Reporter reported this to security team",
+        "quote": "so I wanted to report it to your security team for review."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1664,
+    "output_tokens": 536,
+    "latency_s": null,
+    "batch": true
+  }
+}

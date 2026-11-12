@@ -1,0 +1,95 @@
+[
+  {
+    "label": "Nearest-neighbour vote (k=5), no LLM",
+    "model": "-",
+    "prompt": "-",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4,
+    "accuracy_all": 0.4,
+    "over_under": [
+      10,
+      8
+    ],
+    "bias": -0.14,
+    "mae": 1.89,
+    "within_one_band": 0.8333333333333334,
+    "within_1_point": 0.36666666666666664,
+    "vector_exact": 0.1,
+    "per_metric": {
+      "AV": 0.8333333333333334,
+      "AC": 0.9666666666666667,
+      "PR": 0.5333333333333333,
+      "UI": 0.7333333333333333,
+      "S": 0.7333333333333333,
+      "C": 0.6,
+      "I": 0.4666666666666667,
+      "A": 0.6333333333333333
+    },
+    "cwe_exact": 0.26666666666666666,
+    "cwe_lenient": 0.3333333333333333,
+    "cwe_unknown": 0.0,
+    "usd": 0.0
+  },
+  {
+    "label": "v4: the NVD-tuned prompt",
+    "model": "gpt-5-mini",
+    "prompt": "v4",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.43333333333333335,
+    "accuracy_all": 0.43333333333333335,
+    "over_under": [
+      8,
+      9
+    ],
+    "bias": -0.21,
+    "mae": 1.5,
+    "within_one_band": 0.8666666666666667,
+    "within_1_point": 0.36666666666666664,
+    "vector_exact": 0.2,
+    "per_metric": {
+      "AV": 0.7333333333333333,
+      "AC": 0.9666666666666667,
+      "PR": 0.7333333333333333,
+      "UI": 0.8,
+      "S": 0.8333333333333334,
+      "C": 0.6333333333333333,
+      "I": 0.5333333333333333,
+      "A": 0.6
+    },
+    "cwe_exact": 0.6,
+    "cwe_lenient": 0.6333333333333333,
+    "cwe_unknown": 0.06666666666666667,
+    "usd": 0.0313
+  },
+  {
+    "label": "v5: v4 + rules for reading exploit code and requests",
+    "model": "gpt-5-mini",
+    "prompt": "v5",
+    "coverage": 1.0,
+    "accuracy_when_published": 0.4666666666666667,
+    "accuracy_all": 0.4666666666666667,
+    "over_under": [
+      7,
+      9
+    ],
+    "bias": -0.24,
+    "mae": 1.39,
+    "within_one_band": 0.9333333333333333,
+    "within_1_point": 0.4666666666666667,
+    "vector_exact": 0.26666666666666666,
+    "per_metric": {
+      "AV": 0.8,
+      "AC": 0.9666666666666667,
+      "PR": 0.7333333333333333,
+      "UI": 0.8333333333333334,
+      "S": 0.8,
+      "C": 0.6666666666666666,
+      "I": 0.5666666666666667,
+      "A": 0.7
+    },
+    "cwe_exact": 0.5333333333333333,
+    "cwe_lenient": 0.6333333333333333,
+    "cwe_unknown": 0.1,
+    "usd": 0.0346
+  }
+]

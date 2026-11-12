@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Improper sanitization in WP_Query can lead to SQL injection via plugins or themes using it in certain ways; patched in WordPress 5.8.3 and backported to older versions down to 3.7.37.",
+    "affected_product": "WordPress (versions before 5.8.3; security releases backported to 3.7.37)",
+    "cwe": "CWE-89",
+    "cwe_quote": "Due to improper sanitization in WP_Query, there can be cases where SQL injection is possible through plugins or themes that use it in a certain way.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Due to improper sanitization in WP_Query, there can be cases where SQL injection is possible through plugins or themes that use it in a certain way."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "Due to improper sanitization in WP_Query, there can be cases where SQL injection is possible through plugins or themes that use it in a certain way."
+      },
+      "I": {
+        "value": "L",
+        "quote": "Due to improper sanitization in WP_Query, there can be cases where SQL injection is possible through plugins or themes that use it in a certain way."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Review WP_Query usage in plugins/themes for unescaped user-controlled inputs; apply updates to WordPress 5.8.3 or later and security releases back to 3.7.37. If possible, inspect site access logs and plugin code to identify vulnerable query constructions.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of bug and impact",
+        "quote": "Due to improper sanitization in WP_Query, there can be cases where SQL injection is possible through plugins or themes that use it in a certain way."
+      },
+      {
+        "claim": "Fixed version",
+        "quote": "This has been patched in WordPress version 5.8.3."
+      },
+      {
+        "claim": "Backported fixes",
+        "quote": "Older affected versions are also fixed via security release, that go back till 3.7.37."
+      },
+      {
+        "claim": "Workaround guidance",
+        "quote": "There are no known workarounds for this vulnerability."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1715,
+    "output_tokens": 642,
+    "latency_s": null,
+    "batch": true
+  }
+}

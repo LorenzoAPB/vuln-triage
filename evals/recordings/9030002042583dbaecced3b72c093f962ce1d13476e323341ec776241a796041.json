@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The report describes a time-based blind SQL injection in Persian VIP Download Script 1.0 in the cart_edit.php 'active' GET parameter allowing injection into a query selecting from the users table.",
+    "affected_product": "Persian VIP Download Script 1.0",
+    "cwe": "CWE-89",
+    "cwe_quote": "$user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "/cart_edit.php"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "Type: time-based blind"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Parameter: active (GET)"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Confirm the injection, identify reachable data and impacted queries, and apply prepared statements or proper input validation; notify vendor with reproduction steps and request a patch.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "vulnerable parameter and location",
+        "quote": "/cart_edit.php"
+      },
+      {
+        "claim": "user-supplied GET parameter",
+        "quote": "$active = $_GET['active'];"
+      },
+      {
+        "claim": "vulnerable SQL query using unsanitized input",
+        "quote": "$user_p = mysql_fetch_array(mysql_query(\"SELECT * FROM `users` where id='$active'\"));"
+      },
+      {
+        "claim": "attack type",
+        "quote": "Type: time-based blind"
+      },
+      {
+        "claim": "demonstrated payload using SLEEP",
+        "quote": "Payload: active=1' AND (SELECT 4169 FROM (SELECT(SLEEP(5)))wAin) AND 'zpth'='zpth"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1677,
+    "output_tokens": 544,
+    "latency_s": null,
+    "batch": true
+  }
+}

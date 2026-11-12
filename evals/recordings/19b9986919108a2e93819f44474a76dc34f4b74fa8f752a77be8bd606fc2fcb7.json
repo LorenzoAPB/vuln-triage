@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "OpenEDX Platform Ironwood 2.5 allows authenticated users to submit custom Python problem code which can execute arbitrary OS commands on the host, resulting in remote code execution.",
+    "affected_product": "OpenEDX Platform Ironwood 2.5",
+    "cwe": "CWE-94",
+    "cwe_quote": "Custom Python evaluated code",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "go to /edx-studio"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "L",
+        "quote": "This is an authenticated vulnerability, so you need to register an account, go to /edx-studio"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "and click Submit, and you will execute commands in the machine"
+      },
+      "I": {
+        "value": "H",
+        "quote": "and click Submit, and you will execute commands in the machine"
+      },
+      "A": {
+        "value": "H",
+        "quote": "and click Submit, and you will execute commands in the machine"
+      }
+    },
+    "recommended_next_step": "Disable or restrict the 'Custom Python evaluated code' feature and enforce use of CodeJail for sandboxing; if not possible, remove the feature until a secure sandboxing/validation patch is available.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Authenticated access required",
+        "quote": "This is an authenticated vulnerability, so you need to register an account, go to /edx-studio"
+      },
+      {
+        "claim": "Feature allowing custom Python evaluated code",
+        "quote": "Custom Python evaluated code"
+      },
+      {
+        "claim": "PoC shows executing OS commands via os.system",
+        "quote": "os.system(\"thecommandyouwanttoexecute\")"
+      },
+      {
+        "claim": "Submitting the problem executes commands on the host",
+        "quote": "and click Submit, and you will execute commands in the machine"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1787,
+    "output_tokens": 1149,
+    "latency_s": null,
+    "batch": true
+  }
+}

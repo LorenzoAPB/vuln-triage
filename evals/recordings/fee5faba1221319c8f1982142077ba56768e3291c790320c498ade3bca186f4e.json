@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Spiceworks 7.5.7.0 trusts the Host header, allowing an attacker to supply an arbitrary Host value that is reflected into redirects and links (host header injection / domain fronting).",
+    "affected_product": "Spiceworks 7.5.7.0",
+    "cwe": "CWE-93",
+    "cwe_quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "An issue was discovered in Spiceworks version 7.5.7.0 (may be affected on other versions too). The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": "allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Validate by reproducing request with a controlled Host header and confirm reflected Host in Location header and page links; identify all code paths that use Host and implement canonical host validation or a configured trusted-host whitelist.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and effect",
+        "quote": "Host Header Injection vulnerability may allow an attacker to spoof a particular Host header, allowing the attacker to render arbitrary links that point to a malicious website with poisoned Host header webpages."
+      },
+      {
+        "claim": "Host header values trusted",
+        "quote": "The values of the 'Host' headers are implicitly set as trusted while this should be forbidden, leading to potential host header injection attack and also the affected hosts can be used for domain fronting."
+      },
+      {
+        "claim": "Example showing Location header using attacker-supplied Host",
+        "quote": "Location: http://google.com/pro_users/login"
+      },
+      {
+        "claim": "Example page link using attacker-supplied Host",
+        "quote": "<html><body>You are being <a href=\"http://google.com/pro_users/login\">redirected</a>.</body></html>"
+      },
+      {
+        "claim": "Affected version",
+        "quote": "Affected Version: 7.5.7.0 may be others."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3865,
+    "output_tokens": 720,
+    "latency_s": null,
+    "batch": true
+  }
+}

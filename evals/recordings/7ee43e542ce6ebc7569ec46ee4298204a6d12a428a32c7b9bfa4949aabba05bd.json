@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "An access control issue in Wavlink WN530HG4 M30HG4.V5030.191116 exposes usernames and passwords by viewing the source of /set_safety.shtml and searching for [var syspasswd].",
+    "affected_product": "Wavlink WN530HG4 M30HG4.V5030.191116",
+    "cwe": "CWE-200",
+    "cwe_quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/set_safety.shtml?r=52300 and searching for [var syspasswd].",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "view-source:http://IP_ADDRESS/set_safety.shtml?r=52300"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/set_safety.shtml?r=52300"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/set_safety.shtml?r=52300 and searching for [var syspasswd]."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows attackers to obtain usernames and passwords via view-source:http://IP_ADDRESS/set_safety.shtml?r=52300 and searching for [var syspasswd]."
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Attempt to reproduce by fetching the page source from a device running the listed firmware and verify presence of credentials; if confirmed, notify vendor PSIRT and recommend removing embedded credentials and implementing proper access controls.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "How to access the data",
+        "quote": "view-source:http://IP_ADDRESS/set_safety.shtml?r=52300"
+      },
+      {
+        "claim": "What to search for in the source",
+        "quote": "searching for [var syspasswd]"
+      },
+      {
+        "claim": "Effect",
+        "quote": "allows attackers to obtain usernames and passwords"
+      },
+      {
+        "claim": "Product and version",
+        "quote": "Wavlink WN530HG4 M30HG4.V5030.191116"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1660,
+    "output_tokens": 617,
+    "latency_s": null,
+    "batch": true
+  }
+}

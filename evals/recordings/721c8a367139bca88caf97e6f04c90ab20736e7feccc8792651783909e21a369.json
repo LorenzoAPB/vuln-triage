@@ -1,0 +1,73 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "The ashmem kernel driver fails to enforce its protection mask when storing the backing shmem file in a VMA, allowing an attacker to use remap_file_pages() to regain VM_MAYWRITE and then mprotect() to obtain write access to an ashmem allocation's backing file. The driver also allows marking pages purgable even for read-only ashmem fds, effectively zeroing them.",
+    "affected_product": "ashmem kernel driver on Linux (upstream master) and Android (observed on Pixel 2, security patch level 2019-09-05)",
+    "cwe": "CWE-732",
+    "cwe_quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler does not enforce the same restrictions, in ->vm_file.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "An attacker can abuse this through the remap_file_pages() syscall"
+      },
+      "AC": {
+        "value": "L",
+        "quote": "An attacker can abuse this through the remap_file_pages() syscall"
+      },
+      "PR": {
+        "value": "N",
+        "quote": "An attacker can abuse this through the remap_file_pages() syscall"
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows an attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      },
+      "A": {
+        "value": "L",
+        "quote": "there is no access control for these - even if you only have read-only access to an ashmem file, you can still mark pages in it as purgable, causing them to effectively be zeroed"
+      }
+    },
+    "recommended_next_step": "Investigate and produce a kernel patch that prevents storing the backing shmem file in vma->vm_file without enforcing ashmem's prot_mask (or ensure shmem->mmap enforces the same restrictions). Also consider mitigating remap_file_pages() use on ashmem mappings (e.g. deny or validate remap) and add a unit test reproducer; backport to supported Android kernels.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "ashmem stores backing file in vm_file without enforcing same restrictions",
+        "quote": "However, it improperly stores the backing shmem file, whose ->mmap() handler does not enforce the same restrictions, in ->vm_file."
+      },
+      {
+        "claim": "attack path uses remap_file_pages to regain VM_MAYWRITE",
+        "quote": "An attacker can abuse this through the remap_file_pages() syscall, which grabs the file pointer of an existing VMA and calls its ->mmap() handler to create a new VMA."
+      },
+      {
+        "claim": "successful result is gaining write access via mprotect",
+        "quote": "In effect, calling remap_file_pages(addr, size, 0, 0, 0) on an ashmem mapping allows an attacker to raise the VM_MAYWRITE bit, allowing the attacker to gain write access to the ashmem allocation's backing file via mprotect()."
+      },
+      {
+        "claim": "purge API can zero pages even for read-only fd",
+        "quote": "there is no access control for these - even if you only have read-only access to an ashmem file, you can still mark pages in it as purgable, causing them to effectively be zeroed"
+      },
+      {
+        "claim": "reproducer demonstrates exploit on Linux and Android Pixel 2",
+        "quote": "Reproducer (works both on Linux from upstream master in an X86 VM and on a Pixel 2 at security patch level 2019-09-05 via adb):"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3097,
+    "output_tokens": 1809,
+    "latency_s": null,
+    "batch": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": false,
+    "summary": "The message reports an unsubstantiated, non-technical claim that the company's servers 'might be vulnerable' based on hearsay; no technical details, evidence, or tested exploit are provided.",
+    "affected_product": "unknown",
+    "cwe": "unknown",
+    "cwe_quote": "",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": ""
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "N",
+        "quote": ""
+      },
+      "I": {
+        "value": "N",
+        "quote": ""
+      },
+      "A": {
+        "value": "N",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request concrete technical details from the reporter (vulnerable product, versions, proof-of-concept or logs) or perform an internal review/scanning of externally exposed services relevant to recent publicized attacks.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Report contains only hearsay and no technical details",
+        "quote": "I do not have technical details and I have not tested anything myself"
+      },
+      {
+        "claim": "Reporter says servers 'might be vulnerable'",
+        "quote": "your company's servers might be vulnerable to the new attacks that are in the news this month"
+      },
+      {
+        "claim": "Reporter is notifying out of caution",
+        "quote": "I wanted to let you know in case it is important so you can check your systems before something happens."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1674,
+    "output_tokens": 315,
+    "latency_s": null,
+    "batch": true
+  }
+}

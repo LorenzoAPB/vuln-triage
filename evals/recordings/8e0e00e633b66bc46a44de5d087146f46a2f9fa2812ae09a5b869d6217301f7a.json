@@ -1,0 +1,65 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "In patrickfuller camp (up to commit bbd53a2) password.txt in the web root is served by StaticFileHandler despite a Tornado rule intended to return 403, and the password hash is reused as the application's cookie secret allowing an attacker to forge authentication cookies.",
+    "affected_product": "patrickfuller camp up to and including commit bbd53a256ed70e79bd8758080936afbf6d738767",
+    "cwe": "CWE-200",
+    "cwe_quote": "Access to the password.txt file is not properly restricted as it is in the root directory served by StaticFileHandler and the Tornado rule to throw a 403 error when password.txt is accessed can be bypassed.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Access to the password.txt file is not properly restricted as it is in the root directory served by StaticFileHandler"
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": "Access to the password.txt file is not properly restricted as it is in the root directory served by StaticFileHandler and the Tornado rule to throw a 403 error when password.txt is accessed can be bypassed."
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "H",
+        "quote": "the password hash is also used as the cookie secret, so an attacker can generate his own authentication cookie."
+      },
+      "I": {
+        "value": "H",
+        "quote": "the password hash is also used as the cookie secret, so an attacker can generate his own authentication cookie."
+      },
+      "A": {
+        "value": "H",
+        "quote": "the password hash is also used as the cookie secret, so an attacker can generate his own authentication cookie."
+      }
+    },
+    "recommended_next_step": "Verify the report by attempting to directly GET /password.txt from a deployed instance and confirm cookie forgery by generating a cookie using the disclosed hash; then remove password.txt from web root, enforce proper StaticFileHandler restrictions, and stop using password hashes as cookie secrets (generate a separate strong random secret and rotate session cookies).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "File served from root and 403 bypass",
+        "quote": "Access to the password.txt file is not properly restricted as it is in the root directory served by StaticFileHandler and the Tornado rule to throw a 403 error when password.txt is accessed can be bypassed."
+      },
+      {
+        "claim": "Password hash reused as cookie secret enabling forgery",
+        "quote": "the password hash is also used as the cookie secret, so an attacker can generate his own authentication cookie."
+      },
+      {
+        "claim": "Affected commit range",
+        "quote": "patrickfuller camp up to and including commit bbd53a256ed70e79bd8758080936afbf6d738767 is vulnerable"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1722,
+    "output_tokens": 732,
+    "latency_s": null,
+    "batch": true
+  }
+}

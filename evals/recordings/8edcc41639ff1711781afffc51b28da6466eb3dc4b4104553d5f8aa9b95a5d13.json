@@ -1,0 +1,57 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "qdPM 9.2 is vulnerable to Cross-Site Request Forgery (CSRF) on the endpoint index.php/myAccount/update.",
+    "affected_product": "qdPM 9.2",
+    "cwe": "CWE-352",
+    "cwe_quote": "Cross-Site Request Forgery (CSRF) via the index.php/myAccount/update URI.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Cross-Site Request Forgery (CSRF) via the index.php/myAccount/update URI."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "R",
+        "quote": "Cross-Site Request Forgery (CSRF) via the index.php/myAccount/update URI."
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Verify the CSRF by reproducing a crafted POST to index.php/myAccount/update from an attacker-controlled page; if confirmed, implement and require anti-CSRF tokens (same-site cookies and/or per-request CSRF tokens) and publish a patch or mitigation guidance.",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability description",
+        "quote": "qdPM 9.2 allows Cross-Site Request Forgery (CSRF) via the index.php/myAccount/update URI."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1631,
+    "output_tokens": 434,
+    "latency_s": null,
+    "batch": true
+  }
+}

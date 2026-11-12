@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Controller 6000 contains a buffer overflow vulnerability in the Controller diagnostic web interface upload feature. Affected versions include Controller 6000 before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, and all versions of vCR8.40 and prior.",
+    "affected_product": "Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior",
+    "cwe": "CWE-120",
+    "cwe_quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature.",
+    "cvss": {
+      "AV": {
+        "value": "N",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": ""
+      },
+      "C": {
+        "value": "L",
+        "quote": ""
+      },
+      "I": {
+        "value": "L",
+        "quote": ""
+      },
+      "A": {
+        "value": "L",
+        "quote": ""
+      }
+    },
+    "recommended_next_step": "Request or obtain technical details and a proof-of-concept from the reporter (minimal repro or exploit), including whether authentication is required to reach the diagnostic web interface and what the overflow enables (remote code execution, crash, or denial of service). If confirmed, coordinate disclosure and develop a patch or mitigation and publish CVE.",
+    "confidence": "low",
+    "evidence_quotes": [
+      {
+        "claim": "Vulnerability type and location",
+        "quote": "Controller 6000 is vulnerable to a buffer overflow via the Controller diagnostic web interface upload feature."
+      },
+      {
+        "claim": "Affected versions",
+        "quote": "This issue affects Controller 6000: before vCR8.80.230201a, before vCR8.70.230201a, before vCR8.60.230201b, before vCR8.50.230201a, all versions of vCR8.40 and prior."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1689,
+    "output_tokens": 609,
+    "latency_s": null,
+    "batch": true
+  }
+}

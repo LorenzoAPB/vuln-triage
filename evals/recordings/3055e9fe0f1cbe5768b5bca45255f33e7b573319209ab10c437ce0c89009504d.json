@@ -1,0 +1,61 @@
+{
+  "proposal": {
+    "is_vulnerability_report": true,
+    "summary": "Diasoft File Replication Pro 7.5.0 allows privilege escalation by replacing a legitimate file with a trojan that will be executed as LocalSystem because the installation directory (%ProgramFiles%\\FileReplicationPro) grants Everyone full control.",
+    "affected_product": "Diasoft File Replication Pro 7.5.0",
+    "cwe": "CWE-732",
+    "cwe_quote": "%ProgramFiles%\\FileReplicationPro allows Everyone:(F) access.",
+    "cvss": {
+      "AV": {
+        "value": "L",
+        "quote": "%ProgramFiles%\\FileReplicationPro allows Everyone:(F) access."
+      },
+      "AC": {
+        "value": "L",
+        "quote": ""
+      },
+      "PR": {
+        "value": "N",
+        "quote": ""
+      },
+      "UI": {
+        "value": "N",
+        "quote": ""
+      },
+      "S": {
+        "value": "U",
+        "quote": "%ProgramFiles%\\FileReplicationPro allows Everyone:(F) access."
+      },
+      "C": {
+        "value": "H",
+        "quote": "allows attackers to escalate privileges by replacing a legitimate file with a Trojan horse that will be executed as LocalSystem."
+      },
+      "I": {
+        "value": "H",
+        "quote": "allows attackers to escalate privileges by replacing a legitimate file with a Trojan horse that will be executed as LocalSystem."
+      },
+      "A": {
+        "value": "H",
+        "quote": "allows attackers to escalate privileges by replacing a legitimate file with a Trojan horse that will be executed as LocalSystem."
+      }
+    },
+    "recommended_next_step": "Verify and document which executable(s) in %ProgramFiles%\\FileReplicationPro are writable by Everyone, reproduce exploitation to identify the exact attack path, and restrict directory permissions to administrators and the service account; prepare a vendor advisory and patch guidance.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "claim": "Privilege escalation via file replacement",
+        "quote": "allows attackers to escalate privileges by replacing a legitimate file with a Trojan horse that will be executed as LocalSystem."
+      },
+      {
+        "claim": "Directory writable by Everyone",
+        "quote": "%ProgramFiles%\\FileReplicationPro allows Everyone:(F) access."
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 1656,
+    "output_tokens": 540,
+    "latency_s": null,
+    "batch": true
+  }
+}
